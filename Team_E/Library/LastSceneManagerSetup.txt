@@ -1,5 +1,9 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: Assets/Scenes/Title.unity
+=======
+- path: Assets/Scenes/Work_Furusawa.unity
+>>>>>>> 50cb88f (テスト)
   isLoaded: 1
   isActive: 1
   isSubScene: 0
