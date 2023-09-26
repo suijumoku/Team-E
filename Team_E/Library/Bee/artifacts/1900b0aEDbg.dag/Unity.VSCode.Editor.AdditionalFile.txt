@@ -1,5 +1,0 @@
-<<<<<<< HEAD
-C:\Users\nupep\OneDrive\ドキュメント\ゲーム製作\Team-E\Team_E
-=======
-C:\Users\古澤峻\unity_project_file\Team-E-1\Team_E
->>>>>>> 50cb88f (テスト)
