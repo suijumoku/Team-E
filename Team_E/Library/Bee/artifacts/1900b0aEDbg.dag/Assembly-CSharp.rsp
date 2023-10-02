@@ -349,6 +349,7 @@
 "Assets/Scripts/FadeImage.cs"
 "Assets/Scripts/FirstSelectButton.cs"
 "Assets/Scripts/Title.cs"
+"Assets/Scripts/TitleLogoMove.cs"
 -langversion:9.0
 
 /deterministic

@@ -25,6 +25,11 @@ public class Title : MonoBehaviour
     public void QuitGame()
     {
         print("Quitが押されました");
-        Application.Quit();
+
+        #if UNITY_EDITOR
+             UnityEditor.EditorApplication.isPlaying = false;//ゲームプレイ終了
+        #else
+             Application.Quit();
+        #endif    
     }
 }
