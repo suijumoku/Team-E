@@ -4,18 +4,26 @@ using UnityEngine;
 using UnityEngine.UI;
 public class FirstSelectButton : MonoBehaviour
 {
-    public bool OnLoadScene;
+    
     [SerializeField] private Button firstbutton;
+    [Header("有効になったら実行する")][SerializeField] bool OnEneble;
+    [Header("シーンが読み込まれたら実行する")][SerializeField] bool OnLoadScene;
     void OnEnable()
     {
-        Debug.Log("OnEnable");
-        onSelect();
+        if (OnEneble)
+        {
+            Debug.Log("OnEnable");
+            onSelect();
+        }
     }
 
     private void Start()
     {
         if (OnLoadScene)
+        {
+            Debug.Log("OnLoadScene");
             onSelect();
+        }
     }
 
     public void onSelect()
