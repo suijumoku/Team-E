@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("BGM_Set");
             BGM_AudioSource.clip = bgm;
+
             print("BGM_Play");
             BGM_AudioSource.Play();
         }
