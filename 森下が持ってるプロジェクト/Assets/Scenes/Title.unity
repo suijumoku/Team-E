@@ -135,9 +135,9 @@ GameObject:
   - component: {fileID: 60528810}
   - component: {fileID: 60528809}
   - component: {fileID: 60528808}
-  - component: {fileID: 60528807}
   - component: {fileID: 60528813}
   - component: {fileID: 60528812}
+  - component: {fileID: 60528814}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -145,19 +145,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &60528807
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 60528805}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca5844c939ab7254bb63692835b8120e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fade: {fileID: 60528813}
 --- !u!114 &60528808
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -272,6 +259,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fade: {fileID: 660606941}
   NextSceneName: Menu
+--- !u!114 &60528814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 60528805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6dde22dc2066da48803f39937bd5cbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &388265173
 GameObject:
   m_ObjectHideFlags: 0
@@ -286,7 +285,7 @@ GameObject:
   - component: {fileID: 388265176}
   - component: {fileID: 388265175}
   m_Layer: 5
-  m_Name: StartButton (1)
+  m_Name: QuitButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -452,9 +451,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 60528807}
-        m_TargetAssemblyTypeName: Title, Assembly-CSharp
-        m_MethodName: StartGame
+      - m_Target: {fileID: 60528814}
+        m_TargetAssemblyTypeName: QuitGame, Assembly-CSharp
+        m_MethodName: quitGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -496,8 +495,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: de83630ba235b434cb27237aeac2a7e8, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1213,9 +1212,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 60528807}
-        m_TargetAssemblyTypeName: Title, Assembly-CSharp
-        m_MethodName: StartGame
+      - m_Target: {fileID: 60528813}
+        m_TargetAssemblyTypeName: FadeAndSceneMove, Assembly-CSharp
+        m_MethodName: FadeStart
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1726,6 +1725,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 936131605043003415, guid: e1a97bd7b5a2cd64aa03f29d0e706f7d, type: 3}
+      propertyPath: StartBGM
+      value: 
+      objectReference: {fileID: 8300000, guid: 4d10d0cb7e885854bb1cfd6626b87cf7, type: 3}
     - target: {fileID: 5503500316001914275, guid: e1a97bd7b5a2cd64aa03f29d0e706f7d, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -1772,7 +1775,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6185333476934416869, guid: e1a97bd7b5a2cd64aa03f29d0e706f7d, type: 3}
       propertyPath: m_Name
-      value: StartBGM
+      value: BGMManager
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1a97bd7b5a2cd64aa03f29d0e706f7d, type: 3}

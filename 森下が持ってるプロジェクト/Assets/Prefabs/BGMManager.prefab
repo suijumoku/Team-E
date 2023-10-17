@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5503500316001914275}
   - component: {fileID: 936131605043003415}
   m_Layer: 0
-  m_Name: StartBGM
+  m_Name: BGMManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

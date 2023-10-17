@@ -5,7 +5,7 @@ using UnityEngine;
 public class DisplayUICon: MonoBehaviour
 {
     [Header("ï\é¶Ç∑ÇÈUI")] public GameObject displayUI;
-    private bool Ondisplay = false;
+    public bool Ondisplay = false;
     // Start is called before the first frame update
     void Start()
     {
