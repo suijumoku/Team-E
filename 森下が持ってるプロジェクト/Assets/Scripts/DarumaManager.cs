@@ -6,7 +6,6 @@ using UnityEngine.AI;
 public class DarumaManager : MonoBehaviour
 {
     [SerializeField] GameObject daruma = default!;
-
     private NavMeshAgent navMeshAgent;
     void Awake()
     {
@@ -19,8 +18,18 @@ public class DarumaManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
+        //if (Input.GetKeyDown(KeyCode.P))
+        //{
+        //    navMeshAgent.enabled = true;
+        //}
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "Plane")
         {
+            Rigidbody rb = GetComponent<Rigidbody>();
+            Destroy(rb);
             navMeshAgent.enabled = true;
         }
     }
