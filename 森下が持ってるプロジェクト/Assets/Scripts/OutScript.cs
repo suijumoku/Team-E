@@ -24,10 +24,9 @@ public class OutScript : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             InOrder();
-            CharacterController c = other.GetComponent<CharacterController>();
-            c.enabled = false;
+            GameObject c = other.GetComponent<GameObject>();          
             other.transform.localPosition = respawnP.transform.localPosition;
-            c.enabled = true;
+          
         }
     }
     private void InOrder()

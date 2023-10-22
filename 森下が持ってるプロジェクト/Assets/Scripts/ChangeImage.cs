@@ -7,9 +7,12 @@ using UnityEngine.UI;
 
 public class ChangeImage : MonoBehaviour
 {
+    [SerializeField] Material default_material;
+    [SerializeField] Material translucent_material;
+    [SerializeField] GameObject player;
     //同じサイズの画像を重ねて表示のON,OFFで切り替える
     [SerializeField] Image trueImage, falseImage;
-    [SerializeField] int ThisLife;
+    
     [SerializeField] float duration = 0.2f;  //点滅の感覚(要調整)
 
     private ChangeImage instance;
@@ -28,6 +31,7 @@ public class ChangeImage : MonoBehaviour
     {
         trueImage.GetComponent<Image>().enabled = true;
         falseImage.GetComponent<Image>().enabled = false;
+        player = GameObject.FindWithTag("Player");
     }
 
     void Update()
@@ -43,6 +47,7 @@ public class ChangeImage : MonoBehaviour
 
     public IEnumerator Miss()
     {
+       
         Debug.Log("Miss");
         yield return new WaitForSeconds(0.1f);
         Debug.Log("CountStart");
@@ -52,19 +57,28 @@ public class ChangeImage : MonoBehaviour
                 if (Mathf.Approximately(time, 0.0f))
                 {
                     ChangeImg(trueImage, falseImage);
+                    player.gameObject.GetComponent<Renderer>().material = translucent_material;
                 }
                 time += Time.deltaTime;
                 if (time >= duration && !changeF1)
                 {
                     ChangeImg(falseImage, trueImage);
+                    player.gameObject.GetComponent<Renderer>().material = default_material;
+
                     changeF1 = true;
                 }
                 else if (time >= duration * 2 && !changeF2)
                 {
                     ChangeImg(trueImage, falseImage);
+                    player.gameObject.GetComponent<Renderer>().material = translucent_material;
+
                     changeF2 = true;
                 }
-           
+                else if (time >= duration * 3 && changeF2)
+                {
+                    player.gameObject.GetComponent<Renderer>().material = default_material;
+                }
+
                 yield return null;
             }       
 

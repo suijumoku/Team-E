@@ -69,10 +69,10 @@ namespace StarterAssets
         [Tooltip("How far in degrees can you move the camera down")]
         public float BottomClamp = -30.0f;
 
-        [Tooltip("Additional degress to override the camera. Useful for fine tuning camera position when locked")]
+        [Tooltip("カメラをオーバーライドするための追加の度数。 ロック時にカメラの位置を微調整するのに役立ちます")]
         public float CameraAngleOverride = 0.0f;
 
-        [Tooltip("For locking the camera position on all axis")]
+        [Tooltip("全軸のカメラ位置をロックする場合")]
         public bool LockCameraPosition = false;
 
         // cinemachine
@@ -192,21 +192,21 @@ namespace StarterAssets
 
         private void CameraRotation()
         {
-            // if there is an input and camera position is not fixed
+            // 入力があり、カメラの位置が固定されていない場合
             if (_input.look.sqrMagnitude >= _threshold && !LockCameraPosition)
             {
-                //Don't multiply mouse input by Time.deltaTime;
-                float deltaTimeMultiplier = IsCurrentDeviceMouse ? 1.0f : Time.deltaTime;
+                //マウス入力に Time.deltaTime を掛けないでください。
+                float deltaTimeMultiplier = IsCurrentDeviceMouse ? 1.0f : Time.deltaTime;   //マウス入力なら1.0、コントローラーならTime.deltatimeを入れて計算理由は知らん
 
-                _cinemachineTargetYaw += _input.look.x * deltaTimeMultiplier;
+                _cinemachineTargetYaw += _input.look.x * deltaTimeMultiplier;       //上下の軸周りの回転Yaw、左右の軸周りの回転Pitch 飛行力学の話
                 _cinemachineTargetPitch += _input.look.y * deltaTimeMultiplier;
             }
 
-            // clamp our rotations so our values are limited 360 degrees
+            // 回転をクランプして、値を 360 度に制限します。
             _cinemachineTargetYaw = ClampAngle(_cinemachineTargetYaw, float.MinValue, float.MaxValue);
             _cinemachineTargetPitch = ClampAngle(_cinemachineTargetPitch, BottomClamp, TopClamp);
 
-            // Cinemachine will follow this target
+            // Cinemachine はこの目標に従います
             CinemachineCameraTarget.transform.rotation = Quaternion.Euler(_cinemachineTargetPitch + CameraAngleOverride,
                 _cinemachineTargetYaw, 0.0f);
         }
