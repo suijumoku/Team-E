@@ -5,18 +5,24 @@ using UnityEngine;
 
 public class ShockWave : MonoBehaviour
 {
-    [SerializeField] private ProBuilderEditor editor;
-    float t=0;
-    // Start is called before the first frame update
-    void Start()
-    {
-       
-    }
+    [Header("ŽË’ö”¼Œa")] public float LengthRadius;
+    [Header("ŽžŠÔ")] public float MoveTime = 2f;
+    float time;
+    float Move;
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        t += Time.deltaTime;
-        transform.localScale=new Vector3(t,t,t);
+        Move = LengthRadius / MoveTime;
+    }
+    private void Update()
+    {
+        Vector3 scl = transform.localScale;
+        time += Time.deltaTime;
+        if (time < MoveTime)
+        {
+            scl.x += Move * Time.deltaTime;
+            scl.z += Move * Time.deltaTime;
+            transform.localScale = scl;
+        }
     }
 }

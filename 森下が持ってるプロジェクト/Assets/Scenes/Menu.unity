@@ -134,6 +134,10 @@ PrefabInstance:
       propertyPath: bgm
       value: 
       objectReference: {fileID: 8300000, guid: 53f56abe5ef6355478e964f32fef7343, type: 3}
+    - target: {fileID: 936131605043003415, guid: e1a97bd7b5a2cd64aa03f29d0e706f7d, type: 3}
+      propertyPath: StartBGM
+      value: 
+      objectReference: {fileID: 8300000, guid: 53f56abe5ef6355478e964f32fef7343, type: 3}
     - target: {fileID: 5503500316001914275, guid: e1a97bd7b5a2cd64aa03f29d0e706f7d, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -331,6 +335,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayUI: {fileID: 282563923}
+  Ondisplay: 0
 --- !u!1 &185658266
 GameObject:
   m_ObjectHideFlags: 0
