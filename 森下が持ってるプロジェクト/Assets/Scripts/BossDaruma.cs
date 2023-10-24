@@ -4,21 +4,24 @@ using UnityEngine;
 
 public class BossDaruma : MonoBehaviour
 {
-    [Header("プレイヤー")][SerializeField] GameObject P;
+    [Header("プレイヤー")][SerializeField] Transform P;
 
 
     void Start()
     {
-        
+        if (Input.GetMouseButtonDown(0) && P != null)
+        {
+            Jump(P.position);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    void Attack()
+    void Jump(Vector3 PlayerPosition)
     {
         Vector3 pos = P.transform.position;
 
