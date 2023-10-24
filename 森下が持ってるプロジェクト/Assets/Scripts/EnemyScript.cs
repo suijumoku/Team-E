@@ -14,6 +14,9 @@ public class EnemyScript : MonoBehaviour
     private int destPoint = 0;
     private NavMeshAgent agent;
     bool IsDetected = false;
+    Rigidbody rigidBody;
+
+
 
 
     void Start()
@@ -51,18 +54,18 @@ public class EnemyScript : MonoBehaviour
 
         if (distance < detectDistance)
         {
-            //if (!IsDetected)
-            //{
-            //    GetComponent<Renderer>().material = chaseMaterial;
-            //}
+            if (!IsDetected)
+            {
+                GetComponent<Renderer>().material = chaseMaterial;
+            }
             IsDetected = true;
         }
         else
         {
-            //if (IsDetected)
-            //{
-            //    GetComponent<Renderer>().material = patrolMaterial;
-            //}
+            if (IsDetected)
+            {
+                GetComponent<Renderer>().material = patrolMaterial;
+            }
             IsDetected = false;
         }
 

@@ -103,7 +103,7 @@ MonoBehaviour:
   child: {fileID: 6492008974825116830}
   patrolMaterial: {fileID: 0}
   chaseMaterial: {fileID: 0}
-  detectDistance: 2
+  detectDistance: 8
   points:
   - {fileID: 6748602954915390793, guid: c7e8282d7b968e047a409233f4d68387, type: 3}
   - {fileID: 5364827019446981904, guid: cf0252c7e55af5441aadd944d863ac0f, type: 3}
