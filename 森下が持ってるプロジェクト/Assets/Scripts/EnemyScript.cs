@@ -14,6 +14,9 @@ public class EnemyScript : MonoBehaviour
     private int destPoint = 0;
     private NavMeshAgent agent;
     bool IsDetected = false;
+    Rigidbody rigidBody;
+
+
 
 
     void Start()
@@ -86,6 +89,7 @@ public class EnemyScript : MonoBehaviour
         if (collision.gameObject.tag == "Ball")
         {
             child.gameObject.AddComponent<NavMeshAgent>();
+            child.gameObject.AddComponent<Rigidbody>();
 
             //êeéqä÷åWâèú
             transform.DetachChildren();
