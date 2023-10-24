@@ -86,6 +86,7 @@ public class EnemyScript : MonoBehaviour
         if (collision.gameObject.tag == "Ball")
         {
             child.gameObject.AddComponent<NavMeshAgent>();
+            child.gameObject.AddComponent<Rigidbody>();
 
             //eqŠÖŒW‰ğœ
             transform.DetachChildren();
