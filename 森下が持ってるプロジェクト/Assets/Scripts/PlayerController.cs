@@ -19,7 +19,10 @@ public class PlayerController : MonoBehaviour
 
     //地面の上なら歩きモーション、違うなら落下モーション    
     [SerializeField] private float walkSpeed = 4f;  //移動スピード
-    [SerializeField] private bool isGrouded;        //接地しているかどうか
+    [SerializeField] private bool isGrounded;        //接地しているかどうか
+    [SerializeField] private bool pushJumpButton;   //ジャンプボタンを押したかどうか
+    [SerializeField] private bool isJump;           //ジャンプ中かどうか
+    [SerializeField] private float jumpPower = 5f; //ジャンプのつよさ
     [SerializeField] GameObject CinemachineCameraTarget;
 
     public Vector2 look;
@@ -41,6 +44,7 @@ public class PlayerController : MonoBehaviour
     {
         inputHorizontal = UnityEngine.Input.GetAxisRaw("Horizontal");
         inputVertical = UnityEngine.Input.GetAxisRaw("Vertical");
+   
     }
     private void FixedUpdate()
     {      
@@ -60,8 +64,14 @@ public class PlayerController : MonoBehaviour
         //clampは値の範囲制限
         var clampedInput = Vector3.ClampMagnitude(moveForward, 1f);   //GetAxisは0から1で入力値を管理する、斜め移動でWとAを同時押しすると
                                                                 //1以上の値が入ってくるからVector3.ClampMagnitudeメソッドを使って入力値を１に制限する(多分)
+        
+        if (pushJumpButton)
+        {
+            velocity = clampedInput * walkSpeed + new Vector3(0, jumpPower, 0);    //ジャンプや落下がある場合は、別途Y軸方向の速度ベクトルを足す
 
-        velocity = clampedInput * walkSpeed;    //ジャンプや落下がある場合は、別途Y軸方向の速度ベクトルを足すかも
+        }
+        else
+          velocity = clampedInput * walkSpeed;   
                                                 // transform.LookAt(m_Rigidbody.position + input); //キャラクターの向きを現在地＋入力値の方に向ける
 
         //Rigidbodyに一度力を加えると抵抗する力がない限りずっと力が加わる
@@ -72,7 +82,7 @@ public class PlayerController : MonoBehaviour
         //　速度のXZを-walkSpeedとwalkSpeed内に収めて再設定
         velocity = new Vector3(Mathf.Clamp(velocity.x, -walkSpeed, walkSpeed), 0f, Mathf.Clamp(velocity.z, -walkSpeed, walkSpeed));
 
-        if (isGrouded)
+        if (isGrounded)
         {
             if (clampedInput.magnitude > 0f)
             {
@@ -90,15 +100,27 @@ public class PlayerController : MonoBehaviour
         // a・・・加速度
         // Δt・・・力を加えた時間 (Time.fixedDeltatime) 
         //F = ｍ * a / Δt    Forceは力を加えた時間を使って計算
+        
+        pushJumpButton= false;
     } 
+
+    void Jump()
+    {
+        if (UnityEngine.Input.GetKeyDown(KeyCode.Space) && isGrounded || UnityEngine.Input.GetButtonDown("Jump") && isGrounded)
+        {
+            m_Rigidbody.AddForce();
+            isJump = true;
+        }
+
+    }
 
     private void OnCollisionEnter(Collision collision)
     {       
         //難しい方法はできないからTriggerで判定したい
         if (collision.gameObject.tag == "Ground")
         {
-            isGrouded = true;
-            Debug.Log("isGrounded = " + isGrouded);
+            isGrounded = true;
+            Debug.Log("isGrounded = " + isGrounded);
         }               
     }
 
@@ -106,8 +128,8 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Ground")
         {
-            isGrouded = false;
-            Debug.Log("isGrounded = " + isGrouded);
+            isGrounded = false;
+            Debug.Log("isGrounded = " + isGrounded);
         }
            
         //ジャンプアニメーションに遷移多分

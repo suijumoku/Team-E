@@ -9,7 +9,7 @@ public class ChangeImage : MonoBehaviour
 {
     [SerializeField] Material default_material;
     [SerializeField] Material translucent_material;
-    [SerializeField] GameObject player;
+    [SerializeField] private GameObject player;
     //同じサイズの画像を重ねて表示のON,OFFで切り替える
     [SerializeField] Image trueImage, falseImage;
     
@@ -32,6 +32,7 @@ public class ChangeImage : MonoBehaviour
         trueImage.GetComponent<Image>().enabled = true;
         falseImage.GetComponent<Image>().enabled = false;
         player = GameObject.FindWithTag("Player");
+        player.gameObject.GetComponent<Renderer>().material = default_material;
     }
 
     void Update()
@@ -47,7 +48,7 @@ public class ChangeImage : MonoBehaviour
 
     public IEnumerator Miss()
     {
-       
+        changeF1 = false; changeF2 = false;
         Debug.Log("Miss");
         yield return new WaitForSeconds(0.1f);
         Debug.Log("CountStart");
