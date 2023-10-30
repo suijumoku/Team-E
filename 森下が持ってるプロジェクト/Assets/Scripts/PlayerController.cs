@@ -18,10 +18,12 @@ public class PlayerController : MonoBehaviour
     //private float _cinemachineTargetPitch;
 
     //地面の上なら歩きモーション、違うなら落下モーション    
-    [SerializeField] private float walkSpeed = 4f;  //移動スピード
-    [SerializeField] private bool isGrounded;        //接地しているかどうか
-    [SerializeField] private bool pushJumpButton;   //ジャンプボタンを押したかどうか
-    [SerializeField] private bool isJump;           //ジャンプ中かどうか
+          
+     private bool pushJumpButton;   //ジャンプボタンを押したかどうか
+     private bool isJump = false;           //ジャンプ中かどうか
+
+    [SerializeField] private float walkSpeed = 4f;  //移動スピード   
+    [SerializeField] float gravityPower;            //落下速度の調整　-つける
     [SerializeField] private float jumpPower = 5f; //ジャンプのつよさ
     [SerializeField] GameObject CinemachineCameraTarget;
 
@@ -44,10 +46,11 @@ public class PlayerController : MonoBehaviour
     {
         inputHorizontal = UnityEngine.Input.GetAxisRaw("Horizontal");
         inputVertical = UnityEngine.Input.GetAxisRaw("Vertical");
-   
+        Jump();
     }
     private void FixedUpdate()
-    {      
+    {
+        Gravity();
 
         //input = new Vector3(inputHorizontal, 0, inputVertical);
 
@@ -82,8 +85,9 @@ public class PlayerController : MonoBehaviour
         //　速度のXZを-walkSpeedとwalkSpeed内に収めて再設定
         velocity = new Vector3(Mathf.Clamp(velocity.x, -walkSpeed, walkSpeed), 0f, Mathf.Clamp(velocity.z, -walkSpeed, walkSpeed));
 
-        if (isGrounded)
+        if (isJump == false)
         {
+            //一つ前のフレームの高さと今の高さを比べて下がっていたら落下モーション？
             if (clampedInput.magnitude > 0f)
             {
                //移動モーションへの遷移
@@ -92,8 +96,8 @@ public class PlayerController : MonoBehaviour
             {
                 //idleモーションへの遷移
             }
-        }
-        
+        }       
+
         m_Rigidbody.AddForce(m_Rigidbody.mass * velocity / Time.fixedDeltaTime, ForceMode.Force);
         // F・・・力  
         // m・・・質量  
@@ -102,36 +106,37 @@ public class PlayerController : MonoBehaviour
         //F = ｍ * a / Δt    Forceは力を加えた時間を使って計算
         
         pushJumpButton= false;
-    } 
+    }  
+
+    private void OnCollisionEnter(Collision other)
+    {       
+        //難しい方法はできないからTriggerで判定したい
+        if (isJump == true)
+        {
+            if (other.gameObject.CompareTag("Ground"))
+            {
+                isJump = false;
+                Debug.Log("isJump = " + isJump);
+            }
+        }                    
+    }
 
     void Jump()
     {
-        if (UnityEngine.Input.GetKeyDown(KeyCode.Space) && isGrounded || UnityEngine.Input.GetButtonDown("Jump") && isGrounded)
-        {
-            m_Rigidbody.AddForce();
+        if (isJump == true) return;
+        if (UnityEngine.Input.GetKeyDown (KeyCode.Space) || UnityEngine.Input.GetButtonDown("Jump"))
+        {          
+            m_Rigidbody.AddForce(transform.up * jumpPower, ForceMode.Impulse);
             isJump = true;
+            Debug.Log("isjump = " + isJump);
         }
-
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {       
-        //難しい方法はできないからTriggerで判定したい
-        if (collision.gameObject.tag == "Ground")
-        {
-            isGrounded = true;
-            Debug.Log("isGrounded = " + isGrounded);
-        }               
-    }
-
-    private void OnTriggerExit(Collider collision)
+    void Gravity()
     {
-        if (collision.gameObject.tag == "Ground")
+        if (isJump == true)
         {
-            isGrounded = false;
-            Debug.Log("isGrounded = " + isGrounded);
+            m_Rigidbody.AddForce(new Vector3(0, gravityPower, 0));
         }
-           
-        //ジャンプアニメーションに遷移多分
     }
 }
