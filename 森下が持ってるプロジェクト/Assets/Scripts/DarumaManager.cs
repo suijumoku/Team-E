@@ -12,7 +12,6 @@ public class DarumaManager : MonoBehaviour
         navMeshAgent = daruma.GetComponent<NavMeshAgent>();
         daruma.GetComponent<Rigidbody>();
         navMeshAgent.enabled = false;
-
     }
 
     // Update is called once per frame

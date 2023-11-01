@@ -11,6 +11,7 @@ public class CubeScript : MonoBehaviour
 
     [SerializeField] float speed1 = 30f;
     float speed = 3.0f;
+    EnemyScript enemyScript;
 
     void Update()
     {
@@ -42,6 +43,8 @@ public class CubeScript : MonoBehaviour
         {
             LauncherShot();
         }
+
+
     }
 
     private void LauncherShot()

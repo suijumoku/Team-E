@@ -28,12 +28,13 @@ public class EnemyScript : MonoBehaviour
         // 速度をおとしません)
         agent.autoBraking = false;
 
+
         GotoNextPoint();
     }
 
     void GotoNextPoint()
     {
-        // 地点がなにも設定されていないときに返します
+        // 地点がなにも設定されていないときに返す
         if (points.Length == 0)
             return;
 
@@ -41,7 +42,7 @@ public class EnemyScript : MonoBehaviour
         agent.destination = points[destPoint].position;
 
         // 配列内の次の位置を目標地点に設定し、
-        // 必要ならば出発地点にもどります
+        // 必要ならば出発地点にもどる
         destPoint = (destPoint + 1) % points.Length;
     }
 
@@ -72,7 +73,7 @@ public class EnemyScript : MonoBehaviour
         if (!IsDetected)
         {
             // エージェントが現目標地点に近づいてきたら、
-            // 次の目標地点を選択します
+            // 次の目標地点を選択
             if (!agent.pathPending && agent.remainingDistance < 0.5f)
             {
                 GotoNextPoint();
@@ -82,6 +83,7 @@ public class EnemyScript : MonoBehaviour
         {
             agent.destination = player.position;
         }
+
     }
 
     void OnCollisionEnter(Collision collision)
@@ -94,10 +96,13 @@ public class EnemyScript : MonoBehaviour
             //親子関係解除
             transform.DetachChildren();
 
-            //オブジェクトの消去
-            Destroy(gameObject);
+            gameObject.tag = "Ball";
 
+            MeshCollider collider = GetComponent<MeshCollider>();
+            collider.isTrigger = true;
+            gameObject.AddComponent<Rigidbody>();
+            //オブジェクトの消去
+            //Destroy(gameObject);
         }
     }
-
 }
