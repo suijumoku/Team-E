@@ -6,10 +6,11 @@ using UnityEngine.SceneManagement;
 
 public class OutScript : MonoBehaviour
 {
-    [SerializeField] GameObject respawnP;
-    [SerializeField] GameObject player;
-    [SerializeField] private ChangeImage _ChangeImage1, _ChangeImage2, _ChangeImage3;
-    private int failC = 0;
+    [SerializeField] GameObject respawnP = default!;
+    [SerializeField] GameObject player = default!;
+    [SerializeField] Miss miss = default!;
+    //[SerializeField] IntentionScript intentionScript = default!;
+
     private void Start()
     {
         player = GameObject.FindWithTag("Player");
@@ -19,32 +20,14 @@ public class OutScript : MonoBehaviour
     {
        // Debug.Log(player.transform.position);
     }
-    void OnTriggerEnter(Collider other)
+
+    void OnTriggerEnter(Collider other)     //óéâ∫ÇµÇΩéûÇÃèàóù
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            InOrder();
+            miss.InOrder();
             GameObject c = other.GetComponent<GameObject>();          
-            other.transform.localPosition = respawnP.transform.localPosition;
-          
-        }
-    }
-    private void InOrder()
-    {
-        if (failC == 0)
-        {
-            _ChangeImage1.StartCoroutine("Miss");
-            failC++;
-        }
-        else if (failC == 1)
-        {
-            _ChangeImage2.StartCoroutine("Miss");
-            failC++;
-        }
-        else if (failC == 2)
-        {
-            _ChangeImage3.StartCoroutine("Miss");
-            failC++;
+            other.transform.localPosition = respawnP.transform.localPosition;          
         }
     }
 }
