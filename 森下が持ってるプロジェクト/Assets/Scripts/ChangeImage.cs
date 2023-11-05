@@ -56,7 +56,7 @@ public class ChangeImage : MonoBehaviour
         while (true)
         {
            
-            if (Mathf.Approximately(time, 0.0f))
+            if (Mathf.Approximately(time, 0.0f))    //float‚Ì’l‚ª‚Ù‚Ú“™‚µ‚¢‚©‚ð”»’è
             {
                 ChangeImg(trueLife, falseLife);
                 player.gameObject.GetComponent<Renderer>().material = translucent_material;
