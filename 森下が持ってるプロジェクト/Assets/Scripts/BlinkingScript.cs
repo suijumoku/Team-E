@@ -6,30 +6,30 @@ using UnityEngine.UI;
 public class BlinkingScript : MonoBehaviour
 {
     [SerializeField] GameObject player = default!;
-    [Header("•\¦êŠ")]
+    [Header("ï¿½\ï¿½ï¿½ï¿½êŠ")]
     [SerializeField] Image[] lifeImage = default!;
-    [Header("’Êí‰æ‘œ")]
+    [Header("ï¿½Êíï¿½æ‘œ")]
     [SerializeField] Sprite truelife = default!;
-    [Header("ƒ_ƒ[ƒW‰æ‘œ")]
+    [Header("ï¿½_ï¿½ï¿½ï¿½[ï¿½Wï¿½ï¿½ï¿½æ‘œ")]
     [SerializeField] Sprite falselife = default!;
-    [Header("’Êíƒ}ƒeƒŠƒAƒ‹")]
+    [Header("ï¿½Êíï¿½}ï¿½eï¿½ï¿½ï¿½Aï¿½ï¿½")]
     [SerializeField] Material trueMaterial = default!;
-    [Header("ƒ_ƒ[ƒWƒ}ƒeƒŠƒAƒ‹")]
+    [Header("ï¿½_ï¿½ï¿½ï¿½[ï¿½Wï¿½ï¿½ï¿½}ï¿½eï¿½ï¿½ï¿½Aï¿½ï¿½")]
     [SerializeField] Material falseMaterial = default!;
-    [Header("ƒ_ƒ[ƒW‚Ì•\¦ŠÔŠu")]
+    [Header("ï¿½_ï¿½ï¿½ï¿½[ï¿½Wï¿½ï¿½ï¿½Ì•\ï¿½ï¿½ï¿½ÔŠu")]
     [SerializeField] float[] duration = default!;
 
 
     void Awake()
     {
-        //Å‰‚É‘S‚Ä‚ÌLife‰æ‘œ‚ğtrue‚É
+        //ï¿½Åï¿½ï¿½É‘Sï¿½Ä‚ï¿½Lifeï¿½æ‘œï¿½ï¿½trueï¿½ï¿½
         foreach (Image t in lifeImage)
         {
             t.enabled = truelife;
         }
     }
 
-    //numberF•\¦‰æ‘œ”Ô† xF‹ô”Šï””»’è
+    //numberï¿½Fï¿½\ï¿½ï¿½ï¿½æ‘œï¿½Ôï¿½ xï¿½Fï¿½ï¿½ï¿½ï¿½ï¿½ï”ï¿½ï¿½ï¿½ï¿½
     void lifeChange(int number, int x)
     {
         if (x % 2 == 0)
@@ -47,17 +47,17 @@ public class BlinkingScript : MonoBehaviour
     public IEnumerator DamageIndication(int i)
     {
         yield return new WaitForSeconds(0.15f);
-        //WaitForSeconds‚Å‚»‚ê‚¼‚ê‘Ò‹@‚µ‚Ä‚©‚çLifeChange‚ğs‚¤
+        //WaitForSecondsï¿½Å‚ï¿½ï¿½ê‚¼ï¿½ï¿½Ò‹@ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½LifeChangeï¿½ï¿½ï¿½sï¿½ï¿½
         for (int j = 0; j < duration.Length; j++)
         {
             lifeChange(i, j);
             yield return new WaitForSeconds(duration[j]);
         }
 
-        //ÅŒã‚ÍŒ¸‚ç‚³‚È‚¯‚ê‚Î‚È‚ç‚È‚¢‚Ì‚Åfalse‚É
+        //ï¿½ÅŒï¿½ÍŒï¿½ï¿½ç‚³ï¿½È‚ï¿½ï¿½ï¿½Î‚È‚ï¿½È‚ï¿½ï¿½Ì‚ï¿½falseï¿½ï¿½
         lifeImage[i].sprite = falselife;
 
-        //ƒvƒŒƒCƒ„[‚Ìƒ}ƒeƒŠƒAƒ‹‚ğ’Êí‚ÉBƒ‰ƒCƒt‚æ‚è‚à“_–Å‚Ì‰ñ”‚Í‘‚¦‚Ä‚µ‚Ü‚¤
+        //ï¿½vï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½Ìƒ}ï¿½eï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½ï¿½Êï¿½ÉBï¿½ï¿½ï¿½Cï¿½tï¿½ï¿½ï¿½ï¿½ï¿½_ï¿½Å‚Ì‰ñ”‚Í‘ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½Ü‚ï¿½
        // yield return new WaitForSeconds(0.1f);
         player.gameObject.GetComponent<Renderer>().material = trueMaterial;     
         yield return null;
