@@ -24,5 +24,9 @@ public class ShockWave : MonoBehaviour
             scl.z += Move * Time.deltaTime;
             transform.localScale = scl;
         }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 }

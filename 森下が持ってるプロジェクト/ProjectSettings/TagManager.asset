@@ -4,13 +4,6 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - CinemachineTarget
-  - Enemy
-  - Ball
-<<<<<<< HEAD
-=======
-  - Plane
->>>>>>> origin/main
   - Ground
   layers:
   - Default

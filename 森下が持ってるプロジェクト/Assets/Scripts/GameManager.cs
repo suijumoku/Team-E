@@ -2,15 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum GameState
+{
+    None,
+    SelectionScreen,
+    CountDown,
+    NormalEnemyBattle,
+    BossEnemyBattle,
+    Result
+}
+
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance = null;
+
+    private GameState currentGamestate;
 
     [Header("BGM用audiosource")][SerializeField] AudioSource BGM_AudioSource = null;
     [Header("SE用audiosource")][SerializeField] AudioSource SE_AudioSource = null;
 
     private void Awake()
     {
+        //SetCurrentState(GameState.SelectionScreen);
+        SetCurrentState(GameState.NormalEnemyBattle);
         if (instance == null)
         {
             instance = this;
@@ -54,7 +68,6 @@ public class GameManager : MonoBehaviour
             BGM_AudioSource.Stop();
         }
     }
-
     public void PlaySE(AudioClip clip)
     {
         if (SE_AudioSource != null && clip != null)
@@ -66,4 +79,13 @@ public class GameManager : MonoBehaviour
             Debug.Log("オーディオソースが設定されていません");
         }
     }
+    public void SetCurrentState(GameState State)
+    {
+        currentGamestate = State;
+    }
+    public GameState ReturnCurrentState()
+    {
+        return currentGamestate;
+    }
 }
+
