@@ -166,7 +166,7 @@ public class PlayerController : MonoBehaviour
 
     void Move()
     {
-        if (!canMove)
+        if (!canMove) //攻撃中は移動もジャンプもできない->returnじゃなくてその場で固定させたい
             return;
         //else if (Mathf.Approximately(inputHorizontal, 0.0f) && Mathf.Approximately(inputVertical, 0.0f) && isJump == true)    
         //{
@@ -174,6 +174,12 @@ public class PlayerController : MonoBehaviour
         //    //inputVertical   += 0.1f;
         //    return;     //ジャンプ中に入力値がほぼゼロならreturnすれば自然な慣性が働きそう -> 若干不自然な動きに。要改善
         //}
+
+        if (isAttack == true)
+        {
+            inputHorizontal = 0;
+            inputVertical = 0;
+        }
 
         // カメラの方向から、X-Z平面の単位ベクトルを取得
         Vector3 cameraForward = Vector3.Scale(Camera.main.transform.forward, new Vector3(1, 0, 1)).normalized;
@@ -219,7 +225,7 @@ public class PlayerController : MonoBehaviour
 
     void Jump()
     {
-        if (isJump == true || isFall == true) return;   //落下中はジャンプをさせない
+        if (isJump == true || isFall == true || isAttack == true) return;   //落下中と攻撃中はジャンプをさせない
 
         if ( UnityEngine.Input.GetButtonDown("Jump"))
         {

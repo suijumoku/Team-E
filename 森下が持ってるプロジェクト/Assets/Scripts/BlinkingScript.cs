@@ -6,30 +6,30 @@ using UnityEngine.UI;
 public class BlinkingScript : MonoBehaviour
 {
     [SerializeField] GameObject player = default!;
-    [Header("�\���ꏊ")]
+    [Header("表示場所")]
     [SerializeField] Image[] lifeImage = default!;
-    [Header("�ʏ펞�摜")]
+    [Header("通常時画像")]
     [SerializeField] Sprite truelife = default!;
-    [Header("�_���[�W���摜")]
+    [Header("ダメージ時画像")]
     [SerializeField] Sprite falselife = default!;
-    [Header("�ʏ펞�}�e���A��")]
+    [Header("通常時マテリアル")]
     [SerializeField] Material trueMaterial = default!;
-    [Header("�_���[�W���}�e���A��")]
+    [Header("ダメージ時マテリアル")]
     [SerializeField] Material falseMaterial = default!;
-    [Header("�_���[�W���̕\���Ԋu")]
+    [Header("ダメージ時の表示間隔")]
     [SerializeField] float[] duration = default!;
 
 
     void Awake()
     {
-        //�ŏ��ɑS�Ă�Life�摜��true��
+        //最初に全てのLife画像をtrueに
         foreach (Image t in lifeImage)
         {
             t.enabled = truelife;
         }
     }
 
-    //number�F�\���摜�ԍ� x�F���������
+    //number：表示画像番号 x：偶数奇数判定
     void lifeChange(int number, int x)
     {
         if (x % 2 == 0)
@@ -47,17 +47,17 @@ public class BlinkingScript : MonoBehaviour
     public IEnumerator DamageIndication(int i)
     {
         yield return new WaitForSeconds(0.15f);
-        //WaitForSeconds�ł��ꂼ��ҋ@���Ă���LifeChange���s��
+        //WaitForSecondsでそれぞれ待機してからLifeChangeを行う
         for (int j = 0; j < duration.Length; j++)
         {
             lifeChange(i, j);
             yield return new WaitForSeconds(duration[j]);
         }
 
-        //�Ō�͌��炳�Ȃ���΂Ȃ�Ȃ��̂�false��
+        //最後は減らさなければならないのでfalseに
         lifeImage[i].sprite = falselife;
 
-        //�v���C���[�̃}�e���A����ʏ�ɁB���C�t�����_�ł̉񐔂͑����Ă��܂�
+        //プレイヤーのマテリアルを通常に。ハートのより点滅の回数が増えてしまう
        // yield return new WaitForSeconds(0.1f);
         player.gameObject.GetComponent<Renderer>().material = trueMaterial;     
         yield return null;
