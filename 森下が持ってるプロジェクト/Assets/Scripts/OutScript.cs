@@ -6,24 +6,18 @@ using UnityEngine.SceneManagement;
 
 public class OutScript : MonoBehaviour
 {
-    [SerializeField] GameObject respawnP = default!;
-    [SerializeField] GameObject player = default!;
+    [SerializeField] GameObject respawnP;
+    [SerializeField] GameObject player;
+    //[SerializeField] BlinkingScript blinkingScript = default!;
     [SerializeField] Miss miss = default!;
+    [SerializeField] int missCount = default!;
     [SerializeField] PlayerController playerController;
 
- 
-    //[SerializeField] IntentionScript intentionScript = default!;
+    private int currentCount = 0;
 
     private void Start()
     {
         player = GameObject.FindWithTag("Player");
-        playerController = playerController.GetComponent<PlayerController>();
-
-        //_ChangeImage =  GetComponent<ChangeImage>();
-    }
-    private void Update()
-    {
-       // Debug.Log(player.transform.position);
     }
 
     void OnTriggerEnter(Collider other)     //落下した時の処理 エリアに入ったらサウンド->出たら復活
@@ -38,9 +32,13 @@ public class OutScript : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            miss.InOrder();
-            GameObject c = other.GetComponent<GameObject>();
-            other.transform.localPosition = respawnP.transform.localPosition;         
+            if (currentCount > missCount) return;
+
+            miss.InOrder(currentCount);
+            //GameObject c = other.GetComponent<GameObject>();
+            other.transform.localPosition = respawnP.transform.localPosition;
+
+            currentCount++;
         }
     }
 }
