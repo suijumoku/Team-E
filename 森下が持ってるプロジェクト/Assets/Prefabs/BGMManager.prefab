@@ -44,4 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1205b204b946ec44a915bf09a9d2fb21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bgm: {fileID: 8300000, guid: 4d10d0cb7e885854bb1cfd6626b87cf7, type: 3}
+  StartBGM: {fileID: 0}
+  BattleBGM: {fileID: 0}
+  BossBattleBGM: {fileID: 0}
+  ResultBGM: {fileID: 0}

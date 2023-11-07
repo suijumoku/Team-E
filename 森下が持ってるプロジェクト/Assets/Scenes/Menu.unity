@@ -1428,7 +1428,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fade: {fileID: 800472846}
-  NextSceneName: 
+  NextSceneName: Stage_tyukyu
 --- !u!1 &927740549
 GameObject:
   m_ObjectHideFlags: 0
@@ -1564,7 +1564,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fade: {fileID: 800472846}
-  NextSceneName: 
+  NextSceneName: Stage_zyokyu
 --- !u!1 &1088827668
 GameObject:
   m_ObjectHideFlags: 0
@@ -1850,8 +1850,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 381.41, y: -294}
-  m_SizeDelta: {x: 406.8112, y: 300}
+  m_AnchoredPosition: {x: 352, y: -326}
+  m_SizeDelta: {x: 624.3987, y: 460.4583}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1325948910
 MonoBehaviour:
@@ -1917,7 +1917,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 7c8dd32c6c255fa4488cd76f010e575d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: eb7bbfd2eadc07c44af341f8fac67356, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2795,7 +2795,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fade: {fileID: 800472846}
-  NextSceneName: 
+  NextSceneName: Stage_syokyu
 --- !u!1001 &3602385268066159165
 PrefabInstance:
   m_ObjectHideFlags: 0

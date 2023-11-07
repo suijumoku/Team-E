@@ -20,15 +20,15 @@ public class test_daruma : MonoBehaviour
         }
     }
 
-    private void Shoot(Vector3 i_targetPosition)
+    private void Shoot(Vector3 PlayerPosition)
     {
         // とりあえず適当に60度でかっ飛ばすとするよ！
-        ShootFixedAngle(i_targetPosition, 60.0f);
+        ShootFixedAngle(PlayerPosition, 60.0f);
     }
 
-    private void ShootFixedAngle(Vector3 i_targetPosition, float i_angle)
+    private void ShootFixedAngle(Vector3 PlayerPosition, float i_angle)
     {
-        float speedVec = ComputeVectorFromAngle(i_targetPosition, i_angle);
+        float speedVec = ComputeVectorFromAngle(PlayerPosition, i_angle);
         if (speedVec <= 0.0f)
         {
             // その位置に着地させることは不可能のようだ！
@@ -36,21 +36,21 @@ public class test_daruma : MonoBehaviour
             return;
         }
 
-        Vector3 vec = ConvertVectorToVector3(speedVec, i_angle, i_targetPosition);
+        Vector3 vec = ConvertVectorToVector3(speedVec, i_angle, PlayerPosition);
         InstantiateShootObject(vec);
     }
 
-    private float ComputeVectorFromAngle(Vector3 i_targetPosition, float i_angle)
+    private float ComputeVectorFromAngle(Vector3 PlayerPosition, float i_angle)
     {
         // xz平面の距離を計算。
         Vector2 startPos = new Vector2(m_shootPoint.transform.position.x, m_shootPoint.transform.position.z);
-        Vector2 targetPos = new Vector2(i_targetPosition.x, i_targetPosition.z);
+        Vector2 targetPos = new Vector2(PlayerPosition.x, PlayerPosition.z);
         float distance = Vector2.Distance(targetPos, startPos);
 
         float x = distance;
         float g = Physics.gravity.y;
         float y0 = m_shootPoint.transform.position.y;
-        float y = i_targetPosition.y;
+        float y = PlayerPosition.y;
 
         // Mathf.Cos()、Mathf.Tan()に渡す値の単位はラジアンだ。角度のまま渡してはいけないぞ！
         float rad = i_angle * Mathf.Deg2Rad;
@@ -72,10 +72,10 @@ public class test_daruma : MonoBehaviour
         return v0;
     }
 
-    private Vector3 ConvertVectorToVector3(float i_v0, float i_angle, Vector3 i_targetPosition)
+    private Vector3 ConvertVectorToVector3(float i_v0, float i_angle, Vector3 PlayerPosition)
     {
         Vector3 startPos = m_shootPoint.transform.position;
-        Vector3 targetPos = i_targetPosition;
+        Vector3 targetPos = PlayerPosition;
         startPos.y = 0.0f;
         targetPos.y = 0.0f;
 

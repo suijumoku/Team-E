@@ -8,6 +8,8 @@ TagManager:
   - Enemy
   - Ball
   - DarumaBall
+  tags:
+  - Ground
   layers:
   - Default
   - TransparentFX

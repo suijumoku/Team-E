@@ -8,43 +8,37 @@ public class OutScript : MonoBehaviour
 {
     [SerializeField] GameObject respawnP;
     [SerializeField] GameObject player;
-    [SerializeField] private ChangeImage _ChangeImage1, _ChangeImage2, _ChangeImage3;
-    private int failC = 0;
+    //[SerializeField] BlinkingScript blinkingScript = default!;
+    [SerializeField] Miss miss = default!;
+    [SerializeField] int missCount = default!;
+    [SerializeField] PlayerController playerController;
+
+    private int currentCount = 0;
+
     private void Start()
     {
         player = GameObject.FindWithTag("Player");
-        //_ChangeImage =  GetComponent<ChangeImage>();
     }
-    private void Update()
-    {
-       // Debug.Log(player.transform.position);
-    }
-    void OnTriggerEnter(Collider other)
+
+    void OnTriggerEnter(Collider other)     //落下した時の処理 エリアに入ったらサウンド->出たら復活
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            InOrder();
-            GameObject c = other.GetComponent<GameObject>();          
-            other.transform.localPosition = respawnP.transform.localPosition;
-          
+            playerController.fall();        //outAreaにGameManager入れて音鳴らそうとするとなぜかバグるから遠回しに再生
         }
     }
-    private void InOrder()
+
+    private void OnTriggerExit(Collider other)
     {
-        if (failC == 0)
+        if (other.gameObject.CompareTag("Player"))
         {
-            _ChangeImage1.StartCoroutine("Miss");
-            failC++;
-        }
-        else if (failC == 1)
-        {
-            _ChangeImage2.StartCoroutine("Miss");
-            failC++;
-        }
-        else if (failC == 2)
-        {
-            _ChangeImage3.StartCoroutine("Miss");
-            failC++;
+            if (currentCount > missCount) return;
+
+            miss.InOrder(currentCount);
+            //GameObject c = other.GetComponent<GameObject>();
+            other.transform.localPosition = respawnP.transform.localPosition;
+
+            currentCount++;
         }
     }
 }
