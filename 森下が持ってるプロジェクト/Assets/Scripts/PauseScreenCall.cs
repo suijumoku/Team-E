@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
+using UnityEditor;
 
 public class PauseScreenCall : MonoBehaviour
 {
@@ -19,7 +20,7 @@ public class PauseScreenCall : MonoBehaviour
     {
         var current = Keyboard.current;
 
-        if (current.escapeKey.wasPressedThisFrame)
+        if (current.escapeKey.wasPressedThisFrame||Input.GetButtonDown("Menu"))
         {
             uICon.displayControl();
         }
