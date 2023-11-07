@@ -27,9 +27,13 @@ public class DarumaManager : MonoBehaviour
     {
         if(collision.gameObject.tag == "Plane")
         {
-            Rigidbody rb = GetComponent<Rigidbody>();
-            Destroy(rb);
-            navMeshAgent.enabled = true;
+            if (gameObject.tag == "Untagged")
+            {
+                Rigidbody rb = GetComponent<Rigidbody>();
+                Destroy(rb);
+                navMeshAgent.enabled = true;
+                gameObject.tag = "Enemy";
+            }
         }
     }
 }

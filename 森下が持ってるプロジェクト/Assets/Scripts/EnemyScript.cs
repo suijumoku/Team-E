@@ -14,11 +14,8 @@ public class EnemyScript : MonoBehaviour
     private int destPoint = 0;
     private NavMeshAgent agent;
     bool IsDetected = false;
-    Rigidbody rigidBody;
 
-
-
-
+    
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -27,7 +24,6 @@ public class EnemyScript : MonoBehaviour
         //(つまり、エージェントは目標地点に近づいても
         // 速度をおとしません)
         agent.autoBraking = false;
-
 
         GotoNextPoint();
     }
@@ -83,11 +79,12 @@ public class EnemyScript : MonoBehaviour
         {
             agent.destination = player.position;
         }
-
+       
     }
 
     void OnCollisionEnter(Collision collision)
     {
+        //小槌に当たった時
         if (collision.gameObject.tag == "Ball")
         {
             child.gameObject.AddComponent<NavMeshAgent>();
@@ -96,13 +93,33 @@ public class EnemyScript : MonoBehaviour
             //親子関係解除
             transform.DetachChildren();
 
-            gameObject.tag = "Ball";
+            NavMeshAgent navMeshAgent = GetComponent<NavMeshAgent>();
+            navMeshAgent.enabled = false;
 
-            MeshCollider collider = GetComponent<MeshCollider>();
-            collider.isTrigger = true;
+            gameObject.tag = "DarumaBall";
+
             gameObject.AddComponent<Rigidbody>();
-            //オブジェクトの消去
-            //Destroy(gameObject);
+        }
+        //飛んできた達磨に当たった時
+        if(collision.gameObject.tag == "DarumaBall")
+        {
+            if (gameObject.tag == "Enemy")
+            {
+                child.gameObject.AddComponent<NavMeshAgent>();
+                child.gameObject.AddComponent<Rigidbody>();
+
+                //親子関係解除
+                transform.DetachChildren();
+                Destroy(gameObject);
+            }
+        }
+        //飛んできた達磨の消去
+        if(collision.gameObject.tag == "Enemy")
+        {
+            if(gameObject.tag == "DarumaBall")
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }
