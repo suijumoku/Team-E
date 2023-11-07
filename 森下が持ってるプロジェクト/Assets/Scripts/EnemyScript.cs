@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 public class EnemyScript : MonoBehaviour
 {
-    [SerializeField] Transform player;
+    [SerializeField] GameObject player;
     [SerializeField] Transform child;
     [SerializeField] Material patrolMaterial;
     [SerializeField] Material chaseMaterial;
@@ -14,12 +14,12 @@ public class EnemyScript : MonoBehaviour
     private int destPoint = 0;
     private NavMeshAgent agent;
     bool IsDetected = false;
-
+    GameObject player_ = default!;
     
-    void Start()
+    void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
-
+        player_ = GameObject.Find("tmpPlayer");
         // autoBraking を無効にすると、目標地点の間を継続的に移動します
         //(つまり、エージェントは目標地点に近づいても
         // 速度をおとしません)
@@ -47,7 +47,7 @@ public class EnemyScript : MonoBehaviour
     {
         float distance;
 
-        distance = Vector3.Distance(transform.position, player.position);
+        distance = Vector3.Distance(transform.position, player_.transform.position);
 
         if (distance < detectDistance)
         {
@@ -77,7 +77,7 @@ public class EnemyScript : MonoBehaviour
         }
         else
         {
-            agent.destination = player.position;
+            agent.destination = player_.transform.position;
         }
        
     }

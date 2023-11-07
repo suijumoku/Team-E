@@ -31,7 +31,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 544982392036295412}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 4.644, z: 6.92}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -116,10 +116,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee7b118bea27d7e4d84ea7b996514278, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  p: {fileID: 544982392036295412}
   walkSpeed: 6
   gravityPower: -8
+  Attack_Finish_Time: 1.5
+  triggerTiming: 0.5
+  smoothTime: 0.3
   jumpPower: 8
-  miss: {fileID: 0}
+  miss: {fileID: 5901055367156605732, guid: 2d17367af39efae45a1c4bb1a700abfa, type: 3}
   CinemachineCameraTarget: {fileID: 544982392394112126}
   jumpS: {fileID: 8300000, guid: ba59e7e54d3876747bd81430d4865f02, type: 3}
   attack_true_S: {fileID: 8300000, guid: 42bcd051f8e0be84f94fdcd6d4057859, type: 3}

@@ -75,6 +75,7 @@ public class PlayerController : MonoBehaviour
         
         Jump();                     
         Attack();
+
         nowPos = GetComponent<Transform>().position;
 
         if (isJump == false && isFall == false)
