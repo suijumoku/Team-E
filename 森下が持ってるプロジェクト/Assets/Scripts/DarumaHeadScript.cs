@@ -17,7 +17,7 @@ public class DarumaHeadScript : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Plane")
+        if (collision.gameObject.tag == "Ground")
         {
             Destroy(gameObject);
         }
