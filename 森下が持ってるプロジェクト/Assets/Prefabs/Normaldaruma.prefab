@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 6500958143944215583}
   m_Layer: 0
   m_Name: Normaldaruma3
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
@@ -106,7 +106,7 @@ MonoBehaviour:
   child: {fileID: 6500958144201429786}
   patrolMaterial: {fileID: 0}
   chaseMaterial: {fileID: 0}
-  detectDistance: 2
+  detectDistance: 3
   points:
   - {fileID: 4627859967584425738, guid: c7e8282d7b968e047a409233f4d68387, type: 3}
   - {fileID: 809630217706998333, guid: cf0252c7e55af5441aadd944d863ac0f, type: 3}
@@ -206,7 +206,7 @@ GameObject:
   - component: {fileID: 354244371404884771}
   m_Layer: 0
   m_Name: head
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
@@ -477,7 +477,7 @@ MonoBehaviour:
   child: {fileID: 6500958145679016329}
   patrolMaterial: {fileID: 2100000, guid: dcce71b6c0caafa42a8908fae584c7f7, type: 2}
   chaseMaterial: {fileID: 2100000, guid: 0a591dbeb6c91a04d936dc42cfa9a013, type: 2}
-  detectDistance: 2
+  detectDistance: 3
   points:
   - {fileID: 4627859967584425738, guid: c7e8282d7b968e047a409233f4d68387, type: 3}
   - {fileID: 809630217706998333, guid: cf0252c7e55af5441aadd944d863ac0f, type: 3}
@@ -548,7 +548,7 @@ GameObject:
   - component: {fileID: 6500958145679016328}
   m_Layer: 0
   m_Name: Normaldaruma2
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
@@ -635,7 +635,7 @@ MonoBehaviour:
   child: {fileID: 6500958143944215580}
   patrolMaterial: {fileID: 0}
   chaseMaterial: {fileID: 0}
-  detectDistance: 2
+  detectDistance: 3
   points:
   - {fileID: 4627859967584425738, guid: c7e8282d7b968e047a409233f4d68387, type: 3}
   - {fileID: 809630217706998333, guid: cf0252c7e55af5441aadd944d863ac0f, type: 3}
