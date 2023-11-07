@@ -20,6 +20,7 @@ public class EnemyScript : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         player_ = GameObject.Find("tmpPlayer");
+       
         // autoBraking を無効にすると、目標地点の間を継続的に移動します
         //(つまり、エージェントは目標地点に近づいても
         // 速度をおとしません)
@@ -99,9 +100,10 @@ public class EnemyScript : MonoBehaviour
             gameObject.tag = "DarumaBall";
 
             gameObject.AddComponent<Rigidbody>();
+            
         }
         //飛んできた達磨に当たった時
-        if(collision.gameObject.tag == "DarumaBall")
+        if (collision.gameObject.tag == "DarumaBall")
         {
             if (gameObject.tag == "Enemy")
             {

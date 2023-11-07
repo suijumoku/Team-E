@@ -26,7 +26,7 @@ public class SpownenemyScript : MonoBehaviour
         // 約1秒置きにランダムに生成されるようにする。
         if (time == 0f || time > 10f)
         {
-            for (int i = 0; i < 3; i++){
+            for (int i = 0; i < 2; i++){
                 // rangeAとrangeBのx座標の範囲内でランダムな数値を作成
                 float x = Random.Range(rangeA.position.x, rangeB.position.x);
                 // rangeAとrangeBのy座標の範囲内でランダムな数値を作成
