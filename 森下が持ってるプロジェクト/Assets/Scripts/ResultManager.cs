@@ -11,11 +11,17 @@ public class ResultManager : MonoBehaviour
     [SerializeField] Sprite[] Numbers;
     [Header("リザルト画像たち")]
     [SerializeField] Sprite[] results;
-    private Image result;
+    [Header("表示時のサウンド")]
+    [SerializeField] AudioClip[] indicateS = default!;
+    [Header("表彰音")]
+    [SerializeField] AudioClip clapS = default!;
 
+    [SerializeField] AudioClip BGM = default!;
+    private Image result;
 
     const int boss = 0, kid = 1;
     const int tensPlace = 0, onePlace = 1;
+    const float duration = 0.5f;
 
 
     void Start()
@@ -29,24 +35,28 @@ public class ResultManager : MonoBehaviour
         score[kid][onePlace].sprite = Numbers[0];
 
         result.sprite = results[1]; //results[i] iの値を変える
-
-        for (int i = 0; i < 2; i++)
-        {
-            //サウンド
-            for (int j = 0; j < 2; j++)
-            {
-                score[i][j].enabled = true;
-            }
-            //若干の遅延
-        }
-
-
-
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    void Indicate()
+    {
+
+        for (int i = 0; i < 2; i++)
+        {
+            //サウンド
+            GameManager.instance.PlaySE(indicateS[1]);
+            score[i][tensPlace].enabled = true;
+            score[i][onePlace].enabled = true;
+            new WaitForSeconds(duration);
+            //若干の遅延
+        }
+
+        GameManager.instance.PlaySE(indicateS[2]);
+        result.enabled = true;
     }
 }
