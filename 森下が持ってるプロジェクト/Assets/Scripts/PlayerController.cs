@@ -35,19 +35,21 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]  AudioClip jumpS = default!;
     [SerializeField]  AudioClip attack_true_S = default!;
-    [SerializeField] AudioClip fallS = default!;
-    //[SerializeField] private AudioClip attack_false_S = default!;
+    [SerializeField]  AudioClip fallS = default!;
 
-    //public Vector2 look;
-    //public bool cursorInputForLook = true;
+    [SerializeField] MainGameManager _MainGameManager;
 
-    //private PlayerController instance;
-
+ 
     float inputHorizontal;      //水平方向の入力値
     float inputVertical;        //垂直方向の入力値
     float targetRotation;
     float yVelocity = 0.0f;
-    private float motionTime = 0.0f;             // 攻撃モーションが始まってからの経過時間を格納   
+    private float motionTime = 0.0f;             // 攻撃モーションが始まってからの経過時間を格納
+
+    int life = 3;
+    public bool isClear = false, isDefeat = false;
+
+    //private PlayerController instance;
 
     //public void Awake()
     //{
@@ -56,19 +58,27 @@ public class PlayerController : MonoBehaviour
     //        instance = this;
     //    }
     //}
+
+
     void Start()
     {
         //jumpS = GetComponent<AudioClip>();
         //attack_true_S = GetComponent<AudioClip>();
         //attack_false_S GetComponent<AudioClip>();
+        _MainGameManager = _MainGameManager.GetComponent<MainGameManager>();
 
         m_Rigidbody = GetComponent<Rigidbody>();
         beforePos = GetComponent<Transform>().position;
         //animator = GetComponent<Animator>();
+        isClear = false; isDefeat = false;
     }
 
     void Update()
     {
+        if (life <= 0)
+        {
+            _MainGameManager.Defeat();
+        }
         inputHorizontal = UnityEngine.Input.GetAxisRaw("Horizontal");   //入力値の格納
         inputVertical = UnityEngine.Input.GetAxisRaw("Vertical");
 
@@ -161,6 +171,7 @@ public class PlayerController : MonoBehaviour
         Debug.Log("nowPos.y = " + nowPos.y);
         Debug.Log("beforePos.y = " + beforePos.y);
         canMove = false;
+        life--;
         //ここで操作不能にすればすれすれから復帰した時にジャンプができなくなることを防げそう
         //落下モーションへの遷移
     }
