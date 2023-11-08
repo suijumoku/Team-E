@@ -116,7 +116,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee7b118bea27d7e4d84ea7b996514278, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  p: {fileID: 544982392036295412}
   walkSpeed: 6
   gravityPower: -8
   Attack_Finish_Time: 1.5

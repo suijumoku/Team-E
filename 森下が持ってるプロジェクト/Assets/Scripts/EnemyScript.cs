@@ -100,7 +100,9 @@ public class EnemyScript : MonoBehaviour
             gameObject.tag = "DarumaBall";
 
             gameObject.AddComponent<Rigidbody>();
-            
+
+           
+
         }
         //”ò‚ñ‚Å‚«‚½’B–‚É“–‚½‚Á‚½
         if (collision.gameObject.tag == "DarumaBall")

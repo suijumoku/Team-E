@@ -33,6 +33,7 @@ public class DarumaManager : MonoBehaviour
                 Destroy(rb);
                 navMeshAgent.enabled = true;
                 gameObject.tag = "Enemy";
+               
             }
         }
     }
