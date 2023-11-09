@@ -12,6 +12,7 @@ public class BossDarumaJumpTime : MonoBehaviour
     [Header("衝撃波")][SerializeField] GameObject ShockWave;
     [Header("衝撃波の発生位置")][SerializeField] Transform SW;
     [Header("飛ぶ時間")][SerializeField] float JumpTime = 2.0f;
+    [Header("飛ぶ距離の制限")][SerializeField] float JumpLength = 2.0f;
 
     [Header("ジャンプSE")][SerializeField] AudioClip JumpingSE;
     [Header("着地SE")][SerializeField] AudioClip LandingSE;
@@ -25,12 +26,14 @@ public class BossDarumaJumpTime : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && P != null)
         {
+            // ジャンプ
             Jump(P.position, JumpTime);
             GameManager.instance.PlaySE(JumpingSE);
         }
 
         if (EnterGround)
         {
+            // 地面についたら衝撃波を出す
             CreateShockWave(ShockWave, SW.position);
             GameManager.instance.PlaySE(LandingSE);
         }
@@ -70,15 +73,14 @@ public class BossDarumaJumpTime : MonoBehaviour
 
     void CreateShockWave(GameObject ShockWave, Vector3 ShockWavePosition)
     {
+        // 衝撃波を生成
         EnterGround = false;
         Instantiate(ShockWave, ShockWavePosition, Quaternion.identity);
     }
 
     void Jump(Vector3 PlayerPosition, float angle)
     {
-        Vector3 pos = P.transform.position;
         JumpFixedTime(PlayerPosition, angle);
-
     }
 
     private void JumpFixedTime(Vector3 PlayerPosition, float time)
@@ -88,7 +90,7 @@ public class BossDarumaJumpTime : MonoBehaviour
 
         if (speedVec <= 0.0f)
         {
-            // その位置に着地させることは不可能のようだ！
+            // 着地不可能の場合はログを出す
             Debug.LogWarning("!!");
             return;
         }
@@ -105,9 +107,8 @@ public class BossDarumaJumpTime : MonoBehaviour
         float v_y = vec.y;
 
         float v0Square = v_x * v_x + v_y * v_y;
-        // 負数を平方根計算すると虚数になってしまう。
-        // 虚数はfloatでは表現できない。
-        // こういう場合はこれ以上の計算は打ち切ろう。
+       
+        // 虚数になるため計算打ち切り
         if (v0Square <= 0.0f)
         {
             return 0.0f;
@@ -133,20 +134,24 @@ public class BossDarumaJumpTime : MonoBehaviour
 
     private Vector2 ComputeVectorXYFromTime(Vector3 PlayerPosition, float time)
     {
-        // 瞬間移動はちょっと……。
+        // 瞬間移動は禁止
         if (time <= 0.0f)
         {
             return Vector2.zero;
         }
 
-
-        // xz平面の距離を計算。
+        // xz平面の距離を計算する
         Vector2 startPos = new Vector2(this.transform.position.x, this.transform.position.z);
         Vector2 PlayerPos = new Vector2(PlayerPosition.x, PlayerPosition.z);
         float distance = Vector2.Distance(PlayerPos, startPos);
 
+        // ジャンプ距離制限以上に離れている場合は飛ぶ距離を制限まで下げる
+        if (distance>JumpLength)
+        {
+            distance = JumpLength;
+        }
+
         float x = distance;
-        // な、なぜ重力を反転せねばならないのだ...
         float g = -Physics.gravity.y;
         float y0 = this.transform.position.y;
         float y = PlayerPosition.y;

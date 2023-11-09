@@ -423,7 +423,7 @@ PrefabInstance:
       objectReference: {fileID: 551133694}
     - target: {fileID: 1388583199790579385, guid: 5859614047b32974a86355f82a94f29b, type: 3}
       propertyPath: JumpTime
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1388583199790579385, guid: 5859614047b32974a86355f82a94f29b, type: 3}
       propertyPath: JumpingSE
@@ -433,6 +433,10 @@ PrefabInstance:
       propertyPath: LandingSE
       value: 
       objectReference: {fileID: 8300000, guid: 0a613e871450ad14c8907bd55b826d78, type: 3}
+    - target: {fileID: 1388583199790579385, guid: 5859614047b32974a86355f82a94f29b, type: 3}
+      propertyPath: JumpLength
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5859614047b32974a86355f82a94f29b, type: 3}
 --- !u!1 &1024185352
