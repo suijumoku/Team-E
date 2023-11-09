@@ -36,6 +36,7 @@ public class ResultManager : MonoBehaviour
     //const int score = 0, boss = 1, kid = 2;
     const int tensPlace = 0, onePlace = 1;
     [SerializeField] float duration = 0.5f;
+    [SerializeField] int num = default!; //デバッグ用
     int[] scoreArray, Boss_Time_Array, kidArray;
 
     int calcScore = 0;
@@ -55,21 +56,7 @@ public class ResultManager : MonoBehaviour
     {
         scoreArray = new int[2] { 0, 0 };
         Boss_Time_Array = new int[2] { 0, 0 };
-        kidArray = new int[2] { 0, 0 };
-
-
-        //if (instance == null)
-        //{
-        //    instance = this;
-        //}
-
-        //for (int i = 0; i < 2; i++)
-        //{
-        //    for (int j = 0; j < 2; j++)
-        //    {
-        //        scoreImg[i, j].sprite = Numbers[0];
-        //    }
-        //}
+        kidArray = new int[2] { 0, 0 };   
     }
 
     void Start()
@@ -85,18 +72,7 @@ public class ResultManager : MonoBehaviour
     void Update()
     {
 
-    }
-
-
-    public void beatDaruma()
-    {
-        kidArray[0]++;
-        if (kidArray[0] >= 10)
-        {
-            kidArray[1]++;
-            kidArray[0] = 0;
-        }
-    }
+    } 
 
     public void NormalHit()
     {
@@ -109,7 +85,15 @@ public class ResultManager : MonoBehaviour
         //当てて消すと+3
         calcScore += doubleHit;
     }
-
+    public void BeatDaruma()
+    {
+        kidArray[0]++;
+        if (kidArray[0] >= 10)
+        {
+            kidArray[1]++;
+            kidArray[0] = 0;
+        }
+    }
     public void BeatBoss(float time)
     {
         //ボス倒すと+4
@@ -119,7 +103,7 @@ public class ResultManager : MonoBehaviour
             calcScore += timeBonus;
         }
 
-        for (int i = 0; i < time; i++)  //これtimeがfloatだとうまく動かないかも
+        for (int i = 0; i < time; i++)  //これtimeがfloatだとうまく動かないかも -> 繰り上げられちゃう、要改善
         {
             Boss_Time_Array[0]++;
             if (Boss_Time_Array[0] >= 10)
@@ -152,6 +136,12 @@ public class ResultManager : MonoBehaviour
         scoreImg[tensPlace].sprite = Numbers[scoreArray[1]];
         scoreImg[onePlace].sprite = Numbers[scoreArray[0]];
 
+        //Debug.Log("scoreArray[0] = " + scoreArray[0]);
+        //Debug.Log("scoreArray[1] = " + scoreArray[1]);
+        //Debug.Log("Numbers[scoreArray[1]] = " + Numbers[scoreArray[1]]);
+        //Debug.Log(" scoreImg[tensPlace].sprite = " + scoreImg[tensPlace].sprite);
+        //Debug.Log(" scoreImg[onePlace].sprite = " + scoreImg[onePlace].sprite);
+
         bossScoreImg[tensPlace].sprite = Numbers[Boss_Time_Array[1]]; //Numbers[i] i:他スクリプトから取得したスコアを十の位と一の位に分割して入れる
         bossScoreImg[onePlace].sprite = Numbers[Boss_Time_Array[0]];
 
@@ -163,6 +153,14 @@ public class ResultManager : MonoBehaviour
     }
     private IEnumerator ResultCorutine()
     {
+        //デバッグ用↓
+        NormalHit();
+        DoubleHit();
+        BeatBoss(10.2f);
+        BeatDaruma();   //1+3+4+20+16, 10秒、01体 良判定
+        calcScore += noDamage;
+        calcScore = num;
+
         Assign();
         yield return new WaitForSeconds(duration);
 
@@ -177,6 +175,8 @@ public class ResultManager : MonoBehaviour
         yield return new WaitForSeconds(duration * 1.5f);
         GameManager.instance.PlaySE(indicateS[1]);
         // result.enabled = true;       
+
+     
 
         if (calcScore < 4)  //要調整 調整しやすくする方法わからない
         {
@@ -207,14 +207,14 @@ public class ResultManager : MonoBehaviour
         yield return new WaitForSeconds(duration);
         GameManager.instance.PlaySE(resultS);
 
-        Debug.Log("score.enabled0 = " + scoreImg[0].enabled);
-        Debug.Log("score.enabled1 = " + scoreImg[1].enabled);
+        //Debug.Log("score.enabled0 = " + scoreImg[0].enabled);
+        //Debug.Log("score.enabled1 = " + scoreImg[1].enabled);
 
-        Debug.Log("bossScore.enabled0 = " + bossScoreImg[0].enabled);
-        Debug.Log("bossScore.enabled1 = " + bossScoreImg[1].enabled);
+        //Debug.Log("bossScore.enabled0 = " + bossScoreImg[0].enabled);
+        //Debug.Log("bossScore.enabled1 = " + bossScoreImg[1].enabled);
 
-        Debug.Log("kidScore.enabled0 = " + kidScoreImg[0].enabled);
-        Debug.Log("kidScore.enabled1 = " + kidScoreImg[1].enabled);
+        //Debug.Log("kidScore.enabled0 = " + kidScoreImg[0].enabled);
+        //Debug.Log("kidScore.enabled1 = " + kidScoreImg[1].enabled);
         yield return null;
     }
 
