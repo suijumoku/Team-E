@@ -20,7 +20,7 @@ public class AddForceDarumaScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "Ball")
         {
-            float boundsPower = 10.0f;
+            float boundsPower = 20.0f;
 
             // Õ“ËˆÊ’u‚ğæ“¾‚·‚é
             Vector3 hitPos = collision.contacts[0].point;

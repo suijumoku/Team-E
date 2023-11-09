@@ -16,29 +16,31 @@ public class SpownenemyScript : MonoBehaviour
     private Transform rangeB;
 
     // 経過時間
-    //private float time;
+    private float time = 0f;
 
     // Update is called once per frame
     void Update()
     {
         // 前フレームからの時間を加算していく
-        //time = time + Time.deltaTime;
 
         // 約1秒置きにランダムに生成されるようにする。
-        if (Input.GetKeyDown(KeyCode.P))
+        if (time == 0f || time > 10f)
         {
-            // rangeAとrangeBのx座標の範囲内でランダムな数値を作成
-            float x = Random.Range(rangeA.position.x, rangeB.position.x);
-            // rangeAとrangeBのy座標の範囲内でランダムな数値を作成
-            float y = Random.Range(rangeA.position.y, rangeB.position.y);
-            // rangeAとrangeBのz座標の範囲内でランダムな数値を作成
-            float z = Random.Range(rangeA.position.z, rangeB.position.z);
+            for (int i = 0; i < 2; i++){
+                // rangeAとrangeBのx座標の範囲内でランダムな数値を作成
+                float x = Random.Range(rangeA.position.x, rangeB.position.x);
+                // rangeAとrangeBのy座標の範囲内でランダムな数値を作成
+                float y = Random.Range(rangeA.position.y, rangeB.position.y);
+                // rangeAとrangeBのz座標の範囲内でランダムな数値を作成
+                float z = Random.Range(rangeA.position.z, rangeB.position.z);
 
-            // GameObjectを上記で決まったランダムな場所に生成
-            Instantiate(createPrefab, new Vector3(x, y, z), createPrefab.transform.rotation);
-
-            // 経過時間リセット
-            //time = 0f;
+                // GameObjectを上記で決まったランダムな場所に生成
+                Instantiate(createPrefab, new Vector3(x, y, z), createPrefab.transform.rotation);
+            }
+            
+            time = 0f;
         }
+        time = time + Time.deltaTime;
+        Debug.Log(time);
     }
 }

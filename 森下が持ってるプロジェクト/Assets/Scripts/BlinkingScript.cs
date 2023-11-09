@@ -5,68 +5,72 @@ using UnityEngine.UI;
 
 public class BlinkingScript : MonoBehaviour
 {
-    [SerializeField] private GameObject player = default!;
-    [SerializeField] Image truelife = default!;
-    [SerializeField] Image falselife = default!;
-    [SerializeField] Material[] material = default!;
-    [SerializeField] float duration = default!;
-    [SerializeField] float[] timeDelay = default!;
+    [SerializeField] GameObject player = default!;
+    [Header("表示場所")]
+    [SerializeField] Image[] lifeImage = default!;
+    [Header("通常時画像")]
+    [SerializeField] Sprite truelife = default!;
+    [Header("ダメージ時画像")]
+    [SerializeField] Sprite falselife = default!;
+    [Header("通常時マテリアル")]
+    [SerializeField] Material trueMaterial = default!;
+    [Header("ダメージ時マテリアル")]
+    [SerializeField] Material falseMaterial = default!;
+    [Header("ダメージ時の表示間隔")]
+    [SerializeField] float[] duration = default!;
 
-    private float time = 0.0f;             // �o�ߎ��Ԃ��i�[����ϐ�    
-    private bool changeF1 = false;
-    private bool changeF2 = false;
+    [SerializeField] MainGameManager _MainGameManager = default!;
+
+    int life = 3;
+
 
     void Awake()
     {
-        truelife.GetComponent<Image>().enabled = true;
-        falselife.GetComponent<Image>().enabled = false;
-    }
-    void Update()
-    {
-        
-    }
-    private void ChangeImg(Image off, Image on)
-    {
-        off.enabled = false;
-        on.enabled = true;
-    }
-    private IEnumerator Die()
-    {
-        changeF1 = false;
-        changeF2 = false;
-        yield return new WaitForSeconds(0.1f);
-
-        while (true)
+        //最初に全てのLife画像をtrueに
+        foreach (Image t in lifeImage)
         {
-            if (Mathf.Approximately(time, 0.0f))
-            {
-                ChangeImg(truelife, falselife);
-                player.gameObject.GetComponent<Renderer>().material = material[1];
-            }
+            t.enabled = truelife;
+        }
+            int life = 3;
+    }
 
-            time += Time.deltaTime;
-
-            if (time >= duration * timeDelay[0] && !changeF1)
-            {
-                ChangeImg(falselife, truelife);
-                player.gameObject.GetComponent<Renderer>().material = material[0];
-
-                changeF1 = true;
-            }
-            else if (time >= duration * timeDelay[1] && !changeF2)
-            {
-                ChangeImg(truelife, falselife);
-                player.gameObject.GetComponent<Renderer>().material = material[1];
-
-                changeF2 = true;
-            }
-            else if (time >= duration * timeDelay[2] && changeF2)
-            {
-                player.gameObject.GetComponent<Renderer>().material = material[0];
-
-            }
-
-            yield return null;
+    //number：表示画像番号 x：偶数奇数判定
+    void lifeChange(int number, int x)
+    {
+        if (x % 2 == 0)
+        {
+            lifeImage[number].sprite = falselife;
+            player.gameObject.GetComponent<Renderer>().material = falseMaterial;
+        }
+        else
+        {
+            lifeImage[number].sprite = truelife;
+            player.gameObject.GetComponent<Renderer>().material = trueMaterial;
         }
     }
+
+    public IEnumerator DamageIndication(int i)
+    {
+        yield return new WaitForSeconds(0.15f);
+        //WaitForSecondsでそれぞれ待機してからLifeChangeを行う
+        for (int j = 0; j < duration.Length; j++)
+        {
+            lifeChange(i, j);
+            yield return new WaitForSeconds(duration[j]);
+        }
+
+        //最後は減らさなければならないのでfalseに
+        lifeImage[i].sprite = falselife;
+
+        //プレイヤーのマテリアルを通常に。ハートのより点滅の回数が増えてしまう
+       // yield return new WaitForSeconds(0.1f);
+        player.gameObject.GetComponent<Renderer>().material = trueMaterial;
+        life--;
+        if (life <= 0)
+        {
+            _MainGameManager.isDefeat = true;
+        }
+        yield return null;
+    }
+
 }

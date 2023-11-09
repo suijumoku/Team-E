@@ -25,11 +25,16 @@ public class DarumaManager : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "Plane")
+        if(collision.gameObject.tag == "Ground")
         {
-            Rigidbody rb = GetComponent<Rigidbody>();
-            Destroy(rb);
-            navMeshAgent.enabled = true;
+            if (gameObject.tag == "Untagged")
+            {
+                Rigidbody rb = GetComponent<Rigidbody>();
+                Destroy(rb);
+                navMeshAgent.enabled = true;
+                gameObject.tag = "Enemy";
+               
+            }
         }
     }
 }

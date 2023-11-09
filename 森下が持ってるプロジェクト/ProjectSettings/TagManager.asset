@@ -4,6 +4,11 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - Plane
+  - Enemy
+  - Ball
+  - DarumaBall
+  tags:
   - Ground
   layers:
   - Default

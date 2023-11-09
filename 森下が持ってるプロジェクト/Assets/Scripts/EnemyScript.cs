@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 public class EnemyScript : MonoBehaviour
 {
-    [SerializeField] Transform player;
+    [SerializeField] GameObject player;
     [SerializeField] Transform child;
     [SerializeField] Material patrolMaterial;
     [SerializeField] Material chaseMaterial;
@@ -14,20 +14,17 @@ public class EnemyScript : MonoBehaviour
     private int destPoint = 0;
     private NavMeshAgent agent;
     bool IsDetected = false;
-    Rigidbody rigidBody;
-
-
-
-
-    void Start()
+    GameObject player_ = default!;
+    
+    void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
-
+        player_ = GameObject.Find("tmpPlayer");
+       
         // autoBraking を無効にすると、目標地点の間を継続的に移動します
         //(つまり、エージェントは目標地点に近づいても
         // 速度をおとしません)
         agent.autoBraking = false;
-
 
         GotoNextPoint();
     }
@@ -51,7 +48,7 @@ public class EnemyScript : MonoBehaviour
     {
         float distance;
 
-        distance = Vector3.Distance(transform.position, player.position);
+        distance = Vector3.Distance(transform.position, player_.transform.position);
 
         if (distance < detectDistance)
         {
@@ -74,20 +71,21 @@ public class EnemyScript : MonoBehaviour
         {
             // エージェントが現目標地点に近づいてきたら、
             // 次の目標地点を選択
-            if (!agent.pathPending && agent.remainingDistance < 0.5f)
+            if (!agent.pathPending && agent.remainingDistance < 2f)
             {
                 GotoNextPoint();
             }
         }
         else
         {
-            agent.destination = player.position;
+            agent.destination = player_.transform.position;
         }
-
+       
     }
 
     void OnCollisionEnter(Collision collision)
     {
+        //小槌に当たった時
         if (collision.gameObject.tag == "Ball")
         {
             child.gameObject.AddComponent<NavMeshAgent>();
@@ -96,13 +94,36 @@ public class EnemyScript : MonoBehaviour
             //親子関係解除
             transform.DetachChildren();
 
-            gameObject.tag = "Ball";
+            NavMeshAgent navMeshAgent = GetComponent<NavMeshAgent>();
+            navMeshAgent.enabled = false;
 
-            MeshCollider collider = GetComponent<MeshCollider>();
-            collider.isTrigger = true;
+            gameObject.tag = "DarumaBall";
+
             gameObject.AddComponent<Rigidbody>();
-            //オブジェクトの消去
-            //Destroy(gameObject);
+
+           
+
+        }
+        //飛んできた達磨に当たった時
+        if (collision.gameObject.tag == "DarumaBall")
+        {
+            if (gameObject.tag == "Enemy")
+            {
+                child.gameObject.AddComponent<NavMeshAgent>();
+                child.gameObject.AddComponent<Rigidbody>();
+
+                //親子関係解除
+                transform.DetachChildren();
+                Destroy(gameObject);
+            }
+        }
+        //飛んできた達磨の消去
+        if(collision.gameObject.tag == "Enemy")
+        {
+            if(gameObject.tag == "DarumaBall")
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }

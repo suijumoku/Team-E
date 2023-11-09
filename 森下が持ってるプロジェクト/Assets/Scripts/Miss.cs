@@ -1,35 +1,9 @@
-//ŒÃàV
+//ï¿½ï¿½ï¿½V
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Miss : MonoBehaviour
 {
-    [SerializeField] private ChangeImage _ChangeImage1, _ChangeImage2, _ChangeImage3;
 
-    private int failC = 0;
-
-    //OutScript‚ÆPlayerController‚©‚çMiss‚ÉƒAƒNƒZƒX->changeImage‚ÉƒAƒNƒZƒX‚µ‚Äƒ‰ƒCƒt‚ğŒ¸‚ç‚·
-
-    public void InOrder()  //‚±‚ê‚ğ‘¼ƒXƒNƒŠƒvƒg‚ÅŒÄ‚Ño‚¹‚Î‘Ì—ÍŒ¸‚ç‚¹‚é
-    {
-        if (failC == 0)
-        {
-            _ChangeImage1.StartCoroutine("Miss");
-            failC++;
-            _ChangeImage1 = null;
-        }
-        else if (failC == 1)
-        {
-            _ChangeImage2.StartCoroutine("Miss");
-            failC++;
-            _ChangeImage2 = null;
-        }
-        else if (failC == 2)
-        {
-            _ChangeImage3.StartCoroutine("Miss");
-            failC++;
-            _ChangeImage3 = null;
-        }
-    }
 }
