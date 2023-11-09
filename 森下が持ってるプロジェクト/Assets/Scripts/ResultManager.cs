@@ -1,19 +1,20 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.InputSystem.HID;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ResultManager : MonoBehaviour
 {
-    //[Header("スコア")]
-    [SerializeField] Image[][] scoreImg;  //[i][j] i:親か子 j:十の位か一の位
+    [Header("スコア")]
+    [SerializeField] Image[] scoreImg;  //[i][j] i:親か子 j:十の位か一の位
+    [Header("ボススコア")]
+    [SerializeField] Image[] bossScoreImg;
+    [Header("子だるまスコア")]
+    [SerializeField] Image[] kidScoreImg;
+
     [Header("スコアの数字")]
     [SerializeField] Sprite[] Numbers;
     [Header("リザルト画像たち")]
-    [SerializeField] Sprite[] results;
+    [SerializeField] Image[] results;
     [Header("表示サウンド")]
     [Tooltip("0をドン！、1をドドン！に")]
     [SerializeField] AudioClip[] indicateS = default!;
@@ -30,15 +31,16 @@ public class ResultManager : MonoBehaviour
     //[SerializeField] AudioClip[] BGM = default!;
 
     [SerializeField] int hit = 1, doubleHit = 3, beatBoss = 4, noDamage = 16, Bonus_Standard_Time = 60, timeBonus = 20;
-    private Image result;
+    // private Image result;
 
-    const int  score = 0,boss = 1, kid = 2;
+    //const int score = 0, boss = 1, kid = 2;
     const int tensPlace = 0, onePlace = 1;
-    const float duration = 0.5f;
+    [SerializeField] float duration = 0.5f;
     int[] scoreArray, Boss_Time_Array, kidArray;
-  
 
     int calcScore = 0;
+
+    private ResultManager instance;
 
     //void OnEnable()
     //{
@@ -54,14 +56,20 @@ public class ResultManager : MonoBehaviour
         scoreArray = new int[2] { 0, 0 };
         Boss_Time_Array = new int[2] { 0, 0 };
         kidArray = new int[2] { 0, 0 };
-        //最初に全てのLife画像をtrueに
-        for (int i = 0; i < 2; i++)
-        {
-            for (int j = 0; j < 2; j++)
-            {
-                scoreImg[i][j].sprite = Numbers[0];
-            }              
-        }
+
+
+        //if (instance == null)
+        //{
+        //    instance = this;
+        //}
+
+        //for (int i = 0; i < 2; i++)
+        //{
+        //    for (int j = 0; j < 2; j++)
+        //    {
+        //        scoreImg[i, j].sprite = Numbers[0];
+        //    }
+        //}
     }
 
     void Start()
@@ -69,15 +77,16 @@ public class ResultManager : MonoBehaviour
         if (OnLoadScene)
         {
             Debug.Log("OnLoadScene");
-            IndicateScore();
+            Time.timeScale = 1;
+            StartCoroutine(ResultCorutine());
         }
     }
 
     void Update()
     {
-      
+
     }
-   
+
 
     public void beatDaruma()
     {
@@ -119,13 +128,13 @@ public class ResultManager : MonoBehaviour
                 Boss_Time_Array[0] = 0;
             }
         }
-           
+
     }
 
     public void NoDmgBonus() //多分PlayerControllerで呼ぶ
     {
         calcScore += noDamage;
-    }   
+    }
 
     void Assign()
     {
@@ -140,61 +149,83 @@ public class ResultManager : MonoBehaviour
         }
 
         //スコアに対応した数字の画像を表示
-        scoreImg[score][tensPlace].sprite = Numbers[scoreArray[1]];
-        scoreImg[score][onePlace].sprite = Numbers[scoreArray[0]];
+        scoreImg[tensPlace].sprite = Numbers[scoreArray[1]];
+        scoreImg[onePlace].sprite = Numbers[scoreArray[0]];
 
-        scoreImg[boss][tensPlace].sprite = Numbers[Boss_Time_Array[1]]; //Numbers[i] i:他スクリプトから取得したスコアを十の位と一の位に分割して入れる
-        scoreImg[boss][onePlace].sprite = Numbers[Boss_Time_Array[0]];
+        bossScoreImg[tensPlace].sprite = Numbers[Boss_Time_Array[1]]; //Numbers[i] i:他スクリプトから取得したスコアを十の位と一の位に分割して入れる
+        bossScoreImg[onePlace].sprite = Numbers[Boss_Time_Array[0]];
 
-        scoreImg[kid][tensPlace].sprite = Numbers[kidArray[1]];
-        scoreImg[kid][onePlace].sprite = Numbers[kidArray[0]];
+        kidScoreImg[tensPlace].sprite = Numbers[kidArray[1]];
+        kidScoreImg[onePlace].sprite = Numbers[kidArray[0]];
+
+
+
+    }
+    private IEnumerator ResultCorutine()
+    {
+        Assign();
+        yield return new WaitForSeconds(duration);
+
+        IndicateScore(scoreImg, indicateS[0]);
+        yield return new WaitForSeconds(duration);
+
+        IndicateScore(bossScoreImg, indicateS[0]);
+        yield return new WaitForSeconds(duration);
+
+        IndicateScore(kidScoreImg, indicateS[0]);      
+
+        yield return new WaitForSeconds(duration * 1.5f);
+        GameManager.instance.PlaySE(indicateS[1]);
+        // result.enabled = true;       
 
         if (calcScore < 4)  //要調整 調整しやすくする方法わからない
         {
-            result.sprite = results[0]; //負け
+            results[0].enabled = true; //負け
             resultS = resultSounds[0];
         }
         else if (calcScore >= 4 && calcScore < 20)
         {
-            result.sprite = results[1]; //可
+            results[1].enabled = true; //可
             resultS = resultSounds[1];
         }
         else if (calcScore >= 20 && calcScore < 40)
         {
-            result.sprite = results[2]; //良
+            results[2].enabled = true; //良
             resultS = resultSounds[1];
         }
         else if (calcScore >= 40 && calcScore < 80)
         {
-            result.sprite = results[3]; //優
+            results[3].enabled = true; //優
             resultS = resultSounds[1];
         }
         else if (calcScore >= 80)
         {
-            result.sprite = results[4]; //秀
+            results[4].enabled = true; //秀
             resultS = resultSounds[1];
         }
 
-    }
-    public void IndicateScore()
-    {
-        Assign();
-
-        for (int i = 0; i < 3; i++) 
-        {
-            //サウンド
-            GameManager.instance.PlaySE(indicateS[0]);
-            scoreImg[i][tensPlace].enabled = true;
-            scoreImg[i][onePlace].enabled = true;
-            new WaitForSeconds(duration);
-            //若干の遅延
-        }
-        new WaitForSeconds(duration);
-        GameManager.instance.PlaySE(indicateS[1]);
-        result.enabled = true;
-
-        new WaitForSeconds(duration);
+        yield return new WaitForSeconds(duration);
         GameManager.instance.PlaySE(resultS);
-       
+
+        Debug.Log("score.enabled0 = " + scoreImg[0].enabled);
+        Debug.Log("score.enabled1 = " + scoreImg[1].enabled);
+
+        Debug.Log("bossScore.enabled0 = " + bossScoreImg[0].enabled);
+        Debug.Log("bossScore.enabled1 = " + bossScoreImg[1].enabled);
+
+        Debug.Log("kidScore.enabled0 = " + kidScoreImg[0].enabled);
+        Debug.Log("kidScore.enabled1 = " + kidScoreImg[1].enabled);
+        yield return null;
+    }
+
+    private void IndicateScore(Image[] Img, AudioClip clip)
+    {
+        //サウンド
+        GameManager.instance.PlaySE(clip);
+        Img[tensPlace].enabled = true;
+        Img[onePlace].enabled = true;
+
+        
+        //若干の遅延
     }
 }
