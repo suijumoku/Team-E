@@ -30,6 +30,7 @@ public class FadeAndSceneMove : MonoBehaviour
     {
         if (!goNextScene && fade.IsFadeOutComplete())
         {
+            print(NextSceneName);
             SceneManager.LoadScene(NextSceneName);
             goNextScene = true;
         }
