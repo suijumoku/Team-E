@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class DarumaManager : MonoBehaviour
 {
     [SerializeField] GameObject daruma = default!;
-    [SerializeField] ResultManager resultManager;
+    
     private NavMeshAgent navMeshAgent;
     void Awake()
     {
@@ -35,7 +35,7 @@ public class DarumaManager : MonoBehaviour
                 navMeshAgent.enabled = true;
                 gameObject.tag = "Enemy";
 
-                resultManager.BeatDaruma();
+
                
             }
         }

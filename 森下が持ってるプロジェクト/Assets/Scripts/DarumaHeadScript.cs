@@ -5,6 +5,9 @@ using UnityEngine;
 public class DarumaHeadScript : MonoBehaviour
 {
     // Start is called before the first frame update
+
+    [SerializeField] ResultManager resultManager;
+    [SerializeField] SpownenemyScript spownenemyScript;
     void Start()
     {
         
@@ -19,6 +22,8 @@ public class DarumaHeadScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "Ground")
         {
+            spownenemyScript.Hit();
+            resultManager.BeatDaruma();
             Destroy(gameObject);
         }
     }
