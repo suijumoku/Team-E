@@ -9,7 +9,7 @@ public class OutScript : MonoBehaviour
     [SerializeField] GameObject respawnP;
     [SerializeField] GameObject player;
     //[SerializeField] BlinkingScript blinkingScript = default!;
-    [SerializeField] Miss miss = default!;
+    [SerializeField] MainGameManager _MainGameManager = default!;
     [SerializeField] int missCount = default!;
     [SerializeField] PlayerController playerController;
 
@@ -32,9 +32,9 @@ public class OutScript : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            if (currentCount > missCount) return;
+            if (currentCount >= missCount) return;
 
-            miss.InOrder(currentCount);
+            _MainGameManager.InOrder(currentCount);
             //GameObject c = other.GetComponent<GameObject>();
             other.transform.localPosition = respawnP.transform.localPosition;
 

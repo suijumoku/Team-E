@@ -29,25 +29,25 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float triggerTiming = 0.5f;         //トリガーがどこまで押し込まれたら反応するか 要調整
     [SerializeField] float smoothTime = 0.3f;                //進行方向への回転にかかる時間
     [SerializeField] private float jumpPower = 5f;             //ジャンプのつよさ
-
-    [SerializeField] Miss miss;
+   
     [SerializeField] GameObject CinemachineCameraTarget;    //カメラのターゲットを別オブジェクトにすることで頭の部分を追尾
 
     [SerializeField]  AudioClip jumpS = default!;
     [SerializeField]  AudioClip attack_true_S = default!;
-    [SerializeField] AudioClip fallS = default!;
-    //[SerializeField] private AudioClip attack_false_S = default!;
+    [SerializeField]  AudioClip fallS = default!;
 
-    //public Vector2 look;
-    //public bool cursorInputForLook = true;
+    [SerializeField] MainGameManager _MainGameManager;
 
-    //private PlayerController instance;
-
+ 
     float inputHorizontal;      //水平方向の入力値
     float inputVertical;        //垂直方向の入力値
     float targetRotation;
     float yVelocity = 0.0f;
-    private float motionTime = 0.0f;             // 攻撃モーションが始まってからの経過時間を格納   
+    private float motionTime = 0.0f;             // 攻撃モーションが始まってからの経過時間を格納
+
+
+
+    //private PlayerController instance;
 
     //public void Awake()
     //{
@@ -56,19 +56,24 @@ public class PlayerController : MonoBehaviour
     //        instance = this;
     //    }
     //}
+
+
     void Start()
     {
         //jumpS = GetComponent<AudioClip>();
         //attack_true_S = GetComponent<AudioClip>();
         //attack_false_S GetComponent<AudioClip>();
+        
 
         m_Rigidbody = GetComponent<Rigidbody>();
         beforePos = GetComponent<Transform>().position;
         //animator = GetComponent<Animator>();
+       
     }
 
     void Update()
     {
+    
         inputHorizontal = UnityEngine.Input.GetAxisRaw("Horizontal");   //入力値の格納
         inputVertical = UnityEngine.Input.GetAxisRaw("Vertical");
 
@@ -161,6 +166,7 @@ public class PlayerController : MonoBehaviour
         Debug.Log("nowPos.y = " + nowPos.y);
         Debug.Log("beforePos.y = " + beforePos.y);
         canMove = false;
+      
         //ここで操作不能にすればすれすれから復帰した時にジャンプができなくなることを防げそう
         //落下モーションへの遷移
     }

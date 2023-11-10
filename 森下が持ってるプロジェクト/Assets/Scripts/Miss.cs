@@ -5,10 +5,5 @@ using UnityEngine;
 
 public class Miss : MonoBehaviour
 {
-    [SerializeField] private BlinkingScript blinkingScript = default!;
 
-    public void InOrder(int i)
-    {
-        blinkingScript.StartCoroutine(blinkingScript.DamageIndication(i));
-    }
 }

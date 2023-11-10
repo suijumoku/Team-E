@@ -19,6 +19,10 @@ public class BlinkingScript : MonoBehaviour
     [Header("ダメージ時の表示間隔")]
     [SerializeField] float[] duration = default!;
 
+    [SerializeField] MainGameManager _MainGameManager = default!;
+
+    int life = 3;
+
 
     void Awake()
     {
@@ -27,6 +31,7 @@ public class BlinkingScript : MonoBehaviour
         {
             t.enabled = truelife;
         }
+            int life = 3;
     }
 
     //number：表示画像番号 x：偶数奇数判定
@@ -59,7 +64,12 @@ public class BlinkingScript : MonoBehaviour
 
         //プレイヤーのマテリアルを通常に。ハートのより点滅の回数が増えてしまう
        // yield return new WaitForSeconds(0.1f);
-        player.gameObject.GetComponent<Renderer>().material = trueMaterial;     
+        player.gameObject.GetComponent<Renderer>().material = trueMaterial;
+        life--;
+        if (life <= 0)
+        {
+            _MainGameManager.isDefeat = true;
+        }
         yield return null;
     }
 

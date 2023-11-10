@@ -18,13 +18,12 @@ public class GameManager : MonoBehaviour
 
     private GameState currentGamestate;
 
-    [Header("BGM用audiosource")][SerializeField] AudioSource BGM_AudioSource = null;
-    [Header("SE用audiosource")][SerializeField] AudioSource SE_AudioSource = null;
+    [Header("BGM用audiosource")][SerializeField] public AudioSource BGM_AudioSource = null;
+    [Header("SE用audiosource")][SerializeField] public AudioSource SE_AudioSource = null;
 
     private void Awake()
     {
-        //SetCurrentState(GameState.SelectionScreen);
-        SetCurrentState(GameState.NormalEnemyBattle);
+        SetCurrentState(GameState.SelectionScreen);
         if (instance == null)
         {
             instance = this;
