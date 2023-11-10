@@ -304,7 +304,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resultManager: {fileID: 1416640616976554346, guid: 24358bbf74968454bbea21ca52b22801, type: 3}
-  spownenemyScript: {fileID: 8721824730405198748, guid: a95205e1c3d75a94d9bc97699eef4381, type: 3}
 --- !u!54 &6159676266227236530
 Rigidbody:
   m_ObjectHideFlags: 0
