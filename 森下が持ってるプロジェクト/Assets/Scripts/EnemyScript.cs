@@ -20,7 +20,7 @@ public class EnemyScript : MonoBehaviour
     void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
-        player_ = GameObject.Find("tmpPlayer");
+        player_ = GameObject.Find("Team_E_Player");
        
         // autoBraking を無効にすると、目標地点の間を継続的に移動します
         //(つまり、エージェントは目標地点に近づいても

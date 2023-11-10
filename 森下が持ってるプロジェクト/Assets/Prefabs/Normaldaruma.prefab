@@ -102,7 +102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b424c6adeac0b8429a26797f0e213cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 544982392036295412, guid: f3e8913ea870fa342843e8cb4aa49a9c, type: 3}
+  player: {fileID: 6234103793135179134, guid: a1eff8b72210ce04387828b21033a6b1, type: 3}
   child: {fileID: 6500958144201429786}
   patrolMaterial: {fileID: 2100000, guid: dcce71b6c0caafa42a8908fae584c7f7, type: 2}
   chaseMaterial: {fileID: 2100000, guid: 1217dde8a82cbcd49ac9bbf1989fb8b2, type: 2}
@@ -304,6 +304,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resultManager: {fileID: 1416640616976554346, guid: 24358bbf74968454bbea21ca52b22801, type: 3}
+  spownenemyScript: {fileID: 0}
 --- !u!54 &6159676266227236530
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -332,7 +333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b424c6adeac0b8429a26797f0e213cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 544982392036295412, guid: f3e8913ea870fa342843e8cb4aa49a9c, type: 3}
+  player: {fileID: 6234103793135179134, guid: a1eff8b72210ce04387828b21033a6b1, type: 3}
   child: {fileID: 0}
   patrolMaterial: {fileID: 0}
   chaseMaterial: {fileID: 0}
@@ -476,7 +477,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b424c6adeac0b8429a26797f0e213cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 544982392036295412, guid: f3e8913ea870fa342843e8cb4aa49a9c, type: 3}
+  player: {fileID: 6234103793135179134, guid: a1eff8b72210ce04387828b21033a6b1, type: 3}
   child: {fileID: 6500958145679016329}
   patrolMaterial: {fileID: 2100000, guid: dcce71b6c0caafa42a8908fae584c7f7, type: 2}
   chaseMaterial: {fileID: 2100000, guid: 1217dde8a82cbcd49ac9bbf1989fb8b2, type: 2}
@@ -635,7 +636,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b424c6adeac0b8429a26797f0e213cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 544982392036295412, guid: f3e8913ea870fa342843e8cb4aa49a9c, type: 3}
+  player: {fileID: 6234103793135179134, guid: a1eff8b72210ce04387828b21033a6b1, type: 3}
   child: {fileID: 6500958143944215580}
   patrolMaterial: {fileID: 2100000, guid: dcce71b6c0caafa42a8908fae584c7f7, type: 2}
   chaseMaterial: {fileID: 2100000, guid: 1217dde8a82cbcd49ac9bbf1989fb8b2, type: 2}
