@@ -107,6 +107,7 @@ MonoBehaviour:
   patrolMaterial: {fileID: 2100000, guid: dcce71b6c0caafa42a8908fae584c7f7, type: 2}
   chaseMaterial: {fileID: 2100000, guid: 1217dde8a82cbcd49ac9bbf1989fb8b2, type: 2}
   detectDistance: 3
+  resultManager: {fileID: 1416640616976554346, guid: 24358bbf74968454bbea21ca52b22801, type: 3}
   points:
   - {fileID: 4627859967584425738, guid: c7e8282d7b968e047a409233f4d68387, type: 3}
   - {fileID: 809630217706998333, guid: cf0252c7e55af5441aadd944d863ac0f, type: 3}
@@ -159,6 +160,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   daruma: {fileID: 6500958143944215581}
+  resultManager: {fileID: 0}
 --- !u!54 &6500958143944215582
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -335,6 +337,7 @@ MonoBehaviour:
   patrolMaterial: {fileID: 0}
   chaseMaterial: {fileID: 0}
   detectDistance: 0
+  resultManager: {fileID: 1416640616976554346, guid: 24358bbf74968454bbea21ca52b22801, type: 3}
   points:
   - {fileID: 4627859967584425738, guid: c7e8282d7b968e047a409233f4d68387, type: 3}
   - {fileID: 809630217706998333, guid: cf0252c7e55af5441aadd944d863ac0f, type: 3}
@@ -373,6 +376,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   daruma: {fileID: 6500958144201429787}
+  resultManager: {fileID: 0}
 --- !u!1 &6500958145341080810
 GameObject:
   m_ObjectHideFlags: 0
@@ -478,6 +482,7 @@ MonoBehaviour:
   patrolMaterial: {fileID: 2100000, guid: dcce71b6c0caafa42a8908fae584c7f7, type: 2}
   chaseMaterial: {fileID: 2100000, guid: 1217dde8a82cbcd49ac9bbf1989fb8b2, type: 2}
   detectDistance: 3
+  resultManager: {fileID: 1416640616976554346, guid: 24358bbf74968454bbea21ca52b22801, type: 3}
   points:
   - {fileID: 4627859967584425738, guid: c7e8282d7b968e047a409233f4d68387, type: 3}
   - {fileID: 809630217706998333, guid: cf0252c7e55af5441aadd944d863ac0f, type: 3}
@@ -636,6 +641,7 @@ MonoBehaviour:
   patrolMaterial: {fileID: 2100000, guid: dcce71b6c0caafa42a8908fae584c7f7, type: 2}
   chaseMaterial: {fileID: 2100000, guid: 1217dde8a82cbcd49ac9bbf1989fb8b2, type: 2}
   detectDistance: 3
+  resultManager: {fileID: 1416640616976554346, guid: 24358bbf74968454bbea21ca52b22801, type: 3}
   points:
   - {fileID: 4627859967584425738, guid: c7e8282d7b968e047a409233f4d68387, type: 3}
   - {fileID: 809630217706998333, guid: cf0252c7e55af5441aadd944d863ac0f, type: 3}
@@ -688,6 +694,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   daruma: {fileID: 6500958145679016326}
+  resultManager: {fileID: 0}
 --- !u!54 &6500958145679016331
 Rigidbody:
   m_ObjectHideFlags: 0
