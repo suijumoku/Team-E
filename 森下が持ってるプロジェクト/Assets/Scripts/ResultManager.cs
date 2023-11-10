@@ -71,7 +71,7 @@ public class ResultManager : MonoBehaviour
 
     void Update()
     {
-
+        Debug.Log(calcScore);
     } 
 
     public void NormalHit()
