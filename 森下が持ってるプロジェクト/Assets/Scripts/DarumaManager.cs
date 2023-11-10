@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class DarumaManager : MonoBehaviour
 {
     [SerializeField] GameObject daruma = default!;
+    
     private NavMeshAgent navMeshAgent;
     void Awake()
     {
@@ -33,6 +34,8 @@ public class DarumaManager : MonoBehaviour
                 Destroy(rb);
                 navMeshAgent.enabled = true;
                 gameObject.tag = "Enemy";
+
+
                
             }
         }

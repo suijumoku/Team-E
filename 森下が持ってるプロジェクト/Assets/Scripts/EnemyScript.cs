@@ -10,6 +10,7 @@ public class EnemyScript : MonoBehaviour
     [SerializeField] Material patrolMaterial;
     [SerializeField] Material chaseMaterial;
     [SerializeField] float detectDistance;
+    [SerializeField] ResultManager resultManager = default!;
     public Transform[] points;
     private int destPoint = 0;
     private NavMeshAgent agent;
@@ -101,7 +102,10 @@ public class EnemyScript : MonoBehaviour
 
             gameObject.AddComponent<Rigidbody>();
 
-           
+            resultManager.NormalHit();
+
+
+
 
         }
         //飛んできた達磨に当たった時
@@ -115,6 +119,8 @@ public class EnemyScript : MonoBehaviour
                 //親子関係解除
                 transform.DetachChildren();
                 Destroy(gameObject);
+
+                resultManager.DoubleHit();
             }
         }
         //飛んできた達磨の消去
