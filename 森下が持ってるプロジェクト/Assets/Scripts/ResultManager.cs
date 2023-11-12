@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class ResultManager : MonoBehaviour
 {
     [Header("スコア")]
-    [SerializeField] Image[] scoreImg;  //[i][j] i:親か子 j:十の位か一の位
+    [SerializeField] public Image[] scoreImg;  //[i][j] i:親か子 j:十の位か一の位
     [Header("ボススコア")]
     [SerializeField] Image[] bossScoreImg;
     [Header("子だるまスコア")]
@@ -22,27 +22,27 @@ public class ResultManager : MonoBehaviour
     [Tooltip("0を敗北音、１を勝利音に")]
     [SerializeField] AudioClip[] resultSounds = default!;
 
+    [SerializeField] ScoreUI _ScoreUI;
+
     //[Header("有効になったら実行する")]
     //[SerializeField] bool OnEneble;
     [Header("シーンが読み込まれたら実行する")]
     [SerializeField] bool OnLoadScene;
-
-    AudioClip resultS = default!;
-    //[SerializeField] AudioClip[] BGM = default!;
+    AudioClip resultS = default!; 
 
     [SerializeField] int hit = 1, doubleHit = 3, beatBoss = 4, noDamage = 16, Bonus_Standard_Time = 60, timeBonus = 20;
-    // private Image result;
+    [SerializeField] float duration = 0.5f;
 
     //const int score = 0, boss = 1, kid = 2;
     const int tensPlace = 0, onePlace = 1;
-    [SerializeField] float duration = 0.5f;
-    [SerializeField] int num = default!; //デバッグ用
+  
     int[] scoreArray, Boss_Time_Array, kidArray;
-
     int calcScore = 0;
+    bool isResult = true;
+    //private ResultManager instance;
 
-    private ResultManager instance;
 
+    [SerializeField] int num = default!; //デバッグ用
     //void OnEnable()
     //{
     //    if (OnEneble)
@@ -71,19 +71,21 @@ public class ResultManager : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(calcScore);
+     
     } 
 
     public void NormalHit()
     {
         //普通に飛ばすと+1
         calcScore = hit;
+        _ScoreUI.ScoreUpdate();
     }
 
     public void DoubleHit()
     {
         //当てて消すと+3
         calcScore += doubleHit;
+        _ScoreUI.ScoreUpdate();
     }
     public void BeatDaruma()
     {
@@ -93,6 +95,7 @@ public class ResultManager : MonoBehaviour
             kidArray[1]++;
             kidArray[0] = 0;
         }
+        _ScoreUI.ScoreUpdate();
     }
     public void BeatBoss(float time)
     {
@@ -112,15 +115,15 @@ public class ResultManager : MonoBehaviour
                 Boss_Time_Array[0] = 0;
             }
         }
-
+        _ScoreUI.ScoreUpdate();
     }
 
-    public void NoDmgBonus() //多分PlayerControllerで呼ぶ
+    public void NoDmgBonus() //多分PlayerControllerで呼ぶ->MainGameManager
     {
         calcScore += noDamage;
     }
 
-    void Assign()
+    public void Assign(bool isResult)
     {
         for (int i = 0; i < calcScore; i++)
         {
@@ -132,7 +135,7 @@ public class ResultManager : MonoBehaviour
             }
         }
 
-        //スコアに対応した数字の画像を表示
+        //スコアに対応した数字の画像を入れる
         scoreImg[tensPlace].sprite = Numbers[scoreArray[1]];
         scoreImg[onePlace].sprite = Numbers[scoreArray[0]];
 
@@ -142,13 +145,14 @@ public class ResultManager : MonoBehaviour
         //Debug.Log(" scoreImg[tensPlace].sprite = " + scoreImg[tensPlace].sprite);
         //Debug.Log(" scoreImg[onePlace].sprite = " + scoreImg[onePlace].sprite);
 
-        bossScoreImg[tensPlace].sprite = Numbers[Boss_Time_Array[1]]; //Numbers[i] i:他スクリプトから取得したスコアを十の位と一の位に分割して入れる
-        bossScoreImg[onePlace].sprite = Numbers[Boss_Time_Array[0]];
+        if (isResult == true)   //リザルト画面ならボスの秒数と子だるまの数も入れる
+        {
+            bossScoreImg[tensPlace].sprite = Numbers[Boss_Time_Array[1]]; //Numbers[i] i:他スクリプトから取得したスコアを十の位と一の位に分割して入れる
+            bossScoreImg[onePlace].sprite = Numbers[Boss_Time_Array[0]];
 
-        kidScoreImg[tensPlace].sprite = Numbers[kidArray[1]];
-        kidScoreImg[onePlace].sprite = Numbers[kidArray[0]];
-
-
+            kidScoreImg[tensPlace].sprite = Numbers[kidArray[1]];
+            kidScoreImg[onePlace].sprite = Numbers[kidArray[0]];
+        }
 
     }
     private IEnumerator ResultCorutine()
@@ -161,7 +165,7 @@ public class ResultManager : MonoBehaviour
         calcScore += noDamage;
         calcScore = num;
 
-        Assign();
+        Assign(isResult);
         yield return new WaitForSeconds(duration);
 
         IndicateScore(scoreImg, indicateS[0]);

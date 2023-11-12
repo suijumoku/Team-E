@@ -87,7 +87,7 @@ public class EnemyScript : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         //è¨í∆Ç…ìñÇΩÇ¡ÇΩéû
-        if (collision.gameObject.tag == "Ball")
+        if (collision.gameObject.tag == "Hammer")
         {
             child.gameObject.AddComponent<NavMeshAgent>();
             child.gameObject.AddComponent<Rigidbody>();

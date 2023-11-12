@@ -9,12 +9,10 @@ using UnityEngine.Windows;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody m_Rigidbody;
-    private Vector3 nowPos, beforePos;
     private Vector3 velocity;
-    private Vector3 input;
 
-    //Animator animator;
-    //AnimatorStateInfo stateInfo;    
+    Animator animator;
+    AnimatorStateInfo stateInfo;    
 
     //地面の上なら歩きモーション、違うなら落下モーション              
 
@@ -38,13 +36,16 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] MainGameManager _MainGameManager;
 
- 
+    [SerializeField]　ResultManager _ResultManager; //デバッグ用
+
+
     float inputHorizontal;      //水平方向の入力値
     float inputVertical;        //垂直方向の入力値
     float targetRotation;
     float yVelocity = 0.0f;
-    private float motionTime = 0.0f;             // 攻撃モーションが始まってからの経過時間を格納
-
+    float motionTime = 0.0f;             // 攻撃モーションが始まってからの経過時間を格納->animationの遷移でできそう 
+  
+    float time = 0f;                //Runningモーションに使う
 
 
     //private PlayerController instance;
@@ -59,45 +60,36 @@ public class PlayerController : MonoBehaviour
 
 
     void Start()
-    {
-        //jumpS = GetComponent<AudioClip>();
-        //attack_true_S = GetComponent<AudioClip>();
-        //attack_false_S GetComponent<AudioClip>();
-        
-
-        m_Rigidbody = GetComponent<Rigidbody>();
-        beforePos = GetComponent<Transform>().position;
-        //animator = GetComponent<Animator>();
+    {             
+        m_Rigidbody = GetComponent<Rigidbody>();     
+        animator = GetComponent<Animator>();
        
     }
 
     void Update()
     {
-    
+        stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+
         inputHorizontal = UnityEngine.Input.GetAxisRaw("Horizontal");   //入力値の格納
-        inputVertical = UnityEngine.Input.GetAxisRaw("Vertical");
+        inputVertical = UnityEngine.Input.GetAxisRaw("Vertical");        
+    
 
-        
-        Jump();                     
-        Attack();
+        if (stateInfo.IsName("Idle") || 
+            stateInfo.IsName("Running")) 
+        {            
 
-        nowPos = GetComponent<Transform>().position;
-
-        if (isJump == false && isFall == false)
-        {
-            //一つ前のフレームの位置と今の位置を比べて変化していたら移動モーションに遷移
-
-          
-            if (nowPos.x != beforePos.x || nowPos.z != beforePos.z)
+            Jump();     
+            Attack();
+            if (inputHorizontal != 0 || inputVertical != 0)
             {
-                //移動モーションへの遷移
-          
+                //入力が0じゃなければ移動モーションに遷移
+                time += Time.deltaTime;    
             }
             else
             {
-                //idleモーションへの遷移
-             
+                time = 0f;               
             }
+            animator.SetFloat("time", time);
         }
 
         if (isAttack)
@@ -108,13 +100,17 @@ public class PlayerController : MonoBehaviour
                 isAttack = false;
         }       
 
-        beforePos = nowPos;       
+         
     }
     private void FixedUpdate()
-    {       
-        Gravity();
+    {
 
-        Move();             
+        if (stateInfo.IsName("Jumping") ||
+            stateInfo.IsName("Falling"))
+            Gravity();
+
+        if (stateInfo.IsName("Running"))
+            Move();             
     }  
 
     private void OnCollisionEnter(Collision other)
@@ -131,10 +127,11 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        //if (other.gameObject.CompareTag("Enemy"))
-        //{
-        //    miss.InOrder();
-        //}
+        if (other.gameObject.CompareTag("Enemy") &&
+            _MainGameManager.isInvincible == false)     //無敵時間中はダメージを食らわない
+        {
+            _MainGameManager.Miss();
+        }
 
     }
 
@@ -150,21 +147,22 @@ public class PlayerController : MonoBehaviour
 
         if (UnityEngine.Input.GetAxis("L_R_Trigger") > triggerTiming || UnityEngine.Input.GetButtonDown("Attack"))  //AボタンかRTで攻撃
         {
+            animator.SetTrigger("toAttacking");
             GameManager.instance.PlaySE(attack_true_S);         //仮 当たったかどうかで音変えると思われる
             isAttack = true;
             motionTime = 0.0f;
             //Debug.Log("isAttack = " + isAttack);
             //攻撃モーションへの遷移
-        }    
+            _ResultManager.NormalHit(); //デバッグ用
+        }
      
     }
 
     public void fall()
     {
+        animator.SetTrigger("toFalling");
         GameManager.instance.PlaySE(fallS);
-        isFall = true;
-        Debug.Log("nowPos.y = " + nowPos.y);
-        Debug.Log("beforePos.y = " + beforePos.y);
+        isFall = true;    
         canMove = false;
       
         //ここで操作不能にすればすれすれから復帰した時にジャンプができなくなることを防げそう
@@ -236,6 +234,7 @@ public class PlayerController : MonoBehaviour
 
         if ( UnityEngine.Input.GetButtonDown("Jump"))
         {
+            animator.SetTrigger("toJumping");
             GameManager.instance.PlaySE(jumpS);
             m_Rigidbody.AddForce(transform.up * jumpPower, ForceMode.Impulse);
             isJump = true;

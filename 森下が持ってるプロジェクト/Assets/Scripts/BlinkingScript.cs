@@ -21,8 +21,7 @@ public class BlinkingScript : MonoBehaviour
 
     [SerializeField] MainGameManager _MainGameManager = default!;
 
-    int life = 3;
-
+    public int life { get; protected set; }
 
     void Awake()
     {
@@ -30,8 +29,7 @@ public class BlinkingScript : MonoBehaviour
         foreach (Image t in lifeImage)
         {
             t.enabled = truelife;
-        }
-            int life = 3;
+        }           
     }
 
     //number：表示画像番号 x：偶数奇数判定
@@ -51,6 +49,8 @@ public class BlinkingScript : MonoBehaviour
 
     public IEnumerator DamageIndication(int i)
     {
+        _MainGameManager.isInvincible = true;   //点滅中は無敵に
+
         yield return new WaitForSeconds(0.15f);
         //WaitForSecondsでそれぞれ待機してからLifeChangeを行う
         for (int j = 0; j < duration.Length; j++)
@@ -70,6 +70,7 @@ public class BlinkingScript : MonoBehaviour
         {
             _MainGameManager.isDefeat = true;
         }
+        _MainGameManager.isInvincible = false;
         yield return null;
     }
 

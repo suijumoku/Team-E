@@ -5,14 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class MainGameManager : MonoBehaviour
 {
-    //[SerializeField] PlayerController _PlayerController;
-    //[SerializeField] ResultManager _resultManager;
+
     [SerializeField] FadeAndSceneMove _fadeAndSceneMove;
 
+    [SerializeField] int missCount = default!;
     [SerializeField] private BlinkingScript blinkingScript = default!;
+    [SerializeField] ResultManager resultManager = default!;
 
-   
-    public bool isClear = false, isDefeat = false;
+    public bool isClear = false, isDefeat = false, isInvincible = false; //無敵時間中かどうか
+
+    private int currentCount = 0;
 
     //private MainGameManager instance;
 
@@ -40,29 +42,42 @@ public class MainGameManager : MonoBehaviour
 
         if (isDefeat)
         {
-
+            
             Debug.Log("isDefeat = " + isDefeat);
             Defeat();
             isDefeat = false;
           
         }
     }
+    public void Miss()
+    {
+        if (currentCount >= missCount) return;
+
+        InOrder(currentCount);
+        //GameObject c = other.GetComponent<GameObject>();     
+
+        currentCount++;       
+    }
 
     public void InOrder(int i)
     {
-        blinkingScript.StartCoroutine(blinkingScript.DamageIndication(i));
-      
+        blinkingScript.StartCoroutine(blinkingScript.DamageIndication(i));      
     }
 
     public void Defeat()
     {
-        _fadeAndSceneMove.FadeStart();
-   
+        _fadeAndSceneMove.FadeStart();   
     }
 
     public void Clear(int life)
     {
-      
+        if (blinkingScript.life == 3)
+        {
+            resultManager.NoDmgBonus(); //ライフが３残ってたらノーダメボーナス
+        }          
+
+        _fadeAndSceneMove.FadeStart();
+
     }
 
     //void ActiveSceneChanged(Scene thisScene, Scene nextScene)
