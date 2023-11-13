@@ -99,6 +99,7 @@ public class EnemyScript : MonoBehaviour
             NavMeshAgent navMeshAgent = GetComponent<NavMeshAgent>();
             navMeshAgent.enabled = false;
             gameObject.AddComponent<Rigidbody>();
+  
 
             gameObject.tag = "DarumaBall";
 

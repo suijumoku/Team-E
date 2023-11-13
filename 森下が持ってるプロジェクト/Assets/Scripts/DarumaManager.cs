@@ -6,12 +6,11 @@ public class DarumaManager : MonoBehaviour
     [SerializeField] GameObject daruma = default!;
     
     private NavMeshAgent navMeshAgent;
-    private EnemyScript enemyScript;
+   private EnemyScript enemyScript;
 
     void Awake()
     {
         navMeshAgent = daruma.GetComponent<NavMeshAgent>();
-        //daruma.AddComponent<Rigidbody>();
         navMeshAgent.enabled = false;
         enemyScript = daruma.GetComponent<EnemyScript>();
         enemyScript.enabled = false;
