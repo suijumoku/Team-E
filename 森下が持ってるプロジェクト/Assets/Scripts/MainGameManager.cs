@@ -38,7 +38,7 @@ public class MainGameManager : MonoBehaviour
 
        // Time.timeScale = 1.0f;
         
-     isDefeat = false;
+        isDefeat = false;
         timeArray = new int[3] { 0, 0, 0 };
     }
 

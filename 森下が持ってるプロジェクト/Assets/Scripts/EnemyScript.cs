@@ -10,7 +10,7 @@ public class EnemyScript : MonoBehaviour
     [SerializeField] float detectDistance;
 
     //  [SerializeField] ResultManager resultManager = default!;
-    // [SerializeField] PlayerController playerController = default!;
+     [SerializeField] PlayerController _playerController = default!;
 
     public Transform[] points;
     private int destPoint = 0;
@@ -18,6 +18,7 @@ public class EnemyScript : MonoBehaviour
     bool IsDetected = false;
 
     GameObject player_ = default!;
+    GameObject obj = default;
 
     void Awake()
     {
@@ -90,10 +91,15 @@ public class EnemyScript : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
+        obj = GameObject.Find("Player");
+        _playerController = obj.GetComponent<PlayerController>();   //フラグの情報を更新
+        Debug.Log("isAttack = " + _playerController.isAttack);
+        Debug.Log("isHit = " + _playerController.isHit);
         //小槌に当たった時
-        if (collision.gameObject.tag == "Hammer")
+        if (collision.gameObject.tag == "Hammer" && _playerController.isAttack == true && _playerController.isHit == false)
         {
             //親子関係解除
+          
             transform.DetachChildren();
 
             NavMeshAgent navMeshAgent = GetComponent<NavMeshAgent>();

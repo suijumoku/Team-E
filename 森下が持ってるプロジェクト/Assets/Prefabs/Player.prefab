@@ -682,7 +682,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isAttack: 0
-  isHit: 1
+  isHit: 0
   walkSpeed: 6
   gravityPower: 0
   Attack_Finish_Time: 1.5

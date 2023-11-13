@@ -32,7 +32,7 @@ public class OutScript : MonoBehaviour
         {
              _MainGameManager.Miss();  //ƒ‰ƒCƒt0
                        
-            player.transform.localPosition = respawnP.transform.localPosition;              
+            player.transform.position = respawnP.transform.position;              
             
         }
     }

@@ -46,6 +46,6 @@ public class SpownenemyScript : MonoBehaviour
             time = 0f;
         }
         time = time + Time.deltaTime;
-        Debug.Log(time);
+        //Debug.Log(time);
     }
 }

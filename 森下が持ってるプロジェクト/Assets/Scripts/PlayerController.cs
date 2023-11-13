@@ -97,8 +97,7 @@ public class PlayerController : MonoBehaviour
             {
                 isAttack = false;
                 isHit = false;
-            }
-              
+            }             
                 
         }       
 
@@ -148,7 +147,7 @@ public class PlayerController : MonoBehaviour
             GameManager.instance.PlaySE(attack_true_S);         //仮 当たったかどうかで音変えると思われる
             isAttack = true;
             motionTime = 0.0f;
-            //Debug.Log("isAttack = " + isAttack);
+            Debug.Log("isAttack = " + isAttack);
             //攻撃モーションへの遷移
             _ResultManager.NormalHit(); //デバッグ用
         }
