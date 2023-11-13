@@ -48,7 +48,7 @@ public class MainGameManager : MonoBehaviour
 
         floarTime =  Mathf.Floor(time);   //切り捨て
 
-        Debug.Log("floarTime" + floarTime);
+        //Debug.Log("floarTime" + floarTime);
 
         if (floarTime - beforeTime >= 1.0f) //1フレーム前の時間から変化していたら(1秒経過したら)繰り上げ処理
         {

@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7745321812550036990
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6132684847664672253}
+  - component: {fileID: 7223998160688599974}
+  m_Layer: 0
+  m_Name: ResultManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6132684847664672253
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7745321812550036990}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 8.184212, y: -1.3229629, z: -1.8543385}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7223998160688599974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7745321812550036990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6924cf16da43b84da74c39e7c9cdf66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreImg:
+  - {fileID: 0}
+  - {fileID: 0}
+  bossScoreImg: []
+  kidScoreImg: []
+  noDmgImg: {fileID: 0}
+  Numbers:
+  - {fileID: 21300000, guid: 800eb8bf5af49a24bb322a5f4abd8343, type: 3}
+  - {fileID: 21300000, guid: bdcbf6c162c5f0e489095fa4829fd8f2, type: 3}
+  - {fileID: 21300000, guid: 259b3e4f77bc34748a4808733acb74c7, type: 3}
+  - {fileID: 21300000, guid: bd2f23d9f528283489cd4a1534df8658, type: 3}
+  - {fileID: 21300000, guid: 4775b0a4c28f82844b90a3da4eb841c2, type: 3}
+  - {fileID: 21300000, guid: e81048f6c611a96428eb214560b6c29f, type: 3}
+  - {fileID: 21300000, guid: fecced71b530da445b1390b26725b4d6, type: 3}
+  - {fileID: 21300000, guid: 4ec6693c2f6506548b246ac8a8b0dd9a, type: 3}
+  - {fileID: 21300000, guid: f4667bcabde5fc544b7f12feedf08daf, type: 3}
+  - {fileID: 21300000, guid: 6040273e32f0efc4c8b644cb135d97d4, type: 3}
+  results: []
+  indicateS: []
+  resultSounds: []
+  _ScoreUI: {fileID: 0}
+  OnLoadScene: 0
+  hit: 1
+  doubleHit: 3
+  beatBoss: 4
+  noDamage: 16
+  Bonus_Standard_Time: 60
+  timeBonus: 20
+  duration: 0.5
+  num: 0

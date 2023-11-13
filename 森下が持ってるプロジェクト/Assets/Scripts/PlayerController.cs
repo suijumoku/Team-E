@@ -18,7 +18,8 @@ public class PlayerController : MonoBehaviour
 
      private bool isJump = false;           //ジャンプ中かどうか
      private bool isFall = false;
-     private bool isAttack = false;
+     public bool isAttack = false;
+     public bool isHit = false;
      private bool canMove = true;
 
     [SerializeField] private float walkSpeed = 4f;             //移動スピード   
@@ -71,45 +72,41 @@ public class PlayerController : MonoBehaviour
         stateInfo = animator.GetCurrentAnimatorStateInfo(0);
 
         inputHorizontal = UnityEngine.Input.GetAxisRaw("Horizontal");   //入力値の格納
-        inputVertical = UnityEngine.Input.GetAxisRaw("Vertical");        
-    
+        inputVertical = UnityEngine.Input.GetAxisRaw("Vertical");
 
-        if (stateInfo.IsName("Idle") || 
-            stateInfo.IsName("Running")) 
-        {            
 
-            Jump();     
-            Attack();
-            if (inputHorizontal != 0 || inputVertical != 0)
-            {
-                //入力が0じゃなければ移動モーションに遷移
-                time += Time.deltaTime;    
-            }
-            else
-            {
-                time = 0f;               
-            }
-            animator.SetFloat("time", time);
+        Jump();
+        Attack();
+        if (inputHorizontal != 0 || inputVertical != 0)
+        {
+            //入力が0じゃなければ移動モーションに遷移
+            time += Time.deltaTime;
         }
+        else
+        {
+            time = 0f;
+        }
+        animator.SetFloat("time", time);
+
 
         if (isAttack)
         {
             motionTime += Time.deltaTime;
-            checkHit();
+           // checkHit();
             if (motionTime >= Attack_Finish_Time)
+            {
                 isAttack = false;
+                isHit = false;
+            }
+              
+                
         }       
 
          
     }
     private void FixedUpdate()
-    {
-
-        if (stateInfo.IsName("Jumping") ||
-            stateInfo.IsName("Falling"))
-            Gravity();
-
-        if (stateInfo.IsName("Running"))
+    {              
+            Gravity();   
             Move();             
     }  
 
@@ -160,7 +157,7 @@ public class PlayerController : MonoBehaviour
 
     public void fall()
     {
-        animator.SetTrigger("toFalling");
+   
         GameManager.instance.PlaySE(fallS);
         isFall = true;    
         canMove = false;
@@ -233,8 +230,7 @@ public class PlayerController : MonoBehaviour
         if (isJump == true || isFall == true || isAttack == true) return;   //落下中と攻撃中はジャンプをさせない
 
         if ( UnityEngine.Input.GetButtonDown("Jump"))
-        {
-            animator.SetTrigger("toJumping");
+        {         
             GameManager.instance.PlaySE(jumpS);
             m_Rigidbody.AddForce(transform.up * jumpPower, ForceMode.Impulse);
             isJump = true;

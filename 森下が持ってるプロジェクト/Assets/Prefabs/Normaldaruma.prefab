@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 6500958143944215583}
   m_Layer: 0
   m_Name: Normaldaruma3
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
@@ -107,7 +107,6 @@ MonoBehaviour:
   patrolMaterial: {fileID: 2100000, guid: dcce71b6c0caafa42a8908fae584c7f7, type: 2}
   chaseMaterial: {fileID: 2100000, guid: 1217dde8a82cbcd49ac9bbf1989fb8b2, type: 2}
   detectDistance: 3
-  resultManager: {fileID: 1416640616976554346, guid: 24358bbf74968454bbea21ca52b22801, type: 3}
   points:
   - {fileID: 4627859967584425738, guid: c7e8282d7b968e047a409233f4d68387, type: 3}
   - {fileID: 809630217706998333, guid: cf0252c7e55af5441aadd944d863ac0f, type: 3}
@@ -207,7 +206,7 @@ GameObject:
   - component: {fileID: 354244371404884771}
   m_Layer: 0
   m_Name: head
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
@@ -304,7 +303,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resultManager: {fileID: 1416640616976554346, guid: 24358bbf74968454bbea21ca52b22801, type: 3}
-  spownenemyScript: {fileID: 0}
 --- !u!54 &6159676266227236530
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -319,7 +317,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 90
+  m_Constraints: 122
   m_CollisionDetection: 0
 --- !u!114 &747847150948729499
 MonoBehaviour:
@@ -338,7 +336,6 @@ MonoBehaviour:
   patrolMaterial: {fileID: 0}
   chaseMaterial: {fileID: 0}
   detectDistance: 0
-  resultManager: {fileID: 0}
   points:
   - {fileID: 4627859967584425738, guid: c7e8282d7b968e047a409233f4d68387, type: 3}
   - {fileID: 809630217706998333, guid: cf0252c7e55af5441aadd944d863ac0f, type: 3}
@@ -407,8 +404,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6500958145341080810}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.153383, y: 0.49999976, z: 5.54405}
-  m_LocalScale: {x: 2, y: 0.5, z: 2}
+  m_LocalPosition: {x: 6.1534, y: 0.10463, z: 5.54405}
+  m_LocalScale: {x: 4, y: 1, z: 4}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6500958145679016329}
@@ -482,7 +479,6 @@ MonoBehaviour:
   patrolMaterial: {fileID: 2100000, guid: dcce71b6c0caafa42a8908fae584c7f7, type: 2}
   chaseMaterial: {fileID: 2100000, guid: 1217dde8a82cbcd49ac9bbf1989fb8b2, type: 2}
   detectDistance: 3
-  resultManager: {fileID: 1416640616976554346, guid: 24358bbf74968454bbea21ca52b22801, type: 3}
   points:
   - {fileID: 4627859967584425738, guid: c7e8282d7b968e047a409233f4d68387, type: 3}
   - {fileID: 809630217706998333, guid: cf0252c7e55af5441aadd944d863ac0f, type: 3}
@@ -553,7 +549,7 @@ GameObject:
   - component: {fileID: 6500958145679016328}
   m_Layer: 0
   m_Name: Normaldaruma2
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 8
@@ -641,7 +637,6 @@ MonoBehaviour:
   patrolMaterial: {fileID: 2100000, guid: dcce71b6c0caafa42a8908fae584c7f7, type: 2}
   chaseMaterial: {fileID: 2100000, guid: 1217dde8a82cbcd49ac9bbf1989fb8b2, type: 2}
   detectDistance: 3
-  resultManager: {fileID: 1416640616976554346, guid: 24358bbf74968454bbea21ca52b22801, type: 3}
   points:
   - {fileID: 4627859967584425738, guid: c7e8282d7b968e047a409233f4d68387, type: 3}
   - {fileID: 809630217706998333, guid: cf0252c7e55af5441aadd944d863ac0f, type: 3}

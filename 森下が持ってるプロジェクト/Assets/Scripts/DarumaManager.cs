@@ -40,7 +40,7 @@ public class DarumaManager : MonoBehaviour
                 gameObject.tag = "Enemy";
 
 
-               
+        
             }
         }
     }

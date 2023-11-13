@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class AddForceDarumaScript : MonoBehaviour
 {
+
+  //  [SerializeField] PlayerController playerController = default!;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,22 +18,10 @@ public class AddForceDarumaScript : MonoBehaviour
 
     }
 
-    private void OnCollisionEnter(Collision collision)
+  
+
+    public void force()
     {
-        if (collision.gameObject.tag == "Ball")
-        {
-            float boundsPower = 20.0f;
 
-            // 衝突位置を取得する
-            Vector3 hitPos = collision.contacts[0].point;
-
-            // 衝突位置から自機へ向かうベクトルを求める
-            Vector3 boundVec = this.transform.position - hitPos;
-
-            // 逆方向にはねる
-            Vector3 forceDir = boundsPower * boundVec.normalized;
-            this.GetComponent<Rigidbody>().AddForce(forceDir, ForceMode.Impulse);
-
-        }
     }
 }
