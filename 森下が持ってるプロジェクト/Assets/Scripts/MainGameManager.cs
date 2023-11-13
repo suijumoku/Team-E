@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainGameManager : MonoBehaviour
 {
+    [Header("ŠÔ(3Œ…)")]
+    [SerializeField] Image[] timeImg;
 
     [SerializeField] FadeAndSceneMove _fadeAndSceneMove;
 
@@ -14,19 +17,20 @@ public class MainGameManager : MonoBehaviour
 
     public bool isClear = false, isDefeat = false, isInvincible = false; //–³“GŠÔ’†‚©‚Ç‚¤‚©
 
-    private int currentCount = 0;
+    int[] timeArray;
+    int currentCount = 0;
+    float time = 0f, beforeTime, floarTime;
+   //private MainGameManager instance;
 
-    //private MainGameManager instance;
+   //public void Awake()
+   //{
+   //    if (instance == null)
+   //    {
+   //        instance = this;
+   //    }
+   //}
 
-    //public void Awake()
-    //{
-    //    if (instance == null)
-    //    {
-    //        instance = this;
-    //    }
-    //}
-
-    void Start()
+   void Start()
     {
         //SceneManager.activeSceneChanged += ActiveSceneChanged;
         //_PlayerController = GetComponent<PlayerController>();
@@ -35,19 +39,53 @@ public class MainGameManager : MonoBehaviour
        // Time.timeScale = 1.0f;
         
         isClear = false; isDefeat = false;
+        timeArray = new int[3] { 0, 0, 0 };
     }
 
     private void Update()
-    {       
+    {
+        time += Time.deltaTime;
+
+        floarTime =  Mathf.Floor(time);   //Ø‚èÌ‚Ä
+
+        Debug.Log("floarTime" + floarTime);
+
+        if (floarTime - beforeTime >= 1.0f) //1ƒtƒŒ[ƒ€‘O‚ÌŠÔ‚©‚ç•Ï‰»‚µ‚Ä‚¢‚½‚ç(1•bŒo‰ß‚µ‚½‚ç)ŒJ‚èã‚°ˆ—
+        {
+          
+           
+            for (int i = 0; i < floarTime - beforeTime; i++)
+            {
+                timeArray[0]++;
+                if (timeArray[0] >= 10)
+                {
+                    timeArray[1]++;        //ŒJ‚èã‚°ˆ—
+                    timeArray[0] = 0;
+                }
+                if (timeArray[1] >= 10)
+                {
+                    timeArray[2]++;
+                    timeArray[1] = 0;
+                }
+            }
+        }       
+
+        for (int i = 0; i < timeImg.Length; i++)
+        {
+            timeImg[i].sprite = resultManager.Numbers[timeArray[i]];   
+
+            timeImg[i].enabled = true;           
+        }
+   
 
         if (isDefeat)
-        {
-            
-            Debug.Log("isDefeat = " + isDefeat);
+        {            
+          //  Debug.Log("isDefeat = " + isDefeat);
             Defeat();
-            isDefeat = false;
-          
+            isDefeat = false;          
         }
+        beforeTime = floarTime;
+
     }
     public void Miss()
     {
