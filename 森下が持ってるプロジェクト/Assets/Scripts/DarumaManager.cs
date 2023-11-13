@@ -7,7 +7,7 @@ public class DarumaManager : MonoBehaviour
     
     private NavMeshAgent navMeshAgent;
     private EnemyScript enemyScript;
-    private AddForceDarumaScript addForceDarumaScript;
+
     void Awake()
     {
         navMeshAgent = daruma.GetComponent<NavMeshAgent>();
