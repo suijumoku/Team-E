@@ -21,7 +21,8 @@ public class BlinkingScript : MonoBehaviour
 
     [SerializeField] MainGameManager _MainGameManager = default!;
 
-    public int life { get; protected set; }
+    public int life = 3;
+  
 
     void Awake()
     {

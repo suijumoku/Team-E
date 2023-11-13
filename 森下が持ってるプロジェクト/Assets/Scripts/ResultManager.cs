@@ -36,11 +36,13 @@ public class ResultManager : MonoBehaviour
     [SerializeField] float duration = 0.5f;
 
     //const int score = 0, boss = 1, kid = 2;
-    const int tensPlace = 0, onePlace = 1;
+    const int tensPlace = 0, onePlace = 1, clearValue = 3;  //3体倒すとクリア
   
     int[] scoreArray, Boss_Time_Array, kidArray;
-    int calcScore = 0;
+    int calcScore = 0, beatValue = 0;
     bool isResult = true, isNoDmg = false;
+    public bool isClear = false;
+
 
     //private ResultManager instance;
 
@@ -92,6 +94,11 @@ public class ResultManager : MonoBehaviour
     }
     public void BeatDaruma()
     {
+        beatValue++;
+        if (beatValue > clearValue)
+        {
+            isClear = true;
+        }
         kidArray[0]++;
         if (kidArray[0] >= 10)
         {
@@ -185,7 +192,7 @@ public class ResultManager : MonoBehaviour
         if (isNoDmg == true)        //ノーダメだったらチェック入れる
         {
             yield return new WaitForSeconds(duration);
-            GameManager.instance.PlaySE(indicateS[1]);
+            GameManager.instance.PlaySE(indicateS[0]);
             noDmgImg.enabled = true;
         }
         yield return new WaitForSeconds(duration * 1.5f);

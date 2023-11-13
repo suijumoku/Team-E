@@ -15,7 +15,7 @@ public class MainGameManager : MonoBehaviour
     [SerializeField] private BlinkingScript blinkingScript = default!;
     [SerializeField] ResultManager resultManager = default!;
 
-    public bool isClear = false, isDefeat = false, isInvincible = false; //–³“GŠÔ’†‚©‚Ç‚¤‚©
+    public bool  isDefeat = false, isInvincible = false; //–³“GŠÔ’†‚©‚Ç‚¤‚©
 
     int[] timeArray;
     int currentCount = 0;
@@ -38,12 +38,16 @@ public class MainGameManager : MonoBehaviour
 
        // Time.timeScale = 1.0f;
         
-        isClear = false; isDefeat = false;
+     isDefeat = false;
         timeArray = new int[3] { 0, 0, 0 };
     }
 
     private void Update()
     {
+        if (resultManager.isClear == true) 
+        {
+            Clear();
+        }
         time += Time.deltaTime;
 
         floarTime =  Mathf.Floor(time);   //Ø‚èÌ‚Ä
@@ -107,7 +111,7 @@ public class MainGameManager : MonoBehaviour
         _fadeAndSceneMove.FadeStart();   
     }
 
-    public void Clear(int life)
+    public void Clear()
     {
         if (blinkingScript.life == 3)
         {
