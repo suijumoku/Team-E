@@ -8,11 +8,14 @@ public class DarumaManager : MonoBehaviour
     [SerializeField] GameObject daruma = default!;
     
     private NavMeshAgent navMeshAgent;
+    private EnemyScript enemyScript;
     void Awake()
     {
         navMeshAgent = daruma.GetComponent<NavMeshAgent>();
         daruma.GetComponent<Rigidbody>();
         navMeshAgent.enabled = false;
+        enemyScript = daruma.GetComponent<EnemyScript>();
+        enemyScript.enabled = false;
     }
 
     // Update is called once per frame
@@ -33,6 +36,7 @@ public class DarumaManager : MonoBehaviour
                 Rigidbody rb = GetComponent<Rigidbody>();
                 Destroy(rb);
                 navMeshAgent.enabled = true;
+                enemyScript.enabled = true;
                 gameObject.tag = "Enemy";
 
 
