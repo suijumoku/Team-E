@@ -6,7 +6,7 @@ public class DarumaHeadScript : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    [SerializeField] ResultManager resultManager;
+  //  [SerializeField] ResultManager resultManager;
     void Start()
     {
         
@@ -21,9 +21,9 @@ public class DarumaHeadScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "Ground")
         {
-            Debug.Log("b");
+            //Debug.Log("b");
             Destroy(gameObject);
-            resultManager.BeatDaruma();
+          //  resultManager.BeatDaruma();
         }
     }
 }

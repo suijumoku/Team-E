@@ -9,7 +9,7 @@ public class EnemyScript : MonoBehaviour
     [SerializeField] Material chaseMaterial;
     [SerializeField] float detectDistance;
 
-     [SerializeField] ResultManager resultManager = default!;
+    // [SerializeField] ResultManager resultManager = default!;
     [SerializeField] PlayerController _playerController = default!;
 
     public Transform[] points;
@@ -111,7 +111,7 @@ public class EnemyScript : MonoBehaviour
 
             Force(collision);
 
-            resultManager.NormalHit();
+         //   resultManager.NormalHit();
 
         }
 
@@ -124,7 +124,7 @@ public class EnemyScript : MonoBehaviour
                 transform.DetachChildren();
                 Destroy(gameObject);
 
-                resultManager.DoubleHit();
+             //   resultManager.DoubleHit();
             }
         }
         //”ò‚ñ‚Å‚«‚½’B–‚ÌÁ‹
@@ -140,7 +140,7 @@ public class EnemyScript : MonoBehaviour
 
     void Force(Collision collision)
     {
-        Debug.Log("a");
+       // Debug.Log("a");
         float boundsPower = 15.0f;
 
         // Õ“ËˆÊ’u‚ğæ“¾‚·‚é

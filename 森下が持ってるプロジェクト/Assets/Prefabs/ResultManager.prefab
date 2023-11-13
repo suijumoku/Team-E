@@ -45,8 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreImg:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 5209244485894169536, guid: c373073ca2516d948b2c566d1eb1140a, type: 3}
+  - {fileID: 780891052169411987, guid: e1e628bbf2b11d642929390b05915f77, type: 3}
   bossScoreImg: []
   kidScoreImg: []
   noDmgImg: {fileID: 0}
@@ -64,7 +64,7 @@ MonoBehaviour:
   results: []
   indicateS: []
   resultSounds: []
-  _ScoreUI: {fileID: 0}
+  _ScoreUI: {fileID: 6299017474093843704, guid: 96abf884948d4ae4d8dcdee081dc320c, type: 3}
   OnLoadScene: 0
   hit: 1
   doubleHit: 3
@@ -73,4 +73,4 @@ MonoBehaviour:
   Bonus_Standard_Time: 60
   timeBonus: 20
   duration: 0.5
-  num: 0
+  isClear: 0

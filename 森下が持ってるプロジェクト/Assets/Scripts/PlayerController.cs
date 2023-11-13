@@ -28,7 +28,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float triggerTiming = 0.5f;         //トリガーがどこまで押し込まれたら反応するか 要調整
     [SerializeField] float smoothTime = 0.3f;                //進行方向への回転にかかる時間
     [SerializeField] private float jumpPower = 5f;             //ジャンプのつよさ
-   
+
+    [SerializeField] Collider boxCollider = default!;
     [SerializeField] GameObject CinemachineCameraTarget;    //カメラのターゲットを別オブジェクトにすることで頭の部分を追尾
 
     [SerializeField]  AudioClip jumpS = default!;
@@ -63,12 +64,13 @@ public class PlayerController : MonoBehaviour
     void Start()
     {             
         m_Rigidbody = GetComponent<Rigidbody>();     
-        animator = GetComponent<Animator>();
-       
+        animator = GetComponent<Animator>();       
     }
 
     void Update()
     {
+        
+         
         stateInfo = animator.GetCurrentAnimatorStateInfo(0);
 
         inputHorizontal = UnityEngine.Input.GetAxisRaw("Horizontal");   //入力値の格納
@@ -95,6 +97,7 @@ public class PlayerController : MonoBehaviour
            // checkHit();
             if (motionTime >= Attack_Finish_Time)
             {
+                boxCollider.enabled = false;
                 isAttack = false;
                 isHit = false;
             }             
@@ -146,10 +149,11 @@ public class PlayerController : MonoBehaviour
             animator.SetTrigger("toAttacking");
             GameManager.instance.PlaySE(attack_true_S);         //仮 当たったかどうかで音変えると思われる
             isAttack = true;
+            boxCollider.enabled = true;
             motionTime = 0.0f;
-            Debug.Log("isAttack = " + isAttack);
+           // Debug.Log("isAttack = " + isAttack);
             //攻撃モーションへの遷移
-            _ResultManager.NormalHit(); //デバッグ用
+            //_ResultManager.NormalHit(); //デバッグ用
         }
      
     }

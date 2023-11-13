@@ -44,6 +44,16 @@ public class MainGameManager : MonoBehaviour
 
     private void Update()
     {
+        if (UnityEngine.Input.GetKeyDown(KeyCode.P))    //デバッグ用、Pでリザルトへ
+        {
+            Defeat();
+        }
+
+        if(UnityEngine.Input.GetKeyDown(KeyCode.L)) //Lでリロード
+        {
+            SceneManager.LoadScene("Stage_syokyu");
+        }
+
         if (resultManager.isClear == true) 
         {
             Clear();
