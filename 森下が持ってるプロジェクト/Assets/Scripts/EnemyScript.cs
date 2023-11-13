@@ -9,8 +9,8 @@ public class EnemyScript : MonoBehaviour
     [SerializeField] Material chaseMaterial;
     [SerializeField] float detectDistance;
 
-    //  [SerializeField] ResultManager resultManager = default!;
-     [SerializeField] PlayerController _playerController = default!;
+     [SerializeField] ResultManager resultManager = default!;
+    [SerializeField] PlayerController _playerController = default!;
 
     public Transform[] points;
     private int destPoint = 0;
@@ -98,20 +98,20 @@ public class EnemyScript : MonoBehaviour
         //¬’Æ‚É“–‚½‚Á‚½
         if (collision.gameObject.tag == "Hammer" && _playerController.isAttack == true && _playerController.isHit == false)
         {
+
             //eqŠÖŒW‰ğœ
-          
             transform.DetachChildren();
 
             NavMeshAgent navMeshAgent = GetComponent<NavMeshAgent>();
             navMeshAgent.enabled = false;
             gameObject.AddComponent<Rigidbody>();
-  
+
 
             gameObject.tag = "DarumaBall";
 
             Force(collision);
 
-            //resultManager.NormalHit();
+            resultManager.NormalHit();
 
         }
 
@@ -124,7 +124,7 @@ public class EnemyScript : MonoBehaviour
                 transform.DetachChildren();
                 Destroy(gameObject);
 
-                //resultManager.DoubleHit();
+                resultManager.DoubleHit();
             }
         }
         //”ò‚ñ‚Å‚«‚½’B–‚ÌÁ‹
