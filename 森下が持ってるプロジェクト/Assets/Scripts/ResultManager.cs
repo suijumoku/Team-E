@@ -10,9 +10,11 @@ public class ResultManager : MonoBehaviour
     [SerializeField] Image[] bossScoreImg;
     [Header("子だるまスコア")]
     [SerializeField] Image[] kidScoreImg;
+    [Header("無傷")]
+    [SerializeField] Image noDmgImg;
 
     [Header("スコアの数字")]
-    [SerializeField] Sprite[] Numbers;
+    [SerializeField] public Sprite[] Numbers;
     [Header("リザルト画像たち")]
     [SerializeField] Image[] results;
     [Header("表示サウンド")]
@@ -38,7 +40,8 @@ public class ResultManager : MonoBehaviour
   
     int[] scoreArray, Boss_Time_Array, kidArray;
     int calcScore = 0;
-    bool isResult = true;
+    bool isResult = true, isNoDmg = false;
+
     //private ResultManager instance;
 
 
@@ -121,6 +124,7 @@ public class ResultManager : MonoBehaviour
     public void NoDmgBonus() //多分PlayerControllerで呼ぶ->MainGameManager
     {
         calcScore += noDamage;
+        isNoDmg = true;
     }
 
     public void Assign(bool isResult)
@@ -157,16 +161,18 @@ public class ResultManager : MonoBehaviour
     }
     private IEnumerator ResultCorutine()
     {
-        //デバッグ用↓
-        NormalHit();
-        DoubleHit();
-        BeatBoss(10.2f);
-        BeatDaruma();   //1+3+4+20+16, 10秒、01体 良判定
+        
+        //NormalHit();
+        //DoubleHit();
+        //BeatBoss(10.2f);
+        //BeatDaruma();   //1+3+4+20+16, 10秒、01体 良判定
         calcScore += noDamage;
         calcScore = num;
+        isNoDmg = true;
+        //デバッグ用↑
 
         Assign(isResult);
-        yield return new WaitForSeconds(duration);
+        yield return new WaitForSeconds(duration);  //始まると同時に表示されるのを防ぐために少し間を空ける
 
         IndicateScore(scoreImg, indicateS[0]);
         yield return new WaitForSeconds(duration);
@@ -174,8 +180,14 @@ public class ResultManager : MonoBehaviour
         IndicateScore(bossScoreImg, indicateS[0]);
         yield return new WaitForSeconds(duration);
 
-        IndicateScore(kidScoreImg, indicateS[0]);      
+        IndicateScore(kidScoreImg, indicateS[0]);
 
+        if (isNoDmg == true)        //ノーダメだったらチェック入れる
+        {
+            yield return new WaitForSeconds(duration);
+            GameManager.instance.PlaySE(indicateS[1]);
+            noDmgImg.enabled = true;
+        }
         yield return new WaitForSeconds(duration * 1.5f);
         GameManager.instance.PlaySE(indicateS[1]);
         // result.enabled = true;       
