@@ -7,15 +7,15 @@ public class BGMManager : MonoBehaviour
     [Header("シーン開始時のBGM")][SerializeField] AudioClip StartBGM;
 
     [Header("バトルBGM")][SerializeField] AudioClip NormalBattleBGM;
-    [Header("自動遷移させる")][SerializeField] bool TransitionNormalBattleBGM = false;
+    [Header("GameManagerを参照して自動遷移させる")][SerializeField] bool TransitionNormalBattleBGM = false;
     private bool DoNormalBattleBGMPlay = false;
 
     [Header("ボスバトルBGM")][SerializeField] AudioClip BossBattleBGM;
-    [Header("自動遷移させる")][SerializeField] bool TransitionBossBattleBGM;
+    [Header("GameManagerを参照して自動遷移させる")][SerializeField] bool TransitionBossBattleBGM;
     private bool DoBossBattleBGMPlay = false;
 
     [Header("リザルトBGM")][SerializeField] AudioClip ResultBGM;
-    [Header("自動遷移させる")][SerializeField] bool TransitionResultBGM;
+    [Header("GameManagerを参照して自動遷移させる")][SerializeField] bool TransitionResultBGM;
     private bool DoResultBGMPlay = false;
 
 
