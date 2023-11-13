@@ -24,11 +24,10 @@ public class SpownenemyScript : MonoBehaviour
         // 前フレームからの時間を加算していく
 
         // 約1秒置きにランダムに生成されるようにする。
-        if (time == 0f)
+        if (time == 0f || time > 10f)
         {
             for (int i = 0; i < 2; i++)
             {
-                a++;
                 // rangeAとrangeBのx座標の範囲内でランダムな数値を作成
                 float x = Random.Range(rangeA.position.x, rangeB.position.x);
                 // rangeAとrangeBのy座標の範囲内でランダムな数値を作成
@@ -36,17 +35,17 @@ public class SpownenemyScript : MonoBehaviour
                 // rangeAとrangeBのz座標の範囲内でランダムな数値を作成
                 float z = Random.Range(rangeA.position.z, rangeB.position.z);
 
-                if (a < 11)
+                if (a < 3)
                 {
                     // GameObjectを上記で決まったランダムな場所に生成
                     Instantiate(createPrefab, new Vector3(x, y, z), createPrefab.transform.rotation);
                 }
-
+                a++;
             }
 
             time = 0f;
         }
         time = time + Time.deltaTime;
-        //Debug.Log(time);
+        Debug.Log(time);
     }
 }
