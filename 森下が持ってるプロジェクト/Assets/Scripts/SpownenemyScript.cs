@@ -20,7 +20,7 @@ public class SpownenemyScript : MonoBehaviour
     // Œo‰ßŽžŠÔ
     private float time = 0f;
 
-   public void Hit()
+    public void Hit()
     {
         a = a - 1;
     }
