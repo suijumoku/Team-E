@@ -7,7 +7,6 @@ public class DarumaHeadScript : MonoBehaviour
     // Start is called before the first frame update
 
     [SerializeField] ResultManager resultManager;
-   //[SerializeField] SpownenemyScript spownenemyScript;
     void Start()
     {
         
