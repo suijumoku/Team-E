@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
 public class SpownenemyScript : MonoBehaviour
 {
@@ -20,10 +17,6 @@ public class SpownenemyScript : MonoBehaviour
     // 経過時間
     private float time = 0f;
 
-    public void Hit()
-    {
-        a = a - 1;
-    }
 
     // Update is called once per frame
     void Update()
@@ -31,7 +24,7 @@ public class SpownenemyScript : MonoBehaviour
         // 前フレームからの時間を加算していく
 
         // 約1秒置きにランダムに生成されるようにする。
-        if (time == 0f || time > 10f)
+        if (time == 0f)
         {
             for (int i = 0; i < 2; i++)
             {

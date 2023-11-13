@@ -21,7 +21,8 @@ public class DarumaHeadScript : MonoBehaviour
     {
         if (collision.gameObject.tag == "Ground")
         {
-            resultManager.BeatDaruma();
+            Debug.Log("b");
+            //resultManager.BeatDaruma();
             Destroy(gameObject);
         }
     }

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -9,10 +7,11 @@ public class DarumaManager : MonoBehaviour
     
     private NavMeshAgent navMeshAgent;
     private EnemyScript enemyScript;
+    private AddForceDarumaScript addForceDarumaScript;
     void Awake()
     {
         navMeshAgent = daruma.GetComponent<NavMeshAgent>();
-        daruma.GetComponent<Rigidbody>();
+        //daruma.AddComponent<Rigidbody>();
         navMeshAgent.enabled = false;
         enemyScript = daruma.GetComponent<EnemyScript>();
         enemyScript.enabled = false;
@@ -38,9 +37,6 @@ public class DarumaManager : MonoBehaviour
                 navMeshAgent.enabled = true;
                 enemyScript.enabled = true;
                 gameObject.tag = "Enemy";
-
-
-        
             }
         }
     }

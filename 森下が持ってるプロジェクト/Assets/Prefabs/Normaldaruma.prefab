@@ -102,7 +102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b424c6adeac0b8429a26797f0e213cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 6234103793135179134, guid: a1eff8b72210ce04387828b21033a6b1, type: 3}
+  player: {fileID: 3048737066151750960, guid: 18a07351b89fe5445ab76a3699ec1394, type: 3}
   child: {fileID: 6500958144201429786}
   patrolMaterial: {fileID: 2100000, guid: dcce71b6c0caafa42a8908fae584c7f7, type: 2}
   chaseMaterial: {fileID: 2100000, guid: 1217dde8a82cbcd49ac9bbf1989fb8b2, type: 2}
@@ -110,6 +110,7 @@ MonoBehaviour:
   points:
   - {fileID: 4627859967584425738, guid: c7e8282d7b968e047a409233f4d68387, type: 3}
   - {fileID: 809630217706998333, guid: cf0252c7e55af5441aadd944d863ac0f, type: 3}
+  - {fileID: 6433851107548304116, guid: 920f8cdf30690aa4296e0052f80d73a8, type: 3}
 --- !u!64 &6500958143944215587
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -331,7 +332,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b424c6adeac0b8429a26797f0e213cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 6234103793135179134, guid: a1eff8b72210ce04387828b21033a6b1, type: 3}
+  player: {fileID: 3048737066151750960, guid: 18a07351b89fe5445ab76a3699ec1394, type: 3}
   child: {fileID: 0}
   patrolMaterial: {fileID: 0}
   chaseMaterial: {fileID: 0}
@@ -339,6 +340,7 @@ MonoBehaviour:
   points:
   - {fileID: 4627859967584425738, guid: c7e8282d7b968e047a409233f4d68387, type: 3}
   - {fileID: 809630217706998333, guid: cf0252c7e55af5441aadd944d863ac0f, type: 3}
+  - {fileID: 6433851107548304116, guid: 920f8cdf30690aa4296e0052f80d73a8, type: 3}
 --- !u!195 &257751970833364999
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -474,7 +476,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b424c6adeac0b8429a26797f0e213cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 6234103793135179134, guid: a1eff8b72210ce04387828b21033a6b1, type: 3}
+  player: {fileID: 3048737066151750960, guid: 18a07351b89fe5445ab76a3699ec1394, type: 3}
   child: {fileID: 6500958145679016329}
   patrolMaterial: {fileID: 2100000, guid: dcce71b6c0caafa42a8908fae584c7f7, type: 2}
   chaseMaterial: {fileID: 2100000, guid: 1217dde8a82cbcd49ac9bbf1989fb8b2, type: 2}
@@ -482,6 +484,7 @@ MonoBehaviour:
   points:
   - {fileID: 4627859967584425738, guid: c7e8282d7b968e047a409233f4d68387, type: 3}
   - {fileID: 809630217706998333, guid: cf0252c7e55af5441aadd944d863ac0f, type: 3}
+  - {fileID: 6433851107548304116, guid: 920f8cdf30690aa4296e0052f80d73a8, type: 3}
 --- !u!195 &6500958145341080815
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -632,7 +635,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b424c6adeac0b8429a26797f0e213cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 6234103793135179134, guid: a1eff8b72210ce04387828b21033a6b1, type: 3}
+  player: {fileID: 3048737066151750960, guid: 18a07351b89fe5445ab76a3699ec1394, type: 3}
   child: {fileID: 6500958143944215580}
   patrolMaterial: {fileID: 2100000, guid: dcce71b6c0caafa42a8908fae584c7f7, type: 2}
   chaseMaterial: {fileID: 2100000, guid: 1217dde8a82cbcd49ac9bbf1989fb8b2, type: 2}
@@ -640,6 +643,7 @@ MonoBehaviour:
   points:
   - {fileID: 4627859967584425738, guid: c7e8282d7b968e047a409233f4d68387, type: 3}
   - {fileID: 809630217706998333, guid: cf0252c7e55af5441aadd944d863ac0f, type: 3}
+  - {fileID: 6433851107548304116, guid: 920f8cdf30690aa4296e0052f80d73a8, type: 3}
 --- !u!64 &6500958145679016332
 MeshCollider:
   m_ObjectHideFlags: 0
