@@ -20,11 +20,6 @@ public class SpownenemyScript : MonoBehaviour
     // Œo‰ßŽžŠÔ
     private float time = 0f;
 
-   public void Hit()
-    {
-        a = a - 1;
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -54,6 +49,6 @@ public class SpownenemyScript : MonoBehaviour
             time = 0f;
         }
         time = time + Time.deltaTime;
-        Debug.Log(time);
+        Debug.Log(a);
     }
 }
