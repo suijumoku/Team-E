@@ -21,12 +21,19 @@ public class PlayerController : MonoBehaviour
      public bool isAttack = false;
      public bool isHit = false;
      private bool canMove = true;
+     private bool onlyFirst = false;
 
-    [SerializeField] private float walkSpeed = 4f;             //移動スピード   
-    [SerializeField] float gravityPower = default!;            //落下速度の調整　-つける
+    [Header("移動スピード")]
+    [SerializeField] private float walkSpeed = 4f;
+    [Header("落下速度の調整　-つける")]
+    [SerializeField] float gravityPower = default!;
+    [Header("攻撃モーションの長さ")]
     [SerializeField] float Attack_Finish_Time = 1.5f;    //攻撃モーションの長さに応じて変える (連打とTriggerによる連続入力を防ぐため)
+    [Header("トリガーの反応タイミング")]
     [SerializeField] float triggerTiming = 0.5f;         //トリガーがどこまで押し込まれたら反応するか 要調整
+    [Header("回転時間")]
     [SerializeField] float smoothTime = 0.3f;                //進行方向への回転にかかる時間
+    [Header("ジャンプの強さ")]
     [SerializeField] private float jumpPower = 5f;             //ジャンプのつよさ
 
     [SerializeField] Collider boxCollider = default!;
@@ -64,7 +71,8 @@ public class PlayerController : MonoBehaviour
     void Start()
     {             
         m_Rigidbody = GetComponent<Rigidbody>();     
-        animator = GetComponent<Animator>();       
+        animator = GetComponent<Animator>();
+        _MainGameManager.isInvincible = false;
     }
 
     void Update()
@@ -94,14 +102,20 @@ public class PlayerController : MonoBehaviour
         if (isAttack)
         {
             motionTime += Time.deltaTime;
+
+            if (isHit && onlyFirst == false)
+            {
+                boxCollider.enabled = false;
+                onlyFirst = true;
+            }
            // checkHit();
             if (motionTime >= Attack_Finish_Time)
             {
                 boxCollider.enabled = false;
                 isAttack = false;
                 isHit = false;
-            }             
-                
+                onlyFirst = false;
+            }                             
         }       
 
          

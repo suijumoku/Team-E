@@ -106,6 +106,8 @@ public class EnemyScript : MonoBehaviour
             navMeshAgent.enabled = false;
             gameObject.AddComponent<Rigidbody>();
 
+            _playerController.isHit = true;
+         
 
             gameObject.tag = "DarumaBall";
 

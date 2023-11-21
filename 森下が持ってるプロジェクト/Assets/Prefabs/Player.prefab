@@ -641,7 +641,7 @@ Transform:
   m_GameObject: {fileID: 3048737066151750960}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.020796, y: 0.029799, z: -0.0087232}
-  m_LocalScale: {x: 0.59729147, y: 0.59729147, z: 0.59729147}
+  m_LocalScale: {x: 2.5940523, y: 2.5940523, z: 2.5940523}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3420567501280677043}
@@ -658,7 +658,7 @@ Animator:
   m_GameObject: {fileID: 3048737066151750960}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 9bf9ace108fac7f41a88871c64e3742a, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8818e136d1b4ed649a8ca1e7dc3271ed, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -684,17 +684,18 @@ MonoBehaviour:
   isAttack: 0
   isHit: 0
   walkSpeed: 6
-  gravityPower: 0
-  Attack_Finish_Time: 1.5
+  gravityPower: -4
+  Attack_Finish_Time: 0.3
   triggerTiming: 0.5
-  smoothTime: 0.2
-  jumpPower: 5
+  smoothTime: 0.1
+  jumpPower: 7
+  boxCollider: {fileID: 7077815923227102755}
   CinemachineCameraTarget: {fileID: 2958405497305988166}
   jumpS: {fileID: 8300000, guid: ba59e7e54d3876747bd81430d4865f02, type: 3}
   attack_true_S: {fileID: 8300000, guid: 42bcd051f8e0be84f94fdcd6d4057859, type: 3}
   fallS: {fileID: 8300000, guid: feb09b74e4cfac34a959d16b40e2865c, type: 3}
-  _MainGameManager: {fileID: 516489967550378346, guid: c6ce5e64f0b92414fba95def5e21d799, type: 3}
-  _ResultManager: {fileID: 1416640616976554346, guid: 24358bbf74968454bbea21ca52b22801, type: 3}
+  _MainGameManager: {fileID: 0}
+  _ResultManager: {fileID: 0}
 --- !u!54 &2646282924405833848
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -757,7 +758,7 @@ GameObject:
   - component: {fileID: 42502048838681195}
   m_Layer: 0
   m_Name: pCylinder11Shape
-  m_TagString: Untagged
+  m_TagString: Hammer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -842,10 +843,10 @@ BoxCollider:
   m_GameObject: {fileID: 3374486334778275216}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 32.7, z: 31.3}
-  m_Center: {x: 24.3, y: -0.000030517578, z: 8.97}
+  m_Center: {x: 23, y: -0.000030517578, z: 8.97}
 --- !u!54 &42502048838681195
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1831,7 +1832,7 @@ GameObject:
   - component: {fileID: 1483405908489694306}
   m_Layer: 0
   m_Name: flont_hair4
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
