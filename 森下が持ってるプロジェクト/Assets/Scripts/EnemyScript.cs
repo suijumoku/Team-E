@@ -145,15 +145,19 @@ public class EnemyScript : MonoBehaviour
        // Debug.Log("a");
         float boundsPower = 15.0f;
 
-        // 衝突位置を取得する
-        Vector3 hitPos = collision.contacts[0].point;
+        //// 衝突位置を取得する
+        //Vector3 hitPos = collision.contacts[0].point;
 
-        // 衝突位置から自機へ向かうベクトルを求める
-        Vector3 boundVec = this.transform.position - hitPos;
+        //// 衝突位置から自機へ向かうベクトルを求める
+        //Vector3 boundVec = this.transform.position - hitPos;
 
-        // 逆方向にはねる
-        Vector3 forceDir = boundsPower * boundVec.normalized;
-        this.GetComponent<Rigidbody>().AddForce(forceDir, ForceMode.Impulse);
+        //// 逆方向にはねる
+        //Vector3 forceDir = boundsPower * boundVec.normalized;
+        //this.GetComponent<Rigidbody>().AddForce(forceDir, ForceMode.Impulse);
+
+
+        Vector3 vector3 = player_.transform.forward;
+        this.GetComponent<Rigidbody>().AddForce(vector3 * boundsPower,ForceMode.Impulse);
     }
 
 }
