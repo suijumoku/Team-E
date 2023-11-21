@@ -96,7 +96,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6500958143944215581}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1b424c6adeac0b8429a26797f0e213cf, type: 3}
   m_Name: 
@@ -106,10 +106,11 @@ MonoBehaviour:
   patrolMaterial: {fileID: 2100000, guid: dcce71b6c0caafa42a8908fae584c7f7, type: 2}
   chaseMaterial: {fileID: 2100000, guid: 1217dde8a82cbcd49ac9bbf1989fb8b2, type: 2}
   detectDistance: 3
+  _playerController: {fileID: 4861104071161028219, guid: 18a07351b89fe5445ab76a3699ec1394, type: 3}
   points:
   - {fileID: 4627859967584425738, guid: c7e8282d7b968e047a409233f4d68387, type: 3}
   - {fileID: 809630217706998333, guid: cf0252c7e55af5441aadd944d863ac0f, type: 3}
-  - {fileID: 6433851107548304116, guid: 920f8cdf30690aa4296e0052f80d73a8, type: 3}
+  - {fileID: 2822667250083725367, guid: 920f8cdf30690aa4296e0052f80d73a8, type: 3}
 --- !u!64 &6500958143944215587
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -290,7 +291,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 083a65c57c7900946b5dd8d268185a5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resultManager: {fileID: 1416640616976554346, guid: 24358bbf74968454bbea21ca52b22801, type: 3}
 --- !u!54 &6159676266227236530
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -314,7 +314,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6500958144201429787}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1b424c6adeac0b8429a26797f0e213cf, type: 3}
   m_Name: 
@@ -324,10 +324,11 @@ MonoBehaviour:
   patrolMaterial: {fileID: 0}
   chaseMaterial: {fileID: 0}
   detectDistance: 0
+  _playerController: {fileID: 4861104071161028219, guid: 18a07351b89fe5445ab76a3699ec1394, type: 3}
   points:
   - {fileID: 4627859967584425738, guid: c7e8282d7b968e047a409233f4d68387, type: 3}
   - {fileID: 809630217706998333, guid: cf0252c7e55af5441aadd944d863ac0f, type: 3}
-  - {fileID: 6433851107548304116, guid: 920f8cdf30690aa4296e0052f80d73a8, type: 3}
+  - {fileID: 2822667250083725367, guid: 920f8cdf30690aa4296e0052f80d73a8, type: 3}
 --- !u!195 &257751970833364999
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -392,8 +393,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6500958145341080810}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.1534, y: 0.10463, z: 5.54405}
-  m_LocalScale: {x: 4, y: 1, z: 4}
+  m_LocalPosition: {x: 6.1534, y: 0.6385, z: 5.54405}
+  m_LocalScale: {x: 3.43432, y: 0.85858, z: 3.43432}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6500958145679016329}
@@ -467,10 +468,11 @@ MonoBehaviour:
   patrolMaterial: {fileID: 2100000, guid: dcce71b6c0caafa42a8908fae584c7f7, type: 2}
   chaseMaterial: {fileID: 2100000, guid: 1217dde8a82cbcd49ac9bbf1989fb8b2, type: 2}
   detectDistance: 3
+  _playerController: {fileID: 4861104071161028219, guid: 18a07351b89fe5445ab76a3699ec1394, type: 3}
   points:
   - {fileID: 4627859967584425738, guid: c7e8282d7b968e047a409233f4d68387, type: 3}
   - {fileID: 809630217706998333, guid: cf0252c7e55af5441aadd944d863ac0f, type: 3}
-  - {fileID: 6433851107548304116, guid: 920f8cdf30690aa4296e0052f80d73a8, type: 3}
+  - {fileID: 2822667250083725367, guid: 920f8cdf30690aa4296e0052f80d73a8, type: 3}
 --- !u!195 &6500958145341080815
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -603,7 +605,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6500958145679016326}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1b424c6adeac0b8429a26797f0e213cf, type: 3}
   m_Name: 
@@ -613,10 +615,11 @@ MonoBehaviour:
   patrolMaterial: {fileID: 2100000, guid: dcce71b6c0caafa42a8908fae584c7f7, type: 2}
   chaseMaterial: {fileID: 2100000, guid: 1217dde8a82cbcd49ac9bbf1989fb8b2, type: 2}
   detectDistance: 3
+  _playerController: {fileID: 4861104071161028219, guid: 18a07351b89fe5445ab76a3699ec1394, type: 3}
   points:
   - {fileID: 4627859967584425738, guid: c7e8282d7b968e047a409233f4d68387, type: 3}
   - {fileID: 809630217706998333, guid: cf0252c7e55af5441aadd944d863ac0f, type: 3}
-  - {fileID: 6433851107548304116, guid: 920f8cdf30690aa4296e0052f80d73a8, type: 3}
+  - {fileID: 2822667250083725367, guid: 920f8cdf30690aa4296e0052f80d73a8, type: 3}
 --- !u!64 &6500958145679016332
 MeshCollider:
   m_ObjectHideFlags: 0

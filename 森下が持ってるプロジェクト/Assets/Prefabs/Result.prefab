@@ -47,10 +47,12 @@ MonoBehaviour:
   scoreImg: []
   bossScoreImg: []
   kidScoreImg: []
+  noDmgImg: {fileID: 0}
   Numbers: []
   results: []
   indicateS: []
   resultSounds: []
+  _ScoreUI: {fileID: 0}
   OnLoadScene: 0
   hit: 1
   doubleHit: 3
@@ -59,4 +61,4 @@ MonoBehaviour:
   Bonus_Standard_Time: 60
   timeBonus: 20
   duration: 0.5
-  num: 0
+  isClear: 0

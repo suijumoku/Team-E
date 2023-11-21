@@ -15,7 +15,7 @@ public class MainGameManager : MonoBehaviour
     [SerializeField] private BlinkingScript blinkingScript = default!;
     [SerializeField] ResultManager resultManager = default!;
 
-    public bool isClear = false, isDefeat = false, isInvincible = false; //無敵時間中かどうか
+    public bool  isDefeat = false, isInvincible = false; //無敵時間中かどうか
 
     int[] timeArray;
     int currentCount = 0;
@@ -38,12 +38,26 @@ public class MainGameManager : MonoBehaviour
 
        // Time.timeScale = 1.0f;
         
-        isClear = false; isDefeat = false;
+        isDefeat = false;
         timeArray = new int[3] { 0, 0, 0 };
     }
 
     private void Update()
     {
+        if (UnityEngine.Input.GetKeyDown(KeyCode.P))    //デバッグ用、Pでリザルトへ
+        {
+            Defeat();
+        }
+
+        if(UnityEngine.Input.GetKeyDown(KeyCode.L)) //Lでリロード
+        {
+            SceneManager.LoadScene("Stage_syokyu");
+        }
+
+        if (resultManager.isClear == true) 
+        {
+            Clear();
+        }
         time += Time.deltaTime;
 
         floarTime =  Mathf.Floor(time);   //切り捨て
@@ -107,7 +121,7 @@ public class MainGameManager : MonoBehaviour
         _fadeAndSceneMove.FadeStart();   
     }
 
-    public void Clear(int life)
+    public void Clear()
     {
         if (blinkingScript.life == 3)
         {

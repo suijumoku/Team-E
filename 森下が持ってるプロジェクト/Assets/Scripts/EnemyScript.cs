@@ -9,8 +9,8 @@ public class EnemyScript : MonoBehaviour
     [SerializeField] Material chaseMaterial;
     [SerializeField] float detectDistance;
 
-    //  [SerializeField] ResultManager resultManager = default!;
-    // [SerializeField] PlayerController playerController = default!;
+    // [SerializeField] ResultManager resultManager = default!;
+    [SerializeField] PlayerController _playerController = default!;
 
     public Transform[] points;
     private int destPoint = 0;
@@ -18,6 +18,7 @@ public class EnemyScript : MonoBehaviour
     bool IsDetected = false;
 
     GameObject player_ = default!;
+    GameObject obj = default;
 
     void Awake()
     {
@@ -90,22 +91,29 @@ public class EnemyScript : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
+        obj = GameObject.Find("Player");
+        _playerController = obj.GetComponent<PlayerController>();   //フラグの情報を更新
+        Debug.Log("isAttack = " + _playerController.isAttack);
+        Debug.Log("isHit = " + _playerController.isHit);
         //小槌に当たった時
-        if (collision.gameObject.tag == "Hammer")
+        if (collision.gameObject.tag == "Hammer" && _playerController.isAttack == true && _playerController.isHit == false)
         {
+
             //親子関係解除
             transform.DetachChildren();
 
             NavMeshAgent navMeshAgent = GetComponent<NavMeshAgent>();
             navMeshAgent.enabled = false;
             gameObject.AddComponent<Rigidbody>();
-  
+
+            _playerController.isHit = true;
+         
 
             gameObject.tag = "DarumaBall";
 
             Force(collision);
 
-            //resultManager.NormalHit();
+         //   resultManager.NormalHit();
 
         }
 
@@ -118,7 +126,7 @@ public class EnemyScript : MonoBehaviour
                 transform.DetachChildren();
                 Destroy(gameObject);
 
-                //resultManager.DoubleHit();
+             //   resultManager.DoubleHit();
             }
         }
         //飛んできた達磨の消去
@@ -134,18 +142,22 @@ public class EnemyScript : MonoBehaviour
 
     void Force(Collision collision)
     {
-        Debug.Log("a");
+       // Debug.Log("a");
         float boundsPower = 15.0f;
 
-        // 衝突位置を取得する
-        Vector3 hitPos = collision.contacts[0].point;
+        //// 衝突位置を取得する
+        //Vector3 hitPos = collision.contacts[0].point;
 
-        // 衝突位置から自機へ向かうベクトルを求める
-        Vector3 boundVec = this.transform.position - hitPos;
+        //// 衝突位置から自機へ向かうベクトルを求める
+        //Vector3 boundVec = this.transform.position - hitPos;
 
-        // 逆方向にはねる
-        Vector3 forceDir = boundsPower * boundVec.normalized;
-        this.GetComponent<Rigidbody>().AddForce(forceDir, ForceMode.Impulse);
+        //// 逆方向にはねる
+        //Vector3 forceDir = boundsPower * boundVec.normalized;
+        //this.GetComponent<Rigidbody>().AddForce(forceDir, ForceMode.Impulse);
+
+
+        Vector3 vector3 = player_.transform.forward;
+        this.GetComponent<Rigidbody>().AddForce(vector3 * boundsPower,ForceMode.Impulse);
     }
 
 }
