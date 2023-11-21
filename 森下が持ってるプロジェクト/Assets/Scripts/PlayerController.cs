@@ -28,7 +28,9 @@ public class PlayerController : MonoBehaviour
     [Header("落下速度の調整　-つける")]
     [SerializeField] float gravityPower = default!;
     [Header("攻撃モーションの長さ")]
-    [SerializeField] float Attack_Finish_Time = 1.5f;    //攻撃モーションの長さに応じて変える (連打とTriggerによる連続入力を防ぐため)
+    [SerializeField] float Attack_Finish_Time = 0.3f;    //攻撃モーションの長さに応じて変える (連打とTriggerによる連続入力を防ぐため)
+    [Header("判定が存在する時間")]
+    [SerializeField] float Collider_True_Time = 0.3f;
     [Header("トリガーの反応タイミング")]
     [SerializeField] float triggerTiming = 0.5f;         //トリガーがどこまで押し込まれたら反応するか 要調整
     [Header("回転時間")]
@@ -50,6 +52,10 @@ public class PlayerController : MonoBehaviour
 
     float inputHorizontal;      //水平方向の入力値
     float inputVertical;        //垂直方向の入力値
+    float inputTrigger;
+    bool  inputAttack;
+
+    bool  isReset;  
     float targetRotation;
     float yVelocity = 0.0f;
     float motionTime = 0.0f;             // 攻撃モーションが始まってからの経過時間を格納->animationの遷移でできそう 
@@ -83,7 +89,8 @@ public class PlayerController : MonoBehaviour
 
         inputHorizontal = UnityEngine.Input.GetAxisRaw("Horizontal");   //入力値の格納
         inputVertical = UnityEngine.Input.GetAxisRaw("Vertical");
-
+        inputTrigger = UnityEngine.Input.GetAxis("L_R_Trigger");
+        inputAttack = UnityEngine.Input.GetButtonDown("Attack");
 
         Jump();
         Attack();
@@ -110,12 +117,15 @@ public class PlayerController : MonoBehaviour
             }
            // checkHit();
             if (motionTime >= Attack_Finish_Time)
+            {                           
+                isHit = false;
+                isAttack = false;
+                onlyFirst = false;
+            }                    
+            if (motionTime >= Collider_True_Time)
             {
                 boxCollider.enabled = false;
-                isAttack = false;
-                isHit = false;
-                onlyFirst = false;
-            }                             
+            }
         }       
 
          
@@ -135,7 +145,7 @@ public class PlayerController : MonoBehaviour
             {
                 isJump = false;
                 isFall = false;
-                canMove = true;
+                canMove = true;               
                 //Debug.Log("isJump = " + isJump);
             }
         }
@@ -156,20 +166,28 @@ public class PlayerController : MonoBehaviour
 
     void Attack()   //ジャンプ中は攻撃できない
     {
-        if (isAttack == true || isJump == true) return;
 
-        if (UnityEngine.Input.GetAxis("L_R_Trigger") > triggerTiming || UnityEngine.Input.GetButtonDown("Attack"))  //AボタンかRTで攻撃
+        if (inputTrigger == 0 && inputAttack == false)
+        {
+            isReset = true;
+            return;
+        }
+        if (isAttack == true || isJump == true || isReset == false) return;
+       
+
+        if (inputTrigger > triggerTiming || inputAttack)  //AボタンかRTで攻撃
         {
             animator.SetTrigger("toAttacking");
             GameManager.instance.PlaySE(attack_true_S);         //仮 当たったかどうかで音変えると思われる
             isAttack = true;
+            isReset = false;
             boxCollider.enabled = true;
             motionTime = 0.0f;
-           // Debug.Log("isAttack = " + isAttack);
+            // Debug.Log("isAttack = " + isAttack);
             //攻撃モーションへの遷移
             //_ResultManager.NormalHit(); //デバッグ用
         }
-     
+
     }
 
     public void fall()
