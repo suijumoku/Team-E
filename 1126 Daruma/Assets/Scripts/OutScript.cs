@@ -24,6 +24,11 @@ public class OutScript : MonoBehaviour
         {
             playerController.fall();        //outArea‚ÉGameManager“ü‚ê‚Ä‰¹–Â‚ç‚»‚¤‚Æ‚·‚é‚Æ‚È‚º‚©ƒoƒO‚é‚©‚ç‰“‰ñ‚µ‚ÉÄ¶
         }
+        if (other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("DarumaBall"))
+        {
+          //  Debug.Log("Destroyed" + other.gameObject.tag);
+            Destroy(gameObject);
+        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -34,7 +39,7 @@ public class OutScript : MonoBehaviour
                        
             player.transform.position = respawnP.transform.position;              
             
-        }
+        }    
     }
 
 }

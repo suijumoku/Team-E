@@ -3885,7 +3885,7 @@ Transform:
   m_PrefabInstance: {fileID: 2046860298}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 995461783}
-  m_LocalRotation: {x: 0.15748294, y: 0.5804072, z: -0.115622096, w: 0.79054296}
+  m_LocalRotation: {x: 0.1574829, y: 0.5804072, z: -0.115622066, w: 0.79054296}
   m_LocalPosition: {x: -0.16304684, y: 8.011263, z: 7.768342}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4604,7 +4604,7 @@ Transform:
   m_PrefabInstance: {fileID: 1268331325}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1408840485}
-  m_LocalRotation: {x: 0.15748292, y: 0.5804072, z: -0.115622096, w: 0.79054296}
+  m_LocalRotation: {x: 0.1574829, y: 0.5804072, z: -0.11562208, w: 0.79054296}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6468,6 +6468,10 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 4861104071161028219, guid: 18a07351b89fe5445ab76a3699ec1394, type: 3}
+      propertyPath: hitS
+      value: 
+      objectReference: {fileID: 8300000, guid: e57d7221a9ed28c40b0fe4ec56858ec3, type: 3}
+    - target: {fileID: 4861104071161028219, guid: 18a07351b89fe5445ab76a3699ec1394, type: 3}
       propertyPath: walkSpeed
       value: 7
       objectReference: {fileID: 0}
@@ -6494,6 +6498,18 @@ PrefabInstance:
     - target: {fileID: 4861104071161028219, guid: 18a07351b89fe5445ab76a3699ec1394, type: 3}
       propertyPath: Collider_True_Time
       value: 0.13
+      objectReference: {fileID: 0}
+    - target: {fileID: 7077815923227102755, guid: 18a07351b89fe5445ab76a3699ec1394, type: 3}
+      propertyPath: m_Size.y
+      value: 34.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7077815923227102755, guid: 18a07351b89fe5445ab76a3699ec1394, type: 3}
+      propertyPath: m_Center.x
+      value: 24.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7077815923227102755, guid: 18a07351b89fe5445ab76a3699ec1394, type: 3}
+      propertyPath: m_Center.z
+      value: 9.9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 18a07351b89fe5445ab76a3699ec1394, type: 3}

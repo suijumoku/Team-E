@@ -107,9 +107,9 @@ public class EnemyScript : MonoBehaviour
             gameObject.AddComponent<Rigidbody>();
 
             _playerController.isHit = true;
-         
 
-            gameObject.tag = "DarumaBall";
+          
+          gameObject.tag = "DarumaBall";
 
             Force(collision);
 

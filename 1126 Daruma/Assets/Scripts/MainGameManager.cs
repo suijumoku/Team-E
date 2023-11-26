@@ -132,13 +132,4 @@ public class MainGameManager : MonoBehaviour
 
     }
 
-    //void ActiveSceneChanged(Scene thisScene, Scene nextScene)
-    //{
-    //    Debug.Log(thisScene.name);
-    //    Debug.Log(nextScene.name);
-    //    if (nextScene.name == "Result")
-    //    {
-    //        _resultManager.IndicateScore();
-    //    }
-    //}
 }

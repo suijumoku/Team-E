@@ -50,6 +50,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]  AudioClip jumpS = default!;
     [SerializeField]  AudioClip attack_true_S = default!;
     [SerializeField]  AudioClip fallS = default!;
+    [SerializeField]  AudioClip hitS = default!;
 
     [SerializeField] MainGameManager _MainGameManager;
 
@@ -120,6 +121,7 @@ public class PlayerController : MonoBehaviour
 
             if (isHit && onlyFirst == false)
             {
+                GameManager.instance.PlaySE(hitS);
                 boxCollider.enabled = false;
                 onlyFirst = true;
             }
