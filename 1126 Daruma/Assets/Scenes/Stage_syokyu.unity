@@ -6488,6 +6488,10 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4861104071161028219, guid: 18a07351b89fe5445ab76a3699ec1394, type: 3}
+      propertyPath: triggerTiming
+      value: 2.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4861104071161028219, guid: 18a07351b89fe5445ab76a3699ec1394, type: 3}
       propertyPath: _ResultManager
       value: 
       objectReference: {fileID: 402041234}
@@ -6508,8 +6512,20 @@ PrefabInstance:
       value: 0.13
       objectReference: {fileID: 0}
     - target: {fileID: 7077815923227102755, guid: 18a07351b89fe5445ab76a3699ec1394, type: 3}
+      propertyPath: m_Size.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7077815923227102755, guid: 18a07351b89fe5445ab76a3699ec1394, type: 3}
       propertyPath: m_Size.y
-      value: 34.1
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7077815923227102755, guid: 18a07351b89fe5445ab76a3699ec1394, type: 3}
+      propertyPath: m_Size.z
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7077815923227102755, guid: 18a07351b89fe5445ab76a3699ec1394, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7077815923227102755, guid: 18a07351b89fe5445ab76a3699ec1394, type: 3}
       propertyPath: m_Center.x
