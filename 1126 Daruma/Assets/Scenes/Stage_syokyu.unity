@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.11314918, g: 0.08002508, b: 0.08757719, a: 1}
+  m_IndirectSpecularColor: {r: 0.11315337, g: 0.080029875, b: 0.08757891, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3885,7 +3885,7 @@ Transform:
   m_PrefabInstance: {fileID: 2046860298}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 995461783}
-  m_LocalRotation: {x: 0.1574829, y: 0.5804072, z: -0.115622066, w: 0.79054296}
+  m_LocalRotation: {x: 0.15748294, y: 0.5804072, z: -0.115622096, w: 0.79054296}
   m_LocalPosition: {x: -0.16304684, y: 8.011263, z: 7.768342}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4604,7 +4604,7 @@ Transform:
   m_PrefabInstance: {fileID: 1268331325}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1408840485}
-  m_LocalRotation: {x: 0.1574829, y: 0.5804072, z: -0.11562208, w: 0.79054296}
+  m_LocalRotation: {x: 0.15748292, y: 0.5804072, z: -0.115622096, w: 0.79054296}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6480,6 +6480,10 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4861104071161028219, guid: 18a07351b89fe5445ab76a3699ec1394, type: 3}
+      propertyPath: cameraResetS
+      value: 
+      objectReference: {fileID: 8300000, guid: d8b6f637f9d620d4a9b6a1a71db59146, type: 3}
+    - target: {fileID: 4861104071161028219, guid: 18a07351b89fe5445ab76a3699ec1394, type: 3}
       propertyPath: knockBackUpP
       value: 5
       objectReference: {fileID: 0}
@@ -6487,6 +6491,10 @@ PrefabInstance:
       propertyPath: _ResultManager
       value: 
       objectReference: {fileID: 402041234}
+    - target: {fileID: 4861104071161028219, guid: 18a07351b89fe5445ab76a3699ec1394, type: 3}
+      propertyPath: _freeLookCamera
+      value: 
+      objectReference: {fileID: 1127883280}
     - target: {fileID: 4861104071161028219, guid: 18a07351b89fe5445ab76a3699ec1394, type: 3}
       propertyPath: _MainGameManager
       value: 

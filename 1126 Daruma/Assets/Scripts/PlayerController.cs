@@ -1,4 +1,5 @@
 //古澤
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -51,6 +52,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]  AudioClip attack_true_S = default!;
     [SerializeField]  AudioClip fallS = default!;
     [SerializeField]  AudioClip hitS = default!;
+    [SerializeField]  AudioClip cameraResetS = default!;
 
     [SerializeField] MainGameManager _MainGameManager;
 
@@ -59,16 +61,18 @@ public class PlayerController : MonoBehaviour
 
     float inputHorizontal;      //水平方向の入力値
     float inputVertical;        //垂直方向の入力値
-    float inputTrigger;
+    float L_inputTrigger;
+    float R_inputTrigger;
     bool  inputAttack;
 
-    bool  isReset;  
+    bool R_isReset;
+    bool L_isReset;
     float targetRotation;
     float yVelocity = 0.0f;
     float motionTime = 0.0f;             // 攻撃モーションが始まってからの経過時間を格納->animationの遷移でできそう 
 
-   
-  
+    [SerializeField] CinemachineFreeLook _freeLookCamera;
+
     float time = 0f;                //Runningモーションに使う
 
 
@@ -88,32 +92,36 @@ public class PlayerController : MonoBehaviour
         m_Rigidbody = GetComponent<Rigidbody>();     
         animator = GetComponent<Animator>();
         _MainGameManager.isInvincible = false;
+       
     }
 
     void Update()
-    {
-        
+    {        
          
         stateInfo = animator.GetCurrentAnimatorStateInfo(0);
 
         inputHorizontal = UnityEngine.Input.GetAxisRaw("Horizontal");   //入力値の格納
         inputVertical = UnityEngine.Input.GetAxisRaw("Vertical");
-        inputTrigger = UnityEngine.Input.GetAxis("L_R_Trigger");
+        L_inputTrigger = UnityEngine.Input.GetAxis("L_Trigger");
+        R_inputTrigger = UnityEngine.Input.GetAxis("R_Trigger");
         inputAttack = UnityEngine.Input.GetButtonDown("Attack");
-
+        CamaraReset();
         Jump();
         Attack();
-        if (inputHorizontal != 0 || inputVertical != 0)
+        if (stateInfo.IsName("Idle") ||
+           stateInfo.IsName("Running"))
         {
-            //入力が0じゃなければ移動モーションに遷移
-            time += Time.deltaTime;
-        }
-        else
-        {
-            time = 0f;
-        }
-        animator.SetFloat("time", time);
-
+            if (inputHorizontal != 0 || inputVertical != 0)
+            {
+                //入力が0じゃなければ移動モーションに遷移
+                time += Time.deltaTime;
+            }
+            else
+            {
+                time = 0f;
+            }
+            animator.SetFloat("time", time);
+        } 
 
         if (isAttack)       //攻撃モーション中ハンマーの当たり判定が存在する時間の管理
         {
@@ -136,13 +144,19 @@ public class PlayerController : MonoBehaviour
             {
                 boxCollider.enabled = false;
             }
-        }       
-
+        }            
          
+        if (UnityEngine.Input.GetKeyDown(KeyCode.X))
+        {
+            _MainGameManager.isInvincible = true;
+        }
+
     }
     private void FixedUpdate()
     {              
-            Gravity();   
+            Gravity();
+
+      //  if (stateInfo.IsName("Running"))
             Move();             
     }  
 
@@ -173,6 +187,26 @@ public class PlayerController : MonoBehaviour
     }
 
 
+    void CamaraReset()
+    {
+        if (L_inputTrigger == 0)
+        {
+            L_isReset = true;
+            return;
+        }
+        if (L_isReset == false)
+         return; 
+
+        if (L_inputTrigger > triggerTiming)
+        {
+            Debug.Log("Reset");
+            _freeLookCamera.m_YAxis.Value = 0.5f;
+            _freeLookCamera.m_XAxis.Value = 0;
+            GameManager.instance.PlaySE(cameraResetS);
+            L_isReset = false;
+        }
+    }
+
     void KnockBack(Collision collision)
     {
         isJump = true;
@@ -188,20 +222,20 @@ public class PlayerController : MonoBehaviour
     void Attack()   //ジャンプ中は攻撃できない
     {
 
-        if (inputTrigger == 0 && inputAttack == false)
+        if (R_inputTrigger == 0 && inputAttack == false)
         {
-            isReset = true;
+            R_isReset = true;
             return;
         }
-        if (isAttack == true || isJump == true || isReset == false) return;
-       
+        if (isAttack == true || isJump == true || R_isReset == false)
+            return;       
 
-        if (inputTrigger > triggerTiming || inputAttack)  //AボタンかRTで攻撃
+        if (R_inputTrigger > triggerTiming || inputAttack)  //AボタンかRTで攻撃
         {
             animator.SetTrigger("toAttacking");
             GameManager.instance.PlaySE(attack_true_S);         //仮 当たったかどうかで音変えると思われる
             isAttack = true;
-            isReset = false;
+            R_isReset = false;
             boxCollider.enabled = true;
             motionTime = 0.0f;
             // Debug.Log("isAttack = " + isAttack);
