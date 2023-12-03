@@ -71,7 +71,9 @@ public class PlayerController : MonoBehaviour
     float yVelocity = 0.0f;
     float motionTime = 0.0f;             // 攻撃モーションが始まってからの経過時間を格納->animationの遷移でできそう 
 
-    [SerializeField] CinemachineFreeLook _freeLookCamera;
+    Quaternion defaultCameraRot;
+    //[SerializeField] CinemachineFreeLook _freeLookCamera;
+    //[SerializeField] Camera _camera;
 
     float time = 0f;                //Runningモーションに使う
 
@@ -92,7 +94,8 @@ public class PlayerController : MonoBehaviour
         m_Rigidbody = GetComponent<Rigidbody>();     
         animator = GetComponent<Animator>();
         _MainGameManager.isInvincible = false;
-       
+        defaultCameraRot = Camera.main.transform.rotation;
+
     }
 
     void Update()
@@ -105,7 +108,7 @@ public class PlayerController : MonoBehaviour
         L_inputTrigger = UnityEngine.Input.GetAxis("L_Trigger");
         R_inputTrigger = UnityEngine.Input.GetAxis("R_Trigger");
         inputAttack = UnityEngine.Input.GetButtonDown("Attack");
-        CamaraReset();
+       // CamaraReset();
         Jump();
         Attack();
         if (stateInfo.IsName("Idle") ||
@@ -146,11 +149,15 @@ public class PlayerController : MonoBehaviour
             }
         }            
          
-        if (UnityEngine.Input.GetKeyDown(KeyCode.X))
+        if (UnityEngine.Input.GetKeyDown(KeyCode.X))    //デバッグ用無敵モードon
         {
             _MainGameManager.isInvincible = true;
         }
-
+        if (UnityEngine.Input.GetKeyDown(KeyCode.M))    //デバッグ用無敵モードoff
+        {
+            _MainGameManager.isInvincible = false;
+        }
+       
     }
     private void FixedUpdate()
     {              
@@ -186,38 +193,32 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    //void CamaraReset()
+    //{
+    //    if (L_inputTrigger == 0)
+    //    {
+    //        L_isReset = true;
+    //        return;
+    //    }
+    //    if (L_isReset == false)
+    //     return; 
 
-    void CamaraReset()
-    {
-        if (L_inputTrigger == 0)
-        {
-            L_isReset = true;
-            return;
-        }
-        if (L_isReset == false)
-         return; 
+    //    if (L_inputTrigger > triggerTiming)
+    //    {
+    //        Debug.Log("Reset");
+    //        // Camera.main.transform.position = this.transform.forward;
+    //        _freeLookCamera.ForceCameraPosition(this.transform.forward, defaultCameraRot);
+    //        Camera.main.transform.rotation = defaultCameraRot;
+    //        Camera.main.transform.position = this.transform.forward;             
+    //        _freeLookCamera.m_YAxis.Value = 0.5f;
+    //        _freeLookCamera.m_XAxis.Value = 0;
 
-        if (L_inputTrigger > triggerTiming)
-        {
-            Debug.Log("Reset");
-            _freeLookCamera.m_YAxis.Value = 0.5f;
-            _freeLookCamera.m_XAxis.Value = 0;
-            GameManager.instance.PlaySE(cameraResetS);
-            L_isReset = false;
-        }
-    }
-
-    void KnockBack(Collision collision)
-    {
-        isJump = true;
-        Debug.Log("isKnockBack");
-        Vector3 vector3 = collision.gameObject.transform.forward;
-
-        m_Rigidbody.AddForce(vector3 * knockBackP, ForceMode.Impulse);
-        m_Rigidbody.AddForce(transform.up * knockBackUpP, ForceMode.Impulse);
-       
-        //振った槌が当たったかどうか判定したい。場合によってはスクリプト分けてもよさそう。
-    }
+           
+    //        //_camera.transform.position =  this.transform.forward;
+    //        GameManager.instance.PlaySE(cameraResetS);
+    //        L_isReset = false;
+    //    }
+    //} 
 
     void Attack()   //ジャンプ中は攻撃できない
     {
@@ -228,7 +229,7 @@ public class PlayerController : MonoBehaviour
             return;
         }
         if (isAttack == true || isJump == true || R_isReset == false)
-            return;       
+             return;       
 
         if (R_inputTrigger > triggerTiming || inputAttack)  //AボタンかRTで攻撃
         {
@@ -238,11 +239,22 @@ public class PlayerController : MonoBehaviour
             R_isReset = false;
             boxCollider.enabled = true;
             motionTime = 0.0f;
-            // Debug.Log("isAttack = " + isAttack);
+            Debug.Log("Rトリガー = " + R_inputTrigger);
             //攻撃モーションへの遷移
             //_ResultManager.NormalHit(); //デバッグ用
         }
 
+    }
+    void KnockBack(Collision collision)
+    {
+        isJump = true;
+        Debug.Log("isKnockBack");
+        Vector3 vector3 = collision.gameObject.transform.forward;
+
+        m_Rigidbody.AddForce(vector3 * knockBackP, ForceMode.Impulse);
+        m_Rigidbody.AddForce(transform.up * knockBackUpP, ForceMode.Impulse);
+
+        //振った槌が当たったかどうか判定したい。場合によってはスクリプト分けてもよさそう。
     }
 
     public void fall()  //落下判定エリアで使う
