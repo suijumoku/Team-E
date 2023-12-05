@@ -58,18 +58,18 @@ public class EnemyScript : MonoBehaviour
 
         // 配列内の次の位置を目標地点に設定し、
         // 必要ならば出発地点にもどる
-        if (++destPoint>=points.Length)
+        if (++destPoint >= points.Length)
         {
             Shuffle(ref nextPoint);
 
             destPoint = 0;
         }
     }
-    void InitArray(ref int[] array,int length)
+    void InitArray(ref int[] array, int length)
     {
         Array.Resize(ref array, length);
 
-        for(int i=0;i<length;i++)
+        for (int i = 0; i < length; i++)
         {
             array[i] = i;
         }
@@ -135,7 +135,7 @@ public class EnemyScript : MonoBehaviour
     {
         obj = GameObject.Find("Player");
         _playerController = obj.GetComponent<PlayerController>();   //フラグの情報を更新
-        
+
         //小槌に当たった時
         if (collision.gameObject.tag == "Hammer" && _playerController.isAttack == true && _playerController.isHit == false)
         {
@@ -172,7 +172,7 @@ public class EnemyScript : MonoBehaviour
                 navMeshAgent.enabled = false;
                 gameObject.AddComponent<Rigidbody>();
 
-               Destroy(gameObject);
+                Destroy(gameObject);
 
                 //   resultManager.DoubleHit();
             }
@@ -180,10 +180,15 @@ public class EnemyScript : MonoBehaviour
         //飛んできた達磨の消去
         if (collision.gameObject.tag == "Enemy")
         {
-            count++;
-            if (gameObject.tag == "DarumaBall" && count == 4)
+            if (gameObject.tag == "DarumaBall")
             {
-                Destroy(gameObject);
+                count++;
+                if (count == 4)
+                {
+                    Destroy(gameObject);
+                }
+
+                Force2(collision);
             }
         }
 
@@ -192,19 +197,32 @@ public class EnemyScript : MonoBehaviour
     void Force(Collision collision)
     {
 
-        //// 衝突位置を取得する
-        //Vector3 hitPos = collision.contacts[0].point;
+        // 衝突位置を取得する
+        Vector3 hitPos = collision.contacts[0].point;
 
-        //// 衝突位置から自機へ向かうベクトルを求める
-        //Vector3 boundVec = this.transform.position - hitPos;
+        // 衝突位置から自機へ向かうベクトルを求める
+        Vector3 boundVec = this.transform.position - hitPos;
 
-        //// 逆方向にはねる
-        //Vector3 forceDir = boundsPower * boundVec.normalized;
-        //this.GetComponent<Rigidbody>().AddForce(forceDir, ForceMode.Impulse);
+        // 逆方向にはねる
+        Vector3 forceDir = boundsPower * boundVec.normalized;
+        this.GetComponent<Rigidbody>().AddForce(forceDir, ForceMode.Impulse);
 
         Vector3 vector3 = player_.transform.forward;
 
-        gameObject.GetComponent<Rigidbody>().AddForce(vector3 * boundsPower,ForceMode.Impulse);
+        gameObject.GetComponent<Rigidbody>().AddForce(vector3 * boundsPower, ForceMode.Impulse);
+    }
+
+    void Force2(Collision collision)
+    {
+        // 衝突位置を取得する
+        Vector3 hitPos = collision.contacts[0].point;
+
+        // 衝突位置から自機へ向かうベクトルを求める
+        Vector3 boundVec = this.transform.position - hitPos;
+
+        // 逆方向にはねる
+        Vector3 forceDir = boundsPower * boundVec.normalized;
+         this.GetComponent<Rigidbody>().AddForce(forceDir, ForceMode.Impulse);
     }
 
 }
