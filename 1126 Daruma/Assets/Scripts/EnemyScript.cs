@@ -1,5 +1,9 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Rendering;
+using UnityEngine.UIElements;
 
 public class EnemyScript : MonoBehaviour
 {
@@ -22,6 +26,9 @@ public class EnemyScript : MonoBehaviour
     GameObject obj = default;
 
     int count = 0;
+    [SerializeField]
+    int[] nextPoint = new int[0];
+
 
     void Awake()
     {
@@ -34,6 +41,8 @@ public class EnemyScript : MonoBehaviour
         // 速度をおとしません)
         agent.autoBraking = false;
 
+        InitArray(ref nextPoint, points.Length);
+
         GotoNextPoint();
     }
 
@@ -44,13 +53,42 @@ public class EnemyScript : MonoBehaviour
             return;
 
         // エージェントが現在設定された目標地点に行くように設定します
-        agent.destination = points[destPoint].position;
+        agent.destination = points[nextPoint[destPoint]].position;
+
 
         // 配列内の次の位置を目標地点に設定し、
         // 必要ならば出発地点にもどる
-        destPoint = (destPoint + 1) % points.Length;
+        if (++destPoint>=points.Length)
+        {
+            Shuffle(ref nextPoint);
+
+            destPoint = 0;
+        }
+    }
+    void InitArray(ref int[] array,int length)
+    {
+        Array.Resize(ref array, length);
+
+        for(int i=0;i<length;i++)
+        {
+            array[i] = i;
+        }
+        Shuffle(ref array);
     }
 
+    void Shuffle(ref int[] array)
+    {
+        for (var i = array.Length - 1; i > 0; --i)
+        {
+            // 0以上i以下のランダムな整数を取得
+            // Random.Rangeの最大値は第２引数未満なので、+1することに注意
+            var j = UnityEngine.Random.Range(0, i + 1);
+
+            var tmp = array[i];
+            array[i] = array[j];
+            array[j] = tmp;
+        }
+    }
 
     void Update()
     {
