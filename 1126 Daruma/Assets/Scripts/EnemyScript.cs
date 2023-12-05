@@ -187,8 +187,6 @@ public class EnemyScript : MonoBehaviour
                 {
                     Destroy(gameObject);
                 }
-
-                Force2(collision);
             }
         }
 
@@ -212,17 +210,17 @@ public class EnemyScript : MonoBehaviour
         gameObject.GetComponent<Rigidbody>().AddForce(vector3 * boundsPower, ForceMode.Impulse);
     }
 
-    void Force2(Collision collision)
-    {
-        // 衝突位置を取得する
-        Vector3 hitPos = collision.contacts[0].point;
+    //void Force2(Collision collision)
+    //{
+    //    // 衝突位置を取得する
+    //    Vector3 hitPos = collision.contacts[0].point;
 
-        // 衝突位置から自機へ向かうベクトルを求める
-        Vector3 boundVec = this.transform.position - hitPos;
+    //    // 衝突位置から自機へ向かうベクトルを求める
+    //    Vector3 boundVec = this.transform.position - hitPos;
 
-        // 逆方向にはねる
-        Vector3 forceDir = boundsPower * boundVec.normalized;
-         this.GetComponent<Rigidbody>().AddForce(forceDir, ForceMode.Impulse);
-    }
+    //    // 逆方向にはねる
+    //    Vector3 forceDir = boundsPower * boundVec.normalized;
+    //     this.GetComponent<Rigidbody>().AddForce(forceDir, ForceMode.Impulse);
+    //}
 
 }
