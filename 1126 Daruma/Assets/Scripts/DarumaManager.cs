@@ -33,9 +33,12 @@ public class DarumaManager : MonoBehaviour
             {
                 Rigidbody rb = GetComponent<Rigidbody>();
                 Destroy(rb);
+
                 navMeshAgent.enabled = true;
                 enemyScript.enabled = true;
+
                 gameObject.tag = "Enemy";
+                
             }
         }
     }
