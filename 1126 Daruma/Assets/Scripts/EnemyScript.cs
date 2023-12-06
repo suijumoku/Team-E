@@ -35,7 +35,7 @@ public class EnemyScript : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         //gameObject.AddComponent<Rigidbody>();
-        player_ = GameObject.Find("Player");
+        player_ = GameObject.Find("New_EPlayer");
 
         // autoBraking を無効にすると、目標地点の間を継続的に移動します
         //(つまり、エージェントは目標地点に近づいても
