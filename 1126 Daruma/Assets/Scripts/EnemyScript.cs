@@ -18,6 +18,7 @@ public class EnemyScript : MonoBehaviour
     [SerializeField] PlayerController _playerController = default!;
 
     public Transform[] points;
+    [SerializeField]
     private int destPoint = 0;
     private NavMeshAgent agent;
     bool IsDetected = false;
@@ -55,12 +56,13 @@ public class EnemyScript : MonoBehaviour
         // エージェントが現在設定された目標地点に行くように設定します
         agent.destination = points[nextPoint[destPoint]].position;
 
-
         // 配列内の次の位置を目標地点に設定し、
         // 必要ならば出発地点にもどる
         if (++destPoint >= points.Length)
         {
             Shuffle(ref nextPoint);
+            print("shuffe");
+
 
             destPoint = 0;
         }
