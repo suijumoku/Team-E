@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]  AudioClip attack_true_S = default!;
     [SerializeField]  AudioClip fallS = default!;
     [SerializeField]  AudioClip hitS = default!;
-    [SerializeField]  AudioClip cameraResetS = default!;
+   // [SerializeField]  AudioClip cameraResetS = default!;
 
     [SerializeField] MainGameManager _MainGameManager;
 
@@ -121,9 +121,13 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                time = 0f;
+                time = 0f;            
             }
             animator.SetFloat("time", time);
+            if (time == 0f)
+            {
+                animator.SetTrigger("toIdle");
+            }
         } 
 
         if (isAttack)       //攻撃モーション中ハンマーの当たり判定が存在する時間の管理
@@ -163,7 +167,7 @@ public class PlayerController : MonoBehaviour
     {              
             Gravity();
 
-      //  if (stateInfo.IsName("Running"))
+        if (stateInfo.IsName("Running"))
             Move();             
     }  
 
@@ -172,8 +176,9 @@ public class PlayerController : MonoBehaviour
         //難しい方法はできないからTriggerで判定したい
         if (isJump == true || isFall == true)
         {
-            if (collision.gameObject.CompareTag("Ground"))
+            if (collision.gameObject.CompareTag("Ground"))  //着地した時
             {
+                animator.SetTrigger("toIdle");
                 isJump = false;
                 isFall = false;
                 canMove = true;               
@@ -239,7 +244,7 @@ public class PlayerController : MonoBehaviour
             R_isReset = false;
             boxCollider.enabled = true;
             motionTime = 0.0f;
-            Debug.Log("Rトリガー = " + R_inputTrigger);
+         //   Debug.Log("Rトリガー = " + R_inputTrigger);
             //攻撃モーションへの遷移
             //_ResultManager.NormalHit(); //デバッグ用
         }
@@ -332,7 +337,8 @@ public class PlayerController : MonoBehaviour
         if (isJump == true || isFall == true || isAttack == true) return;   //落下中と攻撃中はジャンプをさせない
 
         if ( UnityEngine.Input.GetButtonDown("Jump"))
-        {         
+        {
+            animator.SetTrigger("toJumping");
             GameManager.instance.PlaySE(jumpS);
             m_Rigidbody.AddForce(transform.up * jumpPower, ForceMode.Impulse);
             isJump = true;
