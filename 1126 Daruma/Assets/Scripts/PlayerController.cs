@@ -58,7 +58,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]　ResultManager _ResultManager; //デバッグ用
 
-
+     
     float inputHorizontal;      //水平方向の入力値
     float inputVertical;        //垂直方向の入力値
     float L_inputTrigger;
@@ -67,26 +67,14 @@ public class PlayerController : MonoBehaviour
 
     bool R_isReset;
     bool L_isReset;
-    float targetRotation;
+    float targetRotation;   //回転に使う
     float yVelocity = 0.0f;
     float motionTime = 0.0f;             // 攻撃モーションが始まってからの経過時間を格納->animationの遷移でできそう 
+    float time = 0f;                //Runningモーションに使う
 
     Quaternion defaultCameraRot;
     //[SerializeField] CinemachineFreeLook _freeLookCamera;
     //[SerializeField] Camera _camera;
-
-    float time = 0f;                //Runningモーションに使う
-
-
-    //private PlayerController instance;
-
-    //public void Awake()
-    //{
-    //    if (instance == null)
-    //    {
-    //        instance = this;
-    //    }
-    //}
 
 
     void Start()
@@ -95,7 +83,7 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
         _MainGameManager.isInvincible = false;
         defaultCameraRot = Camera.main.transform.rotation;
-
+        animator.SetTrigger("toIdle");
     }
 
     void Update()
@@ -111,48 +99,12 @@ public class PlayerController : MonoBehaviour
        // CamaraReset();
         Jump();
         Attack();
-        if (stateInfo.IsName("Idle") ||
-           stateInfo.IsName("Running"))
+        transitionAnim();
+        if (isAttack)
         {
-            if (inputHorizontal != 0 || inputVertical != 0)
-            {
-                //入力が0じゃなければ移動モーションに遷移
-                time += Time.deltaTime;
-            }
-            else
-            {
-                time = 0f;            
-            }
-            animator.SetFloat("time", time);
-            if (time == 0f)
-            {
-                animator.SetTrigger("toIdle");
-            }
-        } 
+            AttackMotionManage();
+        }    
 
-        if (isAttack)       //攻撃モーション中ハンマーの当たり判定が存在する時間の管理
-        {
-            motionTime += Time.deltaTime;
-
-            if (isHit && onlyFirst == false)
-            {
-                GameManager.instance.PlaySE(hitS);
-                boxCollider.enabled = false;
-                onlyFirst = true;
-            }
-           // checkHit();
-            if (motionTime >= Attack_Finish_Time)
-            {                           
-                isHit = false;
-                isAttack = false;
-                onlyFirst = false;
-            }                    
-            if (motionTime >= Collider_True_Time)
-            {
-                boxCollider.enabled = false;
-            }
-        }            
-         
         if (UnityEngine.Input.GetKeyDown(KeyCode.X))    //デバッグ用無敵モードon
         {
             _MainGameManager.isInvincible = true;
@@ -167,7 +119,7 @@ public class PlayerController : MonoBehaviour
     {              
             Gravity();
 
-        if (stateInfo.IsName("Running"))
+        if (stateInfo.IsName("Running") || stateInfo.IsName("Jumping"))
             Move();             
     }  
 
@@ -198,6 +150,62 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void transitionAnim()
+    {
+        if (stateInfo.IsName("Idle") ||     //移動モーションの遷移
+            stateInfo.IsName("Running"))
+        {
+            if (inputHorizontal != 0 || inputVertical != 0)
+            {
+                //入力が0じゃなければ移動モーションに遷移
+                time += Time.deltaTime;
+            }
+            else
+            {
+                time = 0f;
+            }
+            animator.SetFloat("time", time);
+            if (time == 0f)
+            {
+                animator.SetTrigger("toIdle");
+            }
+        }
+
+        if (stateInfo.IsName("Running") && isJump == true)  //移動中にジャンプした時の遷移
+        {           
+            animator.SetTrigger("Run to Jump");
+        }
+        else if (stateInfo.IsName("Idle") && isJump == true)   //その場ジャンプ
+        {
+            animator.SetTrigger("toJumping");
+        }
+    }
+
+    void AttackMotionManage()
+    {
+        //攻撃モーション中ハンマーの当たり判定が存在する時間の管理
+
+        motionTime += Time.deltaTime;
+
+        if (isHit && onlyFirst == false)
+        {
+            GameManager.instance.PlaySE(hitS);
+            boxCollider.enabled = false;
+            onlyFirst = true;
+        }
+        // checkHit();
+        if (motionTime >= Attack_Finish_Time)
+        {
+            isHit = false;
+            isAttack = false;
+            onlyFirst = false;
+            motionTime = 0.0f;
+        }
+        if (motionTime >= Collider_True_Time)
+        {
+            boxCollider.enabled = false;
+        }
+    }
     //void CamaraReset()
     //{
     //    if (L_inputTrigger == 0)
@@ -218,7 +226,7 @@ public class PlayerController : MonoBehaviour
     //        _freeLookCamera.m_YAxis.Value = 0.5f;
     //        _freeLookCamera.m_XAxis.Value = 0;
 
-           
+
     //        //_camera.transform.position =  this.transform.forward;
     //        GameManager.instance.PlaySE(cameraResetS);
     //        L_isReset = false;
@@ -337,8 +345,7 @@ public class PlayerController : MonoBehaviour
         if (isJump == true || isFall == true || isAttack == true) return;   //落下中と攻撃中はジャンプをさせない
 
         if ( UnityEngine.Input.GetButtonDown("Jump"))
-        {
-            animator.SetTrigger("toJumping");
+        {                
             GameManager.instance.PlaySE(jumpS);
             m_Rigidbody.AddForce(transform.up * jumpPower, ForceMode.Impulse);
             isJump = true;
