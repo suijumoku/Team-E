@@ -133,7 +133,7 @@ public class EnemyScript : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        obj = GameObject.Find("Player");
+        obj = GameObject.Find("New_EPlayer");
         _playerController = obj.GetComponent<PlayerController>();   //フラグの情報を更新
 
         //小槌に当たった時

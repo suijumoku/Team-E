@@ -997,6 +997,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7192283426759239904}
   - component: {fileID: 4445481712140830444}
+  - component: {fileID: 7474729511114389802}
   m_Layer: 0
   m_Name: flont_hair4
   m_TagString: Untagged
@@ -1123,6 +1124,20 @@ SkinnedMeshRenderer:
     m_Center: {x: -3.1502733, y: -1.704299, z: 7.043556}
     m_Extent: {x: 31.207863, y: 29.63456, z: 38.235676}
   m_DirtyAABB: 0
+--- !u!136 &7474729511114389802
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5898412021540470761}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 14.1
+  m_Height: 72.21
+  m_Direction: 1
+  m_Center: {x: -1.9246658, y: 5.6, z: 0.15133703}
 --- !u!1 &6123107869980938869
 GameObject:
   m_ObjectHideFlags: 0
@@ -1465,7 +1480,6 @@ MonoBehaviour:
   attack_true_S: {fileID: 8300000, guid: 42bcd051f8e0be84f94fdcd6d4057859, type: 3}
   fallS: {fileID: 8300000, guid: feb09b74e4cfac34a959d16b40e2865c, type: 3}
   hitS: {fileID: 8300000, guid: e57d7221a9ed28c40b0fe4ec56858ec3, type: 3}
-  cameraResetS: {fileID: 8300000, guid: d8b6f637f9d620d4a9b6a1a71db59146, type: 3}
   _MainGameManager: {fileID: 0}
   _ResultManager: {fileID: 0}
 --- !u!54 &6836906292819772711
@@ -1528,6 +1542,7 @@ GameObject:
   - component: {fileID: 8969358996184867843}
   - component: {fileID: 838734711167088936}
   - component: {fileID: 6259445200416330047}
+  - component: {fileID: 7100506561454215521}
   m_Layer: 0
   m_Name: pCylinder14
   m_TagString: Untagged
@@ -1600,6 +1615,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &7100506561454215521
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7713902491833756570}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.1, y: 32.3, z: 31.7}
+  m_Center: {x: 23.77, y: -2.07, z: 7.6}
 --- !u!1 &7720479605008273200
 GameObject:
   m_ObjectHideFlags: 0
