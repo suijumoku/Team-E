@@ -119,7 +119,7 @@ public class PlayerController : MonoBehaviour
     {              
             Gravity();
 
-        if (stateInfo.IsName("Running") || stateInfo.IsName("Jumping"))
+     //   if (stateInfo.IsName("Running") || stateInfo.IsName("Jumping")) //たまになぜか滑るからなし
             Move();             
     }  
 
@@ -152,6 +152,9 @@ public class PlayerController : MonoBehaviour
 
     void transitionAnim()
     {
+        if (isJump == true)
+            return;
+
         if (stateInfo.IsName("Idle") ||     //移動モーションの遷移
             stateInfo.IsName("Running"))
         {
@@ -170,15 +173,7 @@ public class PlayerController : MonoBehaviour
                 animator.SetTrigger("toIdle");
             }
         }
-
-        if (stateInfo.IsName("Running") && isJump == true)  //移動中にジャンプした時の遷移
-        {           
-            animator.SetTrigger("Run to Jump");
-        }
-        else if (stateInfo.IsName("Idle") && isJump == true)   //その場ジャンプ
-        {
-            animator.SetTrigger("toJumping");
-        }
+          
     }
 
     void AttackMotionManage()
@@ -246,7 +241,7 @@ public class PlayerController : MonoBehaviour
 
         if (R_inputTrigger > triggerTiming || inputAttack)  //AボタンかRTで攻撃
         {
-            animator.SetTrigger("toAttacking");
+            animator.Play("Attacking", 0, 0.0f);
             GameManager.instance.PlaySE(attack_true_S);         //仮 当たったかどうかで音変えると思われる
             isAttack = true;
             R_isReset = false;
@@ -349,7 +344,13 @@ public class PlayerController : MonoBehaviour
             GameManager.instance.PlaySE(jumpS);
             m_Rigidbody.AddForce(transform.up * jumpPower, ForceMode.Impulse);
             isJump = true;
+           
             //Debug.Log("isjump = " + isJump);
+
+             //移動中またはその場でジャンプした時の遷移
+           
+                animator.Play("Jumping", 0, 0.0f);
+            
 
             //ジャンプモーション→落下モーションに遷移
         }
