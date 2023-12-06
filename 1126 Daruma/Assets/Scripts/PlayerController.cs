@@ -112,14 +112,13 @@ public class PlayerController : MonoBehaviour
         if (UnityEngine.Input.GetKeyDown(KeyCode.M))    //デバッグ用無敵モードoff
         {
             _MainGameManager.isInvincible = false;
-        }
-       
+        }       
     }
     private void FixedUpdate()
     {              
             Gravity();
 
-     //   if (stateInfo.IsName("Running") || stateInfo.IsName("Jumping")) //たまになぜか滑るからなし
+        //if (stateInfo.IsName("Running") || stateInfo.IsName("Jumping")) //たまになぜか滑るからなし
             Move();             
     }  
 
@@ -172,8 +171,7 @@ public class PlayerController : MonoBehaviour
             {
                 animator.SetTrigger("toIdle");
             }
-        }
-          
+        }          
     }
 
     void AttackMotionManage()
@@ -251,7 +249,6 @@ public class PlayerController : MonoBehaviour
             //攻撃モーションへの遷移
             //_ResultManager.NormalHit(); //デバッグ用
         }
-
     }
     void KnockBack(Collision collision)
     {
@@ -349,8 +346,7 @@ public class PlayerController : MonoBehaviour
 
              //移動中またはその場でジャンプした時の遷移
            
-                animator.Play("Jumping", 0, 0.0f);
-            
+            animator.Play("Jumping", 0, 0.0f);            
 
             //ジャンプモーション→落下モーションに遷移
         }
