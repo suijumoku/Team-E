@@ -106,12 +106,13 @@ MonoBehaviour:
   patrolMaterial: {fileID: 2100000, guid: dcce71b6c0caafa42a8908fae584c7f7, type: 2}
   chaseMaterial: {fileID: 2100000, guid: 1217dde8a82cbcd49ac9bbf1989fb8b2, type: 2}
   detectDistance: 3
-  boundsPower: 0
+  boundsPower: 40
   _playerController: {fileID: 4861104071161028219, guid: 18a07351b89fe5445ab76a3699ec1394, type: 3}
   points:
-  - {fileID: 4627859967584425738, guid: c7e8282d7b968e047a409233f4d68387, type: 3}
-  - {fileID: 809630217706998333, guid: cf0252c7e55af5441aadd944d863ac0f, type: 3}
-  - {fileID: 2822667250083725367, guid: 920f8cdf30690aa4296e0052f80d73a8, type: 3}
+  - {fileID: 2149750191615925690, guid: fde996fe575c5b84ab132d73ae2020c9, type: 3}
+  - {fileID: 8593013295022793377, guid: cf0252c7e55af5441aadd944d863ac0f, type: 3}
+  - {fileID: 4217076585543198401, guid: 920f8cdf30690aa4296e0052f80d73a8, type: 3}
+  nextPoint: 
 --- !u!64 &6500958143944215587
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -325,12 +326,13 @@ MonoBehaviour:
   patrolMaterial: {fileID: 0}
   chaseMaterial: {fileID: 0}
   detectDistance: 0
-  boundsPower: 0
+  boundsPower: 40
   _playerController: {fileID: 4861104071161028219, guid: 18a07351b89fe5445ab76a3699ec1394, type: 3}
   points:
-  - {fileID: 4627859967584425738, guid: c7e8282d7b968e047a409233f4d68387, type: 3}
-  - {fileID: 809630217706998333, guid: cf0252c7e55af5441aadd944d863ac0f, type: 3}
-  - {fileID: 2822667250083725367, guid: 920f8cdf30690aa4296e0052f80d73a8, type: 3}
+  - {fileID: 2149750191615925690, guid: fde996fe575c5b84ab132d73ae2020c9, type: 3}
+  - {fileID: 8593013295022793377, guid: cf0252c7e55af5441aadd944d863ac0f, type: 3}
+  - {fileID: 4217076585543198401, guid: 920f8cdf30690aa4296e0052f80d73a8, type: 3}
+  nextPoint: 
 --- !u!195 &257751970833364999
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -474,9 +476,10 @@ MonoBehaviour:
   boundsPower: 40
   _playerController: {fileID: 4861104071161028219, guid: 18a07351b89fe5445ab76a3699ec1394, type: 3}
   points:
-  - {fileID: 4627859967584425738, guid: c7e8282d7b968e047a409233f4d68387, type: 3}
-  - {fileID: 809630217706998333, guid: cf0252c7e55af5441aadd944d863ac0f, type: 3}
-  - {fileID: 2822667250083725367, guid: 920f8cdf30690aa4296e0052f80d73a8, type: 3}
+  - {fileID: 2149750191615925690, guid: fde996fe575c5b84ab132d73ae2020c9, type: 3}
+  - {fileID: 8593013295022793377, guid: cf0252c7e55af5441aadd944d863ac0f, type: 3}
+  - {fileID: 4217076585543198401, guid: 920f8cdf30690aa4296e0052f80d73a8, type: 3}
+  nextPoint: 
 --- !u!195 &6500958145341080815
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -631,12 +634,13 @@ MonoBehaviour:
   patrolMaterial: {fileID: 2100000, guid: dcce71b6c0caafa42a8908fae584c7f7, type: 2}
   chaseMaterial: {fileID: 2100000, guid: 1217dde8a82cbcd49ac9bbf1989fb8b2, type: 2}
   detectDistance: 3
-  boundsPower: 0
+  boundsPower: 40
   _playerController: {fileID: 4861104071161028219, guid: 18a07351b89fe5445ab76a3699ec1394, type: 3}
   points:
-  - {fileID: 4627859967584425738, guid: c7e8282d7b968e047a409233f4d68387, type: 3}
-  - {fileID: 809630217706998333, guid: cf0252c7e55af5441aadd944d863ac0f, type: 3}
-  - {fileID: 2822667250083725367, guid: 920f8cdf30690aa4296e0052f80d73a8, type: 3}
+  - {fileID: 2149750191615925690, guid: fde996fe575c5b84ab132d73ae2020c9, type: 3}
+  - {fileID: 8593013295022793377, guid: cf0252c7e55af5441aadd944d863ac0f, type: 3}
+  - {fileID: 4217076585543198401, guid: 920f8cdf30690aa4296e0052f80d73a8, type: 3}
+  nextPoint: 
 --- !u!64 &6500958145679016332
 MeshCollider:
   m_ObjectHideFlags: 0
