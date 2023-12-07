@@ -103,7 +103,7 @@ public class EnemyScript : MonoBehaviour
             {
                 if (!IsDetected)
                 {
-                    GetComponent<Renderer>().material = chaseMaterial;
+                    //GetComponent<Renderer>().material = chaseMaterial;
                 }
                 IsDetected = true;
             }
@@ -111,7 +111,7 @@ public class EnemyScript : MonoBehaviour
             {
                 if (IsDetected)
                 {
-                    GetComponent<Renderer>().material = patrolMaterial;
+                    //GetComponent<Renderer>().material = patrolMaterial;
                 }
                 IsDetected = false;
             }
