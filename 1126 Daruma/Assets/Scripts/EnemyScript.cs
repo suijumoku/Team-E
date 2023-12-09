@@ -188,11 +188,24 @@ public class EnemyScript : MonoBehaviour
         {
             if (gameObject.tag == "DarumaBall")
             {
-                count++;
+                //count++;
                 if (count == 4)
                 {
                     //Destroy(gameObject);
                 }
+            }
+        }
+
+        if(collision.gameObject.tag == "Wall" || collision.gameObject.tag == "DarumaBall" || collision.gameObject.tag == "Tourou")
+        {
+            if(gameObject.tag == "DarumaBall")
+            {
+                count++;
+                if(count == 4)
+                {
+                    //Destroy(gameObject);
+                }
+                Force2(collision);
             }
         }
 
@@ -216,17 +229,18 @@ public class EnemyScript : MonoBehaviour
         gameObject.GetComponent<Rigidbody>().AddForce(vector3 * boundsPower, ForceMode.Impulse);
     }
 
-    //void Force2(Collision collision)
-    //{
-    //    // 衝突位置を取得する
-    //    Vector3 hitPos = collision.contacts[0].point;
+    void Force2(Collision collision)
+    {
+        // 衝突位置を取得する
+        Vector3 hitPos = collision.contacts[0].point;
 
-    //    // 衝突位置から自機へ向かうベクトルを求める
-    //    Vector3 boundVec = this.transform.position - hitPos;
+        // 衝突位置から自機へ向かうベクトルを求める
+        Vector3 boundVec = this.transform.position - hitPos;
 
-    //    // 逆方向にはねる
-    //    Vector3 forceDir = boundsPower * boundVec.normalized;
-    //     this.GetComponent<Rigidbody>().AddForce(forceDir, ForceMode.Impulse);
-    //}
+        // 逆方向にはねる
+        Vector3 forceDir = boundsPower * boundVec.normalized;
+        Debug.Log(forceDir);
+        this.GetComponent<Rigidbody>().AddForce(forceDir, ForceMode.Impulse);
+    }
 
 }

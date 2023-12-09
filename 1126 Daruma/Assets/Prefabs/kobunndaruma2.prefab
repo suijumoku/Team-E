@@ -106,7 +106,7 @@ MonoBehaviour:
   patrolMaterial: {fileID: 0}
   chaseMaterial: {fileID: 0}
   detectDistance: 5
-  boundsPower: 10
+  boundsPower: 30
   _playerController: {fileID: 1193852216636926739, guid: 44defe463f12ed048bb2c9ccc0fd9bf9, type: 3}
   points:
   - {fileID: 5693236718117789071, guid: fde996fe575c5b84ab132d73ae2020c9, type: 3}
@@ -349,8 +349,8 @@ MonoBehaviour:
   child: {fileID: 6394116446806499450}
   patrolMaterial: {fileID: 0}
   chaseMaterial: {fileID: 0}
-  detectDistance: 3
-  boundsPower: 40
+  detectDistance: 5
+  boundsPower: 30
   _playerController: {fileID: 1193852216636926739, guid: 44defe463f12ed048bb2c9ccc0fd9bf9, type: 3}
   points:
   - {fileID: 5693236718117789071, guid: fde996fe575c5b84ab132d73ae2020c9, type: 3}
@@ -501,8 +501,8 @@ MonoBehaviour:
   child: {fileID: 6394116446806499450}
   patrolMaterial: {fileID: 0}
   chaseMaterial: {fileID: 0}
-  detectDistance: 3
-  boundsPower: 40
+  detectDistance: 5
+  boundsPower: 30
   _playerController: {fileID: 1193852216636926739, guid: 44defe463f12ed048bb2c9ccc0fd9bf9, type: 3}
   points:
   - {fileID: 5693236718117789071, guid: fde996fe575c5b84ab132d73ae2020c9, type: 3}
