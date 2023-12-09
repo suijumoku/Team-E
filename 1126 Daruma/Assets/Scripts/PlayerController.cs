@@ -32,10 +32,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float gravityPower = default!;
     [Header("攻撃モーションの長さ")]
     [SerializeField] float Attack_Finish_Time = 0.3f;    //攻撃モーションの長さに応じて変える (連打とTriggerによる連続入力を防ぐため)
-    [Header("判定が存在する時間")]
-    [SerializeField] float Collider_True_Time = 0.3f;
+    [Header("攻撃モーションのスピード")]
+    [SerializeField] float Attack_Motion_Speed = 1.0f;
+    [Header("判定が消える時間")]
+    [SerializeField] float Collider_Stop_Time = 0.3f;
+    [Header("判定が現れる時間")]
+    [SerializeField] float Collider_Start_Time = 0.1f;
     [Header("トリガーの反応タイミング")]
-    [SerializeField] float triggerTiming = 0.5f;         //トリガーがどこまで押し込まれたら反応するか 要調整
+    [SerializeField] float triggerTiming = 0.5f;         //トリガーがどこまで押し込まれたら反応するか 要調整 
     [Header("回転時間")]
     [SerializeField] float smoothTime = 0.3f;                //進行方向への回転にかかる時間
     [Header("ジャンプの強さ")]
@@ -69,7 +73,7 @@ public class PlayerController : MonoBehaviour
     bool L_isReset;
     float targetRotation;   //回転に使う
     float yVelocity = 0.0f;
-    float motionTime = 0.0f;             // 攻撃モーションが始まってからの経過時間を格納->animationの遷移でできそう 
+    float motionTime = 0.0f;     // 攻撃モーションが始まってからの経過時間を格納->animationの遷移でできそう 
     float time = 0f;                //Runningモーションに使う
 
     Quaternion defaultCameraRot;
@@ -177,7 +181,7 @@ public class PlayerController : MonoBehaviour
     {
         //攻撃モーション中ハンマーの当たり判定が存在する時間の管理
 
-        motionTime += Time.deltaTime;
+        motionTime += Time.deltaTime * Attack_Motion_Speed; //モーションの倍速に対応
 
         if (isHit && onlyFirst == false)
         {
@@ -186,17 +190,24 @@ public class PlayerController : MonoBehaviour
             onlyFirst = true;
         }
         // checkHit();
-        if (motionTime >= Attack_Finish_Time)
+        if (motionTime >= Collider_Start_Time && boxCollider.enabled == false)  //一定時間経過で判定出現(振り始めの一瞬は当たらない)
+        {
+            boxCollider.enabled = true;
+            Debug.Log("コライダー" + boxCollider.enabled);
+        }
+        if (motionTime >= Collider_Stop_Time && boxCollider.enabled == true)   //一定時間経過で判定が消える(振り切った最後の方は当たらない)
+        {
+            boxCollider.enabled = false;
+            Debug.Log("コライダー" + boxCollider.enabled);
+        }
+        if (motionTime >= Attack_Finish_Time && isAttack == true)
         {
             isHit = false;
             isAttack = false;
             onlyFirst = false;
             motionTime = 0.0f;
         }
-        if (motionTime >= Collider_True_Time)
-        {
-            boxCollider.enabled = false;
-        }
+  
     }
     //void CamaraReset()
     //{
@@ -244,6 +255,7 @@ public class PlayerController : MonoBehaviour
             R_isReset = false;
             boxCollider.enabled = true;
             motionTime = 0.0f;
+            Debug.Log("boxCollider.enabled = " + boxCollider.enabled);
             //   Debug.Log("Rトリガー = " + R_inputTrigger);
             //攻撃モーションへの遷移
             //_ResultManager.NormalHit(); //デバッグ用
