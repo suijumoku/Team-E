@@ -161,11 +161,13 @@ public class PlayerController : MonoBehaviour
         {
             //“ü—Í‚ª0‚¶‚á‚È‚¯‚ê‚ÎˆÚ“®ƒ‚[ƒVƒ‡ƒ“‚É‘JˆÚ
             time += Time.deltaTime;
+            animator.ResetTrigger("toIdle");           
         }
         else if (inputHorizontal == 0 && inputVertical == 0 && stateInfo.IsName("Running"))
         {
             time = 0f;
             animator.SetTrigger("toIdle");
+         
         }
         //  Debug.Log("time = " + time);
         animator.SetFloat("time", time);
