@@ -1000,6 +1000,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1a97bd7b5a2cd64aa03f29d0e706f7d, type: 3}
+--- !u!1 &686494037 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 929066822049955450, guid: 3ddd3da866d5b6e4d9617bcce70c91fc, type: 3}
+  m_PrefabInstance: {fileID: 891454321}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &687993723 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8700396276693741145, guid: 4951b9a5886ebea42ae80f5fe805c98c, type: 3}
@@ -1175,6 +1180,22 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 553773389485122752, guid: 3ddd3da866d5b6e4d9617bcce70c91fc, type: 3}
   m_PrefabInstance: {fileID: 891454321}
   m_PrefabAsset: {fileID: 0}
+--- !u!54 &891454324
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 686494037}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &910096896
 GameObject:
   m_ObjectHideFlags: 0
@@ -3158,7 +3179,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 578910371207922701, guid: 26c940c44de39eb47814d559ca46abd3, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.024322685
+      value: -0.024322687
       objectReference: {fileID: 0}
     - target: {fileID: 578910371207922701, guid: 26c940c44de39eb47814d559ca46abd3, type: 3}
       propertyPath: m_LocalRotation.y

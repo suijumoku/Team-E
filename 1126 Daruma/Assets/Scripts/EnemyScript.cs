@@ -145,11 +145,11 @@ public class EnemyScript : MonoBehaviour
             if (gameObject.tag == "Enemy")
             {
                 //親子関係解除
+                //child.GetComponent<Rigidbody>();
                 transform.DetachChildren();
 
                 NavMeshAgent navMeshAgent = GetComponent<NavMeshAgent>();
                 navMeshAgent.enabled = false;
-                gameObject.AddComponent<Rigidbody>();
 
                 _playerController.isHit = true;
 
@@ -169,6 +169,7 @@ public class EnemyScript : MonoBehaviour
             if (gameObject.tag == "Enemy")
             {
                 //親子関係解除
+                //child.GetComponent<Rigidbody>();
                 transform.DetachChildren();
                 NavMeshAgent navMeshAgent = GetComponent<NavMeshAgent>();
                 navMeshAgent.enabled = false;
