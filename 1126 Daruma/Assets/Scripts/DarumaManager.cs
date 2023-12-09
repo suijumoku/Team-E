@@ -9,18 +9,18 @@ public class DarumaManager : MonoBehaviour
     [SerializeField] GameObject parent = default!;
 
     private NavMeshAgent navMeshAgent;
-    private MeshCollider collider;
+    private BoxCollider collider;
     private EnemyScript enemyScript;
     private DarumaManager darumaManager;
 
     void Awake()
     {
-        navMeshAgent = daruma.GetComponent<NavMeshAgent>();
+        //navMeshAgent = daruma.GetComponent<NavMeshAgent>();
         //navMeshAgent.enabled = false;
-        collider = daruma.GetComponent<MeshCollider>();
-        enemyScript = daruma.GetComponent<EnemyScript>();
-        enemyScript.enabled = false;
-        darumaManager = daruma.GetComponent<DarumaManager>();
+        //collider = daruma.GetComponent<BoxCollider>();
+        //enemyScript = daruma.GetComponent<EnemyScript>();
+        //enemyScript.enabled = false;
+        //darumaManager = daruma.GetComponent<DarumaManager>();
     }
 
     // Update is called once per frame
@@ -34,18 +34,18 @@ public class DarumaManager : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+       
         if (collision.gameObject.tag == "Ground")
         {
+            Debug.Log("n");
             if (gameObject.tag == "Untagged")
             {
-                Rigidbody rb = GetComponent<Rigidbody>();
-                Destroy(rb);
-
+                Debug.Log("b");
+                daruma.tag = "Enemy";
+                NavMeshAgent navMeshAgent = gameObject.GetComponent<NavMeshAgent>();
                 navMeshAgent.enabled = true;
-                enemyScript.enabled = true;
-                collider.enabled = true;
-
-                gameObject.tag = "Enemy";
+                //enemyScript.enabled = true;
+                //collider.enabled = true;
 
                 darumaManager.enabled = false;
 
