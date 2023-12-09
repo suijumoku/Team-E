@@ -188,7 +188,7 @@ public class EnemyScript : MonoBehaviour
         {
             if (gameObject.tag == "DarumaBall")
             {
-                count++;
+                //count++;
                 if (count == 4)
                 {
                     //Destroy(gameObject);
@@ -200,6 +200,11 @@ public class EnemyScript : MonoBehaviour
         {
             if(gameObject.tag == "DarumaBall")
             {
+                count++;
+                if(count == 4)
+                {
+                    //Destroy(gameObject);
+                }
                 Force2(collision);
             }
         }
@@ -234,6 +239,7 @@ public class EnemyScript : MonoBehaviour
 
         // ‹t•ûŒü‚É‚Í‚Ë‚é
         Vector3 forceDir = boundsPower * boundVec.normalized;
+        Debug.Log(forceDir);
         this.GetComponent<Rigidbody>().AddForce(forceDir, ForceMode.Impulse);
     }
 
