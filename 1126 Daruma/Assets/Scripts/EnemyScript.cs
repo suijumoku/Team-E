@@ -21,7 +21,6 @@ public class EnemyScript : MonoBehaviour
     [SerializeField]
     private int destPoint = 0;
     private NavMeshAgent agent;
-    private BoxCollider collider;
     bool IsDetected = false;
 
     GameObject player_ = default!;
@@ -35,7 +34,6 @@ public class EnemyScript : MonoBehaviour
     void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
-        collider = GetComponent<BoxCollider>();
         
         player_ = GameObject.Find("New_EPlayer");
 
@@ -149,17 +147,15 @@ public class EnemyScript : MonoBehaviour
                 //親子関係解除
                 child.gameObject.GetComponent<BoxCollider>().enabled = true;
                 child.gameObject.AddComponent<Rigidbody>();
-                child.gameObject.GetComponent<NavMeshAgent>().enabled = true;
+                //child.gameObject.GetComponent<NavMeshAgent>().enabled = true;
                 child.gameObject.GetComponent<EnemyScript>().enabled = true;
-                child.gameObject.tag = ("Enemy");
+                //child.gameObject.tag = ("Enemy");
                 transform.DetachChildren();
 
                 NavMeshAgent navMeshAgent = GetComponent<NavMeshAgent>();
                 navMeshAgent.enabled = false;
-                gameObject.AddComponent<Rigidbody>();
 
                 _playerController.isHit = true;
-
 
                 gameObject.tag = "DarumaBall";
 
@@ -176,15 +172,15 @@ public class EnemyScript : MonoBehaviour
             if (gameObject.tag == "Enemy")
             {
                 //親子関係解除
-                //child.GetComponent<Rigidbody>();
+                child.gameObject.GetComponent<BoxCollider>().enabled = true;
+                child.gameObject.AddComponent<Rigidbody>();
+                //child.gameObject.GetComponent<NavMeshAgent>().enabled = true;
+                child.gameObject.GetComponent<EnemyScript>().enabled = true;
+                //child.gameObject.tag = ("Enemy");
                 transform.DetachChildren();
-                NavMeshAgent navMeshAgent = GetComponent<NavMeshAgent>();
-                navMeshAgent.enabled = false;
-                gameObject.AddComponent<Rigidbody>();
+                Destroy(gameObject);
 
-                //Destroy(gameObject);
-
-                //   resultManager.DoubleHit();
+                //resultManager.DoubleHit();
             }
         }
         //飛んできた達磨の消去
