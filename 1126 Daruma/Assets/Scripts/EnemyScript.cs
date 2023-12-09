@@ -150,6 +150,7 @@ public class EnemyScript : MonoBehaviour
 
                 NavMeshAgent navMeshAgent = GetComponent<NavMeshAgent>();
                 navMeshAgent.enabled = false;
+                gameObject.AddComponent<Rigidbody>();
 
                 _playerController.isHit = true;
 
@@ -197,7 +198,7 @@ public class EnemyScript : MonoBehaviour
 
     void Force(Collision collision)
     {
-
+        Debug.Log("a");
         // Õ“ËˆÊ’u‚ğæ“¾‚·‚é
         Vector3 hitPos = collision.contacts[0].point;
 
