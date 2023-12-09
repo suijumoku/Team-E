@@ -48,6 +48,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float knockBackP = 5f;                //ノックバックの強さ
     [Header("ノックバック時上方向の力")]
     [SerializeField] float knockBackUpP = 3f;            //ノックバック時少し上に浮かす
+    [Header("パーティクル")]
+    [Tooltip("1ヒット、2素振り、3ジャンプ")]
+    [SerializeField] private ParticleSystem[] particles = default!;
 
     [SerializeField] Collider boxCollider = default!;
     [SerializeField] GameObject CinemachineCameraTarget;    //カメラのターゲットを別オブジェクトにすることで頭の部分を追尾
@@ -88,6 +91,7 @@ public class PlayerController : MonoBehaviour
         _MainGameManager.isInvincible = false;
         defaultCameraRot = Camera.main.transform.rotation;
         animator.SetTrigger("toIdle");
+        particles[0].Stop();
     }
 
     void Update()
@@ -104,6 +108,7 @@ public class PlayerController : MonoBehaviour
         Jump();
         Attack();
         transitionAnim();
+        ParticleManage();
         if (isAttack)
         {
             AttackMotionManage();
@@ -155,6 +160,13 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void ParticleManage()
+    {
+        if (isHit == true)      //ヒット時のエフェクト再生
+        {
+            particles[0].Play();           
+        }
+    }
     void transitionAnim()
     {
         if (!(stateInfo.IsName("Idle") ||     //移動モーションの遷移
@@ -170,8 +182,7 @@ public class PlayerController : MonoBehaviour
         else if (inputHorizontal == 0 && inputVertical == 0 && stateInfo.IsName("Running"))
         {
             time = 0f;
-            animator.SetTrigger("toIdle");
-         
+            animator.SetTrigger("toIdle");         
         }
         //  Debug.Log("time = " + time);
         animator.SetFloat("time", time);
