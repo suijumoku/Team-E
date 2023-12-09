@@ -164,7 +164,16 @@ public class PlayerController : MonoBehaviour
     {
         if (isHit == true)      //ヒット時のエフェクト再生
         {
-            particles[0].Play();           
+            particles[0].Play();
+        }
+        //if (stateInfo.IsName("Attacking") && particles[1].isPlaying == true)
+        //{
+        //    particles[1].Stop();    //ハンマーを後ろに構える時間はパーティクル停止
+        //}
+        if (stateInfo.IsName("Running") || stateInfo.IsName("Idle"))
+        {
+            if (particles[1].isStopped == true)
+                particles[1].Play();
         }
     }
     void transitionAnim()
@@ -203,20 +212,23 @@ public class PlayerController : MonoBehaviour
         // checkHit();
         if (motionTime >= Collider_Start_Time && boxCollider.enabled == false)  //一定時間経過で判定出現(振り始めの一瞬は当たらない)
         {
+            particles[1].Play();    //振り始めは再生　調整するかも
             boxCollider.enabled = true;
-            Debug.Log("コライダー" + boxCollider.enabled);
+           //Debug.Log("コライダー" + boxCollider.enabled);
         }
         if (motionTime >= Collider_Stop_Time && boxCollider.enabled == true)   //一定時間経過で判定が消える(振り切った最後の方は当たらない)
         {
+            particles[1].Stop();　//振り終わったらまた移動するまで停止
             boxCollider.enabled = false;
-            Debug.Log("コライダー" + boxCollider.enabled);
+           // Debug.Log("コライダー" + boxCollider.enabled);
         }
         if (motionTime >= Attack_Finish_Time && isAttack == true)
-        {
+        {            
             isHit = false;
             isAttack = false;
             onlyFirst = false;
             motionTime = 0.0f;
+           // particles[1].Play();
         }
   
     }
@@ -249,7 +261,6 @@ public class PlayerController : MonoBehaviour
 
     void Attack()   //ジャンプ中は攻撃できない
     {
-
         if (R_inputTrigger == 0 && inputAttack == false)
         {
             R_isReset = true;
@@ -266,7 +277,9 @@ public class PlayerController : MonoBehaviour
             R_isReset = false;
             boxCollider.enabled = true;
             motionTime = 0.0f;
-            Debug.Log("boxCollider.enabled = " + boxCollider.enabled);
+            particles[1].Stop();    //ハンマーを後ろに構える時間はパーティクル停止
+
+            //Debug.Log("boxCollider.enabled = " + boxCollider.enabled);
             //   Debug.Log("Rトリガー = " + R_inputTrigger);
             //攻撃モーションへの遷移
             //_ResultManager.NormalHit(); //デバッグ用
@@ -280,8 +293,6 @@ public class PlayerController : MonoBehaviour
 
         m_Rigidbody.AddForce(vector3 * knockBackP, ForceMode.Impulse);
         m_Rigidbody.AddForce(transform.up * knockBackUpP, ForceMode.Impulse);
-
-        //振った槌が当たったかどうか判定したい。場合によってはスクリプト分けてもよさそう。
     }
 
     public void fall()  //落下判定エリアで使う
