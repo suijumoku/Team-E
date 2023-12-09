@@ -21,6 +21,7 @@ public class EnemyScript : MonoBehaviour
     [SerializeField]
     private int destPoint = 0;
     private NavMeshAgent agent;
+    private BoxCollider collider;
     bool IsDetected = false;
 
     GameObject player_ = default!;
@@ -34,7 +35,8 @@ public class EnemyScript : MonoBehaviour
     void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
-        //gameObject.AddComponent<Rigidbody>();
+        collider = GetComponent<BoxCollider>();
+        
         player_ = GameObject.Find("New_EPlayer");
 
         // autoBraking を無効にすると、目標地点の間を継続的に移動します
@@ -145,7 +147,11 @@ public class EnemyScript : MonoBehaviour
             if (gameObject.tag == "Enemy")
             {
                 //親子関係解除
-                //child.GetComponent<Rigidbody>();
+                child.gameObject.GetComponent<BoxCollider>().enabled = true;
+                child.gameObject.AddComponent<Rigidbody>();
+                child.gameObject.GetComponent<NavMeshAgent>().enabled = true;
+                child.gameObject.GetComponent<EnemyScript>().enabled = true;
+                child.gameObject.tag = ("Enemy");
                 transform.DetachChildren();
 
                 NavMeshAgent navMeshAgent = GetComponent<NavMeshAgent>();
@@ -176,7 +182,7 @@ public class EnemyScript : MonoBehaviour
                 navMeshAgent.enabled = false;
                 gameObject.AddComponent<Rigidbody>();
 
-                Destroy(gameObject);
+                //Destroy(gameObject);
 
                 //   resultManager.DoubleHit();
             }
@@ -189,7 +195,7 @@ public class EnemyScript : MonoBehaviour
                 count++;
                 if (count == 4)
                 {
-                    Destroy(gameObject);
+                    //Destroy(gameObject);
                 }
             }
         }

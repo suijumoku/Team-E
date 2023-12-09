@@ -9,7 +9,7 @@ public class DarumaManager : MonoBehaviour
     [SerializeField] GameObject parent = default!;
 
     private NavMeshAgent navMeshAgent;
-    private MeshCollider collider;
+    private BoxCollider collider;
     private EnemyScript enemyScript;
     private DarumaManager darumaManager;
 
@@ -17,7 +17,7 @@ public class DarumaManager : MonoBehaviour
     {
         navMeshAgent = daruma.GetComponent<NavMeshAgent>();
         //navMeshAgent.enabled = false;
-        collider = daruma.GetComponent<MeshCollider>();
+        collider = daruma.GetComponent<BoxCollider>();
         enemyScript = daruma.GetComponent<EnemyScript>();
         enemyScript.enabled = false;
         darumaManager = daruma.GetComponent<DarumaManager>();
@@ -38,12 +38,13 @@ public class DarumaManager : MonoBehaviour
         {
             if (gameObject.tag == "Untagged")
             {
+                Debug.Log("b");
                 Rigidbody rb = GetComponent<Rigidbody>();
                 Destroy(rb);
 
-                navMeshAgent.enabled = true;
-                enemyScript.enabled = true;
-                collider.enabled = true;
+                //navMeshAgent.enabled = true;
+                //enemyScript.enabled = true;
+                //collider.enabled = true;
 
                 gameObject.tag = "Enemy";
 
