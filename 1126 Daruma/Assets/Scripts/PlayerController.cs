@@ -14,17 +14,17 @@ public class PlayerController : MonoBehaviour
     private Vector3 velocity;
 
     Animator animator;
-    AnimatorStateInfo stateInfo;    
+    AnimatorStateInfo stateInfo;
 
     //地面の上なら歩きモーション、違うなら落下モーション              
 
-     private bool isJump = false;           //ジャンプ中かどうか
-     private bool isFall = false;
-     public bool isAttack = false;
-     public bool isHit = false;
-     private bool canMove = true;
-     private bool onlyFirst = false;
-     private bool isKnockBack = false;
+    private bool isJump = false;           //ジャンプ中かどうか
+    private bool isFall = false;
+    public bool isAttack = false;
+    public bool isHit = false;
+    private bool canMove = true;
+    private bool onlyFirst = false;
+    private bool isKnockBack = false;
 
     [Header("移動スピード")]
     [SerializeField] private float walkSpeed = 4f;
@@ -48,22 +48,22 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Collider boxCollider = default!;
     [SerializeField] GameObject CinemachineCameraTarget;    //カメラのターゲットを別オブジェクトにすることで頭の部分を追尾
 
-    [SerializeField]  AudioClip jumpS = default!;
-    [SerializeField]  AudioClip attack_true_S = default!;
-    [SerializeField]  AudioClip fallS = default!;
-    [SerializeField]  AudioClip hitS = default!;
-   // [SerializeField]  AudioClip cameraResetS = default!;
+    [SerializeField] AudioClip jumpS = default!;
+    [SerializeField] AudioClip attack_true_S = default!;
+    [SerializeField] AudioClip fallS = default!;
+    [SerializeField] AudioClip hitS = default!;
+    // [SerializeField]  AudioClip cameraResetS = default!;
 
     [SerializeField] MainGameManager _MainGameManager;
 
-    [SerializeField]　ResultManager _ResultManager; //デバッグ用
+    [SerializeField] ResultManager _ResultManager; //デバッグ用
 
-     
+
     float inputHorizontal;      //水平方向の入力値
     float inputVertical;        //垂直方向の入力値
     float L_inputTrigger;
     float R_inputTrigger;
-    bool  inputAttack;
+    bool inputAttack;
 
     bool R_isReset;
     bool L_isReset;
@@ -78,8 +78,8 @@ public class PlayerController : MonoBehaviour
 
 
     void Start()
-    {             
-        m_Rigidbody = GetComponent<Rigidbody>();     
+    {
+        m_Rigidbody = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
         _MainGameManager.isInvincible = false;
         defaultCameraRot = Camera.main.transform.rotation;
@@ -87,8 +87,8 @@ public class PlayerController : MonoBehaviour
     }
 
     void Update()
-    {        
-         
+    {
+
         stateInfo = animator.GetCurrentAnimatorStateInfo(0);
 
         inputHorizontal = UnityEngine.Input.GetAxisRaw("Horizontal");   //入力値の格納
@@ -96,34 +96,36 @@ public class PlayerController : MonoBehaviour
         L_inputTrigger = UnityEngine.Input.GetAxis("L_Trigger");
         R_inputTrigger = UnityEngine.Input.GetAxis("R_Trigger");
         inputAttack = UnityEngine.Input.GetButtonDown("Attack");
-       // CamaraReset();
+        // CamaraReset();
         Jump();
         Attack();
         transitionAnim();
         if (isAttack)
         {
             AttackMotionManage();
-        }    
+        }
 
         if (UnityEngine.Input.GetKeyDown(KeyCode.X))    //デバッグ用無敵モードon
         {
             _MainGameManager.isInvincible = true;
+            Debug.Log("無敵");
         }
         if (UnityEngine.Input.GetKeyDown(KeyCode.M))    //デバッグ用無敵モードoff
         {
             _MainGameManager.isInvincible = false;
-        }       
+            Debug.Log("無敵解除");
+        }
     }
     private void FixedUpdate()
-    {              
-            Gravity();
+    {
+        Gravity();
 
         //if (stateInfo.IsName("Running") || stateInfo.IsName("Jumping")) //たまになぜか滑るからなし
-            Move();             
-    }  
+        Move();
+    }
 
     private void OnCollisionEnter(Collision collision)
-    {       
+    {
         //難しい方法はできないからTriggerで判定したい
         if (isJump == true || isFall == true)
         {
@@ -132,7 +134,7 @@ public class PlayerController : MonoBehaviour
                 animator.SetTrigger("toIdle");
                 isJump = false;
                 isFall = false;
-                canMove = true;               
+                canMove = true;
                 //Debug.Log("isJump = " + isJump);
             }
         }
@@ -151,27 +153,22 @@ public class PlayerController : MonoBehaviour
 
     void transitionAnim()
     {
-        if (isJump == true)
+        if (!(stateInfo.IsName("Idle") ||     //移動モーションの遷移
+           stateInfo.IsName("Running")))
             return;
 
-        if (stateInfo.IsName("Idle") ||     //移動モーションの遷移
-            stateInfo.IsName("Running"))
+        if (inputHorizontal != 0 || inputVertical != 0)
         {
-            if (inputHorizontal != 0 || inputVertical != 0)
-            {
-                //入力が0じゃなければ移動モーションに遷移
-                time += Time.deltaTime;
-            }
-            else
-            {
-                time = 0f;
-            }
-            animator.SetFloat("time", time);
-            if (time == 0f)
-            {
-                animator.SetTrigger("toIdle");
-            }
-        }          
+            //入力が0じゃなければ移動モーションに遷移
+            time += Time.deltaTime;
+        }
+        else if (inputHorizontal == 0 && inputVertical == 0 && stateInfo.IsName("Running"))
+        {
+            time = 0f;
+            animator.SetTrigger("toIdle");
+        }
+        //  Debug.Log("time = " + time);
+        animator.SetFloat("time", time);
     }
 
     void AttackMotionManage()
@@ -235,7 +232,7 @@ public class PlayerController : MonoBehaviour
             return;
         }
         if (isAttack == true || isJump == true || R_isReset == false)
-             return;       
+            return;
 
         if (R_inputTrigger > triggerTiming || inputAttack)  //AボタンかRTで攻撃
         {
@@ -245,7 +242,7 @@ public class PlayerController : MonoBehaviour
             R_isReset = false;
             boxCollider.enabled = true;
             motionTime = 0.0f;
-         //   Debug.Log("Rトリガー = " + R_inputTrigger);
+            //   Debug.Log("Rトリガー = " + R_inputTrigger);
             //攻撃モーションへの遷移
             //_ResultManager.NormalHit(); //デバッグ用
         }
@@ -264,11 +261,11 @@ public class PlayerController : MonoBehaviour
 
     public void fall()  //落下判定エリアで使う
     {
-   
+
         GameManager.instance.PlaySE(fallS);
-        isFall = true;    
+        isFall = true;
         canMove = false;
-      
+
         //ここで操作不能にすればすれすれから復帰した時にジャンプができなくなることを防げそう
         //落下モーションへの遷移
     }
@@ -294,15 +291,15 @@ public class PlayerController : MonoBehaviour
         Vector3 cameraForward = Vector3.Scale(Camera.main.transform.forward, new Vector3(1, 0, 1)).normalized;
 
         // 方向キーの入力値とカメラの向きから、移動方向を決定
-        Vector3 moveForward = cameraForward * inputVertical + Camera.main.transform.right * inputHorizontal;    
+        Vector3 moveForward = cameraForward * inputVertical + Camera.main.transform.right * inputHorizontal;
 
-     
+
         //移動速度の計算
         //clampは値の範囲制限
         var clampedInput = Vector3.ClampMagnitude(moveForward, 1f);   //GetAxisは0から1で入力値を管理する、斜め移動でWとAを同時押しすると
                                                                       //1以上の値が入ってくるからVector3.ClampMagnitudeメソッドを使って入力値を１に制限する(多分)
-    
-         velocity = clampedInput * walkSpeed;
+
+        velocity = clampedInput * walkSpeed;
         // transform.LookAt(m_Rigidbody.position + input); //キャラクターの向きを現在地＋入力値の方に向ける
 
         //Rigidbodyに一度力を加えると抵抗する力がない限りずっと力が加わる
@@ -336,17 +333,17 @@ public class PlayerController : MonoBehaviour
     {
         if (isJump == true || isFall == true || isAttack == true) return;   //落下中と攻撃中はジャンプをさせない
 
-        if ( UnityEngine.Input.GetButtonDown("Jump"))
-        {                
+        if (UnityEngine.Input.GetButtonDown("Jump"))
+        {
             GameManager.instance.PlaySE(jumpS);
             m_Rigidbody.AddForce(transform.up * jumpPower, ForceMode.Impulse);
             isJump = true;
-           
+
             //Debug.Log("isjump = " + isJump);
 
-             //移動中またはその場でジャンプした時の遷移
-           
-            animator.Play("Jumping", 0, 0.0f);            
+            //移動中またはその場でジャンプした時の遷移
+
+            animator.Play("Jumping", 0, 0.0f);
 
             //ジャンプモーション→落下モーションに遷移
         }
