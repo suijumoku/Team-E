@@ -112,6 +112,7 @@ MonoBehaviour:
   - {fileID: 5693236718117789071, guid: fde996fe575c5b84ab132d73ae2020c9, type: 3}
   - {fileID: 8044884596751178665, guid: cf0252c7e55af5441aadd944d863ac0f, type: 3}
   - {fileID: 3852693901031463524, guid: 920f8cdf30690aa4296e0052f80d73a8, type: 3}
+  destPoint: 0
   nextPoint: 03000000
 --- !u!64 &6500958143944215587
 MeshCollider:
@@ -162,6 +163,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   daruma: {fileID: 6500958143944215581}
+  parent: {fileID: 0}
 --- !u!54 &6500958143944215582
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -332,6 +334,7 @@ MonoBehaviour:
   - {fileID: 5693236718117789071, guid: fde996fe575c5b84ab132d73ae2020c9, type: 3}
   - {fileID: 8044884596751178665, guid: cf0252c7e55af5441aadd944d863ac0f, type: 3}
   - {fileID: 3852693901031463524, guid: 920f8cdf30690aa4296e0052f80d73a8, type: 3}
+  destPoint: 0
   nextPoint: 03000000
 --- !u!195 &257751970833364999
 NavMeshAgent:
@@ -368,6 +371,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   daruma: {fileID: 6500958144201429787}
+  parent: {fileID: 0}
 --- !u!1 &6500958145341080810
 GameObject:
   m_ObjectHideFlags: 0
@@ -479,6 +483,7 @@ MonoBehaviour:
   - {fileID: 5693236718117789071, guid: fde996fe575c5b84ab132d73ae2020c9, type: 3}
   - {fileID: 8044884596751178665, guid: cf0252c7e55af5441aadd944d863ac0f, type: 3}
   - {fileID: 3852693901031463524, guid: 920f8cdf30690aa4296e0052f80d73a8, type: 3}
+  destPoint: 0
   nextPoint: 
 --- !u!195 &6500958145341080815
 NavMeshAgent:
@@ -640,6 +645,7 @@ MonoBehaviour:
   - {fileID: 5693236718117789071, guid: fde996fe575c5b84ab132d73ae2020c9, type: 3}
   - {fileID: 8044884596751178665, guid: cf0252c7e55af5441aadd944d863ac0f, type: 3}
   - {fileID: 3852693901031463524, guid: 920f8cdf30690aa4296e0052f80d73a8, type: 3}
+  destPoint: 0
   nextPoint: 03000000
 --- !u!64 &6500958145679016332
 MeshCollider:
@@ -690,6 +696,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   daruma: {fileID: 6500958145679016326}
+  parent: {fileID: 0}
 --- !u!54 &6500958145679016331
 Rigidbody:
   m_ObjectHideFlags: 0
