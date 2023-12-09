@@ -1,12 +1,16 @@
 using UnityEngine;
 using UnityEngine.AI;
+using System.Collections;
+using System.Collections.Generic;
 
 public class DarumaManager : MonoBehaviour
 {
     [SerializeField] GameObject daruma = default!;
-    
+    [SerializeField] GameObject parent = default!;
+
     private NavMeshAgent navMeshAgent;
-   private EnemyScript enemyScript;
+    private EnemyScript enemyScript;
+    private DarumaManager darumaManager;
 
     void Awake()
     {
@@ -14,6 +18,7 @@ public class DarumaManager : MonoBehaviour
         //navMeshAgent.enabled = false;
         enemyScript = daruma.GetComponent<EnemyScript>();
         enemyScript.enabled = false;
+        darumaManager = daruma.GetComponent<DarumaManager>();
     }
 
     // Update is called once per frame
@@ -27,7 +32,7 @@ public class DarumaManager : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "Ground")
+        if (collision.gameObject.tag == "Ground")
         {
             if (gameObject.tag == "Untagged")
             {
@@ -38,7 +43,9 @@ public class DarumaManager : MonoBehaviour
                 enemyScript.enabled = true;
 
                 gameObject.tag = "Enemy";
-                
+
+                darumaManager.enabled = false;
+
             }
         }
     }

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1912854415666773986}
   - component: {fileID: 3189250786814279537}
   - component: {fileID: 5214050928740316529}
+  - component: {fileID: 6603822654272570109}
   m_Layer: 0
   m_Name: pCylinder6
   m_TagString: Enemy
@@ -148,6 +149,19 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -9010193167645078742, guid: 85c2ea532cfda6a4fa99098c99d151ae, type: 3}
+--- !u!114 &6603822654272570109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2042321718189369825}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 517f32168e8f87f4b9d43f24adf48e79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 7583526806343463385, guid: 44defe463f12ed048bb2c9ccc0fd9bf9, type: 3}
 --- !u!1 &2071434539015947235
 GameObject:
   m_ObjectHideFlags: 0
