@@ -47,6 +47,11 @@ public class DarumaManager : MonoBehaviour
                 //enemyScript.enabled = true;
                 //collider.enabled = true;
 
+                Rigidbody rb = gameObject.GetComponent<Rigidbody>();
+                rb.constraints = RigidbodyConstraints.FreezeRotationX;
+                rb.constraints = RigidbodyConstraints.FreezeRotationY;
+                rb.constraints = RigidbodyConstraints.FreezeRotationZ;
+
                 darumaManager.enabled = false;
 
             }
