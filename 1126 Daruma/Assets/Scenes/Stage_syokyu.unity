@@ -993,7 +993,6 @@ MonoBehaviour:
   - {fileID: 911271504}
   - {fileID: 1036071000}
   - {fileID: 1770847622}
-  - {fileID: 41989700}
   SpownTime: 10
   enemyNumlimit: 8
   enemyOnceSpown: 2
@@ -2630,7 +2629,7 @@ GameObject:
   - component: {fileID: 1457116060}
   m_Layer: 0
   m_Name: Terrain
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
