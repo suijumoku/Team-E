@@ -34,10 +34,16 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float Attack_Finish_Time = 0.3f;    //攻撃モーションの長さに応じて変える (連打とTriggerによる連続入力を防ぐため)
     [Header("攻撃モーションのスピード")]
     [SerializeField] float Attack_Motion_Speed = 1.0f;
-    [Header("判定が消える時間")]
-    [SerializeField] float Collider_Stop_Time = 0.3f;
     [Header("判定が現れる時間")]
     [SerializeField] float Collider_Start_Time = 0.1f;
+    [Header("判定が消える時間")]
+    [SerializeField] float Collider_Stop_Time = 0.3f;    
+    [Header("パーティクルが現れる時間")]
+    [SerializeField] float Particle_Start_Time = 0.18f;
+    [Header("パーティクルが消える時間")]
+    [SerializeField] float Particle_Stop_Time = 0.185f;
+   
+
     [Header("トリガーの反応タイミング")]
     [SerializeField] float triggerTiming = 0.5f;         //トリガーがどこまで押し込まれたら反応するか 要調整 
     [Header("回転時間")]
@@ -141,11 +147,11 @@ public class PlayerController : MonoBehaviour
         {
             if (collision.gameObject.CompareTag("Ground"))  //着地した時
             {
-                animator.SetTrigger("toIdle");
+                animator.Play("Landing");
                 isJump = false;
                 isFall = false;
                 canMove = true;
-                //Debug.Log("isJump = " + isJump);
+                Debug.Log("toLanding" );
             }
         }
 
@@ -202,8 +208,13 @@ public class PlayerController : MonoBehaviour
     {
         //攻撃モーション中ハンマーの当たり判定が存在する時間の管理
 
-        motionTime += Time.deltaTime * Attack_Motion_Speed; 
+        motionTime += Time.deltaTime * Attack_Motion_Speed;
+        Attack_Colider_Manage();
+        Attack_Particle_Manage();
+    }
 
+    void Attack_Colider_Manage()
+    {
         if (isHit && onlyFirst == false)
         {
             GameManager.instance.PlaySE(hitS);
@@ -211,28 +222,34 @@ public class PlayerController : MonoBehaviour
             onlyFirst = true;
         }
         // checkHit();
-        if (motionTime >= Collider_Start_Time && motionTime < Collider_Stop_Time)  //一定時間経過で判定出現(振り始めの一瞬は当たらない)
-        {
-            particles[1].Play();    //振り始めは再生　調整するかも
+        if (motionTime >= Collider_Start_Time && motionTime < Collider_Stop_Time && boxCollider.enabled == false)  //一定時間経過で判定出現(振り始めの一瞬は当たらない)
+        {         
             boxCollider.enabled = true;
-           //Debug.Log("コライダー" + boxCollider.enabled);
+            //Debug.Log("コライダー" + boxCollider.enabled);
         }
-        if (motionTime >= Collider_Stop_Time && particles[1].isPlaying == true)   //一定時間経過で判定が消える(振り切った最後の方は当たらない)
-        {
-            particles[1].Stop();　//振り終わったら停止
+        if (motionTime >= Collider_Stop_Time && boxCollider.enabled == true)   //一定時間経過で判定が消える(振り切った最後の方は当たらない)
+        {                  
             boxCollider.enabled = false;
-           // Debug.Log("コライダー" + boxCollider.enabled);
+            // Debug.Log("コライダー" + boxCollider.enabled);
         }
         if (motionTime >= Attack_Finish_Time && isAttack == true)
         {
-            
             isHit = false;
             isAttack = false;
             onlyFirst = false;
-            motionTime = 0.0f;
-           // particles[1].Play();
+            motionTime = 0.0f;         
         }
-  
+    }
+    void Attack_Particle_Manage()       //ハンマーの当たり判定が存在する時間とパーティクルが存在する時間は分ける
+    {           
+        if (motionTime >= Collider_Start_Time && motionTime < Collider_Stop_Time && particles[1].isStopped == true)  //一定時間経過でパーティクル出現
+        {
+            particles[1].Play();    //振り始めは再生　調整するかも               
+        }
+        if (motionTime >= Collider_Stop_Time && particles[1].isPlaying == true)   //一定時間経過でパーティクルが消える
+        {
+            particles[1].Stop(); //振り終わったら停止                   
+        }     
     }
     //void CamaraReset()
     //{
