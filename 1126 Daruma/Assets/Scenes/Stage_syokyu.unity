@@ -5286,6 +5286,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 567377144}
     - target: {fileID: 5984074911240299899, guid: e9ccdad8e17c66b4ab1370d6bcde609a, type: 3}
+      propertyPath: Collider_Stop_Time
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5984074911240299899, guid: e9ccdad8e17c66b4ab1370d6bcde609a, type: 3}
       propertyPath: CinemachineCameraTarget
       value: 
       objectReference: {fileID: 241991052}

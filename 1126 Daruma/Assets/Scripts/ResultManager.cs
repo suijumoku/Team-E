@@ -32,14 +32,14 @@ public class ResultManager : MonoBehaviour
     [SerializeField] bool OnLoadScene;
     AudioClip resultS = default!; 
 
-    [SerializeField] int hit = 1, doubleHit = 3, beatBoss = 4, noDamage = 16, Bonus_Standard_Time = 60, timeBonus = 20;
+    [SerializeField] int hit = 1, doubleHit = 2, beatBoss = 4, noDamage = 20, Bonus_Standard_Time = 60, timeBonus = 20, tourou = 2;
     [SerializeField] float duration = 0.5f;
 
     //const int score = 0, boss = 1, kid = 2;
-    const int tensPlace = 0, onePlace = 1, clearValue = 3;  //3体倒すとクリア
+    const int tensPlace = 0, onePlace = 1, clearValue = 5;  //灯篭五個破壊でクリア
   
     int[] scoreArray, Boss_Time_Array, kidArray;
-    int calcScore = 0, beatValue = 0;
+    int calcScore = 0, beatDarumaValue = 0, breakTourouValue = 0;
     bool isResult = true, isNoDmg = false;
     public bool isClear = false;
 
@@ -82,23 +82,20 @@ public class ResultManager : MonoBehaviour
     public void NormalHit()
     {
         //普通に飛ばすと+1
-        calcScore = hit;
+        calcScore += hit;
        // _ScoreUI.ScoreUpdate();
     }
 
     public void DoubleHit()
     {
-        //当てて消すと+3
+        //当てて消すと+2
         calcScore += doubleHit;
        // _ScoreUI.ScoreUpdate();
     }
     public void BeatDaruma()
     {
-        beatValue++;
-        if (beatValue > clearValue)
-        {
-            isClear = true;
-        }
+        beatDarumaValue++;
+      
         kidArray[0]++;
         if (kidArray[0] >= 10)
         {
@@ -132,6 +129,17 @@ public class ResultManager : MonoBehaviour
     {
         calcScore += noDamage;
         isNoDmg = true;
+    }
+
+    public void breakTourou()
+    {
+        //灯篭破壊で+2点
+        calcScore += tourou;
+        breakTourouValue++;
+        if (breakTourouValue > clearValue)
+        {
+            isClear = true;
+        }
     }
 
     public void Assign(bool isResult)
@@ -169,13 +177,13 @@ public class ResultManager : MonoBehaviour
     private IEnumerator ResultCorutine()
     {
 
-        NormalHit();
-        DoubleHit();
-        BeatBoss(10.2f);
-        BeatDaruma();   //1+3+4+20+16, 10秒、01体 良判定
-        calcScore += noDamage;
-        calcScore = num;
-        isNoDmg = true;
+        //NormalHit();
+        //DoubleHit();
+        //BeatBoss(10.2f);
+        //BeatDaruma();   //1+3+4+20+16, 10秒、01体 良判定
+        //calcScore += noDamage;
+        //calcScore = num;
+        //isNoDmg = true;
         //デバッグ用↑
 
         Assign(isResult);
@@ -201,27 +209,27 @@ public class ResultManager : MonoBehaviour
 
      
 
-        if (calcScore < 4)  //要調整 調整しやすくする方法わからない
+        if (isClear == false)  //要調整 調整しやすくする方法わからない
         {
             results[0].enabled = true; //負け
             resultS = resultSounds[0];
         }
-        else if (calcScore >= 4 && calcScore < 20)
+        else if (isClear == true && calcScore < 20)
         {
             results[1].enabled = true; //可
             resultS = resultSounds[1];
         }
-        else if (calcScore >= 20 && calcScore < 40)
+        else if (calcScore >= 20 && calcScore < 30)
         {
             results[2].enabled = true; //良
             resultS = resultSounds[1];
         }
-        else if (calcScore >= 40 && calcScore < 80)
+        else if (calcScore >= 30 && calcScore < 50)
         {
             results[3].enabled = true; //優
             resultS = resultSounds[1];
         }
-        else if (calcScore >= 80)
+        else if (calcScore >= 50)
         {
             results[4].enabled = true; //秀
             resultS = resultSounds[1];
