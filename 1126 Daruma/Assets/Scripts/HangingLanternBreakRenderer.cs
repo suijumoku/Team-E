@@ -11,15 +11,10 @@ public class HangingLanternBreakRenderer : MonoBehaviour
     [SerializeField]
     int breakCount = -1;
     float time = 0;
-    ParticlePlayer particlePlayer;
+    [SerializeField]
+    [Header("再生するパーティクル")]
+    private ParticlePlayer particlePlayer;
 
-
-    // Update is called once per frame
-
-    private void Start()
-    {
-        particlePlayer = GetComponent<ParticlePlayer>();
-    }
     void Update()
     {
         if (breakCount >= 0)
