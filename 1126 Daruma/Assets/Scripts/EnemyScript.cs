@@ -156,6 +156,9 @@ public class EnemyScript : MonoBehaviour
 
                 _playerController.isHit = true;
 
+                Rigidbody rb = gameObject.GetComponent<Rigidbody>();
+                rb.constraints = RigidbodyConstraints.FreezePositionY;
+
                 gameObject.tag = "DarumaBall";
 
                 Force(collision);
@@ -187,10 +190,10 @@ public class EnemyScript : MonoBehaviour
         {
             if (gameObject.tag == "DarumaBall")
             {
-                //count++;
+                count++;
                 if (count == 4)
                 {
-                    //Destroy(gameObject);
+                    Destroy(gameObject);
                 }
             }
         }
