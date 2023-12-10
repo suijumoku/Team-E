@@ -5,7 +5,7 @@ public class SpownenemyScript : MonoBehaviour
 {
     [SerializeField]
     [Tooltip("ê∂ê¨Ç∑ÇÈGameObject")]
-    private GameObject createPrefab;
+    private GameObject[] createPrefab;
     [SerializeField]
     [Tooltip("ê∂ê¨Ç∑ÇÈèÍèä")]
     private Transform[] SpownPoints;
@@ -50,11 +50,12 @@ public class SpownenemyScript : MonoBehaviour
                 if (enemyCount < enemyNumlimit)
                 {
                     int rand = Random.Range(0, transforms.Count);
+                    int darumaRand = Random.Range(0, createPrefab.Length);
 
                     Vector3 SpownPos = transforms[rand].position;
 
                     // GameObjectÇè„ãLÇ≈åàÇ‹Ç¡ÇΩÉâÉìÉ_ÉÄÇ»èÍèäÇ…ê∂ê¨
-                    Instantiate(createPrefab, SpownPos, createPrefab.transform.rotation);
+                    Instantiate(createPrefab[darumaRand], SpownPos, createPrefab[darumaRand].transform.rotation);
                     // ìØéûÇ…ìØÇ∂èÍèäÇ©ÇÁê∂ê¨ÇµÇ»Ç¢
                     transforms.RemoveAt(rand);
 
