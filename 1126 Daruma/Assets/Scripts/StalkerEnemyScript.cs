@@ -10,7 +10,7 @@ public class StalkerEnemyScript : MonoBehaviour
 
     // Start is called before the first frame update
 
-    private void Awake()
+    void Awake()
     {
         player_ = GameObject.Find("New_EPlayer");
     }
@@ -30,8 +30,10 @@ public class StalkerEnemyScript : MonoBehaviour
 
         transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, 0.1f);
 
-        Vector3 p = new Vector3(0f, 0f, 0.1f);
+        Vector3 p = new Vector3(0f, 0f, 0.023f);
 
         transform.Translate(p);
     }
+
+
 }
