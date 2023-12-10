@@ -10,6 +10,8 @@ TagManager:
   - DarumaBall
   - Ground
   - Hammer
+  - Tourou
+  - Wall
   layers:
   - Default
   - TransparentFX

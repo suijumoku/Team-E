@@ -6,7 +6,7 @@ public class DarumaHeadScript : MonoBehaviour
 {
     // Start is called before the first frame update
 
-  //  [SerializeField] ResultManager resultManager;
+    //  [SerializeField] ResultManager resultManager;
     void Start()
     {
         
@@ -15,7 +15,7 @@ public class DarumaHeadScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
     private void OnCollisionEnter(Collision collision)
     {
