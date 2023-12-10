@@ -691,15 +691,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f755a9fdf6ee0ac409b181a167587cb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 1133918795}
   lifeImage:
   - {fileID: 636085030}
   - {fileID: 1534581601}
   - {fileID: 1509235673}
   truelife: {fileID: 21300000, guid: 3fe6f212b6a84594eb2e4f9b0dd980fe, type: 3}
   falselife: {fileID: 21300000, guid: 6e2f60e60ff647c40b2a00287ef5335e, type: 3}
-  trueMaterial: {fileID: 2100000, guid: 698fac24f5c30ae4e85bbf0c7f7b1fbb, type: 2}
-  falseMaterial: {fileID: 2100000, guid: 067715e163a14eb4ea8d042942734b76, type: 2}
+  trueMaterial: {fileID: 2100000, guid: ce49965ffd9c44842a7fe95d56997001, type: 2}
+  falseMaterial: {fileID: 2100000, guid: 1ae774f669ef3e1459dbc5466a676701, type: 2}
   duration:
   - 0.25
   - 0.25
@@ -2033,6 +2033,11 @@ MonoBehaviour:
 Transform:
   m_CorrespondingSourceObject: {fileID: 578910370682499282, guid: 26c940c44de39eb47814d559ca46abd3, type: 3}
   m_PrefabInstance: {fileID: 578910371774714589}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1133918795 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8775102162199525663, guid: e9ccdad8e17c66b4ab1370d6bcde609a, type: 3}
+  m_PrefabInstance: {fileID: 8603886268531186854}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1187677988
 PrefabInstance:
