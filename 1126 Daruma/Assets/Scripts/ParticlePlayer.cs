@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ParticlePlayer : MonoBehaviour
@@ -5,25 +7,32 @@ public class ParticlePlayer : MonoBehaviour
     [SerializeField]
     [Tooltip("発生させるエフェクト(パーティクル)")]
     private ParticleSystem particle;
+    [SerializeField]
+    [Header("パーティクルを出す場所")]
+    Transform playPosition;
+    [SerializeField]
+    [Header("向きをそろえる")]
+    bool isSameRotation=false;
 
-    private void OnCollisionEnter(Collision collision)
+    public void Play()
     {
-        if (collision.gameObject.CompareTag("Enemy"))
-        {
-            print("hit");
-            // パーティクルシステムのインスタンスを生成
-            ParticleSystem newParticle = Instantiate(particle);
-            // パーティクルをアタッチしたオブジェクトと同じ場所、向きにする
-            newParticle.transform.position = this.transform.position;
-            newParticle.transform.rotation = this.transform.rotation;
-            // パーティクルを発生させる
-            newParticle.Play();
+        // パーティクルシステムのインスタンスを生成
+        ParticleSystem newParticle = Instantiate(particle);
+        
 
-            float lifetime = newParticle.main.startLifetimeMultiplier;
+        if(playPosition==null)
+        newParticle.transform.position = this.transform.position;
+        else
+        newParticle.transform.position = playPosition.position;
 
-            // パーティクルを再生したら消す
-            Destroy(newParticle.gameObject, lifetime);
-        }
-      
+        if (isSameRotation)
+        newParticle.transform.rotation = this.transform.rotation;
+        // パーティクルを発生させる
+        newParticle.Play();
+
+        float lifetime = newParticle.main.startLifetimeMultiplier;
+
+        // パーティクルを再生したら消す
+        Destroy(newParticle.gameObject, lifetime);
     }
 }

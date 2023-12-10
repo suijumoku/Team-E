@@ -9,8 +9,7 @@ public class EnemyScript : MonoBehaviour
 {
     [SerializeField] GameObject player;
     [SerializeField] Transform child;
-    [SerializeField] Material patrolMaterial;
-    [SerializeField] Material chaseMaterial;
+    
     [SerializeField] float detectDistance;
     [SerializeField] float boundsPower = default!;
 
@@ -203,7 +202,7 @@ public class EnemyScript : MonoBehaviour
                 count++;
                 if(count == 4)
                 {
-                    //Destroy(gameObject);
+                    Destroy(gameObject);
                 }
                 Force2(collision);
             }
