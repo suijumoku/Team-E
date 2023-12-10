@@ -733,7 +733,7 @@ MonoBehaviour:
   SpownPoints:
   - {fileID: 487496312}
   SpownTime: 5
-  enemyNumlimit: 9
+  enemyNumlimit: 2
   enemyOnceSpown: 1
 --- !u!1 &490206439 stripped
 GameObject:
@@ -990,8 +990,8 @@ MonoBehaviour:
   - {fileID: 1036071000}
   - {fileID: 1770847622}
   - {fileID: 41989700}
-  SpownTime: 1
-  enemyNumlimit: 1
+  SpownTime: 2
+  enemyNumlimit: 8
   enemyOnceSpown: 1
 --- !u!4 &596743379
 Transform:
