@@ -9,8 +9,7 @@ public class EnemyScript : MonoBehaviour
 {
     [SerializeField] GameObject player;
     [SerializeField] Transform child;
-    [SerializeField] Material patrolMaterial;
-    [SerializeField] Material chaseMaterial;
+    
     [SerializeField] float detectDistance;
     [SerializeField] float boundsPower = default!;
 
@@ -35,7 +34,7 @@ public class EnemyScript : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         
-        player_ = GameObject.Find("New_EPlayer");
+        player_ = GameObject.Find("Fine_Player");
 
         // autoBraking を無効にすると、目標地点の間を継続的に移動します
         //(つまり、エージェントは目標地点に近づいても
@@ -120,7 +119,7 @@ public class EnemyScript : MonoBehaviour
             {
                 // エージェントが現目標地点に近づいてきたら、
                 // 次の目標地点を選択
-                if (!agent.pathPending && agent.remainingDistance < 0.5f)
+                if (!agent.pathPending && agent.remainingDistance < 1f)
                 {
                     GotoNextPoint();
                 }
@@ -135,7 +134,7 @@ public class EnemyScript : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        obj = GameObject.Find("New_EPlayer");
+        obj = GameObject.Find("Fine_Player");
         _playerController = obj.GetComponent<PlayerController>();   //フラグの情報を更新
 
         //小槌に当たった時
@@ -156,6 +155,9 @@ public class EnemyScript : MonoBehaviour
                 navMeshAgent.enabled = false;
 
                 _playerController.isHit = true;
+
+                Rigidbody rb = gameObject.GetComponent<Rigidbody>();
+                rb.constraints = RigidbodyConstraints.FreezePositionY;
 
                 gameObject.tag = "DarumaBall";
 
@@ -188,10 +190,10 @@ public class EnemyScript : MonoBehaviour
         {
             if (gameObject.tag == "DarumaBall")
             {
-                //count++;
+                count++;
                 if (count == 4)
                 {
-                    //Destroy(gameObject);
+                    Destroy(gameObject);
                 }
             }
         }

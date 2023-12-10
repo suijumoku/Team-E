@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 3489173045857804614}
   - component: {fileID: 4197465812786896738}
   - component: {fileID: 2750136057947646499}
-  - component: {fileID: 8958100268164196629}
   - component: {fileID: 2046411224805572499}
+  - component: {fileID: 4652936982218415503}
+  - component: {fileID: 4377428916188763757}
   m_Layer: 0
   m_Name: pCylinder3
   m_TagString: Untagged
@@ -29,7 +30,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2133537982973027216}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 205.17183, z: 0}
+  m_LocalPosition: {x: 0, y: 186, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -100,22 +101,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 200.00003, y: 193.55505, z: 200.00006}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8958100268164196629
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2133537982973027216}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 517f32168e8f87f4b9d43f24adf48e79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 7583526806343463385, guid: 44defe463f12ed048bb2c9ccc0fd9bf9, type: 3}
-  child: {fileID: 80701984886092416}
-  boundsPower: 40
-  _playerController: {fileID: 1193852216636926739, guid: 44defe463f12ed048bb2c9ccc0fd9bf9, type: 3}
 --- !u!114 &2046411224805572499
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,6 +115,51 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   daruma: {fileID: 2133537982973027216}
   parent: {fileID: 0}
+--- !u!195 &4652936982218415503
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2133537982973027216}
+  m_Enabled: 0
+  m_AgentTypeID: 0
+  m_Radius: 100.00003
+  m_Speed: 4
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 193.55505
+  m_BaseOffset: 96.77753
+  m_WalkableMask: 1
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &4377428916188763757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2133537982973027216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b424c6adeac0b8429a26797f0e213cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 8775102162199525663, guid: e9ccdad8e17c66b4ab1370d6bcde609a, type: 3}
+  child: {fileID: 80701984886092416}
+  detectDistance: 5
+  boundsPower: 40
+  _playerController: {fileID: 5984074911240299899, guid: e9ccdad8e17c66b4ab1370d6bcde609a, type: 3}
+  points:
+  - {fileID: 5693236718117789071, guid: fde996fe575c5b84ab132d73ae2020c9, type: 3}
+  - {fileID: 8044884596751178665, guid: cf0252c7e55af5441aadd944d863ac0f, type: 3}
+  - {fileID: 3852693901031463524, guid: 920f8cdf30690aa4296e0052f80d73a8, type: 3}
+  destPoint: 0
+  nextPoint: 
 --- !u!1 &3888594609506477164
 GameObject:
   m_ObjectHideFlags: 0
@@ -188,7 +218,8 @@ GameObject:
   - component: {fileID: 5705908561634206851}
   - component: {fileID: 2191023758304548533}
   - component: {fileID: 1296942025868408492}
-  - component: {fileID: 8024595896274410467}
+  - component: {fileID: 9097661962288633469}
+  - component: {fileID: 4363151830035910479}
   m_Layer: 0
   m_Name: pCylinder6
   m_TagString: Enemy
@@ -291,7 +322,29 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 200.00003, y: 193.55508, z: 200.00006}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8024595896274410467
+--- !u!195 &9097661962288633469
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7618833582536919141}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 100.00003
+  m_Speed: 4
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 193.55508
+  m_BaseOffset: 96.77754
+  m_WalkableMask: 1
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &4363151830035910479
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -300,13 +353,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 7618833582536919141}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 517f32168e8f87f4b9d43f24adf48e79, type: 3}
+  m_Script: {fileID: 11500000, guid: 1b424c6adeac0b8429a26797f0e213cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 7583526806343463385, guid: 44defe463f12ed048bb2c9ccc0fd9bf9, type: 3}
+  player: {fileID: 8775102162199525663, guid: e9ccdad8e17c66b4ab1370d6bcde609a, type: 3}
   child: {fileID: 6478109515422453432}
+  detectDistance: 5
   boundsPower: 40
-  _playerController: {fileID: 1193852216636926739, guid: 44defe463f12ed048bb2c9ccc0fd9bf9, type: 3}
+  _playerController: {fileID: 5984074911240299899, guid: e9ccdad8e17c66b4ab1370d6bcde609a, type: 3}
+  points:
+  - {fileID: 5693236718117789071, guid: fde996fe575c5b84ab132d73ae2020c9, type: 3}
+  - {fileID: 8044884596751178665, guid: cf0252c7e55af5441aadd944d863ac0f, type: 3}
+  - {fileID: 3852693901031463524, guid: 920f8cdf30690aa4296e0052f80d73a8, type: 3}
+  destPoint: 0
+  nextPoint: 
 --- !u!1 &8858181288125770695
 GameObject:
   m_ObjectHideFlags: 0
@@ -320,8 +380,9 @@ GameObject:
   - component: {fileID: 1681440660207407164}
   - component: {fileID: 1060224769277566236}
   - component: {fileID: 7181059494853275125}
-  - component: {fileID: 6401520655037865005}
   - component: {fileID: 4136423920638321141}
+  - component: {fileID: 4701208036858229145}
+  - component: {fileID: 5626724971027530422}
   m_Layer: 0
   m_Name: polySurface1
   m_TagString: Untagged
@@ -419,22 +480,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 204.37447, y: 262.4087, z: 204.37454}
   m_Center: {x: 0, y: 0.000030517578, z: 0}
---- !u!114 &6401520655037865005
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8858181288125770695}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 517f32168e8f87f4b9d43f24adf48e79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 7583526806343463385, guid: 44defe463f12ed048bb2c9ccc0fd9bf9, type: 3}
-  child: {fileID: 80701984886092416}
-  boundsPower: 40
-  _playerController: {fileID: 1193852216636926739, guid: 44defe463f12ed048bb2c9ccc0fd9bf9, type: 3}
 --- !u!114 &4136423920638321141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -449,3 +494,48 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   daruma: {fileID: 8858181288125770695}
   parent: {fileID: 0}
+--- !u!195 &4701208036858229145
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8858181288125770695}
+  m_Enabled: 0
+  m_AgentTypeID: 0
+  m_Radius: 102.18727
+  m_Speed: 4
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 262.40875
+  m_BaseOffset: 131.20438
+  m_WalkableMask: 1
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &5626724971027530422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8858181288125770695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b424c6adeac0b8429a26797f0e213cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 8775102162199525663, guid: e9ccdad8e17c66b4ab1370d6bcde609a, type: 3}
+  child: {fileID: 80701984886092416}
+  detectDistance: 5
+  boundsPower: 40
+  _playerController: {fileID: 5984074911240299899, guid: e9ccdad8e17c66b4ab1370d6bcde609a, type: 3}
+  points:
+  - {fileID: 5693236718117789071, guid: fde996fe575c5b84ab132d73ae2020c9, type: 3}
+  - {fileID: 8044884596751178665, guid: cf0252c7e55af5441aadd944d863ac0f, type: 3}
+  - {fileID: 3852693901031463524, guid: 920f8cdf30690aa4296e0052f80d73a8, type: 3}
+  destPoint: 0
+  nextPoint: 

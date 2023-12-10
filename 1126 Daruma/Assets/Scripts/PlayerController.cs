@@ -34,10 +34,16 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float Attack_Finish_Time = 0.3f;    //攻撃モーションの長さに応じて変える (連打とTriggerによる連続入力を防ぐため)
     [Header("攻撃モーションのスピード")]
     [SerializeField] float Attack_Motion_Speed = 1.0f;
-    [Header("判定が消える時間")]
-    [SerializeField] float Collider_Stop_Time = 0.3f;
     [Header("判定が現れる時間")]
     [SerializeField] float Collider_Start_Time = 0.1f;
+    [Header("判定が消える時間")]
+    [SerializeField] float Collider_Stop_Time = 0.3f;    
+    [Header("パーティクルが現れる時間")]
+    [SerializeField] float Particle_Start_Time = 0.18f;
+    [Header("パーティクルが消える時間")]
+    [SerializeField] float Particle_Stop_Time = 0.185f;
+   
+
     [Header("トリガーの反応タイミング")]
     [SerializeField] float triggerTiming = 0.5f;         //トリガーがどこまで押し込まれたら反応するか 要調整 
     [Header("回転時間")]
@@ -92,6 +98,7 @@ public class PlayerController : MonoBehaviour
         defaultCameraRot = Camera.main.transform.rotation;
         animator.SetTrigger("toIdle");
         particles[0].Stop();
+        particles[1].Stop();      
     }
 
     void Update()
@@ -140,11 +147,11 @@ public class PlayerController : MonoBehaviour
         {
             if (collision.gameObject.CompareTag("Ground"))  //着地した時
             {
-                animator.SetTrigger("toIdle");
+                animator.Play("Landing");
                 isJump = false;
                 isFall = false;
                 canMove = true;
-                //Debug.Log("isJump = " + isJump);
+                Debug.Log("toLanding" );
             }
         }
 
@@ -170,16 +177,16 @@ public class PlayerController : MonoBehaviour
         //{
         //    particles[1].Stop();    //ハンマーを後ろに構える時間はパーティクル停止
         //}
-        if (stateInfo.IsName("Running") || stateInfo.IsName("Idle"))
-        {
-            if (particles[1].isStopped == true)
-                particles[1].Play();
-        }
+        //if (stateInfo.IsName("Running") || stateInfo.IsName("Idle"))
+        //{
+        //    if (particles[1].isPlaying == true)
+        //        particles[1].Stop();
+        //}
     }
     void transitionAnim()
     {
-        if (!(stateInfo.IsName("Idle") ||     //移動モーションの遷移
-           stateInfo.IsName("Running")))
+        if (stateInfo.IsName("Jumping") ||     //移動モーションの遷移
+           stateInfo.IsName("Attacking"))
             return;
 
         if (inputHorizontal != 0 || inputVertical != 0)
@@ -188,7 +195,7 @@ public class PlayerController : MonoBehaviour
             time += Time.deltaTime;
             animator.ResetTrigger("toIdle");           
         }
-        else if (inputHorizontal == 0 && inputVertical == 0 && stateInfo.IsName("Running"))
+        else if (inputHorizontal == 0 && inputVertical == 0 && stateInfo.IsName("Running") && isJump == false) //isJumpの条件を入れないとたまにジャンプモーションがキャンセルされる
         {
             time = 0f;
             animator.SetTrigger("toIdle");         
@@ -201,8 +208,13 @@ public class PlayerController : MonoBehaviour
     {
         //攻撃モーション中ハンマーの当たり判定が存在する時間の管理
 
-        motionTime += Time.deltaTime * Attack_Motion_Speed; //モーションの倍速に対応
+        motionTime += Time.deltaTime * Attack_Motion_Speed;
+        Attack_Colider_Manage();
+        Attack_Particle_Manage();
+    }
 
+    void Attack_Colider_Manage()
+    {
         if (isHit && onlyFirst == false)
         {
             GameManager.instance.PlaySE(hitS);
@@ -210,27 +222,34 @@ public class PlayerController : MonoBehaviour
             onlyFirst = true;
         }
         // checkHit();
-        if (motionTime >= Collider_Start_Time && boxCollider.enabled == false)  //一定時間経過で判定出現(振り始めの一瞬は当たらない)
-        {
-            particles[1].Play();    //振り始めは再生　調整するかも
+        if (motionTime >= Collider_Start_Time && motionTime < Collider_Stop_Time && boxCollider.enabled == false)  //一定時間経過で判定出現(振り始めの一瞬は当たらない)
+        {         
             boxCollider.enabled = true;
-           //Debug.Log("コライダー" + boxCollider.enabled);
+            //Debug.Log("コライダー" + boxCollider.enabled);
         }
         if (motionTime >= Collider_Stop_Time && boxCollider.enabled == true)   //一定時間経過で判定が消える(振り切った最後の方は当たらない)
-        {
-            particles[1].Stop();　//振り終わったらまた移動するまで停止
+        {                  
             boxCollider.enabled = false;
-           // Debug.Log("コライダー" + boxCollider.enabled);
+            // Debug.Log("コライダー" + boxCollider.enabled);
         }
         if (motionTime >= Attack_Finish_Time && isAttack == true)
-        {            
+        {
             isHit = false;
             isAttack = false;
             onlyFirst = false;
-            motionTime = 0.0f;
-           // particles[1].Play();
+            motionTime = 0.0f;         
         }
-  
+    }
+    void Attack_Particle_Manage()       //ハンマーの当たり判定が存在する時間とパーティクルが存在する時間は分ける
+    {           
+        if (motionTime >= Collider_Start_Time && motionTime < Collider_Stop_Time && particles[1].isStopped == true)  //一定時間経過でパーティクル出現
+        {
+            particles[1].Play();    //振り始めは再生　調整するかも               
+        }
+        if (motionTime >= Collider_Stop_Time && particles[1].isPlaying == true)   //一定時間経過でパーティクルが消える
+        {
+            particles[1].Stop(); //振り終わったら停止                   
+        }     
     }
     //void CamaraReset()
     //{
@@ -277,7 +296,7 @@ public class PlayerController : MonoBehaviour
             R_isReset = false;
             boxCollider.enabled = true;
             motionTime = 0.0f;
-            particles[1].Stop();    //ハンマーを後ろに構える時間はパーティクル停止
+           // particles[1].Stop();    //ハンマーを後ろに構える時間はパーティクル停止
 
             //Debug.Log("boxCollider.enabled = " + boxCollider.enabled);
             //   Debug.Log("Rトリガー = " + R_inputTrigger);
@@ -371,16 +390,16 @@ public class PlayerController : MonoBehaviour
 
         if (UnityEngine.Input.GetButtonDown("Jump"))
         {
+            //移動中またはその場でジャンプした時の遷移
+         
+            animator.ResetTrigger("toIdle");
+            animator.Play("Jumping", 0, 0.0f);           
             GameManager.instance.PlaySE(jumpS);
             m_Rigidbody.AddForce(transform.up * jumpPower, ForceMode.Impulse);
             isJump = true;
+            //Debug.Log("isjump = " + isJump);         
 
-            //Debug.Log("isjump = " + isJump);
-
-            //移動中またはその場でジャンプした時の遷移
-
-            animator.Play("Jumping", 0, 0.0f);
-
+         
             //ジャンプモーション→落下モーションに遷移
         }
     }
