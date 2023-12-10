@@ -25,7 +25,7 @@ public class StalkerEnemyScript : MonoBehaviour
 
     void Awake()
     {
-        player_ = GameObject.Find("New_EPlayer");
+        player_ = GameObject.Find("Fine_Player");
     }
     void Start()
     {
@@ -52,7 +52,7 @@ public class StalkerEnemyScript : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        obj = GameObject.Find("New_EPlayer");
+        obj = GameObject.Find("Fine_Player");
         _playerController = obj.GetComponent<PlayerController>();   //フラグの情報を更新
 
         //小槌に当たった時

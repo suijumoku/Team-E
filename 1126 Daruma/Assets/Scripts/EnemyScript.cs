@@ -34,7 +34,7 @@ public class EnemyScript : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         
-        player_ = GameObject.Find("New_EPlayer");
+        player_ = GameObject.Find("Fine_Player");
 
         // autoBraking を無効にすると、目標地点の間を継続的に移動します
         //(つまり、エージェントは目標地点に近づいても
@@ -134,7 +134,7 @@ public class EnemyScript : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        obj = GameObject.Find("New_EPlayer");
+        obj = GameObject.Find("Fine_Player");
         _playerController = obj.GetComponent<PlayerController>();   //フラグの情報を更新
 
         //小槌に当たった時
