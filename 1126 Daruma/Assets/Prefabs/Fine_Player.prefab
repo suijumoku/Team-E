@@ -1650,8 +1650,10 @@ MonoBehaviour:
   gravityPower: -4
   Attack_Finish_Time: 0.42
   Attack_Motion_Speed: 1
-  Collider_Stop_Time: 0.3
-  Collider_Start_Time: 0.15
+  Collider_Start_Time: 0.13
+  Collider_Stop_Time: 0.22
+  Particle_Start_Time: 0.18
+  Particle_Stop_Time: 0.185
   triggerTiming: 0.5
   smoothTime: 0.1
   jumpPower: 7
@@ -1661,7 +1663,7 @@ MonoBehaviour:
   - {fileID: 8758382434187100308}
   - {fileID: 781206057795549455}
   boxCollider: {fileID: 7799559044383239497}
-  CinemachineCameraTarget: {fileID: 0}
+  CinemachineCameraTarget: {fileID: 1509228681, guid: 8333d6e3139f37147aa8db683f11a3ed, type: 2}
   jumpS: {fileID: 8300000, guid: ba59e7e54d3876747bd81430d4865f02, type: 3}
   attack_true_S: {fileID: 8300000, guid: 42bcd051f8e0be84f94fdcd6d4057859, type: 3}
   fallS: {fileID: 8300000, guid: feb09b74e4cfac34a959d16b40e2865c, type: 3}
@@ -1847,8 +1849,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 22.1, y: 34.127907, z: 34.2}
-  m_Center: {x: 12.6, y: -0.0000068214476, z: 11.79}
+  m_Size: {x: 9.3, y: 35.6, z: 32.6}
+  m_Center: {x: 20.2, y: -0.0000068214476, z: 14.4}
 --- !u!1 &9060284763333725423
 GameObject:
   m_ObjectHideFlags: 0

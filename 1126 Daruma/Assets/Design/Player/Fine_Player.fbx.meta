@@ -3,7 +3,27 @@ guid: 6557bb7fde8028d4daaddb51b9f144fc
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Player
+    second: {fileID: 2100000, guid: 9ff68bbfb8e15894e87d173403812c68, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert10
+    second: {fileID: 2100000, guid: c8f278c21c1f0bd46a137c83100a53d1, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Player_UV
+    second: {fileID: 2800000, guid: fdb187a32b23c7744b41b2e02753cdc0, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: tui
+    second: {fileID: 2800000, guid: 61432ac965a39184d8cf8fd7f8d17d21, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -16,9 +36,7 @@ ModelImporter:
     optimizeGameObjects: 0
     removeConstantScaleCurves: 1
     motionNodeName: 
-    rigImportErrors: "Invalid Avatar Rig Configuration. Missing or invalid transform:\n\tFound
-      duplicate transform 'joint9' for human bone 'Right Middle Intermediate' and
-      'Left Middle Intermediate'\n"
+    rigImportErrors: 
     rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
