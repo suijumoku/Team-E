@@ -25,7 +25,7 @@ public class StalkerEnemyScript : MonoBehaviour
 
     void Awake()
     {
-        player_ = GameObject.Find("Fine_Player");
+        
     }
     void Start()
     {
@@ -35,6 +35,7 @@ public class StalkerEnemyScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        player_ = GameObject.Find("Fine_Player");
         if (gameObject.tag == "Enemy")
         {
             Quaternion lookRotation = Quaternion.LookRotation(player_.transform.position - transform.position, Vector3.up);
