@@ -1748,6 +1748,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4437396247100364022, guid: 2e29fd11cc043884398c27a2c1980c02, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e29fd11cc043884398c27a2c1980c02, type: 3}
 --- !u!1 &1329561590
@@ -2085,7 +2089,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1465179297}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.301575, y: -25.411, z: -14.738495}
+  m_LocalPosition: {x: 8.301575, y: -25.2, z: -14.738495}
   m_LocalScale: {x: 88.58842, y: 1, z: 91.305}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4148,7 +4152,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1193852216636926739, guid: 44defe463f12ed048bb2c9ccc0fd9bf9, type: 3}
       propertyPath: Collider_Stop_Time
-      value: 0.52
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1193852216636926739, guid: 44defe463f12ed048bb2c9ccc0fd9bf9, type: 3}
       propertyPath: Attack_Motion_Speed
@@ -4156,7 +4160,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1193852216636926739, guid: 44defe463f12ed048bb2c9ccc0fd9bf9, type: 3}
       propertyPath: Collider_Start_Time
-      value: 0.32
+      value: 0.23
       objectReference: {fileID: 0}
     - target: {fileID: 1193852216636926739, guid: 44defe463f12ed048bb2c9ccc0fd9bf9, type: 3}
       propertyPath: particles.Array.size
