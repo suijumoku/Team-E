@@ -203,7 +203,7 @@ public class EnemyScript : MonoBehaviour
                 count++;
                 if(count == 4)
                 {
-                    //Destroy(gameObject);
+                    Destroy(gameObject);
                 }
                 Force2(collision);
             }
