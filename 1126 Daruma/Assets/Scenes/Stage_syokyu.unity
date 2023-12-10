@@ -5274,16 +5274,36 @@ PrefabInstance:
       objectReference: {fileID: 567377144}
     - target: {fileID: 5984074911240299899, guid: e9ccdad8e17c66b4ab1370d6bcde609a, type: 3}
       propertyPath: Collider_Stop_Time
-      value: 0.185
+      value: 0.22
       objectReference: {fileID: 0}
     - target: {fileID: 5984074911240299899, guid: e9ccdad8e17c66b4ab1370d6bcde609a, type: 3}
       propertyPath: Collider_Start_Time
-      value: 0.18
+      value: 0.13
       objectReference: {fileID: 0}
     - target: {fileID: 5984074911240299899, guid: e9ccdad8e17c66b4ab1370d6bcde609a, type: 3}
       propertyPath: CinemachineCameraTarget
       value: 
       objectReference: {fileID: 1509228681}
+    - target: {fileID: 7799559044383239497, guid: e9ccdad8e17c66b4ab1370d6bcde609a, type: 3}
+      propertyPath: m_Size.x
+      value: 9.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7799559044383239497, guid: e9ccdad8e17c66b4ab1370d6bcde609a, type: 3}
+      propertyPath: m_Size.y
+      value: 35.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7799559044383239497, guid: e9ccdad8e17c66b4ab1370d6bcde609a, type: 3}
+      propertyPath: m_Size.z
+      value: 32.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7799559044383239497, guid: e9ccdad8e17c66b4ab1370d6bcde609a, type: 3}
+      propertyPath: m_Center.x
+      value: 20.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7799559044383239497, guid: e9ccdad8e17c66b4ab1370d6bcde609a, type: 3}
+      propertyPath: m_Center.z
+      value: 14.4
+      objectReference: {fileID: 0}
     - target: {fileID: 8254179200514810789, guid: e9ccdad8e17c66b4ab1370d6bcde609a, type: 3}
       propertyPath: m_RootOrder
       value: 0
