@@ -171,8 +171,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WallMaterial:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 8da1aecce2357584880dac45f412ce0c, type: 2}
+  - {fileID: 2100000, guid: 34a360614adc598449e652a493226761, type: 2}
   StayBreakTime: 0
   particlePlayer: []
   breakCount: -1
@@ -783,8 +783,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WallMaterial:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 8da1aecce2357584880dac45f412ce0c, type: 2}
+  - {fileID: 2100000, guid: 34a360614adc598449e652a493226761, type: 2}
   StayBreakTime: 0
   particlePlayer: []
   breakCount: -1
@@ -1203,8 +1203,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WallMaterial:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 8da1aecce2357584880dac45f412ce0c, type: 2}
+  - {fileID: 2100000, guid: 34a360614adc598449e652a493226761, type: 2}
   StayBreakTime: 0
   particlePlayer: []
   breakCount: -1
@@ -1332,8 +1332,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WallMaterial:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 8da1aecce2357584880dac45f412ce0c, type: 2}
+  - {fileID: 2100000, guid: 34a360614adc598449e652a493226761, type: 2}
   StayBreakTime: 0
   particlePlayer: []
   breakCount: -1
@@ -1658,8 +1658,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WallMaterial:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 8da1aecce2357584880dac45f412ce0c, type: 2}
+  - {fileID: 2100000, guid: 34a360614adc598449e652a493226761, type: 2}
   StayBreakTime: 0
   particlePlayer: []
   breakCount: -1
@@ -2523,8 +2523,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WallMaterial:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 8da1aecce2357584880dac45f412ce0c, type: 2}
+  - {fileID: 2100000, guid: 34a360614adc598449e652a493226761, type: 2}
   StayBreakTime: 0
   particlePlayer: []
   breakCount: -1
@@ -3262,8 +3262,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WallMaterial:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 8da1aecce2357584880dac45f412ce0c, type: 2}
+  - {fileID: 2100000, guid: 34a360614adc598449e652a493226761, type: 2}
   StayBreakTime: 0
   particlePlayer: []
   breakCount: -1
@@ -3721,8 +3721,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WallMaterial:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 8da1aecce2357584880dac45f412ce0c, type: 2}
+  - {fileID: 2100000, guid: 34a360614adc598449e652a493226761, type: 2}
   StayBreakTime: 0
   particlePlayer: []
   breakCount: -1
