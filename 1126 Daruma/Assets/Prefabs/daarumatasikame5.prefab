@@ -135,7 +135,7 @@ NavMeshAgent:
   m_AutoRepath: 1
   m_Height: 193.55505
   m_BaseOffset: 96.77753
-  m_WalkableMask: 4294967295
+  m_WalkableMask: 1
   m_ObstacleAvoidanceType: 4
 --- !u!114 &4377428916188763757
 MonoBehaviour:
@@ -342,7 +342,7 @@ NavMeshAgent:
   m_AutoRepath: 1
   m_Height: 193.55508
   m_BaseOffset: 96.77754
-  m_WalkableMask: 4294967295
+  m_WalkableMask: 1
   m_ObstacleAvoidanceType: 4
 --- !u!114 &4363151830035910479
 MonoBehaviour:
@@ -514,7 +514,7 @@ NavMeshAgent:
   m_AutoRepath: 1
   m_Height: 262.40875
   m_BaseOffset: 131.20438
-  m_WalkableMask: 4294967295
+  m_WalkableMask: 1
   m_ObstacleAvoidanceType: 4
 --- !u!114 &5626724971027530422
 MonoBehaviour:
