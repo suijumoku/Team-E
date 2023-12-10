@@ -190,10 +190,10 @@ public class EnemyScript : MonoBehaviour
         {
             if (gameObject.tag == "DarumaBall")
             {
-                //count++;
+                count++;
                 if (count == 4)
                 {
-                    //Destroy(gameObject);
+                    Destroy(gameObject);
                 }
             }
         }

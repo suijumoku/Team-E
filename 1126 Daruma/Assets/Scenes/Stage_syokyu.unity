@@ -151,7 +151,7 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4878548}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 49d4e6b8bf0999e458c7d87726f40c13, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
@@ -763,7 +763,7 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 490206439}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 49d4e6b8bf0999e458c7d87726f40c13, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
@@ -935,6 +935,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: tourou 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6308268876907956971, guid: 3ddd3da866d5b6e4d9617bcce70c91fc, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 49d4e6b8bf0999e458c7d87726f40c13, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ddd3da866d5b6e4d9617bcce70c91fc, type: 3}
 --- !u!4 &558557232 stripped
@@ -990,9 +994,9 @@ MonoBehaviour:
   - {fileID: 1036071000}
   - {fileID: 1770847622}
   - {fileID: 41989700}
-  SpownTime: 2
+  SpownTime: 5
   enemyNumlimit: 8
-  enemyOnceSpown: 1
+  enemyOnceSpown: 2
 --- !u!4 &596743379
 Transform:
   m_ObjectHideFlags: 0
@@ -1179,7 +1183,7 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 674255197}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 49d4e6b8bf0999e458c7d87726f40c13, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
@@ -1308,7 +1312,7 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 718959417}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 49d4e6b8bf0999e458c7d87726f40c13, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
@@ -1558,6 +1562,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: tourou 4
       objectReference: {fileID: 0}
+    - target: {fileID: 6308268876907956971, guid: 3ddd3da866d5b6e4d9617bcce70c91fc, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 49d4e6b8bf0999e458c7d87726f40c13, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ddd3da866d5b6e4d9617bcce70c91fc, type: 3}
 --- !u!4 &891454322 stripped
@@ -1630,7 +1638,7 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 917306799}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 49d4e6b8bf0999e458c7d87726f40c13, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
@@ -2394,6 +2402,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: tourou 2
       objectReference: {fileID: 0}
+    - target: {fileID: 6308268876907956971, guid: 3ddd3da866d5b6e4d9617bcce70c91fc, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 49d4e6b8bf0999e458c7d87726f40c13, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ddd3da866d5b6e4d9617bcce70c91fc, type: 3}
 --- !u!4 &1373649950 stripped
@@ -2491,7 +2503,7 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1454790826}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 49d4e6b8bf0999e458c7d87726f40c13, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
@@ -3230,7 +3242,7 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1725917154}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 49d4e6b8bf0999e458c7d87726f40c13, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
@@ -3446,6 +3458,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: tourou 3
       objectReference: {fileID: 0}
+    - target: {fileID: 6308268876907956971, guid: 3ddd3da866d5b6e4d9617bcce70c91fc, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 49d4e6b8bf0999e458c7d87726f40c13, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ddd3da866d5b6e4d9617bcce70c91fc, type: 3}
 --- !u!4 &1921368191 stripped
@@ -3685,7 +3701,7 @@ MeshCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2040561777}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 49d4e6b8bf0999e458c7d87726f40c13, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
@@ -3910,6 +3926,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: tourou 5
       objectReference: {fileID: 0}
+    - target: {fileID: 6308268876907956971, guid: 3ddd3da866d5b6e4d9617bcce70c91fc, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 49d4e6b8bf0999e458c7d87726f40c13, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ddd3da866d5b6e4d9617bcce70c91fc, type: 3}
 --- !u!4 &10657066866606735 stripped
