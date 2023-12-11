@@ -15,58 +15,60 @@ public class MainGameManager : MonoBehaviour
     [SerializeField] private BlinkingScript blinkingScript = default!;
     [SerializeField] ResultManager resultManager = default!;
 
-    public bool  isDefeat = false, isInvincible = false; //無敵時間中かどうか
+    public bool isDefeat = false, isInvincible = false; //無敵時間中かどうか
 
     int[] timeArray;
     int currentCount = 0;
     float time = 0f, beforeTime, floarTime;
-   //private MainGameManager instance;
+    GameObject obj = default;
+    //private MainGameManager instance;
 
-   //public void Awake()
-   //{
-   //    if (instance == null)
-   //    {
-   //        instance = this;
-   //    }
-   //}
+    public void Awake()
+    {
+        //obj = GameObject.Find("ResultManager");
+        //resultManager = obj.GetComponent<ResultManager>();  //resultmanagerのアタッチ
+    }
 
-   void Start()
+    void Start()
     {
         //SceneManager.activeSceneChanged += ActiveSceneChanged;
         //_PlayerController = GetComponent<PlayerController>();
         // _resultManager = _resultManager.GetComponent<ResultManager>();
 
-       // Time.timeScale = 1.0f;
-        
+        // Time.timeScale = 1.0f;
+
         isDefeat = false;
         timeArray = new int[3] { 0, 0, 0 };
     }
 
     private void Update()
     {
+        obj = GameObject.Find("ResultManager");
+        resultManager = obj.GetComponent<ResultManager>();  //resultmanagerのアタッチ
+
         if (UnityEngine.Input.GetKeyDown(KeyCode.P))    //デバッグ用、Pでリザルトへ
         {
             Defeat();
         }
 
-        if(UnityEngine.Input.GetKeyDown(KeyCode.L)) //Lでリロード
+        if (UnityEngine.Input.GetKeyDown(KeyCode.L)) //Lでリロード
         {
             SceneManager.LoadScene("Stage_syokyu");
         }
 
-        if (resultManager.isClear == true) 
+        if (resultManager.isClear == true)
         {
             Clear();
         }
         time += Time.deltaTime;
 
-        floarTime =  Mathf.Floor(time);   //切り捨て
+        floarTime = Mathf.Floor(time);   //切り捨て
 
         //Debug.Log("floarTime" + floarTime);
 
         if (floarTime - beforeTime >= 1.0f) //1フレーム前の時間から変化していたら(1秒経過したら)繰り上げ処理
-        {          
-           
+        {
+
             for (int i = 0; i < floarTime - beforeTime; i++)
             {
                 timeArray[0]++;
@@ -81,21 +83,21 @@ public class MainGameManager : MonoBehaviour
                     timeArray[1] = 0;
                 }
             }
-        }       
+        }
 
         for (int i = 0; i < timeImg.Length; i++)
         {
-            timeImg[i].sprite = resultManager.Numbers[timeArray[i]];   
+            timeImg[i].sprite = resultManager.Numbers[timeArray[i]];
 
-            timeImg[i].enabled = true;           
+            timeImg[i].enabled = true;
         }
-   
+
 
         if (isDefeat)
-        {            
-          //  Debug.Log("isDefeat = " + isDefeat);
+        {
+            //  Debug.Log("isDefeat = " + isDefeat);
             Defeat();
-            isDefeat = false;          
+            isDefeat = false;
         }
         beforeTime = floarTime;
 
@@ -107,17 +109,17 @@ public class MainGameManager : MonoBehaviour
         InOrder(currentCount);
         //GameObject c = other.GetComponent<GameObject>();     
 
-        currentCount++;       
+        currentCount++;
     }
 
     public void InOrder(int i)
     {
-        blinkingScript.StartCoroutine(blinkingScript.DamageIndication(i));      
+        blinkingScript.StartCoroutine(blinkingScript.DamageIndication(i));
     }
 
     public void Defeat()
     {
-        _fadeAndSceneMove.FadeStart();   
+        _fadeAndSceneMove.FadeStart();
     }
 
     public void Clear()
@@ -125,7 +127,7 @@ public class MainGameManager : MonoBehaviour
         if (blinkingScript.life == 3)
         {
             resultManager.NoDmgBonus(); //ライフが３残ってたらノーダメボーナス
-        }          
+        }
 
         _fadeAndSceneMove.FadeStart();
 

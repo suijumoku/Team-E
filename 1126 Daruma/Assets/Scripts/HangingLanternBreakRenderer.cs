@@ -15,6 +15,15 @@ public class HangingLanternBreakRenderer : MonoBehaviour
     [Header("再生するパーティクル")]
     private ParticlePlayer particlePlayer;
 
+    [SerializeField] ResultManager resultManager = default!;
+    GameObject obj = default;
+
+    private void Awake()
+    {
+        obj = GameObject.Find("ResultManager");
+        resultManager = obj.GetComponent<ResultManager>();
+    }
+
     void Update()
     {
         if (breakCount >= 0)
@@ -36,6 +45,8 @@ public class HangingLanternBreakRenderer : MonoBehaviour
         {
             print("hit");
             breakCount++;
+            resultManager.breakTourou();
+            Destroy(gameObject);
         }
     }
 }
