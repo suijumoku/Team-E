@@ -105,8 +105,6 @@ MonoBehaviour:
   boundsPower: 30
   resultManager: {fileID: 7223998160688599974, guid: d8a09de020179bf4a9f6f524933481f2, type: 3}
   _playerController: {fileID: 5984074911240299899, guid: e9ccdad8e17c66b4ab1370d6bcde609a, type: 3}
-  darumadead:
-  - {fileID: 8300000, guid: 0f7b39214b4a4e041a68d630376c90a3, type: 3}
 --- !u!65 &4933887601629564813
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -184,7 +182,7 @@ Transform:
   m_GameObject: {fileID: 4619374074570851816}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 105.82483, y: 0.137, z: 179.32436}
-  m_LocalScale: {x: 7, y: 7, z: 7}
+  m_LocalScale: {x: 4, y: 4, z: 4}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 903633569125755295}
@@ -348,8 +346,6 @@ MonoBehaviour:
   boundsPower: 40
   resultManager: {fileID: 7223998160688599974, guid: d8a09de020179bf4a9f6f524933481f2, type: 3}
   _playerController: {fileID: 5984074911240299899, guid: e9ccdad8e17c66b4ab1370d6bcde609a, type: 3}
-  darumadead:
-  - {fileID: 8300000, guid: 0f7b39214b4a4e041a68d630376c90a3, type: 3}
 --- !u!195 &9046212890780452708
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -504,8 +500,6 @@ MonoBehaviour:
   boundsPower: 30
   resultManager: {fileID: 7223998160688599974, guid: d8a09de020179bf4a9f6f524933481f2, type: 3}
   _playerController: {fileID: 5984074911240299899, guid: e9ccdad8e17c66b4ab1370d6bcde609a, type: 3}
-  darumadead:
-  - {fileID: 8300000, guid: 0f7b39214b4a4e041a68d630376c90a3, type: 3}
 --- !u!195 &3626702826136794863
 NavMeshAgent:
   m_ObjectHideFlags: 0
