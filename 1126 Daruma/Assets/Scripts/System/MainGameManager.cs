@@ -56,7 +56,7 @@ public class MainGameManager : MonoBehaviour
             SceneManager.LoadScene("Stage_syokyu");
         }
 
-        if (resultManager.isClear == true)
+        if (ResultManager.isClear == true)
         {
             Clear();
         }

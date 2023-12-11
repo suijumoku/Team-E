@@ -42,7 +42,7 @@ public class ResultManager : MonoBehaviour
     int[] scoreArray, Boss_Time_Array, kidArray;
     public static int calcScore = 0, beatDarumaValue = 0, breakTourouValue = 0;
     bool isResult = true, isNoDmg = false;
-    public bool isClear = false;
+    public static bool isClear = false;
 
 
     //private ResultManager instance;

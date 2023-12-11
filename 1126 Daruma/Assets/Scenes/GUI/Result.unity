@@ -2048,7 +2048,7 @@ MonoBehaviour:
   hit: 1
   doubleHit: 3
   beatBoss: 4
-  noDamage: 16
+  noDamage: 5
   Bonus_Standard_Time: 60
   timeBonus: 20
   tourou: 2
