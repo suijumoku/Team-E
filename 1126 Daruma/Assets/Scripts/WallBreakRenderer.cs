@@ -41,7 +41,7 @@ public class WallBreakRenderer : MonoBehaviour
         {
             if (time == 0)
             {
-                for(int i=0;i<particlePlayer.Length;i++)
+                for (int i = 0; i < particlePlayer.Length; i++)
                 {
                     particlePlayer[i].Play();
 
@@ -62,7 +62,8 @@ public class WallBreakRenderer : MonoBehaviour
         {
             print("hit");
             breakCount++;
-            nowMaterial.material = WallMaterial[breakCount];
+            if (breakCount < WallMaterial.Length)
+                nowMaterial.material = WallMaterial[breakCount];
 
         }
     }
