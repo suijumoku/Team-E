@@ -20,17 +20,16 @@ public class MainGameManager : MonoBehaviour
     int[] timeArray;
     int currentCount = 0;
     float time = 0f, beforeTime, floarTime;
-   //private MainGameManager instance;
+    GameObject obj = default;
+    //private MainGameManager instance;
 
-   //public void Awake()
-   //{
-   //    if (instance == null)
-   //    {
-   //        instance = this;
-   //    }
-   //}
+    public void Awake()
+    {  
+        //obj = GameObject.Find("ResultManager");
+        //resultManager = obj.GetComponent<ResultManager>();  //resultmanagerのアタッチ
+    }
 
-   void Start()
+    void Start()
     {
         //SceneManager.activeSceneChanged += ActiveSceneChanged;
         //_PlayerController = GetComponent<PlayerController>();
@@ -44,6 +43,9 @@ public class MainGameManager : MonoBehaviour
 
     private void Update()
     {
+        obj = GameObject.Find("ResultManager");
+        resultManager = obj.GetComponent<ResultManager>();  //resultmanagerのアタッチ
+
         if (UnityEngine.Input.GetKeyDown(KeyCode.P))    //デバッグ用、Pでリザルトへ
         {
             Defeat();

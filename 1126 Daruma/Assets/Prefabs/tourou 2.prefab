@@ -149,6 +149,7 @@ MonoBehaviour:
   StayBreakTime: 0
   breakCount: 1
   particlePlayer: {fileID: 0}
+  resultManager: {fileID: 7223998160688599974, guid: d8a09de020179bf4a9f6f524933481f2, type: 3}
 --- !u!1 &1298721571571090093
 GameObject:
   m_ObjectHideFlags: 0

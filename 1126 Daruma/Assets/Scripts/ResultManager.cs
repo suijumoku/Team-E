@@ -73,6 +73,7 @@ public class ResultManager : MonoBehaviour
             Time.timeScale = 1;
             StartCoroutine(ResultCorutine());
         }
+        calcScore = 0; beatDarumaValue = 0; breakTourouValue = 0;
     }
 
     void Update()
@@ -132,7 +133,7 @@ public class ResultManager : MonoBehaviour
         //“”˜U”j‰ó‚Å+2“_
         calcScore += tourou;
         breakTourouValue++;
-        if (breakTourouValue > clearValue)
+        if (breakTourouValue >= clearValue)
         {
             isClear = true;
         }
