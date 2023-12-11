@@ -18,6 +18,8 @@ public class HangingLanternBreakRenderer : MonoBehaviour
     [SerializeField] ResultManager resultManager = default!;
     GameObject obj = default;
 
+    [SerializeField] AudioClip[] breaktourou = default!;
+
     private void Awake()
     {
         obj = GameObject.Find("ResultManager");
@@ -33,6 +35,7 @@ public class HangingLanternBreakRenderer : MonoBehaviour
             time += Time.deltaTime;
             if (StayBreakTime < time)
             {
+                GameManager.instance.PlaySE(breaktourou[0]);
                 resultManager.breakTourou();
                 Destroy(gameObject);
             }

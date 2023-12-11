@@ -24,7 +24,7 @@ public class StalkerEnemyScript : MonoBehaviour
 
     int count = 0;
 
-    [SerializeField] AudioClip[] darumadead = default!;
+    //[SerializeField] AudioClip[] darumadead = default!;
 
     // Start is called before the first frame update
 
@@ -148,7 +148,7 @@ public class StalkerEnemyScript : MonoBehaviour
         {
             if (gameObject.tag == "DarumaBall")
             {
-                GameManager.instance.PlaySE(darumadead[0]);
+                //GameManager.instance.PlaySE(darumadead[0]);
                 count++;
                 if (count == 4)
                 {
