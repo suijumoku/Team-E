@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
+[RequireComponent(typeof(NavMeshAgent))]
 public class StalkerEnemyScript : MonoBehaviour
 {
     //GameObjectå^ÇïœêîtargetÇ≈êÈåæÇµÇ‹Ç∑ÅB
@@ -16,6 +18,7 @@ public class StalkerEnemyScript : MonoBehaviour
     // [SerializeField] ResultManager resultManager = default!;
     [SerializeField] PlayerController _playerController = default!;
 
+    private NavMeshAgent nav; 
    
     GameObject obj = default;
 
@@ -29,7 +32,7 @@ public class StalkerEnemyScript : MonoBehaviour
     }
     void Start()
     {
-      
+        nav = GetComponent<NavMeshAgent>();
     }
 
     // Update is called once per frame
@@ -37,16 +40,18 @@ public class StalkerEnemyScript : MonoBehaviour
     {
         if (gameObject.tag == "Enemy")
         {
-            Quaternion lookRotation = Quaternion.LookRotation(player_.transform.position - transform.position, Vector3.up);
+            //Quaternion lookRotation = Quaternion.LookRotation(player_.transform.position - transform.position, Vector3.up);
 
-            lookRotation.z = 0;
-            lookRotation.x = 0;
+            //lookRotation.z = 0;
+            //lookRotation.x = 0;
 
-            transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, 0.1f);
+            //transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, 0.1f);
 
-            Vector3 p = new Vector3(0f, 0f, 0.023f);
+            //Vector3 p = new Vector3(0f, 0f, 0.023f);
 
-            transform.Translate(p);
+            //transform.Translate(p);
+
+            nav.SetDestination(player_.transform.position);
         }
     }
 
