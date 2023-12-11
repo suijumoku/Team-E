@@ -75,6 +75,9 @@ public class StalkerEnemyScript : MonoBehaviour
                 transform.DetachChildren();
                 _playerController.isHit = true;
 
+                NavMeshAgent navMeshAgent = GetComponent<NavMeshAgent>();
+                navMeshAgent.enabled = false;
+
                 Rigidbody rb = gameObject.GetComponent<Rigidbody>();
                 rb.constraints = RigidbodyConstraints.FreezePositionY;
 
