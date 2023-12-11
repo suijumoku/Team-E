@@ -62,7 +62,9 @@ public class ResultManager : MonoBehaviour
     {
         scoreArray = new int[2] { 0, 0 };
         Boss_Time_Array = new int[2] { 0, 0 };
-        kidArray = new int[2] { 0, 0 };   
+        kidArray = new int[2] { 0, 0 };
+
+        isClear = false;
     }
 
     void Start()
@@ -73,7 +75,7 @@ public class ResultManager : MonoBehaviour
             Time.timeScale = 1;
             StartCoroutine(ResultCorutine());
         }
-        calcScore = 0; beatDarumaValue = 0; breakTourouValue = 0;
+        isClear = false;
     }
 
     void Update()
@@ -188,8 +190,9 @@ public class ResultManager : MonoBehaviour
     private IEnumerator ResultCorutine()
     {
         Debug.Log("isClear = " + isClear);
-        
 
+        if (calcScore >= 100)
+            calcScore = 99;
         //NormalHit();
         //DoubleHit();
         //BeatBoss(10.2f);
@@ -259,6 +262,7 @@ public class ResultManager : MonoBehaviour
 
         //Debug.Log("kidScore.enabled0 = " + kidScoreImg[0].enabled);
         //Debug.Log("kidScore.enabled1 = " + kidScoreImg[1].enabled);
+        calcScore = 0; beatDarumaValue = 0; breakTourouValue = 0;
         yield return null;
     }
 

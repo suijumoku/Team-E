@@ -2051,10 +2051,9 @@ MonoBehaviour:
   noDamage: 5
   Bonus_Standard_Time: 60
   timeBonus: 20
-  tourou: 2
+  tourou: 10
   duration: 0.7
   clearValue: 5
-  isClear: 0
   num: 79
 --- !u!114 &1300510780
 MonoBehaviour:
