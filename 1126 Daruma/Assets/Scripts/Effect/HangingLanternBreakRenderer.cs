@@ -33,6 +33,7 @@ public class HangingLanternBreakRenderer : MonoBehaviour
             time += Time.deltaTime;
             if (StayBreakTime < time)
             {
+                resultManager.breakTourou();
                 Destroy(gameObject);
             }
         }
@@ -45,8 +46,6 @@ public class HangingLanternBreakRenderer : MonoBehaviour
         {
             print("hit");
             breakCount++;
-            resultManager.breakTourou();
-            Destroy(gameObject);
         }
     }
 }
