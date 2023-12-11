@@ -63,7 +63,6 @@ public class ResultManager : MonoBehaviour
         scoreArray = new int[2] { 0, 0 };
         Boss_Time_Array = new int[2] { 0, 0 };
         kidArray = new int[2] { 0, 0 };
-
        
     }
 
@@ -74,8 +73,7 @@ public class ResultManager : MonoBehaviour
             Debug.Log("OnLoadScene");
             Time.timeScale = 1;
             StartCoroutine(ResultCorutine());
-        }
-       
+        }       
     }
 
     void Update()
