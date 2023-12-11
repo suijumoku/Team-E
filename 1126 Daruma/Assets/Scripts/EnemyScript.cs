@@ -44,6 +44,8 @@ public class EnemyScript : MonoBehaviour
         InitArray(ref nextPoint, points.Length);
 
         GotoNextPoint();
+        obj = GameObject.Find("ResultManager");
+        resultManager = obj.GetComponent<ResultManager>();  //resultmanagerのアタッチ
     }
 
     void GotoNextPoint()
@@ -164,6 +166,7 @@ public class EnemyScript : MonoBehaviour
                 Force(collision);
 
                 resultManager.NormalHit();
+                Debug.Log("kiiroNormalHit!");
             }
 
         }
@@ -185,6 +188,7 @@ public class EnemyScript : MonoBehaviour
 
 
                 resultManager.DoubleHit();
+                Debug.Log("kiiroDoubleHit!");
 
                 //Destroy(gameObject);
 

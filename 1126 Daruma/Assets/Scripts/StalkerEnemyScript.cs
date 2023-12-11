@@ -29,6 +29,8 @@ public class StalkerEnemyScript : MonoBehaviour
     void Awake()
     {
         player_ = GameObject.Find("Fine_Player");
+        obj = GameObject.Find("ResultManager");
+        resultManager = obj.GetComponent<ResultManager>();  //resultmanagerのアタッチ
     }
     void Start()
     {
@@ -38,6 +40,8 @@ public class StalkerEnemyScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+
         if (gameObject.tag == "Enemy")
         {
 
@@ -76,6 +80,7 @@ public class StalkerEnemyScript : MonoBehaviour
                 Force(collision);
 
                 resultManager.NormalHit();
+                Debug.Log("akaNormalHit!");
             }
             if(gameObject.tag == "DarumaBall")
             {
@@ -101,6 +106,7 @@ public class StalkerEnemyScript : MonoBehaviour
                 navMeshAgent.enabled = false;
                 Force2(collision);
                 resultManager.DoubleHit();
+                Debug.Log("akaDoubleHit!");
 
                 //Destroy(gameObject);
 

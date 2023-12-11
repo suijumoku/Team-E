@@ -40,7 +40,7 @@ public class ResultManager : MonoBehaviour
     [SerializeField] int clearValue = 5;  //灯篭五個破壊でクリア
 
     int[] scoreArray, Boss_Time_Array, kidArray;
-    int calcScore = 0, beatDarumaValue = 0, breakTourouValue = 0;
+    public static int calcScore = 0, beatDarumaValue = 0, breakTourouValue = 0;
     bool isResult = true, isNoDmg = false;
     public bool isClear = false;
 
@@ -83,6 +83,7 @@ public class ResultManager : MonoBehaviour
     public void NormalHit()
     {
         //普通に飛ばすと+1
+        Debug.Log("hit = " + hit);
         calcScore += hit;
        _ScoreUI.ScoreUpdate();
     }
@@ -95,15 +96,9 @@ public class ResultManager : MonoBehaviour
     }
     public void BeatDaruma()
     {
-        beatDarumaValue++;
-      
-        kidArray[0]++;
-        if (kidArray[0] >= 10)
-        {
-            kidArray[1]++;
-            kidArray[0] = 0;
-        }
-      _ScoreUI.ScoreUpdate();
+        beatDarumaValue++;      
+        
+     // _ScoreUI.ScoreUpdate();
     }
     public void BeatBoss(float time)
     {
@@ -123,7 +118,7 @@ public class ResultManager : MonoBehaviour
                 Boss_Time_Array[0] = 0;
             }
         }
-     _ScoreUI.ScoreUpdate();
+         _ScoreUI.ScoreUpdate();
     }
 
     public void NoDmgBonus() //多分PlayerControllerで呼ぶ->MainGameManager
@@ -146,6 +141,8 @@ public class ResultManager : MonoBehaviour
 
     public void Assign(bool isResult)
     {
+        scoreArray[0] = 0;
+        scoreArray[1] = 0;
         for (int i = 0; i < calcScore; i++)
         {
             scoreArray[0]++;
@@ -168,12 +165,23 @@ public class ResultManager : MonoBehaviour
 
         if (isResult == true)   //リザルト画面ならボスの秒数と子だるまの数も入れる
         {
-            bossScoreImg[tensPlace].sprite = Numbers[Boss_Time_Array[1]]; //Numbers[i] i:他スクリプトから取得したスコアを十の位と一の位に分割して入れる
-            bossScoreImg[onePlace].sprite = Numbers[Boss_Time_Array[0]];
+            //bossScoreImg[tensPlace].sprite = Numbers[Boss_Time_Array[1]]; //Numbers[i] i:他スクリプトから取得したスコアを十の位と一の位に分割して入れる
+            //bossScoreImg[onePlace].sprite = Numbers[Boss_Time_Array[0]];
+            for (int i = 0; i < beatDarumaValue; i++)
+            {
+                kidArray[0]++;
+                if (kidArray[0] >= 10)
+                {
+                    kidArray[1]++;
+                    kidArray[0] = 0;
+                }
+            }
+          
 
             kidScoreImg[tensPlace].sprite = Numbers[kidArray[1]];
             kidScoreImg[onePlace].sprite = Numbers[kidArray[0]];
         }
+        Debug.Log("calcScore = " + calcScore);
 
     }
     private IEnumerator ResultCorutine()
