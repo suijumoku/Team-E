@@ -44,7 +44,7 @@ public class MainGameManager : MonoBehaviour
     private void Update()
     {
         obj = GameObject.Find("ResultManager");
-        resultManager = obj.GetComponent<ResultManager>();  //resultmanagerのアタッチ
+        resultManager = obj.GetComponent<ResultManager>();  //resultmanagerの更新
 
         if (UnityEngine.Input.GetKeyDown(KeyCode.P))    //デバッグ用、Pでリザルトへ
         {
@@ -124,6 +124,8 @@ public class MainGameManager : MonoBehaviour
 
     public void Clear()
     {
+         obj = GameObject.Find("Life");
+        blinkingScript = obj.GetComponent<BlinkingScript>();
         if (blinkingScript.life == 3)
         {
             resultManager.NoDmgBonus(); //ライフが３残ってたらノーダメボーナス
