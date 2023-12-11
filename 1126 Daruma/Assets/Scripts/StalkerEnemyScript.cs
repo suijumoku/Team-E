@@ -87,6 +87,10 @@ public class StalkerEnemyScript : MonoBehaviour
 
                 //   resultManager.NormalHit();
             }
+            if(gameObject.tag == "DarumaBall")
+            {
+                Force(collision);
+            }
 
         }
 
@@ -134,6 +138,9 @@ public class StalkerEnemyScript : MonoBehaviour
                 {
                     Destroy(gameObject);
                 }
+
+
+
                 Force2(collision);
             }
         }

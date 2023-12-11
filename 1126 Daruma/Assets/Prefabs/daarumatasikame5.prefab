@@ -152,7 +152,7 @@ MonoBehaviour:
   player: {fileID: 8775102162199525663, guid: e9ccdad8e17c66b4ab1370d6bcde609a, type: 3}
   child: {fileID: 80701984886092416}
   detectDistance: 5
-  boundsPower: 40
+  boundsPower: 30
   _playerController: {fileID: 5984074911240299899, guid: e9ccdad8e17c66b4ab1370d6bcde609a, type: 3}
   points:
   - {fileID: 5693236718117789071, guid: fde996fe575c5b84ab132d73ae2020c9, type: 3}
@@ -359,7 +359,7 @@ MonoBehaviour:
   player: {fileID: 8775102162199525663, guid: e9ccdad8e17c66b4ab1370d6bcde609a, type: 3}
   child: {fileID: 6478109515422453432}
   detectDistance: 5
-  boundsPower: 40
+  boundsPower: 30
   _playerController: {fileID: 5984074911240299899, guid: e9ccdad8e17c66b4ab1370d6bcde609a, type: 3}
   points:
   - {fileID: 5693236718117789071, guid: fde996fe575c5b84ab132d73ae2020c9, type: 3}

@@ -102,7 +102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 8775102162199525663, guid: e9ccdad8e17c66b4ab1370d6bcde609a, type: 3}
   child: {fileID: 3173522915123883836}
-  boundsPower: 40
+  boundsPower: 30
   _playerController: {fileID: 5984074911240299899, guid: e9ccdad8e17c66b4ab1370d6bcde609a, type: 3}
 --- !u!65 &4933887601629564813
 BoxCollider:
@@ -494,7 +494,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 8775102162199525663, guid: e9ccdad8e17c66b4ab1370d6bcde609a, type: 3}
   child: {fileID: 6394116446806499450}
-  boundsPower: 40
+  boundsPower: 30
   _playerController: {fileID: 5984074911240299899, guid: e9ccdad8e17c66b4ab1370d6bcde609a, type: 3}
 --- !u!195 &3626702826136794863
 NavMeshAgent:
