@@ -45,26 +45,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreImg:
-  - {fileID: 5209244485894169536, guid: c373073ca2516d948b2c566d1eb1140a, type: 3}
-  - {fileID: 780891052169411987, guid: e1e628bbf2b11d642929390b05915f77, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
   bossScoreImg: []
   kidScoreImg: []
   noDmgImg: {fileID: 0}
   Numbers:
-  - {fileID: 21300000, guid: 800eb8bf5af49a24bb322a5f4abd8343, type: 3}
+  - {fileID: 21300000, guid: 856a35673e8c6464e8b7bd7ee547aab5, type: 3}
   - {fileID: 21300000, guid: bdcbf6c162c5f0e489095fa4829fd8f2, type: 3}
   - {fileID: 21300000, guid: 259b3e4f77bc34748a4808733acb74c7, type: 3}
   - {fileID: 21300000, guid: bd2f23d9f528283489cd4a1534df8658, type: 3}
   - {fileID: 21300000, guid: 4775b0a4c28f82844b90a3da4eb841c2, type: 3}
   - {fileID: 21300000, guid: e81048f6c611a96428eb214560b6c29f, type: 3}
   - {fileID: 21300000, guid: fecced71b530da445b1390b26725b4d6, type: 3}
-  - {fileID: 21300000, guid: 4ec6693c2f6506548b246ac8a8b0dd9a, type: 3}
-  - {fileID: 21300000, guid: f4667bcabde5fc544b7f12feedf08daf, type: 3}
-  - {fileID: 21300000, guid: 6040273e32f0efc4c8b644cb135d97d4, type: 3}
+  - {fileID: 21300000, guid: f15971cefbc3cfa45be49efcb2de5e25, type: 3}
+  - {fileID: 21300000, guid: 96e74cd6a124a6d469d777766ec67147, type: 3}
+  - {fileID: 21300000, guid: c9fbda176acccdf4a87ba745888e2288, type: 3}
   results: []
   indicateS: []
   resultSounds: []
-  _ScoreUI: {fileID: 6299017474093843704, guid: 96abf884948d4ae4d8dcdee081dc320c, type: 3}
+  _ScoreUI: {fileID: 0}
   OnLoadScene: 0
   hit: 1
   doubleHit: 3
@@ -72,5 +72,8 @@ MonoBehaviour:
   noDamage: 16
   Bonus_Standard_Time: 60
   timeBonus: 20
+  tourou: 2
   duration: 0.5
+  clearValue: 5
   isClear: 0
+  num: 0
