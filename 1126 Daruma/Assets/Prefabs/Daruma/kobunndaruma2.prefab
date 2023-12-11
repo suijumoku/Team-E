@@ -105,6 +105,8 @@ MonoBehaviour:
   boundsPower: 30
   resultManager: {fileID: 7223998160688599974, guid: d8a09de020179bf4a9f6f524933481f2, type: 3}
   _playerController: {fileID: 5984074911240299899, guid: e9ccdad8e17c66b4ab1370d6bcde609a, type: 3}
+  darumadead:
+  - {fileID: 8300000, guid: 0f7b39214b4a4e041a68d630376c90a3, type: 3}
 --- !u!65 &4933887601629564813
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -346,6 +348,8 @@ MonoBehaviour:
   boundsPower: 40
   resultManager: {fileID: 7223998160688599974, guid: d8a09de020179bf4a9f6f524933481f2, type: 3}
   _playerController: {fileID: 5984074911240299899, guid: e9ccdad8e17c66b4ab1370d6bcde609a, type: 3}
+  darumadead:
+  - {fileID: 8300000, guid: 0f7b39214b4a4e041a68d630376c90a3, type: 3}
 --- !u!195 &9046212890780452708
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -500,6 +504,8 @@ MonoBehaviour:
   boundsPower: 30
   resultManager: {fileID: 7223998160688599974, guid: d8a09de020179bf4a9f6f524933481f2, type: 3}
   _playerController: {fileID: 5984074911240299899, guid: e9ccdad8e17c66b4ab1370d6bcde609a, type: 3}
+  darumadead:
+  - {fileID: 8300000, guid: 0f7b39214b4a4e041a68d630376c90a3, type: 3}
 --- !u!195 &3626702826136794863
 NavMeshAgent:
   m_ObjectHideFlags: 0
