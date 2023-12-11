@@ -36,8 +36,9 @@ public class ResultManager : MonoBehaviour
     [SerializeField] float duration = 0.5f;
 
     //const int score = 0, boss = 1, kid = 2;
-    const int tensPlace = 0, onePlace = 1, clearValue = 5;  //“”˜UŒÜŒÂ”j‰ó‚ÅƒNƒŠƒA
-  
+    const int tensPlace = 0, onePlace = 1;
+    [SerializeField] int clearValue = 5;  //“”˜UŒÜŒÂ”j‰ó‚ÅƒNƒŠƒA
+
     int[] scoreArray, Boss_Time_Array, kidArray;
     int calcScore = 0, beatDarumaValue = 0, breakTourouValue = 0;
     bool isResult = true, isNoDmg = false;
