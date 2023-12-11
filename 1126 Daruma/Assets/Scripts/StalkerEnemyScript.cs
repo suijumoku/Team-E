@@ -102,7 +102,10 @@ public class StalkerEnemyScript : MonoBehaviour
                 child.gameObject.GetComponent<StalkerEnemyScript>().enabled = true;
                 //child.gameObject.tag = ("Enemy");
                 transform.DetachChildren();
-                Destroy(gameObject);
+                gameObject.tag = "DarumaBall";
+                Force2(collision);
+
+                //Destroy(gameObject);
 
                 //resultManager.DoubleHit();
             }

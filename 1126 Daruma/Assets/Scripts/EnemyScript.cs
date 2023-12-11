@@ -180,7 +180,13 @@ public class EnemyScript : MonoBehaviour
                 child.gameObject.GetComponent<EnemyScript>().enabled = true;
                 //child.gameObject.tag = ("Enemy");
                 transform.DetachChildren();
-                Destroy(gameObject);
+                gameObject.tag = "DarumaBall";
+                Force2(collision);
+
+
+
+
+                //Destroy(gameObject);
 
                 //resultManager.DoubleHit();
             }
