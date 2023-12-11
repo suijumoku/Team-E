@@ -183,6 +183,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 375305114}
     m_Modifications:
+    - target: {fileID: 451393135657858433, guid: 3ddd3da866d5b6e4d9617bcce70c91fc, type: 3}
+      propertyPath: breakCount
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 553773389485122752, guid: 3ddd3da866d5b6e4d9617bcce70c91fc, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -1215,6 +1219,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 375305114}
     m_Modifications:
+    - target: {fileID: 451393135657858433, guid: 3ddd3da866d5b6e4d9617bcce70c91fc, type: 3}
+      propertyPath: breakCount
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 553773389485122752, guid: 3ddd3da866d5b6e4d9617bcce70c91fc, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -3689,7 +3697,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1689978886}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -4.6566123e-10, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3700,7 +3708,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 500, y: 500}
+  m_SizeDelta: {x: 350, y: 350}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1689978888
 MonoBehaviour:
