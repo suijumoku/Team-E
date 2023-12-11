@@ -60,7 +60,7 @@ public class WallBreakRenderer : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("DarumaBall"))
         {
-            print("hit");
+            //print("hit");
             breakCount++;
             if (breakCount < WallMaterial.Length)
                 nowMaterial.material = WallMaterial[breakCount];

@@ -47,6 +47,7 @@ public class ParticlePlayer : MonoBehaviour
 
         // パーティクルを発生させる
         newParticle.Play();
+        print("EffectPlay");
 
         float lifetime = newParticle.main.startLifetimeMultiplier;
 

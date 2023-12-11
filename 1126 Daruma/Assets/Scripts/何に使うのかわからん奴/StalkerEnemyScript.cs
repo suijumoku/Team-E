@@ -172,7 +172,7 @@ public class StalkerEnemyScript : MonoBehaviour
 
         // ‹t•ûŒü‚É‚Í‚Ë‚é
         Vector3 forceDir = boundsPower * boundVec.normalized;
-        Debug.Log(forceDir);
+        //Debug.Log(forceDir);
         this.GetComponent<Rigidbody>().AddForce(forceDir, ForceMode.Impulse);
     }
 }

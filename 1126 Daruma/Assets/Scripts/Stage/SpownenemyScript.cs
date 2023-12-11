@@ -19,6 +19,9 @@ public class SpownenemyScript : MonoBehaviour
     [Tooltip("敵が一度に出現する数")]
     private int enemyOnceSpown = 2;
 
+    [SerializeField]
+    [Tooltip("生成したEnemyタグのGameObject")]
+    private GameObject[] createdEnemyTagPrefab;
     private int enemyCount = 0;
 
     // 経過時間
@@ -46,6 +49,7 @@ public class SpownenemyScript : MonoBehaviour
                 // 生成できる場所がなかったら終了
                 if (transforms.Count == 0)
                     break;
+                enemyCount = EnemyCountCheck("Enemy");
 
                 if (enemyCount < enemyNumlimit)
                 {
@@ -67,6 +71,14 @@ public class SpownenemyScript : MonoBehaviour
             time = 0f;
         }
         time = time + Time.deltaTime;
+        enemyCount = EnemyCountCheck("Enemy");
+
         //Debug.Log(time);
+    }
+
+    int EnemyCountCheck(string tagname)
+    {
+        createdEnemyTagPrefab = GameObject.FindGameObjectsWithTag(tagname);
+        return createdEnemyTagPrefab.Length;
     }
 }

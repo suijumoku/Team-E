@@ -6,10 +6,10 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/UI/Title.unity
+    path: Assets/Scenes/GUI/Title.unity
     guid: 3e235e728168c184fad2d23b0fd9d16c
   - enabled: 1
-    path: Assets/Scenes/UI/Menu.unity
+    path: Assets/Scenes/GUI/Menu.unity
     guid: 4c27c4cd716a1a54ca522b66eadeac51
   - enabled: 1
     path: Assets/Scenes/Stages/Stage_syokyu.unity
@@ -21,7 +21,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Stages/Stage_zyokyu.unity
     guid: c2d23ae2acf584b408006df6b46537eb
   - enabled: 1
-    path: Assets/Scenes/UI/Result.unity
+    path: Assets/Scenes/GUI/Result.unity
     guid: e1ff558503708ec479e2a55204cf54ee
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 9e7be553448fa2546aea5752021cbcf7, type: 2}
