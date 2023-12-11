@@ -52,7 +52,7 @@ public class DarumaManager : MonoBehaviour
                 rb.constraints = RigidbodyConstraints.FreezeRotationY;
                 rb.constraints = RigidbodyConstraints.FreezeRotationZ;
 
-                darumaManager.enabled = false;
+                //darumaManager.enabled = false;
 
             }
         }

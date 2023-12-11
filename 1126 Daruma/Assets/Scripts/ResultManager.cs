@@ -84,14 +84,14 @@ public class ResultManager : MonoBehaviour
     {
         //•’Ê‚É”ò‚Î‚·‚Æ+1
         calcScore += hit;
-       // _ScoreUI.ScoreUpdate();
+       _ScoreUI.ScoreUpdate();
     }
 
     public void DoubleHit()
     {
         //“–‚Ä‚ÄÁ‚·‚Æ+2
         calcScore += doubleHit;
-       // _ScoreUI.ScoreUpdate();
+       _ScoreUI.ScoreUpdate();
     }
     public void BeatDaruma()
     {
@@ -103,7 +103,7 @@ public class ResultManager : MonoBehaviour
             kidArray[1]++;
             kidArray[0] = 0;
         }
-      //  _ScoreUI.ScoreUpdate();
+      _ScoreUI.ScoreUpdate();
     }
     public void BeatBoss(float time)
     {
@@ -123,7 +123,7 @@ public class ResultManager : MonoBehaviour
                 Boss_Time_Array[0] = 0;
             }
         }
-     //   _ScoreUI.ScoreUpdate();
+     _ScoreUI.ScoreUpdate();
     }
 
     public void NoDmgBonus() //‘½•ªPlayerController‚ÅŒÄ‚Ô->MainGameManager
@@ -141,6 +141,7 @@ public class ResultManager : MonoBehaviour
         {
             isClear = true;
         }
+        _ScoreUI.ScoreUpdate();
     }
 
     public void Assign(bool isResult)
