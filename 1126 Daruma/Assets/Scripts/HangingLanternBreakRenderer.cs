@@ -36,6 +36,7 @@ public class HangingLanternBreakRenderer : MonoBehaviour
         {
             print("hit");
             breakCount++;
+            Destroy(gameObject);
         }
     }
 }

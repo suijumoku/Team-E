@@ -74,7 +74,7 @@ GameObject:
   - component: {fileID: 553773389485122752}
   - component: {fileID: 6308268876907956971}
   - component: {fileID: 5131860081219226958}
-  - component: {fileID: 451393135657858433}
+  - component: {fileID: 4245195908922127874}
   m_Layer: 0
   m_Name: tourou 2
   m_TagString: Tourou
@@ -134,7 +134,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &451393135657858433
+--- !u!114 &4245195908922127874
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -143,13 +143,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 929066822049955450}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c881b4ab684e5a8448c5d8d8fc853aa9, type: 3}
+  m_Script: {fileID: 11500000, guid: 927e719c73032cc459ac8e8610650f12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WallMaterial: []
   StayBreakTime: 0
-  particlePlayer: []
-  breakCount: -1
+  breakCount: 1
+  particlePlayer: {fileID: 0}
 --- !u!1 &1298721571571090093
 GameObject:
   m_ObjectHideFlags: 0
