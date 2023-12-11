@@ -206,8 +206,8 @@ public class ResultManager : MonoBehaviour
         IndicateScore(scoreImg, indicateS[0]);
         yield return new WaitForSeconds(duration);
 
-        IndicateScore(bossScoreImg, indicateS[0]);
-        yield return new WaitForSeconds(duration);
+        //IndicateScore(bossScoreImg, indicateS[0]);    //ボススコアの表示
+        //yield return new WaitForSeconds(duration);
 
         IndicateScore(kidScoreImg, indicateS[0]);
 

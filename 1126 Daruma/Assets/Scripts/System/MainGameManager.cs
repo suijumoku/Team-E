@@ -21,6 +21,7 @@ public class MainGameManager : MonoBehaviour
     int currentCount = 0;
     float time = 0f, beforeTime, floarTime;
     GameObject obj = default;
+    bool onlyF = false;
     //private MainGameManager instance;
 
     public void Awake()
@@ -36,7 +37,7 @@ public class MainGameManager : MonoBehaviour
         // _resultManager = _resultManager.GetComponent<ResultManager>();
 
         // Time.timeScale = 1.0f;
-
+        onlyF = false;
         isDefeat = false;
         timeArray = new int[3] { 0, 0, 0 };
     }
@@ -56,9 +57,11 @@ public class MainGameManager : MonoBehaviour
             SceneManager.LoadScene("Stage_syokyu");
         }
 
-        if (ResultManager.isClear == true)
+        if (ResultManager.isClear == true && onlyF == false)
         {
             Clear();
+            onlyF = true;
+            //ResultManager.isClear = false;
         }
         time += Time.deltaTime;
 
@@ -95,7 +98,7 @@ public class MainGameManager : MonoBehaviour
 
         if (isDefeat)
         {
-            //  Debug.Log("isDefeat = " + isDefeat);
+           
             Defeat();
             isDefeat = false;
         }
@@ -119,12 +122,14 @@ public class MainGameManager : MonoBehaviour
 
     public void Defeat()
     {
+        Debug.Log("•‰‚¯”»’è");
         _fadeAndSceneMove.FadeStart();
     }
 
     public void Clear()
     {
-         obj = GameObject.Find("Life");
+        Debug.Log("Ÿ‚¿”»’è");
+        obj = GameObject.Find("Life");
         blinkingScript = obj.GetComponent<BlinkingScript>();
         if (blinkingScript.life == 3)
         {

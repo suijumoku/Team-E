@@ -23,6 +23,8 @@ public class TourouCount : MonoBehaviour
     {
         scoreArray = new int[1] { tourouMax };
         test = 0;
+        obj = GameObject.Find("ResultManager");
+        resultManager = obj.GetComponent<ResultManager>();  //resultmanagerの更新
     }
     void Start()
     {
@@ -32,8 +34,7 @@ public class TourouCount : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        obj = GameObject.Find("ResultManager");
-        resultManager = obj.GetComponent<ResultManager>();  //resultmanagerの更新
+     
         if (scoreArray[0] > scoreArray[0] - ResultManager.breakTourouValue + test)
         {
             //if (test == 2)
