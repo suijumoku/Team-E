@@ -153,6 +153,7 @@ MonoBehaviour:
   child: {fileID: 80701984886092416}
   detectDistance: 5
   boundsPower: 30
+  resultManager: {fileID: 7223998160688599974, guid: d8a09de020179bf4a9f6f524933481f2, type: 3}
   _playerController: {fileID: 5984074911240299899, guid: e9ccdad8e17c66b4ab1370d6bcde609a, type: 3}
   points:
   - {fileID: 5693236718117789071, guid: fde996fe575c5b84ab132d73ae2020c9, type: 3}
@@ -360,6 +361,7 @@ MonoBehaviour:
   child: {fileID: 6478109515422453432}
   detectDistance: 5
   boundsPower: 30
+  resultManager: {fileID: 7223998160688599974, guid: d8a09de020179bf4a9f6f524933481f2, type: 3}
   _playerController: {fileID: 5984074911240299899, guid: e9ccdad8e17c66b4ab1370d6bcde609a, type: 3}
   points:
   - {fileID: 5693236718117789071, guid: fde996fe575c5b84ab132d73ae2020c9, type: 3}
@@ -467,6 +469,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 083a65c57c7900946b5dd8d268185a5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  resultManager: {fileID: 0}
 --- !u!65 &7181059494853275125
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -532,6 +535,7 @@ MonoBehaviour:
   child: {fileID: 80701984886092416}
   detectDistance: 5
   boundsPower: 40
+  resultManager: {fileID: 7223998160688599974, guid: d8a09de020179bf4a9f6f524933481f2, type: 3}
   _playerController: {fileID: 5984074911240299899, guid: e9ccdad8e17c66b4ab1370d6bcde609a, type: 3}
   points:
   - {fileID: 5693236718117789071, guid: fde996fe575c5b84ab132d73ae2020c9, type: 3}

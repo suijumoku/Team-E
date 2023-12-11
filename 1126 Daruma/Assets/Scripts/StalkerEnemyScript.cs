@@ -15,7 +15,7 @@ public class StalkerEnemyScript : MonoBehaviour
    
     [SerializeField] float boundsPower = default!;
 
-    // [SerializeField] ResultManager resultManager = default!;
+    [SerializeField] ResultManager resultManager = default!;
     [SerializeField] PlayerController _playerController = default!;
 
     private NavMeshAgent nav; 
@@ -40,16 +40,6 @@ public class StalkerEnemyScript : MonoBehaviour
     {
         if (gameObject.tag == "Enemy")
         {
-            //Quaternion lookRotation = Quaternion.LookRotation(player_.transform.position - transform.position, Vector3.up);
-
-            //lookRotation.z = 0;
-            //lookRotation.x = 0;
-
-            //transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, 0.1f);
-
-            //Vector3 p = new Vector3(0f, 0f, 0.023f);
-
-            //transform.Translate(p);
 
             nav.SetDestination(player_.transform.position);
         }
@@ -85,7 +75,7 @@ public class StalkerEnemyScript : MonoBehaviour
 
                 Force(collision);
 
-                //   resultManager.NormalHit();
+                resultManager.NormalHit();
             }
             if(gameObject.tag == "DarumaBall")
             {
@@ -110,10 +100,11 @@ public class StalkerEnemyScript : MonoBehaviour
                 NavMeshAgent navMeshAgent = GetComponent<NavMeshAgent>();
                 navMeshAgent.enabled = false;
                 Force2(collision);
+                resultManager.DoubleHit();
 
                 //Destroy(gameObject);
 
-                //resultManager.DoubleHit();
+
             }
         }
         //îÚÇÒÇ≈Ç´ÇΩíBñÅÇÃè¡ãé

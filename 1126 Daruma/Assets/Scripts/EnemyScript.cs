@@ -9,11 +9,11 @@ public class EnemyScript : MonoBehaviour
 {
     [SerializeField] GameObject player;
     [SerializeField] Transform child;
-    
+
     [SerializeField] float detectDistance;
     [SerializeField] float boundsPower = default!;
 
-    // [SerializeField] ResultManager resultManager = default!;
+    [SerializeField] ResultManager resultManager = default!;
     [SerializeField] PlayerController _playerController = default!;
 
     public Transform[] points;
@@ -33,7 +33,7 @@ public class EnemyScript : MonoBehaviour
     void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
-        
+
         player_ = GameObject.Find("Fine_Player");
 
         // autoBraking を無効にすると、目標地点の間を継続的に移動します
@@ -163,7 +163,7 @@ public class EnemyScript : MonoBehaviour
 
                 Force(collision);
 
-                //   resultManager.NormalHit();
+                resultManager.NormalHit();
             }
 
         }
@@ -184,11 +184,11 @@ public class EnemyScript : MonoBehaviour
                 Force2(collision);
 
 
-
+                resultManager.DoubleHit();
 
                 //Destroy(gameObject);
 
-                //resultManager.DoubleHit();
+
             }
         }
         //飛んできた達磨の消去
@@ -204,12 +204,12 @@ public class EnemyScript : MonoBehaviour
             }
         }
 
-        if(collision.gameObject.tag == "Wall" || collision.gameObject.tag == "DarumaBall" || collision.gameObject.tag == "Tourou")
+        if (collision.gameObject.tag == "Wall" || collision.gameObject.tag == "DarumaBall" || collision.gameObject.tag == "Tourou")
         {
-            if(gameObject.tag == "DarumaBall")
+            if (gameObject.tag == "DarumaBall")
             {
                 count++;
-                if(count == 4)
+                if (count == 4)
                 {
                     Destroy(gameObject);
                 }

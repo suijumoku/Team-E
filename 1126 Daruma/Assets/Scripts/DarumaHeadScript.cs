@@ -6,7 +6,7 @@ public class DarumaHeadScript : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    //  [SerializeField] ResultManager resultManager;
+    [SerializeField] ResultManager resultManager;
     void Start()
     {
         
@@ -23,7 +23,7 @@ public class DarumaHeadScript : MonoBehaviour
         {
             //Debug.Log("b");
             Destroy(gameObject);
-          //  resultManager.BeatDaruma();
+            resultManager.BeatDaruma();
         }
     }
 }
