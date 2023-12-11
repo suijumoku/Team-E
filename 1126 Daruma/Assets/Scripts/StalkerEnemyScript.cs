@@ -103,6 +103,8 @@ public class StalkerEnemyScript : MonoBehaviour
                 //child.gameObject.tag = ("Enemy");
                 transform.DetachChildren();
                 gameObject.tag = "DarumaBall";
+                NavMeshAgent navMeshAgent = GetComponent<NavMeshAgent>();
+                navMeshAgent.enabled = false;
                 Force2(collision);
 
                 //Destroy(gameObject);
