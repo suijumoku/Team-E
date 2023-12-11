@@ -32,7 +32,7 @@ public class ResultManager : MonoBehaviour
     [SerializeField] bool OnLoadScene;
     AudioClip resultS = default!; 
 
-    [SerializeField] int hit = 1, doubleHit = 2, beatBoss = 4, noDamage = 20, Bonus_Standard_Time = 60, timeBonus = 20, tourou = 2;
+    [SerializeField] int hit = 1, doubleHit = 2, beatBoss = 4, noDamage = 20, Bonus_Standard_Time = 60, timeBonus = 20, tourou = 10;
     [SerializeField] float duration = 0.5f;
 
     //const int score = 0, boss = 1, kid = 2;
@@ -187,6 +187,8 @@ public class ResultManager : MonoBehaviour
     }
     private IEnumerator ResultCorutine()
     {
+        Debug.Log("isClear = " + isClear);
+        
 
         //NormalHit();
         //DoubleHit();
@@ -266,7 +268,6 @@ public class ResultManager : MonoBehaviour
         GameManager.instance.PlaySE(clip);
         Img[tensPlace].enabled = true;
         Img[onePlace].enabled = true;
-
         
         //ŽáŠ±‚Ì’x‰„
     }

@@ -26,6 +26,7 @@ public class BlinkingScript : MonoBehaviour
 
     void Awake()
     {
+        life = 3;
         //最初に全てのLife画像をtrueに
         foreach (Image t in lifeImage)
         {
@@ -70,6 +71,7 @@ public class BlinkingScript : MonoBehaviour
         if (life <= 0)
         {
             _MainGameManager.isDefeat = true;
+            Debug.Log("isDefeat = " + _MainGameManager.isDefeat);
         }
         _MainGameManager.isInvincible = false;
         yield return null;
