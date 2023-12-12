@@ -51,6 +51,7 @@ public class WallBreakRenderer : MonoBehaviour
             if (StayBreakTime < time)
             {
                 Destroy(gameObject);
+                
             }
         }
 

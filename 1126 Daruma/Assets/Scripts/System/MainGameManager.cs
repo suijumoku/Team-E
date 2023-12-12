@@ -21,6 +21,7 @@ public class MainGameManager : MonoBehaviour
     int currentCount = 0;
     float time = 0f, beforeTime, floarTime;
     GameObject obj = default;
+    bool onlyF = false;
     //private MainGameManager instance;
 
     public void Awake()
@@ -36,7 +37,7 @@ public class MainGameManager : MonoBehaviour
         // _resultManager = _resultManager.GetComponent<ResultManager>();
 
         // Time.timeScale = 1.0f;
-
+        onlyF = false;
         isDefeat = false;
         timeArray = new int[3] { 0, 0, 0 };
     }
@@ -44,7 +45,7 @@ public class MainGameManager : MonoBehaviour
     private void Update()
     {
         obj = GameObject.Find("ResultManager");
-        resultManager = obj.GetComponent<ResultManager>();  //resultmanagerのアタッチ
+        resultManager = obj.GetComponent<ResultManager>();  //resultmanagerの更新
 
         if (UnityEngine.Input.GetKeyDown(KeyCode.P))    //デバッグ用、Pでリザルトへ
         {
@@ -56,9 +57,11 @@ public class MainGameManager : MonoBehaviour
             SceneManager.LoadScene("Stage_syokyu");
         }
 
-        if (resultManager.isClear == true)
+        if (ResultManager.isClear == true && onlyF == false)
         {
             Clear();
+            onlyF = true;
+            //ResultManager.isClear = false;
         }
         time += Time.deltaTime;
 
@@ -95,7 +98,7 @@ public class MainGameManager : MonoBehaviour
 
         if (isDefeat)
         {
-            //  Debug.Log("isDefeat = " + isDefeat);
+           
             Defeat();
             isDefeat = false;
         }
@@ -119,11 +122,15 @@ public class MainGameManager : MonoBehaviour
 
     public void Defeat()
     {
+        Debug.Log("負け判定");
         _fadeAndSceneMove.FadeStart();
     }
 
     public void Clear()
     {
+        Debug.Log("勝ち判定");
+        obj = GameObject.Find("Life");
+        blinkingScript = obj.GetComponent<BlinkingScript>();
         if (blinkingScript.life == 3)
         {
             resultManager.NoDmgBonus(); //ライフが３残ってたらノーダメボーナス

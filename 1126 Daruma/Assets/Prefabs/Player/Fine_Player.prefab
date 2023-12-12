@@ -1,5 +1,89 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &309941024
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 309941027}
+  - component: {fileID: 309941026}
+  - component: {fileID: 309941025}
+  m_Layer: 0
+  m_Name: Camera (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &309941027
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 309941024}
+  m_LocalRotation: {x: -0.0075277346, y: -0.98559624, z: 0.16865706, w: -0.009911322}
+  m_LocalPosition: {x: -12.272099, y: 135, z: 158.66058}
+  m_LocalScale: {x: 43.8289, y: 43.828896, z: 43.8289}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8254179200514810789}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 19.427, y: -181.033, z: 0.698}
+--- !u!20 &309941026
+Camera:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 309941024}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
+  m_SensorSize: {x: 36, y: 24}
+  m_LensShift: {x: 0, y: 0}
+  m_FocalLength: 50
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 0
+  orthographic size: 5
+  m_Depth: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 8400000, guid: 21f461c933fd2fb409b92f83fa66fae7, type: 2}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 1
+  m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
+--- !u!81 &309941025
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 309941024}
+  m_Enabled: 0
 --- !u!1 &75022345449096325
 GameObject:
   m_ObjectHideFlags: 0
@@ -881,7 +965,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -3775379068902227027, guid: 6557bb7fde8028d4daaddb51b9f144fc, type: 3}
+  - {fileID: 2100000, guid: f88c4022ff3b35d4886b7368ac37e355, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1592,6 +1676,7 @@ Transform:
   m_Children:
   - {fileID: 8298280561697546278}
   - {fileID: 4375834523819833157}
+  - {fileID: 309941027}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1647,11 +1732,11 @@ MonoBehaviour:
   isAttack: 0
   isHit: 0
   walkSpeed: 7
-  gravityPower: -4
+  gravityPower: -2
   Attack_Finish_Time: 0.42
   Attack_Motion_Speed: 1
   Collider_Start_Time: 0.13
-  Collider_Stop_Time: 0.22
+  Collider_Stop_Time: 0.3
   Particle_Start_Time: 0.18
   Particle_Stop_Time: 0.185
   triggerTiming: 0.5
@@ -1663,7 +1748,7 @@ MonoBehaviour:
   - {fileID: 8758382434187100308}
   - {fileID: 781206057795549455}
   boxCollider: {fileID: 7799559044383239497}
-  CinemachineCameraTarget: {fileID: 1509228681, guid: 8333d6e3139f37147aa8db683f11a3ed, type: 2}
+  CinemachineCameraTarget: {fileID: 985209418348575766}
   jumpS: {fileID: 8300000, guid: ba59e7e54d3876747bd81430d4865f02, type: 3}
   attack_true_S: {fileID: 8300000, guid: 42bcd051f8e0be84f94fdcd6d4057859, type: 3}
   fallS: {fileID: 8300000, guid: feb09b74e4cfac34a959d16b40e2865c, type: 3}

@@ -32,7 +32,7 @@ public class ResultManager : MonoBehaviour
     [SerializeField] bool OnLoadScene;
     AudioClip resultS = default!; 
 
-    [SerializeField] int hit = 1, doubleHit = 2, beatBoss = 4, noDamage = 20, Bonus_Standard_Time = 60, timeBonus = 20, tourou = 2;
+    [SerializeField] int hit = 1, doubleHit = 2, beatBoss = 4, noDamage = 20, Bonus_Standard_Time = 60, timeBonus = 20, tourou = 10;
     [SerializeField] float duration = 0.5f;
 
     //const int score = 0, boss = 1, kid = 2;
@@ -42,7 +42,7 @@ public class ResultManager : MonoBehaviour
     int[] scoreArray, Boss_Time_Array, kidArray;
     public static int calcScore = 0, beatDarumaValue = 0, breakTourouValue = 0;
     bool isResult = true, isNoDmg = false;
-    public bool isClear = false;
+    public static bool isClear = false;
 
 
     //private ResultManager instance;
@@ -62,7 +62,8 @@ public class ResultManager : MonoBehaviour
     {
         scoreArray = new int[2] { 0, 0 };
         Boss_Time_Array = new int[2] { 0, 0 };
-        kidArray = new int[2] { 0, 0 };   
+        kidArray = new int[2] { 0, 0 };
+       
     }
 
     void Start()
@@ -72,8 +73,7 @@ public class ResultManager : MonoBehaviour
             Debug.Log("OnLoadScene");
             Time.timeScale = 1;
             StartCoroutine(ResultCorutine());
-        }
-        calcScore = 0; beatDarumaValue = 0; breakTourouValue = 0;
+        }       
     }
 
     void Update()
@@ -187,7 +187,10 @@ public class ResultManager : MonoBehaviour
     }
     private IEnumerator ResultCorutine()
     {
+        Debug.Log("isClear = " + isClear);
 
+        if (calcScore >= 100)
+            calcScore = 99;
         //NormalHit();
         //DoubleHit();
         //BeatBoss(10.2f);
@@ -203,8 +206,8 @@ public class ResultManager : MonoBehaviour
         IndicateScore(scoreImg, indicateS[0]);
         yield return new WaitForSeconds(duration);
 
-        IndicateScore(bossScoreImg, indicateS[0]);
-        yield return new WaitForSeconds(duration);
+        //IndicateScore(bossScoreImg, indicateS[0]);    //ボススコアの表示
+        //yield return new WaitForSeconds(duration);
 
         IndicateScore(kidScoreImg, indicateS[0]);
 
@@ -257,6 +260,8 @@ public class ResultManager : MonoBehaviour
 
         //Debug.Log("kidScore.enabled0 = " + kidScoreImg[0].enabled);
         //Debug.Log("kidScore.enabled1 = " + kidScoreImg[1].enabled);
+        isClear = false;
+        calcScore = 0; beatDarumaValue = 0; breakTourouValue = 0;
         yield return null;
     }
 
@@ -266,7 +271,6 @@ public class ResultManager : MonoBehaviour
         GameManager.instance.PlaySE(clip);
         Img[tensPlace].enabled = true;
         Img[onePlace].enabled = true;
-
         
         //若干の遅延
     }

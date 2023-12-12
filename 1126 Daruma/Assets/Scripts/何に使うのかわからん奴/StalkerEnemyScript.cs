@@ -24,6 +24,8 @@ public class StalkerEnemyScript : MonoBehaviour
 
     int count = 0;
 
+    //[SerializeField] AudioClip[] darumadead = default!;
+
     // Start is called before the first frame update
 
     void Awake()
@@ -126,10 +128,11 @@ public class StalkerEnemyScript : MonoBehaviour
             }
         }
 
-        if (collision.gameObject.tag == "Wall" || collision.gameObject.tag == "DarumaBall" || collision.gameObject.tag == "Tourou")
+        if (collision.gameObject.tag == "Wall" || collision.gameObject.tag == "Tourou")
         {
             if (gameObject.tag == "DarumaBall")
             {
+               
                 count++;
                 if (count == 4)
                 {
@@ -139,6 +142,18 @@ public class StalkerEnemyScript : MonoBehaviour
 
 
                 Force2(collision);
+            }
+        }
+        if (collision.gameObject.tag == "DarumaBall")
+        {
+            if (gameObject.tag == "DarumaBall")
+            {
+                //GameManager.instance.PlaySE(darumadead[0]);
+                count++;
+                if (count == 4)
+                {
+                    Destroy(gameObject);
+                }
             }
         }
 
