@@ -5,8 +5,12 @@ using UnityEngine;
 //MaterialPropetyBlockを使うと同じマテリアルを使用している
 //複数のオブジェクトに対して、それぞれ独自のプロパティ値を設定できる
 
+
+
 public class Semitransparent : MonoBehaviour
 {
+    [SerializeField] float alphaValue = 0.5f;
+
     private Color color = Color.white;
 
     //親 子オブジェクトを格納。
@@ -35,12 +39,12 @@ public class Semitransparent : MonoBehaviour
 
     public void ClearMaterialInvoke()
     {
-        color.a = 0.15f;
+        color.a = alphaValue;
 
         mpb.SetColor(Shader.PropertyToID("_Color"), color);
         for (int i = 0; i < meshRenderers.Length; i++)
         {
-            meshRenderers[i].GetComponent<Renderer>().material.shader = Shader.Find("Transparent/Diffuse ZWrite");
+            meshRenderers[i].GetComponent<Renderer>().material.shader = Shader.Find("Legacy Shaders/Transparent/Diffuse");
             meshRenderers[i].SetPropertyBlock(mpb);
         }
     }
