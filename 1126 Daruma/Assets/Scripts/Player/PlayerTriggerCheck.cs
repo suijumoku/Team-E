@@ -20,6 +20,7 @@ public class PlayerTriggerCheck : MonoBehaviour
         if(other.tag == playerTag)
         {
             isOn = false;
+            print("isOff");
         }
     }
 

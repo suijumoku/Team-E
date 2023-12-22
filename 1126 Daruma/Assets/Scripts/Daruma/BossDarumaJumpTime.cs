@@ -18,8 +18,7 @@ public class BossDarumaJumpTime : MonoBehaviour
     [Header("’…’nSE")][SerializeField] AudioClip LandingSE;
 
     private bool EnterGround = false;
-    private bool OnGround = false;
-    private bool ExitGround = false;
+
 
     // Update is called once per frame
     void Update()
@@ -45,8 +44,7 @@ public class BossDarumaJumpTime : MonoBehaviour
         if (collision.gameObject.CompareTag(Groundtag))
         {
             EnterGround = true;
-            OnGround = true;
-            ExitGround = false;
+
         }
     }
 
@@ -55,8 +53,7 @@ public class BossDarumaJumpTime : MonoBehaviour
         if (collision.gameObject.CompareTag(Groundtag))
         {
             EnterGround = false;
-            OnGround = true;
-            ExitGround = false;
+
         }
     }
 
@@ -65,8 +62,7 @@ public class BossDarumaJumpTime : MonoBehaviour
         if (collision.gameObject.CompareTag(Groundtag))
         {
             EnterGround = false;
-            OnGround = false;
-            ExitGround = true;
+
         }
     }
 

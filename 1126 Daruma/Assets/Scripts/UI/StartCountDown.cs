@@ -8,6 +8,13 @@ public class StartCountDown : MonoBehaviour
     [SerializeField]
     [Header("再生するアニメーションクリップ")]
     private AnimationClip clip;
+
+    [SerializeField]
+    [Header("カウントSE")]
+    private AudioClip CountClip;
+    [SerializeField]
+    [Header("スタートSE")]
+    private AudioClip StartClip;
     private Animator animator;
 
     private void Start()
@@ -21,5 +28,15 @@ public class StartCountDown : MonoBehaviour
     {
         Time.timeScale = 1.0f;
         Destroy(gameObject);
+    }
+
+    public void CountSE()
+    {
+        GameManager.instance.PlaySE(CountClip);
+    }
+
+    public void StartSE()
+    {
+        GameManager.instance.PlaySE(StartClip);
     }
 }

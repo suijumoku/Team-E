@@ -18,6 +18,9 @@ public class SpownenemyScript : MonoBehaviour
     [SerializeField]
     [Tooltip("敵が一度に出現する数")]
     private int enemyOnceSpown = 2;
+    [SerializeField]
+    [Tooltip("敵のカウントを別々にする")]
+    private bool anotherEnemyCount=false;
 
     [SerializeField]
     [Tooltip("生成したEnemyタグのGameObject")]
@@ -43,34 +46,45 @@ public class SpownenemyScript : MonoBehaviour
                 }
             }
 
-
-            for (int i = 0; i < enemyOnceSpown; i++)
+            if(transforms.Count!=0)
             {
-                // 生成できる場所がなかったら終了
-                if (transforms.Count == 0)
-                    break;
-                enemyCount = EnemyCountCheck("Enemy");
-
-                if (enemyCount < enemyNumlimit)
+                for (int i = 0; i < enemyOnceSpown; i++)
                 {
-                    int rand = Random.Range(0, transforms.Count);
-                    int darumaRand = Random.Range(0, createPrefab.Length);
+                    // 生成できる場所がなかったら終了
+                    if (transforms.Count == 0)
+                        break;
 
-                    Vector3 SpownPos = transforms[rand].position;
+                    if(!anotherEnemyCount)
+                    enemyCount = EnemyCountCheck("Enemy");
 
-                    // GameObjectを上記で決まったランダムな場所に生成
-                    Instantiate(createPrefab[darumaRand], SpownPos, createPrefab[darumaRand].transform.rotation);
-                    // 同時に同じ場所から生成しない
-                    transforms.RemoveAt(rand);
+                    if (enemyCount < enemyNumlimit)
+                    {
+                        int rand = Random.Range(0, transforms.Count);
+                        int darumaRand = Random.Range(0, createPrefab.Length);
 
-                    enemyCount++;
+                        Vector3 SpownPos = transforms[rand].position;
 
+                        // GameObjectを上記で決まったランダムな場所に生成
+                        Instantiate(createPrefab[darumaRand], SpownPos, createPrefab[darumaRand].transform.rotation);
+                        // 同時に同じ場所から生成しない
+                        transforms.RemoveAt(rand);
+
+                        enemyCount++;
+
+                    }
                 }
+                print("生成");
+                print(transforms.Count);
+            }
+            else
+            {
+                print("生成不可");
             }
 
             time = 0f;
         }
         time = time + Time.deltaTime;
+        if(!anotherEnemyCount)
         enemyCount = EnemyCountCheck("Enemy");
 
         //Debug.Log(time);
