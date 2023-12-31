@@ -12,13 +12,13 @@ EditorBuildSettings:
     path: Assets/Scenes/GUI/Menu.unity
     guid: 4c27c4cd716a1a54ca522b66eadeac51
   - enabled: 1
-    path: Assets/Scenes/Stages/Stage_syokyu.unity
+    path: Assets/Scenes/Stages/Stage_ume.unity
     guid: 8333d6e3139f37147aa8db683f11a3ed
   - enabled: 1
     path: Assets/Scenes/Stages/Stage_tyukyu.unity
     guid: fc8dcfba6c0a66b4489b32c2879dcc71
   - enabled: 1
-    path: Assets/Scenes/Stages/Stage_zyokyu.unity
+    path: Assets/Scenes/Stages/Stage_zyoukyu.unity
     guid: c2d23ae2acf584b408006df6b46537eb
   - enabled: 1
     path: Assets/Scenes/GUI/Result.unity
