@@ -21,6 +21,10 @@ public class SpownenemyScript : MonoBehaviour
     [SerializeField]
     [Tooltip("敵のカウントを別々にする")]
     private bool anotherEnemyCount=false;
+    [SerializeField]
+    [Tooltip("敵が出現したときのSE")]
+    private AudioClip spownSE;
+
 
     [SerializeField]
     [Tooltip("生成したEnemyタグのGameObject")]
@@ -66,6 +70,7 @@ public class SpownenemyScript : MonoBehaviour
 
                         // GameObjectを上記で決まったランダムな場所に生成
                         Instantiate(createPrefab[darumaRand], SpownPos, createPrefab[darumaRand].transform.rotation);
+                        GameManager.instance.PlaySE(spownSE);
                         // 同時に同じ場所から生成しない
                         transforms.RemoveAt(rand);
 

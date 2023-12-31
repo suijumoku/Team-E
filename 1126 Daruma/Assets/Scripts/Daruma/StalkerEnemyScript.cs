@@ -49,6 +49,17 @@ public class StalkerEnemyScript : MonoBehaviour
 
             nav.SetDestination(player_.transform.position);
         }
+        if (nav.enabled)
+        {
+            print(nav.destination);
+            var targetpoint = nav.destination;
+
+            //何かテクスチャが逆なので逆を向かせる
+            var dir = this.transform.position - targetpoint;
+            dir.y = 0;
+            var lookRotation = Quaternion.LookRotation(dir, Vector3.up);
+            transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, 0.1f);
+        }
     }
 
     void OnCollisionEnter(Collision collision)

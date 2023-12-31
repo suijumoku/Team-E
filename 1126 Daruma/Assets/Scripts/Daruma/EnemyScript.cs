@@ -18,7 +18,8 @@ public class EnemyScript : MonoBehaviour
 
     public Transform[] points;
     [SerializeField]
-    private int destPoint = 0;
+    private int nextPointIndex = 0;
+
     private NavMeshAgent agent;
     bool IsDetected = false;
 
@@ -55,17 +56,17 @@ public class EnemyScript : MonoBehaviour
             return;
 
         // エージェントが現在設定された目標地点に行くように設定します
-        agent.destination = points[nextPoint[destPoint]].position;
+        agent.destination = points[nextPoint[nextPointIndex]].position;
 
         // 配列内の次の位置を目標地点に設定し、
         // 必要ならば出発地点にもどる
-        if (++destPoint >= points.Length)
+        if (++nextPointIndex >= points.Length)
         {
             Shuffle(ref nextPoint);
             print("shuffe");
 
 
-            destPoint = 0;
+            nextPointIndex = 0;
         }
     }
     void InitArray(ref int[] array, int length)
@@ -132,6 +133,17 @@ public class EnemyScript : MonoBehaviour
             }
         }
 
+        if(agent.enabled)
+        {
+            print(agent.destination);
+            var targetpoint = agent.destination;
+
+            //何かテクスチャが逆なので逆を向かせる
+            var dir =  this.transform.position - targetpoint;
+            dir.y = 0;
+            var lookRotation = Quaternion.LookRotation(dir, Vector3.up);
+            transform.rotation = Quaternion.Lerp(transform.rotation, lookRotation, 0.1f);
+        }
     }
 
     void OnCollisionEnter(Collision collision)
