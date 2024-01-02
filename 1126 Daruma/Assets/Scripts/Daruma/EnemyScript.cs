@@ -135,7 +135,7 @@ public class EnemyScript : MonoBehaviour
 
         if(agent.enabled)
         {
-            print(agent.destination);
+          //  print(agent.destination);
             var targetpoint = agent.destination;
 
             //何かテクスチャが逆なので逆を向かせる
@@ -237,7 +237,7 @@ public class EnemyScript : MonoBehaviour
 
     void Force(Collision collision)
     {
-        Debug.Log("a");
+       // Debug.Log("a");
         // 衝突位置を取得する
         Vector3 hitPos = collision.contacts[0].point;
 
@@ -263,7 +263,7 @@ public class EnemyScript : MonoBehaviour
 
         // 逆方向にはねる
         Vector3 forceDir = boundsPower * boundVec.normalized;
-        Debug.Log(forceDir);
+       // Debug.Log(forceDir);
         this.GetComponent<Rigidbody>().AddForce(forceDir, ForceMode.Impulse);
     }
 
