@@ -79,7 +79,7 @@ public class StalkerEnemyScript : MonoBehaviour
                 //child.gameObject.GetComponent<NavMeshAgent>().enabled = true;
                 child.gameObject.GetComponent<StalkerEnemyScript>().enabled = true;
                 //child.gameObject.tag = ("Enemy");
-                transform.DetachChildren();
+                child.gameObject.transform.DetachChildren();
                 _playerController.isHit = true;
 
                 NavMeshAgent navMeshAgent = GetComponent<NavMeshAgent>();
