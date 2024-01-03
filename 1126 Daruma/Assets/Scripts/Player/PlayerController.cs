@@ -311,10 +311,10 @@ public class PlayerController : MonoBehaviour
     {
         isJump = true;
         Debug.Log("isKnockBack");
-        Vector3 vector3 = collision.gameObject.transform.forward;
+        Vector3 direction = collision.gameObject.transform.forward;
 
-        m_Rigidbody.AddForce(vector3 * knockBackP, ForceMode.Impulse);
-        m_Rigidbody.AddForce(transform.up * knockBackUpP, ForceMode.Impulse);
+        m_Rigidbody.AddForce(-direction * knockBackP, ForceMode.Impulse);      
+        m_Rigidbody.AddForce(transform.up * knockBackUpP, ForceMode.Impulse);   //é·ä±è„ï˚å¸Ç…Ç‡îÚÇŒÇ∑
     }
 
     public void fall()  //óéâ∫îªíËÉGÉäÉAÇ≈égÇ§
