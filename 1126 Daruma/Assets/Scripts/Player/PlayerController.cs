@@ -57,6 +57,8 @@ public class PlayerController : MonoBehaviour
     [Header("パーティクル")]
     [Tooltip("1ヒット、2素振り、3ジャンプ")]
     [SerializeField] private ParticleSystem[] particles = default!;
+    [Header("だるまに当たった時のエフェクトを再生するやつ")]
+    [SerializeField] private ParticlePlayer hitParticlePlayer;
 
     [SerializeField] Collider boxCollider = default!;
     [SerializeField] GameObject CinemachineCameraTarget;    //カメラのターゲットを別オブジェクトにすることで頭の部分を追尾
@@ -174,7 +176,9 @@ public class PlayerController : MonoBehaviour
     {
         if (isHit == true)      //ヒット時のエフェクト再生
         {
-            particles[0].Play();
+            //particles[0].Play();
+            hitParticlePlayer.Play();
+            
         }
         //if (stateInfo.IsName("Attacking") && particles[1].isPlaying == true)
         //{

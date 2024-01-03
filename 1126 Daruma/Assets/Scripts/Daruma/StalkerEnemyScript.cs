@@ -51,7 +51,6 @@ public class StalkerEnemyScript : MonoBehaviour
         }
         if (nav.enabled)
         {
-            print(nav.destination);
             var targetpoint = nav.destination;
 
             //何かテクスチャが逆なので逆を向かせる
