@@ -163,7 +163,7 @@ public class EnemyScript : MonoBehaviour
                 //child.gameObject.GetComponent<NavMeshAgent>().enabled = true;
                 child.gameObject.GetComponent<EnemyScript>().enabled = true;
                 //child.gameObject.tag = ("Enemy");
-                child.gameObject.transform.DetachChildren();
+                transform.DetachChildren();
 
                 NavMeshAgent navMeshAgent = GetComponent<NavMeshAgent>();
                 navMeshAgent.enabled = false;
