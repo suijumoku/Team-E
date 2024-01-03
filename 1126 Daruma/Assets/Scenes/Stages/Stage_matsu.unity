@@ -672,6 +672,7 @@ MonoBehaviour:
   enemyNumlimit: 2
   enemyOnceSpown: 1
   anotherEnemyCount: 1
+  spownSE: {fileID: 0}
   createdEnemyTagPrefab: []
 --- !u!1 &498264280 stripped
 GameObject:
@@ -996,6 +997,7 @@ MonoBehaviour:
   enemyNumlimit: 16
   enemyOnceSpown: 2
   anotherEnemyCount: 0
+  spownSE: {fileID: 0}
   createdEnemyTagPrefab: []
 --- !u!4 &596743379
 Transform:
@@ -2211,26 +2213,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1250630678}
   m_CullTransparentMesh: 1
---- !u!1 &1251826763 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6990480758839740848, guid: de156a0e445db85439f2c3b34a5d2cfb, type: 3}
-  m_PrefabInstance: {fileID: 6990480759723983655}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1251826767
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1251826763}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 623ea09e2c9c99f45a870b16793e5bf4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 426602513353146115}
-  prevRaycast: []
-  raycastHitsList_: []
 --- !u!114 &1255178186 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4601032299662041766, guid: 96abf884948d4ae4d8dcdee081dc320c, type: 3}
@@ -5136,6 +5118,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7682312442976243021, guid: de156a0e445db85439f2c3b34a5d2cfb, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 8603886268531186855}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de156a0e445db85439f2c3b34a5d2cfb, type: 3}
 --- !u!1001 &8044884596879912121
@@ -5268,6 +5254,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e9ccdad8e17c66b4ab1370d6bcde609a, type: 3}
+--- !u!1 &8603886268531186855 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8775102162199525663, guid: e9ccdad8e17c66b4ab1370d6bcde609a, type: 3}
+  m_PrefabInstance: {fileID: 8603886268531186854}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8874748395628782914
 PrefabInstance:
   m_ObjectHideFlags: 0
