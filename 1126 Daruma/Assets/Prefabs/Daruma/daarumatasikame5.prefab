@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2046411224805572499}
   - component: {fileID: 4652936982218415503}
   - component: {fileID: 4377428916188763757}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: pCylinder3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -221,7 +221,7 @@ GameObject:
   - component: {fileID: 1296942025868408492}
   - component: {fileID: 9097661962288633469}
   - component: {fileID: 4363151830035910479}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: pCylinder6
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -385,7 +385,7 @@ GameObject:
   - component: {fileID: 4136423920638321141}
   - component: {fileID: 4701208036858229145}
   - component: {fileID: 5626724971027530422}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: polySurface1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -615,6 +615,10 @@ PrefabInstance:
     - target: {fileID: 9186742728194423791, guid: 8f8d993e2bc201c4095315001adfdd24, type: 3}
       propertyPath: m_Layer
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9186742728194423791, guid: 8f8d993e2bc201c4095315001adfdd24, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1979331129108495601, guid: 8f8d993e2bc201c4095315001adfdd24, type: 3}
