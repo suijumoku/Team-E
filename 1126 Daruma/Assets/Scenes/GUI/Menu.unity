@@ -1622,7 +1622,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fade: {fileID: 312272547}
-  NextSceneName: Stage_tyukyu
+  NextSceneName: Stage_take
 --- !u!95 &900732981
 Animator:
   serializedVersion: 5
@@ -1792,7 +1792,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fade: {fileID: 261612095}
-  NextSceneName: Stage_zyokyu
+  NextSceneName: Stage_matsu
 --- !u!95 &927740555
 Animator:
   serializedVersion: 5
@@ -3251,7 +3251,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fade: {fileID: 800472846}
-  NextSceneName: Stage_syokyu
+  NextSceneName: Stage_ume
 --- !u!95 &2145651006
 Animator:
   serializedVersion: 5

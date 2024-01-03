@@ -71,7 +71,6 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] ResultManager _ResultManager; //デバッグ用
 
-
     float inputHorizontal;      //水平方向の入力値
     float inputVertical;        //垂直方向の入力値
     float L_inputTrigger;
@@ -103,14 +102,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-
-        stateInfo = animator.GetCurrentAnimatorStateInfo(0);
-
-        inputHorizontal = UnityEngine.Input.GetAxisRaw("Horizontal");   //入力値の格納
-        inputVertical = UnityEngine.Input.GetAxisRaw("Vertical");
-        L_inputTrigger = UnityEngine.Input.GetAxis("L_Trigger");
-        R_inputTrigger = UnityEngine.Input.GetAxis("R_Trigger");
-        inputAttack = UnityEngine.Input.GetButtonDown("Attack");
+        Input();
         // CamaraReset();
         Jump();
         Attack();
@@ -119,7 +111,25 @@ public class PlayerController : MonoBehaviour
         if (isAttack)
         {
             AttackMotionManage();
-        }
+        }     
+    }
+    private void FixedUpdate()
+    {
+        Gravity();
+
+        //if (stateInfo.IsName("Running") || stateInfo.IsName("Jumping")) //たまになぜか滑るからなし
+        Move();
+    }
+
+    private void Input()
+    {
+        stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+
+        inputHorizontal = UnityEngine.Input.GetAxisRaw("Horizontal");   //入力値の格納
+        inputVertical = UnityEngine.Input.GetAxisRaw("Vertical");
+        L_inputTrigger = UnityEngine.Input.GetAxis("L_Trigger");
+        R_inputTrigger = UnityEngine.Input.GetAxis("R_Trigger");
+        inputAttack = UnityEngine.Input.GetButtonDown("Attack");
 
         if (UnityEngine.Input.GetKeyDown(KeyCode.X))    //デバッグ用無敵モードon
         {
@@ -131,13 +141,6 @@ public class PlayerController : MonoBehaviour
             _MainGameManager.isInvincible = false;
             Debug.Log("無敵解除");
         }
-    }
-    private void FixedUpdate()
-    {
-        Gravity();
-
-        //if (stateInfo.IsName("Running") || stateInfo.IsName("Jumping")) //たまになぜか滑るからなし
-        Move();
     }
 
     private void OnCollisionEnter(Collision collision)
