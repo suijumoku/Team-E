@@ -8,6 +8,7 @@ public class DarumaHeadScript : MonoBehaviour
 
     [SerializeField] ResultManager resultManager;
     GameObject obj = default;
+    [SerializeField] GameObject Mark;
 
     private void Awake()
     {
@@ -30,6 +31,7 @@ public class DarumaHeadScript : MonoBehaviour
         {
             //Debug.Log("b");
             Destroy(gameObject);
+            Destroy(Mark);
             resultManager.BeatDaruma();
             Debug.Log("BeatDaruma!");
         }
