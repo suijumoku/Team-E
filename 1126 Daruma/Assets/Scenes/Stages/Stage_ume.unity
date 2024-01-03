@@ -531,6 +531,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 4437396247100364022, guid: a2e4dc78ddc9dbd468222a850a4b517a, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a2e4dc78ddc9dbd468222a850a4b517a, type: 3}
 --- !u!4 &145917421 stripped
@@ -6064,6 +6068,14 @@ PrefabInstance:
     - target: {fileID: 3347494872048270606, guid: e9ccdad8e17c66b4ab1370d6bcde609a, type: 3}
       propertyPath: m_LocalScale.y
       value: 0.0035914348
+      objectReference: {fileID: 0}
+    - target: {fileID: 3347494872048270606, guid: e9ccdad8e17c66b4ab1370d6bcde609a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 43
+      objectReference: {fileID: 0}
+    - target: {fileID: 3347494872048270606, guid: e9ccdad8e17c66b4ab1370d6bcde609a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 44.9
       objectReference: {fileID: 0}
     - target: {fileID: 5984074911240299899, guid: e9ccdad8e17c66b4ab1370d6bcde609a, type: 3}
       propertyPath: smoothTime
