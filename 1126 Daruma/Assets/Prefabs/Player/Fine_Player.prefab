@@ -1746,6 +1746,7 @@ MonoBehaviour:
   particles:
   - {fileID: 8758382434187100308}
   - {fileID: 781206057795549455}
+  hitParticlePlayer: {fileID: 0}
   boxCollider: {fileID: 7799559044383239497}
   CinemachineCameraTarget: {fileID: 985209418348575766}
   jumpS: {fileID: 8300000, guid: ba59e7e54d3876747bd81430d4865f02, type: 3}
@@ -2278,6 +2279,10 @@ PrefabInstance:
     - target: {fileID: 1074990948231210971, guid: d8c7275788d18c64495e45f55eed8c8b, type: 3}
       propertyPath: m_Name
       value: attack
+      objectReference: {fileID: 0}
+    - target: {fileID: 1074990948231210971, guid: d8c7275788d18c64495e45f55eed8c8b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1074990948231210974, guid: d8c7275788d18c64495e45f55eed8c8b, type: 3}
       propertyPath: m_RootOrder
