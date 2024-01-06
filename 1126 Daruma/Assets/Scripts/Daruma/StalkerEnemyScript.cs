@@ -102,7 +102,7 @@ public class StalkerEnemyScript : MonoBehaviour
         }
 
         //îÚÇÒÇ≈Ç´ÇΩíBñÅÇ…ìñÇΩÇ¡ÇΩéû
-        if (collision.gameObject.tag == "DarumaBall")
+        if (collision.gameObject.tag == "DarumaBall" || gameObject.tag == "Ball")
         {
             if (gameObject.tag == "Enemy")
             {
@@ -113,7 +113,7 @@ public class StalkerEnemyScript : MonoBehaviour
                 child.gameObject.GetComponent<StalkerEnemyScript>().enabled = true;
                 //child.gameObject.tag = ("Enemy");
                 transform.DetachChildren();
-                gameObject.tag = "DarumaBall";
+                gameObject.tag = "Ball";
                 NavMeshAgent navMeshAgent = GetComponent<NavMeshAgent>();
                 navMeshAgent.enabled = false;
                 Force2(collision);
@@ -128,7 +128,7 @@ public class StalkerEnemyScript : MonoBehaviour
         //îÚÇÒÇ≈Ç´ÇΩíBñÅÇÃè¡ãé
         if (collision.gameObject.tag == "Enemy")
         {
-            if (gameObject.tag == "DarumaBall")
+            if (gameObject.tag == "DarumaBall" || gameObject.tag == "Ball")
             {
                 count++;
                 if (count == 4)
@@ -138,11 +138,15 @@ public class StalkerEnemyScript : MonoBehaviour
             }
         }
 
-        if (collision.gameObject.tag == "Wall" || collision.gameObject.tag == "Tourou")
+        if (collision.gameObject.tag == "Wall" || collision.gameObject.tag == "Tourou" || gameObject.tag == "Ball")
         {
-            if (gameObject.tag == "DarumaBall")
+            if (gameObject.tag == "DarumaBall" || gameObject.tag == "Ball")
             {
                
+                if(count > 0)
+                {
+                    gameObject.tag = "Ball";
+                }
                 count++;
                 if (count == 4)
                 {
@@ -154,9 +158,9 @@ public class StalkerEnemyScript : MonoBehaviour
                 Force2(collision);
             }
         }
-        if (collision.gameObject.tag == "DarumaBall")
+        if (collision.gameObject.tag == "DarumaBall" || gameObject.tag == "Ball")
         {
-            if (gameObject.tag == "DarumaBall")
+            if (gameObject.tag == "DarumaBall" || gameObject.tag == "Ball")
             {
                 //GameManager.instance.PlaySE(darumadead[0]);
                 count++;

@@ -184,7 +184,7 @@ public class EnemyScript : MonoBehaviour
         }
 
         //îÚÇÒÇ≈Ç´ÇΩíBñÅÇ…ìñÇΩÇ¡ÇΩéû
-        if (collision.gameObject.tag == "DarumaBall")
+        if (collision.gameObject.tag == "DarumaBall" || gameObject.tag == "Ball")
         {
             if (gameObject.tag == "Enemy")
             {
@@ -195,7 +195,7 @@ public class EnemyScript : MonoBehaviour
                 child.gameObject.GetComponent<EnemyScript>().enabled = true;
                 //child.gameObject.tag = ("Enemy");
                 transform.DetachChildren();
-                gameObject.tag = "DarumaBall";
+                gameObject.tag = "Ball";
                 Force2(collision);
 
 
@@ -210,7 +210,7 @@ public class EnemyScript : MonoBehaviour
         //îÚÇÒÇ≈Ç´ÇΩíBñÅÇÃè¡ãé
         if (collision.gameObject.tag == "Enemy")
         {
-            if (gameObject.tag == "DarumaBall")
+            if (gameObject.tag == "DarumaBall" || gameObject.tag == "Ball")
             {
                 count++;
                 if (count == 4)
@@ -220,11 +220,15 @@ public class EnemyScript : MonoBehaviour
             }
         }
 
-        if (collision.gameObject.tag == "Wall" || collision.gameObject.tag == "DarumaBall" || collision.gameObject.tag == "Tourou")
+        if (collision.gameObject.tag == "Wall" || collision.gameObject.tag == "DarumaBall" || collision.gameObject.tag == "Tourou" || collision.gameObject.tag == "Ball")
         {
-            if (gameObject.tag == "DarumaBall")
+            if (gameObject.tag == "DarumaBall" || gameObject.tag == "Ball")
             {
                 count++;
+                if(count > 0)
+                {
+                    gameObject.tag = "Ball";
+                }
                 if (count == 4)
                 {
                     Destroy(gameObject);
