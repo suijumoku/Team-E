@@ -137,6 +137,7 @@ public class StalkerEnemyScript : MonoBehaviour
                 {
                     Destroy(gameObject);
                 }
+                Force2(collision);
             }
         }
 
