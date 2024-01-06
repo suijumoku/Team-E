@@ -165,7 +165,7 @@ public class PlayerController : MonoBehaviour
 
         if (_MainGameManager.isInvincible == false)
         {
-            if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("DarumaBall"))     //無敵時間中はダメージを食らわない
+            if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("DarumaBall") || collision.gameObject.CompareTag("Ball"))     //無敵時間中はダメージを食らわない
             {
                 canMove = false;
               //  isKnockBack = true;

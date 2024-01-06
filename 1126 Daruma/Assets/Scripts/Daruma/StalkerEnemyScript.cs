@@ -115,7 +115,7 @@ public class StalkerEnemyScript : MonoBehaviour
                 child.gameObject.GetComponent<StalkerEnemyScript>().enabled = true;
                 //child.gameObject.tag = ("Enemy");
                 transform.DetachChildren();
-                gameObject.tag = "Ball";
+                gameObject.tag = "DarumaBall";
                 NavMeshAgent navMeshAgent = GetComponent<NavMeshAgent>();
                 navMeshAgent.enabled = false;
                 //Force2(collision);
@@ -132,11 +132,12 @@ public class StalkerEnemyScript : MonoBehaviour
         {
             if (gameObject.tag == "DarumaBall" || gameObject.tag == "Ball")
             {
-                count++;
+                //count++;
                 if (count == 4)
                 {
                     Destroy(gameObject);
                 }
+                Force2(collision);
             }
         }
 

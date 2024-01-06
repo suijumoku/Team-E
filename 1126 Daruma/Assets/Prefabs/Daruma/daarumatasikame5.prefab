@@ -152,7 +152,7 @@ MonoBehaviour:
   player: {fileID: 8775102162199525663, guid: e9ccdad8e17c66b4ab1370d6bcde609a, type: 3}
   child: {fileID: 80701984886092416}
   detectDistance: 5
-  boundsPower: 30
+  boundsPower: 3000
   resultManager: {fileID: 7223998160688599974, guid: d8a09de020179bf4a9f6f524933481f2, type: 3}
   _playerController: {fileID: 5984074911240299899, guid: e9ccdad8e17c66b4ab1370d6bcde609a, type: 3}
   WallCollision:

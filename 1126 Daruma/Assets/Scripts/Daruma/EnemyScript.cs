@@ -201,7 +201,7 @@ public class EnemyScript : MonoBehaviour
                 child.gameObject.GetComponent<EnemyScript>().enabled = true;
                 //child.gameObject.tag = ("Enemy");
                 transform.DetachChildren();
-                gameObject.tag = "Ball";
+                gameObject.tag = "DarumaBall";
                 //Force2(collision);
 
 
@@ -218,7 +218,7 @@ public class EnemyScript : MonoBehaviour
         {
             if (gameObject.tag == "DarumaBall" || gameObject.tag == "Ball")
             {
-                count++;
+                //count++;
                 if (count == 4)
                 {
                     Destroy(gameObject);
