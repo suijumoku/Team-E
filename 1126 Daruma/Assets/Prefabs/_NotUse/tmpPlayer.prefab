@@ -116,17 +116,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee7b118bea27d7e4d84ea7b996514278, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isAttack: 0
+  isHit: 0
   walkSpeed: 6
   gravityPower: -8
   Attack_Finish_Time: 1.5
+  Attack_Motion_Speed: 1
+  Collider_Start_Time: 0.1
+  Collider_Stop_Time: 0.3
+  Particle_Start_Time: 0.18
+  Particle_Stop_Time: 0.185
   triggerTiming: 0.5
   smoothTime: 0.3
   jumpPower: 8
-  miss: {fileID: 5901055367156605732, guid: 2d17367af39efae45a1c4bb1a700abfa, type: 3}
+  knockBackP: 5
+  knockBackUpP: 3
+  particles: []
+  hitParticlePlayer: {fileID: 0}
+  boxCollider: {fileID: 0}
   CinemachineCameraTarget: {fileID: 544982392394112126}
   jumpS: {fileID: 8300000, guid: ba59e7e54d3876747bd81430d4865f02, type: 3}
   attack_true_S: {fileID: 8300000, guid: 42bcd051f8e0be84f94fdcd6d4057859, type: 3}
   fallS: {fileID: 0}
+  hitS: {fileID: 0}
+  damagedS: {fileID: 0}
+  _MainGameManager: {fileID: 0}
+  _ResultManager: {fileID: 0}
 --- !u!54 &544982392036295422
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -315,7 +330,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -67,7 +67,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -103,16 +103,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 7583526806343463385, guid: 44defe463f12ed048bb2c9ccc0fd9bf9, type: 3}
   child: {fileID: 6500958144201429786}
-  patrolMaterial: {fileID: 2100000, guid: dcce71b6c0caafa42a8908fae584c7f7, type: 2}
-  chaseMaterial: {fileID: 2100000, guid: 1217dde8a82cbcd49ac9bbf1989fb8b2, type: 2}
   detectDistance: 3
   boundsPower: 40
+  resultManager: {fileID: 0}
   _playerController: {fileID: 1193852216636926739, guid: 44defe463f12ed048bb2c9ccc0fd9bf9, type: 3}
+  WallCollision: []
   points:
   - {fileID: 5693236718117789071, guid: fde996fe575c5b84ab132d73ae2020c9, type: 3}
   - {fileID: 8044884596751178665, guid: cf0252c7e55af5441aadd944d863ac0f, type: 3}
   - {fileID: 3852693901031463524, guid: 920f8cdf30690aa4296e0052f80d73a8, type: 3}
-  destPoint: 0
+  nextPointIndex: 0
   nextPoint: 03000000
 --- !u!64 &6500958143944215587
 MeshCollider:
@@ -247,7 +247,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -295,6 +295,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 083a65c57c7900946b5dd8d268185a5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  resultManager: {fileID: 0}
+  StayBreakTime: 0
+  breakCount: -1
+  particlePlayer: {fileID: 0}
 --- !u!54 &6159676266227236530
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -325,16 +329,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 7583526806343463385, guid: 44defe463f12ed048bb2c9ccc0fd9bf9, type: 3}
   child: {fileID: 0}
-  patrolMaterial: {fileID: 0}
-  chaseMaterial: {fileID: 0}
   detectDistance: 0
   boundsPower: 40
+  resultManager: {fileID: 0}
   _playerController: {fileID: 1193852216636926739, guid: 44defe463f12ed048bb2c9ccc0fd9bf9, type: 3}
+  WallCollision: []
   points:
   - {fileID: 5693236718117789071, guid: fde996fe575c5b84ab132d73ae2020c9, type: 3}
   - {fileID: 8044884596751178665, guid: cf0252c7e55af5441aadd944d863ac0f, type: 3}
   - {fileID: 3852693901031463524, guid: 920f8cdf30690aa4296e0052f80d73a8, type: 3}
-  destPoint: 0
+  nextPointIndex: 0
   nextPoint: 03000000
 --- !u!195 &257751970833364999
 NavMeshAgent:
@@ -474,16 +478,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 7583526806343463385, guid: 44defe463f12ed048bb2c9ccc0fd9bf9, type: 3}
   child: {fileID: 6500958145679016329}
-  patrolMaterial: {fileID: 2100000, guid: dcce71b6c0caafa42a8908fae584c7f7, type: 2}
-  chaseMaterial: {fileID: 2100000, guid: 1217dde8a82cbcd49ac9bbf1989fb8b2, type: 2}
   detectDistance: 3
   boundsPower: 40
+  resultManager: {fileID: 0}
   _playerController: {fileID: 1193852216636926739, guid: 44defe463f12ed048bb2c9ccc0fd9bf9, type: 3}
+  WallCollision: []
   points:
   - {fileID: 5693236718117789071, guid: fde996fe575c5b84ab132d73ae2020c9, type: 3}
   - {fileID: 8044884596751178665, guid: cf0252c7e55af5441aadd944d863ac0f, type: 3}
   - {fileID: 3852693901031463524, guid: 920f8cdf30690aa4296e0052f80d73a8, type: 3}
-  destPoint: 0
+  nextPointIndex: 0
   nextPoint: 
 --- !u!195 &6500958145341080815
 NavMeshAgent:
@@ -600,7 +604,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -636,16 +640,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 7583526806343463385, guid: 44defe463f12ed048bb2c9ccc0fd9bf9, type: 3}
   child: {fileID: 6500958143944215580}
-  patrolMaterial: {fileID: 2100000, guid: dcce71b6c0caafa42a8908fae584c7f7, type: 2}
-  chaseMaterial: {fileID: 2100000, guid: 1217dde8a82cbcd49ac9bbf1989fb8b2, type: 2}
   detectDistance: 3
   boundsPower: 40
+  resultManager: {fileID: 0}
   _playerController: {fileID: 1193852216636926739, guid: 44defe463f12ed048bb2c9ccc0fd9bf9, type: 3}
+  WallCollision: []
   points:
   - {fileID: 5693236718117789071, guid: fde996fe575c5b84ab132d73ae2020c9, type: 3}
   - {fileID: 8044884596751178665, guid: cf0252c7e55af5441aadd944d863ac0f, type: 3}
   - {fileID: 3852693901031463524, guid: 920f8cdf30690aa4296e0052f80d73a8, type: 3}
-  destPoint: 0
+  nextPointIndex: 0
   nextPoint: 03000000
 --- !u!64 &6500958145679016332
 MeshCollider:
