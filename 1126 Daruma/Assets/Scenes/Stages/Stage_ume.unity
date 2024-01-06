@@ -5174,17 +5174,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8254179200514810789, guid: e9ccdad8e17c66b4ab1370d6bcde609a, type: 3}
   m_PrefabInstance: {fileID: 8603886268531186854}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &426602513353146119 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3938818388130792531, guid: e9ccdad8e17c66b4ab1370d6bcde609a, type: 3}
-  m_PrefabInstance: {fileID: 8603886268531186854}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 59759729}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1914ba8d647206a4b85010baabafb571, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &516489968059010450
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6535,14 +6524,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 5984074911240299899, guid: e9ccdad8e17c66b4ab1370d6bcde609a, type: 3}
-      propertyPath: damagedS
-      value: 
-      objectReference: {fileID: 8300000, guid: e4077f56eb5037e4db87d80ee766799c, type: 3}
-    - target: {fileID: 5984074911240299899, guid: e9ccdad8e17c66b4ab1370d6bcde609a, type: 3}
-      propertyPath: smoothTime
-      value: 0.08
-      objectReference: {fileID: 0}
-    - target: {fileID: 5984074911240299899, guid: e9ccdad8e17c66b4ab1370d6bcde609a, type: 3}
       propertyPath: _ResultManager
       value: 
       objectReference: {fileID: 402041234}
@@ -6550,22 +6531,6 @@ PrefabInstance:
       propertyPath: _MainGameManager
       value: 
       objectReference: {fileID: 567377144}
-    - target: {fileID: 5984074911240299899, guid: e9ccdad8e17c66b4ab1370d6bcde609a, type: 3}
-      propertyPath: hitParticlePlayer
-      value: 
-      objectReference: {fileID: 426602513353146119}
-    - target: {fileID: 5984074911240299899, guid: e9ccdad8e17c66b4ab1370d6bcde609a, type: 3}
-      propertyPath: Particle_Stop_Time
-      value: 0.18
-      objectReference: {fileID: 0}
-    - target: {fileID: 5984074911240299899, guid: e9ccdad8e17c66b4ab1370d6bcde609a, type: 3}
-      propertyPath: Collider_Start_Time
-      value: 0.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 5984074911240299899, guid: e9ccdad8e17c66b4ab1370d6bcde609a, type: 3}
-      propertyPath: Particle_Start_Time
-      value: 0.15
-      objectReference: {fileID: 0}
     - target: {fileID: 7799559044383239497, guid: e9ccdad8e17c66b4ab1370d6bcde609a, type: 3}
       propertyPath: m_Size.z
       value: 38.32
