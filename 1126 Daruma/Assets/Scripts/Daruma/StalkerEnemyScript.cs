@@ -44,7 +44,7 @@ public class StalkerEnemyScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        player_ = GameObject.Find("Fine_Player");
 
         if (gameObject.tag == "Enemy")
         {
@@ -160,6 +160,7 @@ public class StalkerEnemyScript : MonoBehaviour
                 GameManager.instance.PlaySE(WallCollision[0]);
                 Force2(collision);
             }
+            
         }
         //if (collision.gameObject.tag == "DarumaBall" || gameObject.tag == "Ball")
         //{

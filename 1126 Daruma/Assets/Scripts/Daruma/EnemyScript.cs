@@ -99,6 +99,7 @@ public class EnemyScript : MonoBehaviour
     void Update()
     {
         float distance;
+        player_ = GameObject.Find("Fine_Player");
 
         distance = Vector3.Distance(transform.position, player_.transform.position);
         if (gameObject.tag == "Enemy")
@@ -172,8 +173,8 @@ public class EnemyScript : MonoBehaviour
 
                 _playerController.isHit = true;
 
-                //Rigidbody rb = gameObject.GetComponent<Rigidbody>();
-                //rb.constraints = RigidbodyConstraints.FreezePositionY;
+                Rigidbody rb = gameObject.GetComponent<Rigidbody>();
+                rb.constraints = RigidbodyConstraints.FreezePositionY;
 
                 gameObject.tag = "DarumaBall";
 
@@ -247,6 +248,7 @@ public class EnemyScript : MonoBehaviour
                 Force2(collision);
             }
         }
+        
 
     }
 
