@@ -202,7 +202,7 @@ public class EnemyScript : MonoBehaviour
                 //child.gameObject.tag = ("Enemy");
                 transform.DetachChildren();
                 gameObject.tag = "DarumaBall";
-                //Force2(collision);
+                Force2(collision);
 
 
                 resultManager.DoubleHit();
@@ -223,6 +223,8 @@ public class EnemyScript : MonoBehaviour
                 {
                     Destroy(gameObject);
                 }
+
+                Force2(collision);
             }
         }
 
