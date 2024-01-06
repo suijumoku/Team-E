@@ -4,6 +4,9 @@ using UnityEngine.UI;
 
 public class ResultManager : MonoBehaviour
 {
+    [Header("今のシーンの名前(再挑戦用)")]
+    [SerializeField] public string InputSceneName;
+
     [Header("スコア")]
     [SerializeField] public Image[] scoreImg;  //[i][j] i:親か子 j:十の位か一の位
     [Header("ボススコア")]
@@ -25,6 +28,7 @@ public class ResultManager : MonoBehaviour
     [SerializeField] AudioClip[] resultSounds = default!;
 
     [SerializeField] ScoreUI _ScoreUI;
+    [SerializeField] FadeAndSceneMove _FadeAndSceneMove;
 
     //[Header("有効になったら実行する")]
     //[SerializeField] bool OnEneble;
@@ -43,6 +47,7 @@ public class ResultManager : MonoBehaviour
     public static int calcScore = 0, beatDarumaValue = 0, breakTourouValue = 0;
     bool isResult = true, isNoDmg = false;
     public static bool isClear = false;
+    public static string SceneName;
 
 
     //private ResultManager instance;
@@ -62,8 +67,7 @@ public class ResultManager : MonoBehaviour
     {
         scoreArray = new int[2] { 0, 0 };
         Boss_Time_Array = new int[2] { 0, 0 };
-        kidArray = new int[2] { 0, 0 };
-       
+        kidArray = new int[2] { 0, 0 };       
     }
 
     void Start()
@@ -73,7 +77,8 @@ public class ResultManager : MonoBehaviour
             Debug.Log("OnLoadScene");
             Time.timeScale = 1;
             StartCoroutine(ResultCorutine());
-        }       
+        }
+        SceneName = InputSceneName; //staticのobjectに名前を入れることでResultSceneに名前を引き継いで再挑戦ができるように
     }
 
     void Update()
@@ -99,7 +104,7 @@ public class ResultManager : MonoBehaviour
     {
         beatDarumaValue++;      
         
-     // _ScoreUI.ScoreUpdate();
+     　// _ScoreUI.ScoreUpdate();
     }
     public void BeatBoss(float time)
     {
@@ -187,7 +192,8 @@ public class ResultManager : MonoBehaviour
     }
     private IEnumerator ResultCorutine()
     {
-        Debug.Log("isClear = " + isClear);
+        Debug.Log("SceneName = " + SceneName);
+        _FadeAndSceneMove.NextSceneName = SceneName; 　//再挑戦ボタンの移動するシーンの名前を書き換える
 
         if (calcScore >= 100)
             calcScore = 99;
