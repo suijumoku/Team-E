@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
     public bool isHit = false;
     private bool canMove = true;
     private bool onlyFirst = false;
-    private bool isKnockBack = false;
+    //private bool isKnockBack = false;
 
     [Header("移動スピード")]
     [SerializeField] private float walkSpeed = 4f;
@@ -66,7 +66,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] AudioClip jumpS = default!;
     [SerializeField] AudioClip attack_true_S = default!;
     [SerializeField] AudioClip fallS = default!;
+    [Header("当てた時の音")]
     [SerializeField] AudioClip hitS = default!;
+    [Header("被ダメ音")]
+    [SerializeField] AudioClip damagedS = default!;
     // [SerializeField]  AudioClip cameraResetS = default!;
 
     [SerializeField] MainGameManager _MainGameManager;
@@ -165,7 +168,7 @@ public class PlayerController : MonoBehaviour
             if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("DarumaBall"))     //無敵時間中はダメージを食らわない
             {
                 canMove = false;
-                isKnockBack = true;
+              //  isKnockBack = true;
                 KnockBack(collision);
                 _MainGameManager.Miss();
             }
@@ -313,12 +316,14 @@ public class PlayerController : MonoBehaviour
     }
     void KnockBack(Collision collision)
     {
+        GameManager.instance.PlaySE(damagedS);
         isJump = true;
         Debug.Log("isKnockBack");
         Vector3 direction = collision.gameObject.transform.forward;
 
         m_Rigidbody.AddForce(-direction * knockBackP, ForceMode.Impulse);      
         m_Rigidbody.AddForce(transform.up * knockBackUpP, ForceMode.Impulse);   //若干上方向にも飛ばす
+
     }
 
     public void fall()  //落下判定エリアで使う
