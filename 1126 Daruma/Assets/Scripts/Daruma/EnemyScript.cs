@@ -202,6 +202,8 @@ public class EnemyScript : MonoBehaviour
                 //child.gameObject.tag = ("Enemy");
                 transform.DetachChildren();
                 gameObject.tag = "DarumaBall";
+                Rigidbody rb = gameObject.GetComponent<Rigidbody>();
+                rb.constraints = RigidbodyConstraints.FreezePositionY;
                 Force2(collision);
 
 
