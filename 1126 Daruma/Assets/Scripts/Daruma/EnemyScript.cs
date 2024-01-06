@@ -222,7 +222,7 @@ public class EnemyScript : MonoBehaviour
             }
         }
 
-        if (collision.gameObject.tag == "Wall" || collision.gameObject.tag == "DarumaBall" || collision.gameObject.tag == "Tourou" || collision.gameObject.tag == "Ball")
+        if (collision.gameObject.tag == "Wall" ||  collision.gameObject.tag == "Tourou")
         {
             if (gameObject.tag == "DarumaBall" || gameObject.tag == "Ball")
             {

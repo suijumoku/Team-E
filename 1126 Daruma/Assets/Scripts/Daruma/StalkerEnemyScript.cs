@@ -140,7 +140,7 @@ public class StalkerEnemyScript : MonoBehaviour
             }
         }
 
-        if (collision.gameObject.tag == "Wall" || collision.gameObject.tag == "Tourou" || gameObject.tag == "Ball")
+        if (collision.gameObject.tag == "Wall" || collision.gameObject.tag == "Tourou")
         {
             if (gameObject.tag == "DarumaBall" || gameObject.tag == "Ball")
             {
@@ -160,18 +160,18 @@ public class StalkerEnemyScript : MonoBehaviour
                 Force2(collision);
             }
         }
-        if (collision.gameObject.tag == "DarumaBall" || gameObject.tag == "Ball")
-        {
-            if (gameObject.tag == "DarumaBall" || gameObject.tag == "Ball")
-            {
-                //GameManager.instance.PlaySE(darumadead[0]);
-                count++;
-                if (count == 4)
-                {
-                    Destroy(gameObject);
-                }
-            }
-        }
+        //if (collision.gameObject.tag == "DarumaBall" || gameObject.tag == "Ball")
+        //{
+        //    if (gameObject.tag == "DarumaBall" || gameObject.tag == "Ball")
+        //    {
+        //        //GameManager.instance.PlaySE(darumadead[0]);
+        //        count++;
+        //        if (count == 4)
+        //        {
+        //            Destroy(gameObject);
+        //        }
+        //    }
+        //}
 
     }
 
