@@ -118,7 +118,7 @@ public class StalkerEnemyScript : MonoBehaviour
                 gameObject.tag = "DarumaBall";
                 NavMeshAgent navMeshAgent = GetComponent<NavMeshAgent>();
                 navMeshAgent.enabled = false;
-                //Force2(collision);
+                Force2(collision);
                 resultManager.DoubleHit();
                 Debug.Log("akaDoubleHit!");
 
