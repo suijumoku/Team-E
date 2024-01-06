@@ -45,8 +45,9 @@ public class ResultManager : MonoBehaviour
 
     int[] scoreArray, Boss_Time_Array, kidArray;
     public static int calcScore = 0, beatDarumaValue = 0, breakTourouValue = 0;
-    bool isResult = true, isNoDmg = false;
+    bool isResult = true;
     public static bool isClear = false;
+    public static bool isNoDmg = false;
     public static string SceneName;
     private int indicateScore = 0;
    // private int indicateDaruma = 0;
@@ -77,6 +78,7 @@ public class ResultManager : MonoBehaviour
     {
         if (OnLoadScene)
         {
+            indicateScore = 0;           
             Debug.Log("OnLoadScene");
             Time.timeScale = 1;
             StartCoroutine(ResultCorutine());
@@ -131,9 +133,10 @@ public class ResultManager : MonoBehaviour
     }
 
     public void NoDmgBonus() //多分PlayerControllerで呼ぶ->MainGameManager
-    {
+    {        
         calcScore += noDamage;
         isNoDmg = true;
+        Debug.Log("isNoDmg1 = " + isNoDmg);
     }
 
     public void breakTourou()
@@ -224,7 +227,7 @@ public class ResultManager : MonoBehaviour
         //yield return new WaitForSeconds(duration);
 
         IndicateScore(kidScoreImg, indicateS[0]);
-
+        Debug.Log("isNoDmg2 = " + isNoDmg);
         if (isNoDmg == true)        //ノーダメだったらチェック入れる
         {
             yield return new WaitForSeconds(duration);
