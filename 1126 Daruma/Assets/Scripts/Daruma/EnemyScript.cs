@@ -186,7 +186,7 @@ public class EnemyScript : MonoBehaviour
         }
 
         //îÚÇÒÇ≈Ç´ÇΩíBñÅÇ…ìñÇΩÇ¡ÇΩéû
-        if (collision.gameObject.tag == "DarumaBall" || gameObject.tag == "Ball")
+        if (collision.gameObject.tag == "DarumaBall" || collision.gameObject.tag == "Ball")
         {
             if (gameObject.tag == "Enemy")
             {
@@ -198,7 +198,7 @@ public class EnemyScript : MonoBehaviour
                 //child.gameObject.tag = ("Enemy");
                 transform.DetachChildren();
                 gameObject.tag = "Ball";
-                Force2(collision);
+                //Force2(collision);
 
 
                 resultManager.DoubleHit();

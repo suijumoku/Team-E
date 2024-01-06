@@ -104,7 +104,7 @@ public class StalkerEnemyScript : MonoBehaviour
         }
 
         //îÚÇÒÇ≈Ç´ÇΩíBñÅÇ…ìñÇΩÇ¡ÇΩéû
-        if (collision.gameObject.tag == "DarumaBall" || gameObject.tag == "Ball")
+        if (collision.gameObject.tag == "DarumaBall" || collision.gameObject.tag == "Ball")
         {
             if (gameObject.tag == "Enemy")
             {
@@ -118,7 +118,7 @@ public class StalkerEnemyScript : MonoBehaviour
                 gameObject.tag = "Ball";
                 NavMeshAgent navMeshAgent = GetComponent<NavMeshAgent>();
                 navMeshAgent.enabled = false;
-                Force2(collision);
+                //Force2(collision);
                 resultManager.DoubleHit();
                 Debug.Log("akaDoubleHit!");
 
