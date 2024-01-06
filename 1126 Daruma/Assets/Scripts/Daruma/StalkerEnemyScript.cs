@@ -96,7 +96,7 @@ public class StalkerEnemyScript : MonoBehaviour
                 resultManager.NormalHit();
                 Debug.Log("akaNormalHit!");
             }
-            if(gameObject.tag == "DarumaBall")
+            if (gameObject.tag == "DarumaBall" || gameObject.tag == "Ball")
             {
                 Force(collision);
             }

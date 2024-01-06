@@ -182,6 +182,10 @@ public class EnemyScript : MonoBehaviour
                 resultManager.NormalHit();
                 Debug.Log("kiiroNormalHit!");
             }
+            if(gameObject.tag == "DarumaBall" || gameObject.tag == "Ball")
+            {
+                Force(collision);
+            }
 
         }
 
