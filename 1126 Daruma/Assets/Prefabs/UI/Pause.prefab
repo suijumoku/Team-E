@@ -193,6 +193,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 8700396276693741144}
+    - target: {fileID: 1167785938207328429, guid: 472f8ff0976f7724caad27b6f2cd59a5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RetuenMenu
+      objectReference: {fileID: 0}
     - target: {fileID: 1167785939667265002, guid: 472f8ff0976f7724caad27b6f2cd59a5, type: 3}
       propertyPath: m_Name
       value: PauseScreen
