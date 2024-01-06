@@ -1655,6 +1655,7 @@ GameObject:
   - component: {fileID: 2624631650635987423}
   - component: {fileID: 5984074911240299898}
   - component: {fileID: 5984074911240299899}
+  - component: {fileID: 3938818388130792531}
   m_Layer: 0
   m_Name: Fine_Player
   m_TagString: Untagged
@@ -1755,6 +1756,23 @@ MonoBehaviour:
   hitS: {fileID: 8300000, guid: e57d7221a9ed28c40b0fe4ec56858ec3, type: 3}
   _MainGameManager: {fileID: 0}
   _ResultManager: {fileID: 0}
+--- !u!114 &3938818388130792531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8775102162199525663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1914ba8d647206a4b85010baabafb571, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particle: {fileID: 8758382434187100308}
+  playPosition: {fileID: 8758382434187100307}
+  isSameRotation: 1
+  isSameScale: 0
+  isDeleteImmediately: 0
 --- !u!1 &8863055312963584341
 GameObject:
   m_ObjectHideFlags: 0
