@@ -201,7 +201,7 @@ public class EnemyScript : MonoBehaviour
                 child.gameObject.GetComponent<EnemyScript>().enabled = true;
                 //child.gameObject.tag = ("Enemy");
                 transform.DetachChildren();
-                gameObject.tag = "Ball";
+                gameObject.tag = "DarumaBall";
                 //Force2(collision);
 
 
