@@ -88,6 +88,7 @@ public class StalkerEnemyScript : MonoBehaviour
 
                 Rigidbody rb = gameObject.GetComponent<Rigidbody>();
                 rb.constraints = RigidbodyConstraints.FreezePositionY;
+                rb.constraints = RigidbodyConstraints.FreezeRotation;
 
                 gameObject.tag = "DarumaBall";
 
@@ -118,6 +119,12 @@ public class StalkerEnemyScript : MonoBehaviour
                 gameObject.tag = "DarumaBall";
                 NavMeshAgent navMeshAgent = GetComponent<NavMeshAgent>();
                 navMeshAgent.enabled = false;
+
+                Rigidbody rb = gameObject.GetComponent<Rigidbody>();
+                rb.constraints = RigidbodyConstraints.FreezePositionY;
+                rb.constraints = RigidbodyConstraints.FreezeRotation;
+
+
                 Force2(collision);
                 resultManager.DoubleHit();
                 Debug.Log("akaDoubleHit!");
@@ -162,6 +169,7 @@ public class StalkerEnemyScript : MonoBehaviour
             }
             
         }
+       
         //if (collision.gameObject.tag == "DarumaBall" || gameObject.tag == "Ball")
         //{
         //    if (gameObject.tag == "DarumaBall" || gameObject.tag == "Ball")

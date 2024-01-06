@@ -175,6 +175,7 @@ public class EnemyScript : MonoBehaviour
 
                 Rigidbody rb = gameObject.GetComponent<Rigidbody>();
                 rb.constraints = RigidbodyConstraints.FreezePositionY;
+                rb.constraints = RigidbodyConstraints.FreezeRotation;
 
                 gameObject.tag = "DarumaBall";
 
@@ -205,6 +206,7 @@ public class EnemyScript : MonoBehaviour
                 gameObject.tag = "DarumaBall";
                 Rigidbody rb = gameObject.GetComponent<Rigidbody>();
                 rb.constraints = RigidbodyConstraints.FreezePositionY;
+                rb.constraints = RigidbodyConstraints.FreezeRotation;
                 Force2(collision);
 
 
@@ -249,6 +251,7 @@ public class EnemyScript : MonoBehaviour
             }
         }
         
+
 
     }
 

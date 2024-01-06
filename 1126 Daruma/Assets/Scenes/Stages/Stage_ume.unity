@@ -5284,7 +5284,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 578910370418319867, guid: 26c940c44de39eb47814d559ca46abd3, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.049441606
+      value: -0.04944161
       objectReference: {fileID: 0}
     - target: {fileID: 578910370418319867, guid: 26c940c44de39eb47814d559ca46abd3, type: 3}
       propertyPath: m_LocalRotation.y
@@ -6551,6 +6551,10 @@ PrefabInstance:
       propertyPath: _MainGameManager
       value: 
       objectReference: {fileID: 567377144}
+    - target: {fileID: 5984074911240299899, guid: e9ccdad8e17c66b4ab1370d6bcde609a, type: 3}
+      propertyPath: Collider_Start_Time
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 7799559044383239497, guid: e9ccdad8e17c66b4ab1370d6bcde609a, type: 3}
       propertyPath: m_Size.z
       value: 38.32

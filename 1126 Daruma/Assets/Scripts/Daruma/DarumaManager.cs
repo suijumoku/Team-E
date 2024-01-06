@@ -48,9 +48,8 @@ public class DarumaManager : MonoBehaviour
                 //collider.enabled = true;
 
                 Rigidbody rb = gameObject.GetComponent<Rigidbody>();
-                rb.constraints = RigidbodyConstraints.FreezeRotationX;
-                rb.constraints = RigidbodyConstraints.FreezeRotationY;
-                rb.constraints = RigidbodyConstraints.FreezeRotationZ;
+                rb.constraints = RigidbodyConstraints.FreezeRotation;
+
                 
 
                 //darumaManager.enabled = false;
