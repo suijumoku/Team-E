@@ -132,7 +132,7 @@ public class StalkerEnemyScript : MonoBehaviour
         {
             if (gameObject.tag == "DarumaBall" || gameObject.tag == "Ball")
             {
-                count++;
+                //count++;
                 if (count == 4)
                 {
                     Destroy(gameObject);
