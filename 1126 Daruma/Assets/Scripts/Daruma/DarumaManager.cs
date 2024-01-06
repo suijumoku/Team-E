@@ -51,6 +51,7 @@ public class DarumaManager : MonoBehaviour
                 rb.constraints = RigidbodyConstraints.FreezeRotationX;
                 rb.constraints = RigidbodyConstraints.FreezeRotationY;
                 rb.constraints = RigidbodyConstraints.FreezeRotationZ;
+                rb.mass = 100;
 
                 //darumaManager.enabled = false;
 

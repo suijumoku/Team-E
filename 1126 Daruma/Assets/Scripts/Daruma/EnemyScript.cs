@@ -172,8 +172,8 @@ public class EnemyScript : MonoBehaviour
 
                 _playerController.isHit = true;
 
-                Rigidbody rb = gameObject.GetComponent<Rigidbody>();
-                rb.constraints = RigidbodyConstraints.FreezePositionY;
+                //Rigidbody rb = gameObject.GetComponent<Rigidbody>();
+                //rb.constraints = RigidbodyConstraints.FreezePositionY;
 
                 gameObject.tag = "DarumaBall";
 
