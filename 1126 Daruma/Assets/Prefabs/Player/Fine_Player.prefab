@@ -1754,6 +1754,7 @@ MonoBehaviour:
   attack_true_S: {fileID: 8300000, guid: 42bcd051f8e0be84f94fdcd6d4057859, type: 3}
   fallS: {fileID: 8300000, guid: feb09b74e4cfac34a959d16b40e2865c, type: 3}
   hitS: {fileID: 8300000, guid: e57d7221a9ed28c40b0fe4ec56858ec3, type: 3}
+  damagedS: {fileID: 8300000, guid: ecc1b51eb42204f4da44cbf3c9cf5233, type: 3}
   _MainGameManager: {fileID: 0}
   _ResultManager: {fileID: 0}
 --- !u!114 &3938818388130792531
