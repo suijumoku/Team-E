@@ -6,6 +6,9 @@ using UnityEngine.UI;
 
 public class MainGameManager : MonoBehaviour
 {
+    [Header("ƒV[ƒ“‚ª“Ç‚İ‚Ü‚ê‚½‚çÀs‚·‚é")]
+    [SerializeField] bool OnLoadScene;
+
     [Header("ŠÔ(3Œ…)")]
     [SerializeField] Image[] timeImg;
 
@@ -37,9 +40,16 @@ public class MainGameManager : MonoBehaviour
         // _resultManager = _resultManager.GetComponent<ResultManager>();
 
         // Time.timeScale = 1.0f;
-        onlyF = false;
-        isDefeat = false;
-        timeArray = new int[3] { 0, 0, 0 };
+
+        if (OnLoadScene)
+        {
+            Debug.Log("OnLoadScene");
+            onlyF = false;
+            isDefeat = false;
+            timeArray = new int[3] { 0, 0, 0 };
+            currentCount = 0;
+            time = 0f;
+        }     
     }
 
     private void Update()

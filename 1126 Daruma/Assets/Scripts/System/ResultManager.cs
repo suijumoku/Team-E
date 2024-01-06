@@ -48,6 +48,9 @@ public class ResultManager : MonoBehaviour
     bool isResult = true, isNoDmg = false;
     public static bool isClear = false;
     public static string SceneName;
+    private int indicateScore = 0;
+   // private int indicateDaruma = 0;
+   // private int indicateTourou = 0; //コルーチンの最後に初期化するとバグるので別の変数に移す
 
 
     //private ResultManager instance;
@@ -207,6 +210,11 @@ public class ResultManager : MonoBehaviour
         //デバッグ用↑
 
         Assign(isResult);
+
+        indicateScore = calcScore; /*indicateDaruma = beatDarumaValue; indicateTourou = breakTourouValue;*/
+
+        isClear = false;
+        calcScore = 0; beatDarumaValue = 0; breakTourouValue = 0;
         yield return new WaitForSeconds(duration);  //始まると同時に表示されるのを防ぐために少し間を空ける
 
         IndicateScore(scoreImg, indicateS[0]);
@@ -234,22 +242,22 @@ public class ResultManager : MonoBehaviour
             results[0].enabled = true; //負け
             resultS = resultSounds[0];
         }
-        else if (isClear == true && calcScore < 20)
+        else if (isClear == true && indicateScore < 20)
         {
             results[1].enabled = true; //可
             resultS = resultSounds[1];
         }
-        else if (calcScore >= 20 && calcScore < 30)
+        else if (indicateScore >= 20 && indicateScore < 30)
         {
             results[2].enabled = true; //良
             resultS = resultSounds[1];
         }
-        else if (calcScore >= 30 && calcScore < 50)
+        else if (indicateScore >= 30 && indicateScore < 50)
         {
             results[3].enabled = true; //優
             resultS = resultSounds[1];
         }
-        else if (calcScore >= 50)
+        else if (indicateScore >= 50)
         {
             results[4].enabled = true; //秀
             resultS = resultSounds[1];
@@ -266,8 +274,7 @@ public class ResultManager : MonoBehaviour
 
         //Debug.Log("kidScore.enabled0 = " + kidScoreImg[0].enabled);
         //Debug.Log("kidScore.enabled1 = " + kidScoreImg[1].enabled);
-        isClear = false;
-        calcScore = 0; beatDarumaValue = 0; breakTourouValue = 0;
+      
         yield return null;
     }
 
