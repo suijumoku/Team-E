@@ -45,8 +45,6 @@ public class DarumaHeadScript : MonoBehaviour
         if (collision.gameObject.tag == "Ground")
         {
             //Debug.Log("b");
-            resultManager.BeatDaruma();
-            Debug.Log("BeatDaruma!");
             print("hit");
             breakCount++;
         }
