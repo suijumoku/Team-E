@@ -59,7 +59,7 @@ public class WallBreakRenderer : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("DarumaBall"))
+        if (collision.gameObject.CompareTag("DarumaBall") || collision.gameObject.CompareTag("Ball"))
         {
             //print("hit");
             breakCount++;

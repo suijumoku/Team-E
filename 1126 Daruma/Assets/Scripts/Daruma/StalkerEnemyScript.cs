@@ -18,6 +18,8 @@ public class StalkerEnemyScript : MonoBehaviour
     [SerializeField] ResultManager resultManager = default!;
     [SerializeField] PlayerController _playerController = default!;
 
+    [SerializeField] AudioClip[] WallCollision = default!;
+
     private NavMeshAgent nav; 
    
     GameObject obj = default;
@@ -154,7 +156,7 @@ public class StalkerEnemyScript : MonoBehaviour
                 }
 
 
-
+                GameManager.instance.PlaySE(WallCollision[0]);
                 Force2(collision);
             }
         }

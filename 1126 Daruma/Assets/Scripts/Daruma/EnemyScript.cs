@@ -16,6 +16,8 @@ public class EnemyScript : MonoBehaviour
     [SerializeField] ResultManager resultManager = default!;
     [SerializeField] PlayerController _playerController = default!;
 
+    [SerializeField] AudioClip[] WallCollision = default!;
+
     public Transform[] points;
     [SerializeField]
     private int nextPointIndex = 0;
@@ -233,6 +235,7 @@ public class EnemyScript : MonoBehaviour
                 {
                     Destroy(gameObject);
                 }
+                GameManager.instance.PlaySE(WallCollision[0]);
                 Force2(collision);
             }
         }
