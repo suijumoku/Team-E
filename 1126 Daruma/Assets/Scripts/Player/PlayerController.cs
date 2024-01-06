@@ -39,9 +39,9 @@ public class PlayerController : MonoBehaviour
     [Header("判定が消える時間")]
     [SerializeField] float Collider_Stop_Time = 0.3f;    
     [Header("パーティクルが現れる時間")]
-    [SerializeField] float Particle_Start_Time = 0.18f;
+    [SerializeField] float Particle_Start_Time = 0.1f;
     [Header("パーティクルが消える時間")]
-    [SerializeField] float Particle_Stop_Time = 0.185f;
+    [SerializeField] float Particle_Stop_Time = 0.3f;
    
 
     [Header("トリガーの反応タイミング")]
@@ -89,7 +89,7 @@ public class PlayerController : MonoBehaviour
     float motionTime = 0.0f;     // 攻撃モーションが始まってからの経過時間を格納->animationの遷移でできそう 
     float time = 0f;                //Runningモーションに使う
 
-    Quaternion defaultCameraRot;
+    //Quaternion defaultCameraRot;
     //[SerializeField] CinemachineFreeLook _freeLookCamera;
     //[SerializeField] Camera _camera;
 
@@ -99,7 +99,7 @@ public class PlayerController : MonoBehaviour
         m_Rigidbody = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
         _MainGameManager.isInvincible = false;
-        defaultCameraRot = Camera.main.transform.rotation;
+        //defaultCameraRot = Camera.main.transform.rotation;
         animator.SetTrigger("toIdle");
         particles[0].Stop();
         particles[1].Stop();      
@@ -252,11 +252,11 @@ public class PlayerController : MonoBehaviour
     }
     void Attack_Particle_Manage()       //ハンマーの当たり判定が存在する時間とパーティクルが存在する時間は分ける
     {           
-        if (motionTime >= Collider_Start_Time && motionTime < Collider_Stop_Time && particles[1].isStopped == true)  //一定時間経過でパーティクル出現
+        if (motionTime >= Particle_Start_Time && motionTime < Particle_Stop_Time && particles[1].isStopped == true)  //一定時間経過でパーティクル出現
         {
             particles[1].Play();    //振り始めは再生　調整するかも               
         }
-        if (motionTime >= Collider_Stop_Time && particles[1].isPlaying == true)   //一定時間経過でパーティクルが消える
+        if (motionTime >= Particle_Stop_Time && particles[1].isPlaying == true)   //一定時間経過でパーティクルが消える
         {
             particles[1].Stop(); //振り終わったら停止                   
         }     

@@ -1737,8 +1737,8 @@ MonoBehaviour:
   Attack_Motion_Speed: 1
   Collider_Start_Time: 0.05
   Collider_Stop_Time: 0.3
-  Particle_Start_Time: 0.15
-  Particle_Stop_Time: 0.18
+  Particle_Start_Time: 0.05
+  Particle_Stop_Time: 0.23
   triggerTiming: 0.5
   smoothTime: 0.08
   jumpPower: 7
@@ -1951,9 +1951,9 @@ BoxCollider:
   m_GameObject: {fileID: 8931830952551474012}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 9.3, y: 35.6, z: 32.6}
+  m_Size: {x: 9.3, y: 35.6, z: 38.32}
   m_Center: {x: 20.2, y: -0.0000068214476, z: 14.4}
 --- !u!1 &9060284763333725423
 GameObject:
@@ -2282,10 +2282,6 @@ PrefabInstance:
     - target: {fileID: 1074990948231210971, guid: d8c7275788d18c64495e45f55eed8c8b, type: 3}
       propertyPath: m_Name
       value: attack
-      objectReference: {fileID: 0}
-    - target: {fileID: 1074990948231210971, guid: d8c7275788d18c64495e45f55eed8c8b, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1074990948231210974, guid: d8c7275788d18c64495e45f55eed8c8b, type: 3}
       propertyPath: m_RootOrder
