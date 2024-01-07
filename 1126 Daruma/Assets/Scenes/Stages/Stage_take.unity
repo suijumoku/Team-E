@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.11348529, g: 0.08064149, b: 0.088061884, a: 1}
+  m_IndirectSpecularColor: {r: 0.11314918, g: 0.08002508, b: 0.08757719, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2075,7 +2075,7 @@ MonoBehaviour:
   - {fileID: 1770847622}
   - {fileID: 41989700}
   SpownTime: 10
-  enemyNumlimit: 16
+  enemyNumlimit: 20
   enemyOnceSpown: 2
   anotherEnemyCount: 0
   spownSE: {fileID: 8300000, guid: b42f8436ab6cf36468ba5c4d98b9638c, type: 3}
@@ -2855,6 +2855,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StayBreakTime: 1.1
+  isDestroy: 0
   breakCount: -1
   particlePlayer: {fileID: 50430626}
   resultManager: {fileID: 7223998160688599974, guid: d8a09de020179bf4a9f6f524933481f2, type: 3}
@@ -3565,6 +3566,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StayBreakTime: 1.1
+  isDestroy: 0
   breakCount: -1
   particlePlayer: {fileID: 381635703}
   resultManager: {fileID: 7223998160688599974, guid: d8a09de020179bf4a9f6f524933481f2, type: 3}
@@ -6269,7 +6271,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2145864047}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -6618,6 +6620,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StayBreakTime: 1.1
+  isDestroy: 0
   breakCount: -1
   particlePlayer: {fileID: 1543743830}
   resultManager: {fileID: 7223998160688599974, guid: d8a09de020179bf4a9f6f524933481f2, type: 3}
@@ -7474,7 +7477,7 @@ MonoBehaviour:
   SpownPoints:
   - {fileID: 665253574}
   - {fileID: 1779956963}
-  SpownTime: 5
+  SpownTime: 10
   enemyNumlimit: 4
   enemyOnceSpown: 2
   anotherEnemyCount: 0
@@ -7735,9 +7738,9 @@ RectTransform:
   - {fileID: 710008161}
   - {fileID: 1668127102}
   - {fileID: 1196814622}
+  - {fileID: 1689978887}
   - {fileID: 2119754426}
   - {fileID: 498264281}
-  - {fileID: 1689978887}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8350,7 +8353,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4601032300053496850, guid: 96abf884948d4ae4d8dcdee081dc320c, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4601032300053496850, guid: 96abf884948d4ae4d8dcdee081dc320c, type: 3}
       propertyPath: m_AnchorMax.x
@@ -8803,7 +8806,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6596937414766259034, guid: cf4b88ef7e6f6034287ecefc1bd1a224, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6596937414766259034, guid: cf4b88ef7e6f6034287ecefc1bd1a224, type: 3}
       propertyPath: m_AnchorMax.x
