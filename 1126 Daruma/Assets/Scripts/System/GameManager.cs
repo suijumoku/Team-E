@@ -10,13 +10,20 @@ public enum GameState
     NormalEnemyBattle,
     BossEnemyBattle,
     Result
+}public enum InputState
+{
+    None,
+    OnInput,
+    OffInput
 }
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance = null;
 
+    [SerializeField]
     private GameState currentGamestate;
+    private InputState currentInputstate;
 
     [Header("BGM用audiosource")][SerializeField] public AudioSource BGM_AudioSource = null;
     [Header("SE用audiosource")][SerializeField] public AudioSource SE_AudioSource = null;
@@ -24,6 +31,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         SetCurrentState(GameState.SelectionScreen);
+        InputStateOn();
         if (instance == null)
         {
             instance = this;
@@ -36,7 +44,11 @@ public class GameManager : MonoBehaviour
     }
     public void PlayBGM(AudioClip bgm)
     {
-        if (BGM_AudioSource != null)
+        if (BGM_AudioSource == null)
+        {
+            Debug.Log("オーディオソースが設定されていません");
+        }
+        else
         {
             Debug.Log("BGM_Set");
             BGM_AudioSource.clip = bgm;
@@ -44,14 +56,10 @@ public class GameManager : MonoBehaviour
             print("BGM_Play");
             BGM_AudioSource.Play();
         }
-        else
-        {
-            Debug.Log("オーディオソースが設定されていません");
-        }
     }
     public void PlayBGM(bool play)
     {
-        if (BGM_AudioSource != null)
+        if (BGM_AudioSource == null)
         {
             Debug.Log("オーディオソースが設定されていません");
             return;
@@ -85,6 +93,21 @@ public class GameManager : MonoBehaviour
     public GameState ReturnCurrentState()
     {
         return currentGamestate;
+    }
+
+
+    public void InputStateOn()
+    {
+        currentInputstate = InputState.OnInput;
+    } 
+    public void InputStateOff()
+    {
+        currentInputstate = InputState.OffInput;
+    }
+
+    public InputState ReturnInputState()
+    {
+        return currentInputstate;
     }
 }
 

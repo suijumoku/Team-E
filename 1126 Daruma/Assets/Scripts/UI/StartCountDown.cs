@@ -33,10 +33,14 @@ public class StartCountDown : MonoBehaviour
     public void CountSE()
     {
         GameManager.instance.PlaySE(CountClip);
+        GameManager.instance.InputStateOff();
     }
 
     public void StartSE()
     {
         GameManager.instance.PlaySE(StartClip);
+        GameManager.instance.InputStateOn();
+        GameManager.instance.SetCurrentState(GameState.NormalEnemyBattle);
+
     }
 }

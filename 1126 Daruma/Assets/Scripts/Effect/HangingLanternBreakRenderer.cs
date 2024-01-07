@@ -5,8 +5,11 @@ using UnityEngine;
 public class HangingLanternBreakRenderer : MonoBehaviour
 {
     [SerializeField]
-    [Header("壊れるまでの待ち時間")]
-    private float StayBreakTime = 0;
+    [Header("終了までの待ち時間")]
+    private float StayBreakTime = 0;  
+    [SerializeField]
+    [Header("終了時にアタッチされたオブジェクトを消すかどうか")]
+    private bool isDestroy=false;
 
     [SerializeField]
     int breakCount = -1;
@@ -37,7 +40,10 @@ public class HangingLanternBreakRenderer : MonoBehaviour
             {
                 GameManager.instance.PlaySE(breaktourou[0]);
                 resultManager.breakTourou();
-                Destroy(gameObject);
+                if (isDestroy)
+                    Destroy(gameObject);
+                else
+                    Destroy(this);
             }
         }
 

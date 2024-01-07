@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1914ba8d647206a4b85010baabafb571, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particle: {fileID: 5092210449550629413, guid: e173ba853c385f846831e4dadf54fed0, type: 3}
+  particle: {fileID: 8217322733543155692, guid: 6154030d7d140d64dac51240f1912733, type: 3}
   playPosition: {fileID: 3040799226280741609}
   isSameRotation: 0
   isSameScale: 1

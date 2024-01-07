@@ -6,10 +6,10 @@ using System.Collections.Generic;
 public class DarumaManager : MonoBehaviour
 {
     [SerializeField] GameObject daruma = default!;
-    [SerializeField] GameObject parent = default!;
+   // [SerializeField] GameObject parent = default!;
 
     private NavMeshAgent navMeshAgent;
-    private BoxCollider collider;
+   // private BoxCollider collider;
     private EnemyScript enemyScript;
     private DarumaManager darumaManager;
 

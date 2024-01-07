@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     private bool isFall = false;
     public bool isAttack = false;
     public bool isHit = false;
+    private bool isDidHit = false;
     private bool canMove = true;
     private bool onlyFirst = false;
     //private bool isKnockBack = false;
@@ -128,14 +129,6 @@ public class PlayerController : MonoBehaviour
 
     private void Input()
     {
-        stateInfo = animator.GetCurrentAnimatorStateInfo(0);
-
-        inputHorizontal = UnityEngine.Input.GetAxisRaw("Horizontal");   //入力値の格納
-        inputVertical = UnityEngine.Input.GetAxisRaw("Vertical");
-        L_inputTrigger = UnityEngine.Input.GetAxis("L_Trigger");
-        R_inputTrigger = UnityEngine.Input.GetAxis("R_Trigger");
-        inputAttack = UnityEngine.Input.GetButtonDown("Attack");
-
         if (UnityEngine.Input.GetKeyDown(KeyCode.X))    //デバッグ用無敵モードon
         {
             _MainGameManager.isInvincible = true;
@@ -146,6 +139,20 @@ public class PlayerController : MonoBehaviour
             _MainGameManager.isInvincible = false;
             Debug.Log("無敵解除");
         }
+
+        // 入力不可なら終わり
+        if (GameManager.instance.ReturnInputState() != InputState.OnInput)
+            return;
+
+        stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+
+        inputHorizontal = UnityEngine.Input.GetAxisRaw("Horizontal");   //入力値の格納
+        inputVertical = UnityEngine.Input.GetAxisRaw("Vertical");
+        L_inputTrigger = UnityEngine.Input.GetAxis("L_Trigger");
+        R_inputTrigger = UnityEngine.Input.GetAxis("R_Trigger");
+        inputAttack = UnityEngine.Input.GetButtonDown("Attack");
+
+       
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -177,11 +184,15 @@ public class PlayerController : MonoBehaviour
 
     void ParticleManage()
     {
-        if (isHit == true)      //ヒット時のエフェクト再生
+        if (isHit == true && isDidHit==false)      //ヒット時のエフェクト再生
         {
             //particles[0].Play();
             hitParticlePlayer.Play();
-            
+            isDidHit = true;
+        }
+        if(isHit==false && isDidHit==true)
+        {
+            isDidHit=false;
         }
         //if (stateInfo.IsName("Attacking") && particles[1].isPlaying == true)
         //{

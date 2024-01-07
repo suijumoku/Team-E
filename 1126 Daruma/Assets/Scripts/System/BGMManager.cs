@@ -25,7 +25,7 @@ public class BGMManager : MonoBehaviour
     }
     private void Update()
     {
-        if (GameManager.instance.ReturnCurrentState() == GameState.NormalEnemyBattle && TransitionNormalBattleBGM&&!DoNormalBattleBGMPlay)
+        if (GameManager.instance.ReturnCurrentState() == GameState.NormalEnemyBattle && TransitionNormalBattleBGM && !DoNormalBattleBGMPlay)
         {
             NormalBattleBGMPlay();
             DoNormalBattleBGMPlay=true;

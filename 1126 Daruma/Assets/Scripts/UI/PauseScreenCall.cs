@@ -20,6 +20,9 @@ public class PauseScreenCall : MonoBehaviour
     {
         var current = Keyboard.current;
 
+        // “ü—Í•s‰Â‚È‚çI‚í‚è
+        if (GameManager.instance.ReturnInputState() != InputState.OnInput)
+            return;
         if (current.escapeKey.wasPressedThisFrame||Input.GetButtonDown("Menu"))
         {
             uICon.displayControl();
