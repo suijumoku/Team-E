@@ -125,7 +125,6 @@ public class MainGameManager : MonoBehaviour
             isDefeat = false;
         }
         beforeTime = floarTime;
-        print("isDefeat:" + isDefeat);
     }
     public void Miss()
     {
