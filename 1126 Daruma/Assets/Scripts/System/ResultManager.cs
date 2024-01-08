@@ -15,7 +15,6 @@ public class ResultManager : MonoBehaviour
     [SerializeField] Image[] kidScoreImg;
     [Header("無傷")]
     [SerializeField] Image noDmgImg;
-
     [Header("スコアの数字")]
     [SerializeField] public Sprite[] Numbers;
     [Header("リザルト画像たち")]
