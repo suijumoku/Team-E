@@ -29,7 +29,11 @@ public class PauseScreenCall : MonoBehaviour
         }
         if (uICon.Ondisplay)
             Time.timeScale = 0;
- 
+
+        if (uICon.Ondisplay == false && Time.timeScale == 0)
+        {
+            Time.timeScale = 1; //もう一度menuボタン押すと動き出す
+        }
     }
 
     public void Resume()

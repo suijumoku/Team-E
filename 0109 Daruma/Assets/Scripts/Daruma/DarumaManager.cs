@@ -37,10 +37,10 @@ public class DarumaManager : MonoBehaviour
        
         if (collision.gameObject.tag == "Ground")
         {
-            Debug.Log("n");
+            //Debug.Log("n");
             if (gameObject.tag == "Untagged")
             {
-                Debug.Log("b");
+               // Debug.Log("b");
                 daruma.tag = "Enemy";
                 NavMeshAgent navMeshAgent = gameObject.GetComponent<NavMeshAgent>();
                 navMeshAgent.enabled = true;

@@ -186,6 +186,7 @@ public class EnemyScript : MonoBehaviour
             }
             if(gameObject.tag == "DarumaBall" || gameObject.tag == "Ball")
             {
+                gameObject.tag = "DarumaBall"; //‘Å‚¿’¼‚µ‚ð‚Å‚«‚é‚æ‚¤‚É
                 Force(collision);
             }
 

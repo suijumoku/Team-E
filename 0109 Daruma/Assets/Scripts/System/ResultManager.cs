@@ -257,7 +257,7 @@ public class ResultManager : MonoBehaviour
             results[0].enabled = true; //•‰‚¯
             resultS = resultSounds[0];
         }
-        else if (clearState == true && indicateScore <= 10 && indicateScore < 30)
+        else if (indicateScore < 30)
         {
             results[1].enabled = true; //‰Â
             resultS = resultSounds[1];

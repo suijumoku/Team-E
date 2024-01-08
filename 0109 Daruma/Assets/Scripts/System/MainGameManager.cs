@@ -92,10 +92,10 @@ public class MainGameManager : MonoBehaviour
            StartCoroutine(Defeat());
         }
 
-        if (UnityEngine.Input.GetKeyDown(KeyCode.L)) //Lでリロード
-        {
-            SceneManager.LoadScene("Stage_ume");
-        }
+        //if (UnityEngine.Input.GetKeyDown(KeyCode.L)) //Lでリロード
+        //{
+        //    SceneManager.LoadScene("Stage_ume");
+        //}
 
    
         time += Time.deltaTime;
