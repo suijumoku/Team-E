@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class TourouCount : MonoBehaviour
 {
-    const int tensPlace = 0, onePlace = 1;
+    //const int tensPlace = 0, onePlace = 1;
 
     [Header("スコア")]
     [SerializeField] Image[] scoreImg;  //[i][j] i:親か子 j:十の位か一の位
@@ -13,7 +13,7 @@ public class TourouCount : MonoBehaviour
     //[Header("スコアの数字")]
     //[SerializeField] public Sprite[] Numbers;
 
-    [SerializeField] int tourouMax = 3;
+    [SerializeField] int tourouMax = default!;
     [SerializeField] ResultManager resultManager = default!;
     GameObject obj = default;
     int[] scoreArray;
@@ -21,14 +21,14 @@ public class TourouCount : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
+
+    }
+    void Start()
+    {
         scoreArray = new int[1] { tourouMax };
         test = 0;
         obj = GameObject.Find("ResultManager");
         resultManager = obj.GetComponent<ResultManager>();  //resultmanagerの更新
-    }
-    void Start()
-    {
-
     }
 
     // Update is called once per frame
