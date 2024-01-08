@@ -12,6 +12,16 @@ public class MainGameManager : MonoBehaviour
     [Header("時間(3桁)")]
     [SerializeField] Image[] timeImg;
 
+    [SerializeField]
+    [Header("終わった時に流すアニメーション")]
+    private EndAnimPlayer endAnim;
+    [SerializeField]
+    [Header("終わった時に表示する画像(失敗)")]
+    private Image loseImage;
+    [SerializeField]
+    [Header("終わった時に表示する画像(成功)")]
+    private Image winImage;
+
     [SerializeField] FadeAndSceneMove _fadeAndSceneMove;
 
     [SerializeField] int missCount = default!;
@@ -49,7 +59,10 @@ public class MainGameManager : MonoBehaviour
             timeArray = new int[3] { 0, 0, 0 };
             currentCount = 0;
             time = 0f;
-        }     
+        }
+        loseImage.gameObject.SetActive(false);
+        winImage.gameObject.SetActive(false);
+
     }
 
     private void Update()
@@ -59,7 +72,7 @@ public class MainGameManager : MonoBehaviour
 
         if (UnityEngine.Input.GetKeyDown(KeyCode.P))    //デバッグ用、Pでリザルトへ
         {
-            Defeat();
+           StartCoroutine(Defeat());
         }
 
         if (UnityEngine.Input.GetKeyDown(KeyCode.L)) //Lでリロード
@@ -69,7 +82,7 @@ public class MainGameManager : MonoBehaviour
 
         if (ResultManager.isClear == true && onlyF == false)
         {
-            Clear();
+            StartCoroutine(Clear());
             onlyF = true;
             //ResultManager.isClear = false;
         }
@@ -108,12 +121,11 @@ public class MainGameManager : MonoBehaviour
 
         if (isDefeat)
         {
-           
-            Defeat();
+            StartCoroutine(Defeat());
             isDefeat = false;
         }
         beforeTime = floarTime;
-
+        print("isDefeat:" + isDefeat);
     }
     public void Miss()
     {
@@ -130,13 +142,18 @@ public class MainGameManager : MonoBehaviour
         blinkingScript.StartCoroutine(blinkingScript.DamageIndication(i));
     }
 
-    public void Defeat()
+    private IEnumerator Defeat()
     {
         Debug.Log("負け判定");
+        endAnim.Play();
+        yield return new WaitForSeconds(1f);
+        endAnim.gameObject.SetActive(false);
+        loseImage.gameObject.SetActive(true);
+        yield return new WaitForSeconds(1f);
         _fadeAndSceneMove.FadeStart();
     }
 
-    public void Clear()
+    private IEnumerator Clear()
     {
         Debug.Log("勝ち判定");
         obj = GameObject.Find("Life");
@@ -146,6 +163,11 @@ public class MainGameManager : MonoBehaviour
             resultManager.NoDmgBonus(); //ライフが３残ってたらノーダメボーナス
         }
 
+        endAnim.Play();
+        yield return new WaitForSeconds(1f);
+        endAnim.gameObject.SetActive(false);
+        winImage.gameObject.SetActive(true);
+        yield return new WaitForSeconds(1f);
         _fadeAndSceneMove.FadeStart();
 
     }
