@@ -41,8 +41,7 @@ public class FadeAndSceneMove : MonoBehaviour
         var async = SceneManager.LoadSceneAsync(NextSceneName);
 
         async.allowSceneActivation = false;
-        yield return new WaitForSeconds(3f);
-        if(goNextScene)
+        yield return new WaitForSeconds(1.5f);
         async.allowSceneActivation = true;
     }
 }
