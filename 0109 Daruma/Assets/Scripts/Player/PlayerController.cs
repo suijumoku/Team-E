@@ -142,7 +142,12 @@ public class PlayerController : MonoBehaviour
 
         // “ü—Í•s‰Â‚È‚çI‚í‚è
         if (GameManager.instance.ReturnInputState() != InputState.OnInput)
+        {
+            inputHorizontal = 0;
+            inputVertical = 0;
+            animator.ResetTrigger("toIdle");
             return;
+        }
 
         stateInfo = animator.GetCurrentAnimatorStateInfo(0);
 
