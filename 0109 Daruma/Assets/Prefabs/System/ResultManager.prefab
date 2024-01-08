@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6924cf16da43b84da74c39e7c9cdf66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  InputSceneName: 
   scoreImg:
   - {fileID: 0}
   - {fileID: 0}
@@ -65,15 +66,15 @@ MonoBehaviour:
   indicateS: []
   resultSounds: []
   _ScoreUI: {fileID: 0}
+  _FadeAndSceneMove: {fileID: 0}
   OnLoadScene: 0
   hit: 1
-  doubleHit: 3
-  beatBoss: 4
-  noDamage: 16
+  doubleHit: 1
+  beatBoss: 1
+  noDamage: 5
   Bonus_Standard_Time: 60
   timeBonus: 20
-  tourou: 2
+  tourou: 1
   duration: 0.5
   clearValue: 5
-  isClear: 0
   num: 0
