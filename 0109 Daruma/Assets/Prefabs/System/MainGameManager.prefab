@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32ae64a88b2972244b2880fb9211246b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnLoadScene: 1
   timeImg:
   - {fileID: 0}
   - {fileID: 0}
@@ -53,7 +54,6 @@ MonoBehaviour:
   missCount: 3
   blinkingScript: {fileID: 0}
   resultManager: {fileID: 0}
-  isClear: 0
   isDefeat: 0
   isInvincible: 1
 --- !u!114 &516489967550378344
