@@ -73,7 +73,7 @@ MonoBehaviour:
   beatBoss: 1
   noDamage: 5
   Bonus_Standard_Time: 60
-  timeBonus: 20
+  timeBonus: 5
   tourou: 1
   duration: 0.5
   clearValue: 5

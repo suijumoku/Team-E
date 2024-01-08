@@ -1224,77 +1224,112 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7223998160688599974, guid: d8a09de020179bf4a9f6f524933481f2, type: 3}
+      propertyPath: num
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 7223998160688599974, guid: d8a09de020179bf4a9f6f524933481f2, type: 3}
+      propertyPath: duration
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7223998160688599974, guid: d8a09de020179bf4a9f6f524933481f2, type: 3}
+      propertyPath: noDmgImg
+      value: 
+      objectReference: {fileID: 1145999462}
+    - target: {fileID: 7223998160688599974, guid: d8a09de020179bf4a9f6f524933481f2, type: 3}
+      propertyPath: OnLoadScene
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7223998160688599974, guid: d8a09de020179bf4a9f6f524933481f2, type: 3}
+      propertyPath: _FadeAndSceneMove
+      value: 
+      objectReference: {fileID: 1666668001}
+    - target: {fileID: 7223998160688599974, guid: d8a09de020179bf4a9f6f524933481f2, type: 3}
+      propertyPath: results.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7223998160688599974, guid: d8a09de020179bf4a9f6f524933481f2, type: 3}
+      propertyPath: indicateS.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7223998160688599974, guid: d8a09de020179bf4a9f6f524933481f2, type: 3}
+      propertyPath: results.Array.data[0]
+      value: 
+      objectReference: {fileID: 2128154351}
+    - target: {fileID: 7223998160688599974, guid: d8a09de020179bf4a9f6f524933481f2, type: 3}
+      propertyPath: results.Array.data[1]
+      value: 
+      objectReference: {fileID: 1601786843}
+    - target: {fileID: 7223998160688599974, guid: d8a09de020179bf4a9f6f524933481f2, type: 3}
+      propertyPath: results.Array.data[2]
+      value: 
+      objectReference: {fileID: 1469231891}
+    - target: {fileID: 7223998160688599974, guid: d8a09de020179bf4a9f6f524933481f2, type: 3}
+      propertyPath: results.Array.data[3]
+      value: 
+      objectReference: {fileID: 176956914}
+    - target: {fileID: 7223998160688599974, guid: d8a09de020179bf4a9f6f524933481f2, type: 3}
+      propertyPath: results.Array.data[4]
+      value: 
+      objectReference: {fileID: 1467739035}
+    - target: {fileID: 7223998160688599974, guid: d8a09de020179bf4a9f6f524933481f2, type: 3}
+      propertyPath: kidScoreImg.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7223998160688599974, guid: d8a09de020179bf4a9f6f524933481f2, type: 3}
+      propertyPath: scoreImg.Array.data[0]
+      value: 
+      objectReference: {fileID: 1222051572}
+    - target: {fileID: 7223998160688599974, guid: d8a09de020179bf4a9f6f524933481f2, type: 3}
+      propertyPath: scoreImg.Array.data[1]
+      value: 
+      objectReference: {fileID: 2039069490}
+    - target: {fileID: 7223998160688599974, guid: d8a09de020179bf4a9f6f524933481f2, type: 3}
+      propertyPath: bossScoreImg.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7223998160688599974, guid: d8a09de020179bf4a9f6f524933481f2, type: 3}
+      propertyPath: indicateS.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: f9a67f4073902d042837b55a56af1926, type: 3}
+    - target: {fileID: 7223998160688599974, guid: d8a09de020179bf4a9f6f524933481f2, type: 3}
+      propertyPath: indicateS.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: fb44671d7e7165f4281ff29006d53f21, type: 3}
+    - target: {fileID: 7223998160688599974, guid: d8a09de020179bf4a9f6f524933481f2, type: 3}
+      propertyPath: resultSounds.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7223998160688599974, guid: d8a09de020179bf4a9f6f524933481f2, type: 3}
+      propertyPath: kidScoreImg.Array.data[0]
+      value: 
+      objectReference: {fileID: 153391597}
+    - target: {fileID: 7223998160688599974, guid: d8a09de020179bf4a9f6f524933481f2, type: 3}
+      propertyPath: kidScoreImg.Array.data[1]
+      value: 
+      objectReference: {fileID: 1782486170}
+    - target: {fileID: 7223998160688599974, guid: d8a09de020179bf4a9f6f524933481f2, type: 3}
+      propertyPath: bossScoreImg.Array.data[0]
+      value: 
+      objectReference: {fileID: 153391597}
+    - target: {fileID: 7223998160688599974, guid: d8a09de020179bf4a9f6f524933481f2, type: 3}
+      propertyPath: bossScoreImg.Array.data[1]
+      value: 
+      objectReference: {fileID: 1782486170}
+    - target: {fileID: 7223998160688599974, guid: d8a09de020179bf4a9f6f524933481f2, type: 3}
+      propertyPath: resultSounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 95d703723f5b02f4095b7455a1bad4ad, type: 3}
+    - target: {fileID: 7223998160688599974, guid: d8a09de020179bf4a9f6f524933481f2, type: 3}
+      propertyPath: resultSounds.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 4ed3fa244aea7b747a1f60678df5374c, type: 3}
     - target: {fileID: 7745321812550036990, guid: d8a09de020179bf4a9f6f524933481f2, type: 3}
       propertyPath: m_Name
       value: ResultManager
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 7223998160688599974, guid: d8a09de020179bf4a9f6f524933481f2, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d8a09de020179bf4a9f6f524933481f2, type: 3}
---- !u!1 &759362164 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7745321812550036990, guid: d8a09de020179bf4a9f6f524933481f2, type: 3}
-  m_PrefabInstance: {fileID: 759362163}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &759362165
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 759362164}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6924cf16da43b84da74c39e7c9cdf66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  InputSceneName: 
-  scoreImg:
-  - {fileID: 1222051572}
-  - {fileID: 2039069490}
-  bossScoreImg:
-  - {fileID: 18812684}
-  - {fileID: 587357605}
-  kidScoreImg:
-  - {fileID: 153391597}
-  - {fileID: 1782486170}
-  noDmgImg: {fileID: 1145999462}
-  Numbers:
-  - {fileID: 21300000, guid: 800eb8bf5af49a24bb322a5f4abd8343, type: 3}
-  - {fileID: 21300000, guid: bdcbf6c162c5f0e489095fa4829fd8f2, type: 3}
-  - {fileID: 21300000, guid: 259b3e4f77bc34748a4808733acb74c7, type: 3}
-  - {fileID: 21300000, guid: bd2f23d9f528283489cd4a1534df8658, type: 3}
-  - {fileID: 21300000, guid: 4775b0a4c28f82844b90a3da4eb841c2, type: 3}
-  - {fileID: 21300000, guid: e81048f6c611a96428eb214560b6c29f, type: 3}
-  - {fileID: 21300000, guid: fecced71b530da445b1390b26725b4d6, type: 3}
-  - {fileID: 21300000, guid: 4ec6693c2f6506548b246ac8a8b0dd9a, type: 3}
-  - {fileID: 21300000, guid: f4667bcabde5fc544b7f12feedf08daf, type: 3}
-  - {fileID: 21300000, guid: 6040273e32f0efc4c8b644cb135d97d4, type: 3}
-  results:
-  - {fileID: 2128154351}
-  - {fileID: 1601786843}
-  - {fileID: 1469231891}
-  - {fileID: 176956914}
-  - {fileID: 1467739035}
-  indicateS:
-  - {fileID: 8300000, guid: f9a67f4073902d042837b55a56af1926, type: 3}
-  - {fileID: 8300000, guid: fb44671d7e7165f4281ff29006d53f21, type: 3}
-  resultSounds:
-  - {fileID: 8300000, guid: 95d703723f5b02f4095b7455a1bad4ad, type: 3}
-  - {fileID: 8300000, guid: 4ed3fa244aea7b747a1f60678df5374c, type: 3}
-  _ScoreUI: {fileID: 0}
-  _FadeAndSceneMove: {fileID: 1666668001}
-  OnLoadScene: 1
-  hit: 1
-  doubleHit: 3
-  beatBoss: 4
-  noDamage: 5
-  Bonus_Standard_Time: 60
-  timeBonus: 20
-  tourou: 10
-  duration: 0.7
-  clearValue: 5
-  num: 79
 --- !u!1 &764317751
 GameObject:
   m_ObjectHideFlags: 0
@@ -2869,7 +2904,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 95, y: 104}
+  m_AnchoredPosition: {x: 95, y: 116}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2039069487

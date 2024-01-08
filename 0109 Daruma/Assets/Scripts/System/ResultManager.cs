@@ -35,11 +35,11 @@ public class ResultManager : MonoBehaviour
     [SerializeField] bool OnLoadScene;
     AudioClip resultS = default!; 
 
-    [SerializeField] int hit = 1, doubleHit = 2, beatBoss = 4, noDamage = 20, Bonus_Standard_Time = 60, timeBonus = 20, tourou = 10;
+    [SerializeField] int hit = 1, doubleHit = 2, beatBoss = 4, noDamage = 20, Bonus_Standard_Time = 60, timeBonus = 5, tourou = 10;
     [SerializeField] float duration = 0.5f;
 
     //const int score = 0, boss = 1, kid = 2;
-    const int tensPlace = 0, onePlace = 1;
+    const int tensPlace = 0, onePlace = 1, maxScore = 99;
     [SerializeField] int clearValue = 5;  //灯篭五個破壊でクリア
 
     int[] scoreArray, Boss_Time_Array, kidArray;
@@ -47,10 +47,13 @@ public class ResultManager : MonoBehaviour
     bool isResult = true;
     public static bool isClear = false;
     public static bool isNoDmg = false;
+
+    private bool clearState = false;
+    private bool noDmgState = false;
     public static string SceneName;
     private int indicateScore = 0;
-   // private int indicateDaruma = 0;
-   // private int indicateTourou = 0; //コルーチンの最後に初期化するとバグるので別の変数に移す
+    private int indicateDaruma = 0;
+   // private int indicateTourou = 0; //コルーチンの最後に初期化すると最速でボタン押してシーン移動した時にバグるので別の変数に移す
 
 
     //private ResultManager instance;
@@ -87,7 +90,13 @@ public class ResultManager : MonoBehaviour
 
     void Update()
     {
-     
+
+        //Debug.Log("isClear = " + isClear);
+        //if (breakTourouValue >= clearValue)
+        //{
+        //    isClear = true;
+        //}
+
     } 
 
     public void NormalHit()
@@ -100,7 +109,7 @@ public class ResultManager : MonoBehaviour
 
     public void DoubleHit()
     {
-        //当てて消すと+2
+        //当てて消すと加点
         calcScore += doubleHit;
        _ScoreUI.ScoreUpdate();
     }
@@ -112,8 +121,8 @@ public class ResultManager : MonoBehaviour
     }
     public void BeatBoss(float time)
     {
-        //ボス倒すと+4
-        calcScore += beatBoss;
+        //ボス倒すと加点
+        //calcScore += beatBoss;
         if (time <= Bonus_Standard_Time)    //ボスを倒した時点でクリアタイム(出現してから倒すまで？)が60秒下回っていたらボーナス点
         {
             calcScore += timeBonus;
@@ -128,7 +137,7 @@ public class ResultManager : MonoBehaviour
                 Boss_Time_Array[0] = 0;
             }
         }
-         _ScoreUI.ScoreUpdate();
+         //_ScoreUI.ScoreUpdate();
     }
 
     public void NoDmgBonus() //多分PlayerControllerで呼ぶ->MainGameManager
@@ -140,18 +149,24 @@ public class ResultManager : MonoBehaviour
 
     public void breakTourou()
     {
-        //灯篭破壊で+2点
+        //灯篭破壊で加点
         calcScore += tourou;
         breakTourouValue++;
         if (breakTourouValue >= clearValue)
         {
             isClear = true;
         }
+        else
         _ScoreUI.ScoreUpdate();
     }
 
     public void Assign(bool isResult)
     {
+        if (calcScore >= maxScore)
+        {
+            calcScore = maxScore;
+            return;
+        }
         scoreArray[0] = 0;
         scoreArray[1] = 0;
         for (int i = 0; i < calcScore; i++)
@@ -197,7 +212,7 @@ public class ResultManager : MonoBehaviour
     }
     private IEnumerator ResultCorutine()
     {
-        Debug.Log("SceneName = " + SceneName);
+       // Debug.Log("SceneName = " + SceneName);
         _FadeAndSceneMove.NextSceneName = SceneName; 　//再挑戦ボタンの移動するシーンの名前を書き換える
 
         if (calcScore >= 100)
@@ -205,18 +220,16 @@ public class ResultManager : MonoBehaviour
         //NormalHit();
         //DoubleHit();
         //BeatBoss(10.2f);
-        //BeatDaruma();   //1+3+4+20+16, 10秒、01体 良判定
-        //calcScore += noDamage;
+       // BeatDaruma();   //1+1+4+20+16, 10秒、01体 良判定
+       // calcScore += noDamage;
         //calcScore = num;
         //isNoDmg = true;
         //デバッグ用↑
 
         Assign(isResult);
 
-        indicateScore = calcScore; /*indicateDaruma = beatDarumaValue; indicateTourou = breakTourouValue;*/
+        DataMoveAndInit();  //ディレイを作る前にデータ移行と初期化
 
-        isClear = false;
-        calcScore = 0; beatDarumaValue = 0; breakTourouValue = 0;
         yield return new WaitForSeconds(duration);  //始まると同時に表示されるのを防ぐために少し間を空ける
 
         IndicateScore(scoreImg, indicateS[0]);
@@ -226,8 +239,8 @@ public class ResultManager : MonoBehaviour
         //yield return new WaitForSeconds(duration);
 
         IndicateScore(kidScoreImg, indicateS[0]);
-        Debug.Log("isNoDmg2 = " + isNoDmg);
-        if (isNoDmg == true)        //ノーダメだったらチェック入れる
+       // Debug.Log("isNoDmg2 = " + isNoDmg);
+        if (noDmgState == true)        //ノーダメだったらチェック入れる
         {
             yield return new WaitForSeconds(duration);
             GameManager.instance.PlaySE(indicateS[0]);
@@ -239,27 +252,27 @@ public class ResultManager : MonoBehaviour
 
      
 
-        if (isClear == false)  //要調整 調整しやすくする方法わからない
+        if (clearState == false)  //要調整 調整しやすくする方法わからない
         {
             results[0].enabled = true; //負け
             resultS = resultSounds[0];
         }
-        else if (isClear == true && indicateScore < 20)
+        else if (clearState == true && indicateScore <= 10 && indicateScore < 30)
         {
             results[1].enabled = true; //可
             resultS = resultSounds[1];
         }
-        else if (indicateScore >= 20 && indicateScore < 30)
+        else if (indicateScore >= 30 && indicateScore < 60)
         {
             results[2].enabled = true; //良
             resultS = resultSounds[1];
         }
-        else if (indicateScore >= 30 && indicateScore < 50)
+        else if (indicateScore >= 60 && indicateScore < 80)
         {
             results[3].enabled = true; //優
             resultS = resultSounds[1];
         }
-        else if (indicateScore >= 50)
+        else if (indicateScore >= 80)
         {
             results[4].enabled = true; //秀
             resultS = resultSounds[1];
@@ -288,5 +301,17 @@ public class ResultManager : MonoBehaviour
         Img[onePlace].enabled = true;
         
         //若干の遅延
+    }
+
+    private void DataMoveAndInit()
+    {
+        indicateScore = calcScore; indicateDaruma = beatDarumaValue; //indicateTourou = breakTourouValue;
+
+        clearState = isClear;
+        noDmgState = isNoDmg;
+        isClear = false;
+        isNoDmg = false;
+
+        calcScore = 0; beatDarumaValue = 0; breakTourouValue = 0;
     }
 }

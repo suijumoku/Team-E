@@ -36,6 +36,8 @@ public class DarumaHeadScript : MonoBehaviour
             time += Time.deltaTime;
             if (StayBreakTime < time)
             {
+                //“|‚µ‚½‚¾‚é‚Ü‚Ì”‹L˜^
+                resultManager.BeatDaruma();
                 Destroy(gameObject);
             }
         }

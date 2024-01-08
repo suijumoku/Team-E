@@ -33,7 +33,7 @@ public class HangingLanternBreakRenderer : MonoBehaviour
     {
         if (breakCount >= 0)
         {
-            if (time == 0)
+            if (time <= 0)
                 particlePlayer.Play();
             time += Time.deltaTime;
             if (StayBreakTime < time)

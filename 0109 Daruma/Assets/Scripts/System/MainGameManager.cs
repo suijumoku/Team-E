@@ -28,6 +28,9 @@ public class MainGameManager : MonoBehaviour
     [SerializeField] private BlinkingScript blinkingScript = default!;
     [SerializeField] ResultManager resultManager = default!;
 
+    [SerializeField] AudioClip loseS = default!;
+    [SerializeField] AudioClip winS = default!;
+
     public bool isDefeat = false, isInvincible = false; //無敵時間中かどうか
 
     int[] timeArray;
@@ -67,6 +70,20 @@ public class MainGameManager : MonoBehaviour
 
     private void Update()
     {
+        if (ResultManager.isClear == true && onlyF == false || UnityEngine.Input.GetKeyDown(KeyCode.K) && onlyF == false)
+        {
+            Debug.Log("Clear!");
+            ResultManager.isClear = true;  //デバッグ用 
+            resultManager.BeatBoss(floarTime);   //本来はボス撃破時の関数だがボス実装断念により、クリアタイムボーナスとして呼ぶ
+            StartCoroutine(Clear());
+            onlyF = true;
+            //ResultManager.isClear = false;
+        }
+       // Debug.Log("ResultManager.isClear" + ResultManager.isClear);
+        //if (ResultManager.isClear == true)
+        //{
+        //    return;
+        //}
         obj = GameObject.Find("ResultManager");
         resultManager = obj.GetComponent<ResultManager>();  //resultmanagerの更新
 
@@ -77,15 +94,10 @@ public class MainGameManager : MonoBehaviour
 
         if (UnityEngine.Input.GetKeyDown(KeyCode.L)) //Lでリロード
         {
-            SceneManager.LoadScene("Stage_syokyu");
+            SceneManager.LoadScene("Stage_ume");
         }
 
-        if (ResultManager.isClear == true && onlyF == false)
-        {
-            StartCoroutine(Clear());
-            onlyF = true;
-            //ResultManager.isClear = false;
-        }
+   
         time += Time.deltaTime;
 
         floarTime = Mathf.Floor(time);   //切り捨て
@@ -143,11 +155,13 @@ public class MainGameManager : MonoBehaviour
 
     private IEnumerator Defeat()
     {
+       
         Debug.Log("負け判定");
         endAnim.Play();
         yield return new WaitForSeconds(1f);
+        GameManager.instance.PlaySE(loseS);
         endAnim.gameObject.SetActive(false);
-        loseImage.gameObject.SetActive(true);
+        loseImage.gameObject.SetActive(true);       
         yield return new WaitForSeconds(1f);
         _fadeAndSceneMove.FadeStart();
     }
@@ -155,6 +169,7 @@ public class MainGameManager : MonoBehaviour
     private IEnumerator Clear()
     {
         Debug.Log("勝ち判定");
+       
         obj = GameObject.Find("Life");
         blinkingScript = obj.GetComponent<BlinkingScript>();
         if (blinkingScript.life == 3)
@@ -164,6 +179,7 @@ public class MainGameManager : MonoBehaviour
 
         endAnim.Play();
         yield return new WaitForSeconds(1f);
+        GameManager.instance.PlaySE(winS);
         endAnim.gameObject.SetActive(false);
         winImage.gameObject.SetActive(true);
         yield return new WaitForSeconds(1f);
