@@ -23,7 +23,9 @@ public class FadeAndSceneMove : MonoBehaviour
         if (!StartedFade)
         {
             fade.StartFadeOut();
+            StartCoroutine(LoadScene());
             StartedFade = true;
+
         }
     }
     private void Update()
@@ -31,10 +33,16 @@ public class FadeAndSceneMove : MonoBehaviour
         if (!goNextScene && fade.IsFadeOutComplete())
         {
             print(NextSceneName);
-            SceneManager.LoadScene(NextSceneName);
             goNextScene = true;
         }
-        StartedFade = false;
-        goNextScene = false;
+    }
+    private IEnumerator LoadScene()
+    {
+        var async = SceneManager.LoadSceneAsync(NextSceneName);
+
+        async.allowSceneActivation = false;
+        yield return new WaitForSeconds(3f);
+        if(goNextScene)
+        async.allowSceneActivation = true;
     }
 }
