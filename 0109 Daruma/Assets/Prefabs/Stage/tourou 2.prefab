@@ -76,6 +76,7 @@ GameObject:
   - component: {fileID: 5131860081219226958}
   - component: {fileID: 2721893056249436857}
   - component: {fileID: 859525543}
+  - component: {fileID: 7135268007367659091}
   m_Layer: 0
   m_Name: tourou 2
   m_TagString: Tourou
@@ -173,6 +174,25 @@ MonoBehaviour:
   isDestroy: 0
   breakCount: -1
   particlePlayer: {fileID: 65262091}
+  resultManager: {fileID: 7223998160688599974, guid: d8a09de020179bf4a9f6f524933481f2, type: 3}
+  breaktourou:
+  - {fileID: 8300000, guid: 0f7b39214b4a4e041a68d630376c90a3, type: 3}
+--- !u!114 &7135268007367659091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 929066822049955450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 927e719c73032cc459ac8e8610650f12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StayBreakTime: 1.1
+  isDestroy: 0
+  breakCount: -1
+  particlePlayer: {fileID: 0}
   resultManager: {fileID: 7223998160688599974, guid: d8a09de020179bf4a9f6f524933481f2, type: 3}
   breaktourou:
   - {fileID: 8300000, guid: 0f7b39214b4a4e041a68d630376c90a3, type: 3}

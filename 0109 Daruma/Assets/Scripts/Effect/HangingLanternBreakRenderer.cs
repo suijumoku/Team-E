@@ -38,10 +38,13 @@ public class HangingLanternBreakRenderer : MonoBehaviour
             time += Time.deltaTime;
             if (StayBreakTime < time)
             {
-                GameManager.instance.PlaySE(breaktourou[0]);
-                resultManager.breakTourou();
+                Debug.Log("break!");
+                GameManager.instance.PlaySE(breaktourou[0]);               
                 if (isDestroy)
+                {
                     Destroy(gameObject);
+                    resultManager.breakTourou();
+                }                   
                 else
                     Destroy(this);
             }

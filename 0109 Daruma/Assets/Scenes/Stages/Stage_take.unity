@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.11348529, g: 0.08064149, b: 0.088061884, a: 1}
+  m_IndirectSpecularColor: {r: 0.11314918, g: 0.08002508, b: 0.08757719, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2163,10 +2163,10 @@ MonoBehaviour:
   - {fileID: 1770847622}
   - {fileID: 41989700}
   SpownTime: 10
-  enemyNumlimit: 20
+  enemyNumlimit: 10
   enemyOnceSpown: 2
   anotherEnemyCount: 0
-  spownSE: {fileID: 8300000, guid: b42f8436ab6cf36468ba5c4d98b9638c, type: 3}
+  spownSE: {fileID: 8300000, guid: 8367b26d8585bb14799acf59e28687f2, type: 3}
   createdEnemyTagPrefab: []
 --- !u!4 &596743379
 Transform:
@@ -7405,7 +7405,7 @@ MonoBehaviour:
   enemyNumlimit: 4
   enemyOnceSpown: 2
   anotherEnemyCount: 0
-  spownSE: {fileID: 8300000, guid: b42f8436ab6cf36468ba5c4d98b9638c, type: 3}
+  spownSE: {fileID: 8300000, guid: 8367b26d8585bb14799acf59e28687f2, type: 3}
   createdEnemyTagPrefab: []
 --- !u!1 &2097852149
 GameObject:
@@ -8063,7 +8063,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 578910371207922701, guid: 26c940c44de39eb47814d559ca46abd3, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.110873945
+      value: -0.11087397
       objectReference: {fileID: 0}
     - target: {fileID: 578910371207922701, guid: 26c940c44de39eb47814d559ca46abd3, type: 3}
       propertyPath: m_LocalRotation.y

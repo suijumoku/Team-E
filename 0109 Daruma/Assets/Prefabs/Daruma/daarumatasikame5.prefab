@@ -114,7 +114,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   daruma: {fileID: 2133537982973027216}
-  parent: {fileID: 0}
 --- !u!195 &4652936982218415503
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -503,7 +502,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   daruma: {fileID: 8858181288125770695}
-  parent: {fileID: 0}
 --- !u!114 &5626724971027530422
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -582,6 +580,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3040799226280741609, guid: 9f1fbb6f25c64584690047b4f3aa341f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3040799226280741610, guid: 9f1fbb6f25c64584690047b4f3aa341f, type: 3}
+      propertyPath: isSameScale
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
