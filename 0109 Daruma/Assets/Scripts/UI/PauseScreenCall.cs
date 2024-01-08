@@ -29,8 +29,7 @@ public class PauseScreenCall : MonoBehaviour
         }
         if (uICon.Ondisplay)
             Time.timeScale = 0;
-        else
-            Time.timeScale = 1;
+ 
     }
 
     public void Resume()

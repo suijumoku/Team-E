@@ -21,7 +21,7 @@ public class FirstSelectButton : MonoBehaviour
     {
         if (OnLoadScene)
         {
-            Debug.Log("OnLoadScene");
+            Debug.Log("FirstButtonSelect");
             onSelect();
         }
     }
