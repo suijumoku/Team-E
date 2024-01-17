@@ -4,48 +4,40 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class TourouCount : MonoBehaviour
-{
-    //const int tensPlace = 0, onePlace = 1;
-
+{ 
     [Header("スコア")]
-    [SerializeField] Image[] scoreImg;  //[i][j] i:親か子 j:十の位か一の位
-
-    //[Header("スコアの数字")]
-    //[SerializeField] public Sprite[] Numbers;
+    [SerializeField] Image[] scoreImg;  //[i][j] i:親か子 j:十の位か一の位 
 
     [SerializeField] int tourouMax = default!;
     [SerializeField] ResultManager resultManager = default!;
     GameObject obj = default;
     int[] scoreArray;
-    int test = 0;
-    // Start is called before the first frame update
-    private void Awake()
-    {
-
-    }
+    int controlValue = 0;
+ 
     void Start()
     {
         scoreArray = new int[1] { tourouMax };
-        test = 0;
+        controlValue = 0;
         obj = GameObject.Find("ResultManager");
-        resultManager = obj.GetComponent<ResultManager>();  //resultmanagerの更新
+        resultManager = obj.GetComponent<ResultManager>(); 
     }
 
     // Update is called once per frame
     void Update()
     {
-     
-        if (scoreArray[0] > scoreArray[0] - ResultManager.breakTourouValue + test)
-        {
-            //if (test == 2)
-            //    test--;
-            scoreArray[0] -= ResultManager.breakTourouValue - test;
-           
-            scoreImg[0].sprite = resultManager.Numbers[scoreArray[0]];
+     　//もっときれいに書けそう
 
-            scoreImg[0].enabled = true;
+       //breakTourouValueにcontrolValueを加えることで灯篭が壊れるたびに一度だけ条件文が通る
+        if (scoreArray[0] > scoreArray[0] - ResultManager.breakTourouValue + controlValue)
+        {           
+
+            //breakTourouValueは灯篭破壊ごとにカウントが増えていくからそれに伴い値を増やす
+            scoreArray[0] -= ResultManager.breakTourouValue - controlValue;
            
-            test++;
+            //resultManagerにアタッチしてある数字の画像を入れる
+            scoreImg[0].sprite = resultManager.Numbers[scoreArray[0]];           
+           
+            controlValue++;
         }   
     }
 

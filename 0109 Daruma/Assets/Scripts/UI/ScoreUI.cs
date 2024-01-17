@@ -14,12 +14,7 @@ public class ScoreUI : MonoBehaviour
         _ResultManager.scoreImg[1].enabled = true;  //最初は00で表示
     }
 
-    void Update()
-    {        
-
-    }
-
-    public void ScoreUpdate()   //相互にアクセスしてるの良くなさそう
+    public void ScoreUpdate()   //相互にアクセスしてるの良くない
     {
         _ResultManager.Assign(isResult);    //スコアが加算されるたびに更新
     }

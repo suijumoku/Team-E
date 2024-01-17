@@ -17,6 +17,7 @@ public class Semitransparent : MonoBehaviour
     private MeshRenderer[] meshRenderers;
     private MaterialPropertyBlock m_mpb;
 
+    //一つのマテリアルを共有していてもそれぞれ独自に設定をいじれる
     public MaterialPropertyBlock mpb
     {
         //??はnull合体演算子。左辺が null でない場合は左辺の値を、
@@ -30,16 +31,13 @@ public class Semitransparent : MonoBehaviour
     {
         meshRenderers = this.GetComponentsInChildren<MeshRenderer>();
     }
-  
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
+      
     public void ClearMaterialInvoke()
     {
         color.a = alphaValue;
+
+        //Corolのアルファ値を設定した後その色を"_Color"として(たぶん) MaterialPropertyBlockに設定
+        //SetColorよりもPropertyToIDのほうが処理が速いらしい
 
         mpb.SetColor(Shader.PropertyToID("_Color"), color);
         for (int i = 0; i < meshRenderers.Length; i++)
@@ -50,7 +48,10 @@ public class Semitransparent : MonoBehaviour
     }
     public void NotClearMaterialInvoke()
     {
-        color.b = 1f;
+        //元に戻す
+        //参考資料だと.bになっていたが多分ミス。.aで動いたがたまにマテリアルが一瞬水色になった。
+        color.a = 1f;        
+
         mpb.SetColor(Shader.PropertyToID("_Color"), color);
         for (int i = 0; i < meshRenderers.Length; i++)
         {

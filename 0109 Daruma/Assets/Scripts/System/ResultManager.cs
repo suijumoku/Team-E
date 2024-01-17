@@ -54,20 +54,10 @@ public class ResultManager : MonoBehaviour
     private int indicateScore = 0;
     private int indicateDaruma = 0;
    // private int indicateTourou = 0; //コルーチンの最後に初期化すると最速でボタン押してシーン移動した時にバグるので別の変数に移す
+    
 
+  //  [SerializeField] int num = default!; //デバッグ用
 
-    //private ResultManager instance;
-
-
-    [SerializeField] int num = default!; //デバッグ用
-    //void OnEnable()
-    //{
-    //    if (OnEneble)
-    //    {
-    //        Debug.Log("OnEnable");
-
-    //    }
-    //}
 
     void Awake()
     {
@@ -89,13 +79,7 @@ public class ResultManager : MonoBehaviour
     }
 
     void Update()
-    {
-
-        //Debug.Log("isClear = " + isClear);
-        //if (breakTourouValue >= clearValue)
-        //{
-        //    isClear = true;
-        //}
+    {     
 
     } 
 

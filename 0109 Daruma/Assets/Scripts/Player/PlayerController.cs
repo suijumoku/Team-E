@@ -79,12 +79,12 @@ public class PlayerController : MonoBehaviour
 
     float inputHorizontal;      //水平方向の入力値
     float inputVertical;        //垂直方向の入力値
-    float L_inputTrigger;
+    //float L_inputTrigger;
     float R_inputTrigger;
     bool inputAttack;
 
     bool R_isReset;
-    bool L_isReset;
+  //  bool L_isReset;
     float targetRotation;   //回転に使う
     float yVelocity = 0.0f;
     float motionTime = 0.0f;     // 攻撃モーションが始まってからの経過時間を格納->animationの遷移でできそう 
@@ -153,7 +153,7 @@ public class PlayerController : MonoBehaviour
 
         inputHorizontal = UnityEngine.Input.GetAxisRaw("Horizontal");   //入力値の格納
         inputVertical = UnityEngine.Input.GetAxisRaw("Vertical");
-        L_inputTrigger = UnityEngine.Input.GetAxis("L_Trigger");
+       // L_inputTrigger = UnityEngine.Input.GetAxis("L_Trigger");
         R_inputTrigger = UnityEngine.Input.GetAxis("R_Trigger");
         inputAttack = UnityEngine.Input.GetButtonDown("Attack");
 
@@ -180,7 +180,6 @@ public class PlayerController : MonoBehaviour
             if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("DarumaBall") || collision.gameObject.CompareTag("Ball"))     //無敵時間中はダメージを食らわない
             {
                 canMove = false;
-              //  isKnockBack = true;
                 KnockBack(collision);
                 _MainGameManager.Miss();
             }
@@ -277,7 +276,7 @@ public class PlayerController : MonoBehaviour
             particles[1].Stop(); //振り終わったら停止                   
         }     
     }
-    //void CamaraReset()
+    //void CamaraReset()    //カメラリセット機能つけたかったが断念
     //{
     //    if (L_inputTrigger == 0)
     //    {
@@ -434,6 +433,7 @@ public class PlayerController : MonoBehaviour
 
     void Gravity()
     {
+        //落下速度の調整用
         if (isJump == true)
         {
             m_Rigidbody.AddForce(new Vector3(0, gravityPower, 0));

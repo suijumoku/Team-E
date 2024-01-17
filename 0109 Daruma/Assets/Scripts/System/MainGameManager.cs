@@ -38,21 +38,10 @@ public class MainGameManager : MonoBehaviour
     float time = 0f, beforeTime, floarTime;
     GameObject obj = default;
     bool onlyF = false;
-    //private MainGameManager instance;
 
-    public void Awake()
-    {
-        //obj = GameObject.Find("ResultManager");
-        //resultManager = obj.GetComponent<ResultManager>();  //resultmanagerのアタッチ
-    }
 
     void Start()
     {
-        //SceneManager.activeSceneChanged += ActiveSceneChanged;
-        //_PlayerController = GetComponent<PlayerController>();
-        // _resultManager = _resultManager.GetComponent<ResultManager>();
-
-        // Time.timeScale = 1.0f;
 
         if (OnLoadScene)
         {
@@ -77,13 +66,8 @@ public class MainGameManager : MonoBehaviour
             resultManager.BeatBoss(floarTime);   //本来はボス撃破時の関数だがボス実装断念により、クリアタイムボーナスとして呼ぶ
             StartCoroutine(Clear());
             onlyF = true;
-            //ResultManager.isClear = false;
         }
-       // Debug.Log("ResultManager.isClear" + ResultManager.isClear);
-        //if (ResultManager.isClear == true)
-        //{
-        //    return;
-        //}
+      
         obj = GameObject.Find("ResultManager");
         resultManager = obj.GetComponent<ResultManager>();  //resultmanagerの更新
 
