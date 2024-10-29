@@ -4,27 +4,31 @@ using UnityEngine;
 
 public class TitleLogoMove : MonoBehaviour
 {
-    public float MoveLength;
-    public float MoveTime = 2f;
-    float time;
-    float x;
-    float Afterx;
-    float Move;
+    public float moveLength;
+    public float moveTime = 2f;
+
+    [SerializeField]
+    private float time;
+    [SerializeField]
+    private float originalx;
+    [SerializeField]
+    private float moveAfterx;
 
     private void Start()
     {
-        x = transform.position.x;
-        Afterx = transform.position.x + MoveLength;
-        Move = MoveLength / MoveTime;
+        time = 0;    
+        originalx = transform.localPosition.x;
+        moveAfterx=transform.localPosition.x+moveLength;
     }
     private void Update()
     {
-        Vector3 pos = transform.position;
-        time += Time.deltaTime;
-        if (time < MoveTime)
+        Vector3 pos = transform.localPosition;
+        if (time/moveTime<1)
         {
-            pos.x += Move * Time.deltaTime;
-            transform.position = pos;
+            time += Time.deltaTime;
+
+            pos.x = Mathf.Lerp(originalx,moveAfterx,time/moveTime);
+            transform.localPosition = pos;
         }
     }
 }

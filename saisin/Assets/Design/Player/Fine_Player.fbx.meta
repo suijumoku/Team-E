@@ -36,7 +36,9 @@ ModelImporter:
     optimizeGameObjects: 0
     removeConstantScaleCurves: 1
     motionNodeName: 
-    rigImportErrors: 
+    rigImportErrors: "Invalid Avatar Rig Configuration. Missing or invalid transform:\n\tFound
+      duplicate transform 'joint9' for human bone 'Right Middle Intermediate' and
+      'Left Middle Intermediate'\n"
     rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 

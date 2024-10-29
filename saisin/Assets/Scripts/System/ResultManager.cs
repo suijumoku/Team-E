@@ -78,11 +78,6 @@ public class ResultManager : MonoBehaviour
         SceneName = InputSceneName; //static‚Ìobject‚É–¼‘O‚ğ“ü‚ê‚é‚±‚Æ‚ÅResultScene‚É–¼‘O‚ğˆø‚«Œp‚¢‚ÅÄ’§í‚ª‚Å‚«‚é‚æ‚¤‚É
     }
 
-    void Update()
-    {     
-
-    } 
-
     public void NormalHit()
     {
         //•’Ê‚É”ò‚Î‚·‚Æ+1
@@ -297,5 +292,11 @@ public class ResultManager : MonoBehaviour
         isNoDmg = false;
 
         calcScore = 0; beatDarumaValue = 0; breakTourouValue = 0;
+    }
+    
+
+    public int GetResultScore()
+    {
+        return indicateScore;
     }
 }

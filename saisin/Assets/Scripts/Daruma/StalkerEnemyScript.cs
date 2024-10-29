@@ -111,7 +111,9 @@ public class StalkerEnemyScript : MonoBehaviour
                 child.gameObject.GetComponent<BoxCollider>().enabled = true;
                 child.gameObject.AddComponent<Rigidbody>();
                 //child.gameObject.GetComponent<NavMeshAgent>().enabled = true;
-                child.gameObject.GetComponent<StalkerEnemyScript>().enabled = true;
+                var r = child.gameObject.GetComponent<StalkerEnemyScript>();
+                if (r != null)
+                    r.enabled = true;
                 //child.gameObject.tag = ("Enemy");
                 transform.DetachChildren();
                 gameObject.tag = "DarumaBall";

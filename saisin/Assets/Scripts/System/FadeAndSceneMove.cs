@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,6 +12,7 @@ public class FadeAndSceneMove : MonoBehaviour
 
     private bool StartedFade = false;
     private bool goNextScene = false;
+
 
     private void Start()
     {
@@ -23,8 +26,8 @@ public class FadeAndSceneMove : MonoBehaviour
         if (!StartedFade)
         {
             fade.StartFadeOut();
-            StartCoroutine(LoadScene());
             StartedFade = true;
+            StartCoroutine(LoadNextSceneAsync());
 
         }
     }
@@ -36,12 +39,20 @@ public class FadeAndSceneMove : MonoBehaviour
             goNextScene = true;
         }
     }
-    private IEnumerator LoadScene()
+    private IEnumerator LoadNextSceneAsync()
     {
-        var async = SceneManager.LoadSceneAsync(NextSceneName);
+        // フェードアウトが終わってからシーン移動をする
+        while (!goNextScene)
+        {
+            yield return null;
+        }
+        AsyncOperation async = SceneManager.LoadSceneAsync(NextSceneName);
 
-        async.allowSceneActivation = false;
-        yield return new WaitForSeconds(1.5f);
+        async.allowSceneActivation = false; 
+
+
+
         async.allowSceneActivation = true;
+
     }
 }
