@@ -10,16 +10,17 @@ public class ResultScoreSave : MonoBehaviour
 
     [SerializeField, Header("セーブするスコア")]
     private int score;
+    [SerializeField, Header("ステージ名")]
+    private string stageName;
 
-    private string[] ranking = { "ランキング1位", "ランキング2位", "ランキング3位", "ランキング4位", "ランキング5位" };
+    private string[] ranking = { "1位", "2位", "3位", "4位", "5位" };
     private int[] rankingValue = new int[5];
 
-    [SerializeField, Header("表示させるテキスト")]
-    private string[] rankingText = new string[5];
     // Start is called before the first frame update
     void Start()
     {
         score = resultManager.GetResultScore();
+        stageName=resultManager.GetStageName();
         GetRanking();
         SetRanking(score);
     }
@@ -36,7 +37,7 @@ public class ResultScoreSave : MonoBehaviour
         //ランキング呼び出し
         for (int i = 0; i < ranking.Length; i++)
         {
-            rankingValue[i] = PlayerPrefs.GetInt(ranking[i], 0);
+            rankingValue[i] = PlayerPrefs.GetInt(stageName+ranking[i], 0);
         }
     }
     /// <summary>
@@ -59,7 +60,8 @@ public class ResultScoreSave : MonoBehaviour
         //入れ替えた値を保存
         for (int i = 0; i < ranking.Length; i++)
         {
-            PlayerPrefs.SetInt(ranking[i], rankingValue[i]);
+            print(stageName + ranking[i]);
+            PlayerPrefs.SetInt(stageName+ranking[i], rankingValue[i]);
         }
     }
 

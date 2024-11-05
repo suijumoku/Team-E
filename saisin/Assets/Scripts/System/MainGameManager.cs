@@ -35,6 +35,7 @@ public class MainGameManager : MonoBehaviour
 
     int[] timeArray;
     int currentCount = 0;
+    [SerializeField]
     float time = 0f, beforeTime, floarTime;
     GameObject obj = default;
     bool onlyF = false;
@@ -50,7 +51,7 @@ public class MainGameManager : MonoBehaviour
             isDefeat = false;
             timeArray = new int[3] { 0, 0, 0 };
             currentCount = 0;
-            time = 0f;
+            time = -3f;
         }
         loseImage.gameObject.SetActive(false);
         winImage.gameObject.SetActive(false);
@@ -88,7 +89,7 @@ public class MainGameManager : MonoBehaviour
 
         //Debug.Log("floarTime" + floarTime);
 
-        if (floarTime - beforeTime >= 1.0f) //1フレーム前の時間から変化していたら(1秒経過したら)繰り上げ処理
+        if (floarTime - beforeTime >= 1.0f&&time>0f) //1フレーム前の時間から変化していたら(1秒経過したら)繰り上げ処理
         {
 
             for (int i = 0; i < floarTime - beforeTime; i++)

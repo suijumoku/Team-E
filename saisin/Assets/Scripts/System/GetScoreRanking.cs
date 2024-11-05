@@ -5,11 +5,16 @@ using TMPro;
 
 public class GetScoreRanking : MonoBehaviour
 {
+    [SerializeField]
+    private ResultManager resultManager;
 
     [SerializeField]
     private TextMeshProUGUI tmProUGUI;
 
-    private string[] ranking = { "ランキング1位", "ランキング2位", "ランキング3位", "ランキング4位", "ランキング5位" };
+    [SerializeField, Header("ステージ名")]
+    private string stageName;
+
+    private string[] ranking = { "1位", "2位", "3位", "4位", "5位" };
     private int[] rankingValue = new int[5];
 
     [SerializeField, Header("表示させるテキスト")]
@@ -18,6 +23,7 @@ public class GetScoreRanking : MonoBehaviour
     void Start()
     {
         tmProUGUI.text = "";
+        stageName=resultManager.GetStageName();
         GetRanking();
 
         DisplayRanking();
@@ -31,7 +37,7 @@ public class GetScoreRanking : MonoBehaviour
         //ランキング呼び出し
         for (int i = 0; i < ranking.Length; i++)
         {
-            rankingValue[i] = PlayerPrefs.GetInt(ranking[i],0);
+            rankingValue[i] = PlayerPrefs.GetInt(stageName+ranking[i],0);
         }
     }
 
@@ -39,7 +45,7 @@ public class GetScoreRanking : MonoBehaviour
     {
         for (int i = 0; i < rankingText.Length; i++)
         {
-            string text = $"{ranking[i]}:{rankingValue[i].ToString()}\n";
+            string text = $"{ranking[i]}:{rankingValue[i].ToString("d3")}\n";
             tmProUGUI.text += text;
             rankingText[i] = text;
         }

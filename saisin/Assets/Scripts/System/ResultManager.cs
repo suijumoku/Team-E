@@ -35,7 +35,7 @@ public class ResultManager : MonoBehaviour
     [SerializeField] bool OnLoadScene;
     AudioClip resultS = default!; 
 
-    [SerializeField] int hit = 1, doubleHit = 2, beatBoss = 4, noDamage = 20, Bonus_Standard_Time = 60, timeBonus = 5, tourou = 10;
+    [SerializeField] int hit = 1, doubleHit = 2, /*beatBoss = 4,*/ noDamage = 20, Bonus_Standard_Time = 60, timeBonus = 5, tourou = 10;
     [SerializeField] float duration = 0.5f;
 
     //const int score = 0, boss = 1, kid = 2;
@@ -51,6 +51,7 @@ public class ResultManager : MonoBehaviour
     private bool clearState = false;
     private bool noDmgState = false;
     public static string SceneName;
+    [SerializeField]
     private int indicateScore = 0;
     private int indicateDaruma = 0;
    // private int indicateTourou = 0; //コルーチンの最後に初期化すると最速でボタン押してシーン移動した時にバグるので別の変数に移す
@@ -63,19 +64,20 @@ public class ResultManager : MonoBehaviour
     {
         scoreArray = new int[2] { 0, 0 };
         Boss_Time_Array = new int[2] { 0, 0 };
-        kidArray = new int[2] { 0, 0 };       
-    }
-
-    void Start()
-    {
+        kidArray = new int[2] { 0, 0 };
         if (OnLoadScene)
         {
-            indicateScore = 0;           
+            indicateScore = 0;
             Debug.Log("OnLoadScene");
             Time.timeScale = 1;
             StartCoroutine(ResultCorutine());
         }
-        SceneName = InputSceneName; //staticのobjectに名前を入れることでResultSceneに名前を引き継いで再挑戦ができるように
+        SceneName = InputSceneName;
+    }
+
+    void Start()
+    {
+//staticのobjectに名前を入れることでResultSceneに名前を引き継いで再挑戦ができるように
     }
 
     public void NormalHit()
@@ -297,6 +299,12 @@ public class ResultManager : MonoBehaviour
 
     public int GetResultScore()
     {
+        print("score:"+indicateScore);
         return indicateScore;
+    }
+
+    public string GetStageName()
+    {
+        return InputSceneName;
     }
 }

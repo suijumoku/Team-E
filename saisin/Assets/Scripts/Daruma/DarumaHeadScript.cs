@@ -8,7 +8,7 @@ public class DarumaHeadScript : MonoBehaviour
     // Start is called before the first frame update
 
     [SerializeField] ResultManager resultManager;
-    GameObject obj = default;
+    //GameObject obj = default;
 
     [SerializeField]
     [Header("‰ó‚ê‚é‚Ü‚Å‚Ì‘Ò‚¿ŽžŠÔ")]
