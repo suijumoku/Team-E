@@ -5,14 +5,16 @@ using UnityEngine;
 public class DisplayUICon: MonoBehaviour
 {
     [Header("ï\é¶Ç∑ÇÈUI")] public GameObject displayUI;
-    public bool Ondisplay = false;
+    [SerializeField]
+    private bool Ondisplay;
     // Start is called before the first frame update
     void Start()
     {
         displayUI.SetActive(false);
+        Ondisplay = false;
     }
 
-    public void displayControl ()
+    public void DisplayControl ()
     {
         if (!Ondisplay)
         {
@@ -25,4 +27,7 @@ public class DisplayUICon: MonoBehaviour
             Ondisplay=false;
         }
     }
+
+    public bool isOnDisplay()
+        { return Ondisplay; }
 }

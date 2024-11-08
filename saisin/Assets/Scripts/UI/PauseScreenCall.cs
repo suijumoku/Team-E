@@ -25,12 +25,12 @@ public class PauseScreenCall : MonoBehaviour
             return;
         if (current.escapeKey.wasPressedThisFrame||Input.GetButtonDown("Menu"))
         {
-            uICon.displayControl();
+            uICon.DisplayControl();
         }
-        if (uICon.Ondisplay)
+        if (uICon.isOnDisplay())
             Time.timeScale = 0;
 
-        if (uICon.Ondisplay == false && Time.timeScale == 0)
+        if (uICon.isOnDisplay() == false && Time.timeScale == 0)
         {
             Time.timeScale = 1; //もう一度menuボタン押すと動き出す
         }
@@ -39,13 +39,13 @@ public class PauseScreenCall : MonoBehaviour
     public void Resume()
     {
         Time.timeScale = 1;
-        uICon.displayControl();
+        uICon.DisplayControl();
     }
 
     public void RetuenMenu()
     {
         Time.timeScale = 1;
-        uICon.displayControl();
+        uICon.DisplayControl();
         SceneManager.LoadScene("Menu");
     }
 }

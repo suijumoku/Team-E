@@ -12,7 +12,7 @@ public class FirstSelectButton : MonoBehaviour
     {
         if (OnEneble)
         {
-            Debug.Log("OnEnable");
+            Debug.Log("OnEnableFirstButtonSelect");
             onSelect();
         }
     }
@@ -21,7 +21,7 @@ public class FirstSelectButton : MonoBehaviour
     {
         if (OnLoadScene)
         {
-            Debug.Log("FirstButtonSelect");
+            Debug.Log("LoadSceneFirstButtonSelect");
             onSelect();
         }
     }
