@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Experimental.GlobalIllumination;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 using UnityEngine.Windows;
 //using static UnityEditor.Experimental.GraphView.GraphView;
 
@@ -73,34 +74,27 @@ public class PlayerController : MonoBehaviour
     [SerializeField] AudioClip damagedS = default!;
     // [SerializeField]  AudioClip cameraResetS = default!;
 
-    [SerializeField] MainGameManager _MainGameManager;
+    [FormerlySerializedAs("_MainGameManager")] [SerializeField] IngameManager ingameManager;
 
     [SerializeField] ResultManager _ResultManager; //デバッグ用
 
     float inputHorizontal;      //水平方向の入力値
     float inputVertical;        //垂直方向の入力値
-    //float L_inputTrigger;
     float R_inputTrigger;
+    
     bool inputAttack;
-
     bool R_isReset;
-  //  bool L_isReset;
+    
     float targetRotation;   //回転に使う
     float yVelocity = 0.0f;
     float motionTime = 0.0f;     // 攻撃モーションが始まってからの経過時間を格納->animationの遷移でできそう 
     float time = 0f;                //Runningモーションに使う
 
-    //Quaternion defaultCameraRot;
-    //[SerializeField] CinemachineFreeLook _freeLookCamera;
-    //[SerializeField] Camera _camera;
-
-
     void Start()
     {
         m_Rigidbody = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
-        _MainGameManager.isInvincible = false;
-        //defaultCameraRot = Camera.main.transform.rotation;
+        ingameManager.isInvincible = false;
         animator.SetTrigger("toIdle");
         particles[0].Stop();
         particles[1].Stop();      
@@ -109,7 +103,6 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         Input();
-        // CamaraReset();
         Jump();
         Attack();
         transitionAnim();
@@ -122,8 +115,6 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         Gravity();
-
-        //if (stateInfo.IsName("Running") || stateInfo.IsName("Jumping")) //たまになぜか滑るからなし
         Move();
     }
 
@@ -131,12 +122,12 @@ public class PlayerController : MonoBehaviour
     {
         if (UnityEngine.Input.GetKeyDown(KeyCode.X))    //デバッグ用無敵モードon
         {
-            _MainGameManager.isInvincible = true;
+            ingameManager.isInvincible = true;
             Debug.Log("無敵");
         }
         if (UnityEngine.Input.GetKeyDown(KeyCode.M))    //デバッグ用無敵モードoff
         {
-            _MainGameManager.isInvincible = false;
+            ingameManager.isInvincible = false;
             Debug.Log("無敵解除");
         }
 
@@ -153,16 +144,13 @@ public class PlayerController : MonoBehaviour
 
         inputHorizontal = UnityEngine.Input.GetAxisRaw("Horizontal");   //入力値の格納
         inputVertical = UnityEngine.Input.GetAxisRaw("Vertical");
-       // L_inputTrigger = UnityEngine.Input.GetAxis("L_Trigger");
         R_inputTrigger = UnityEngine.Input.GetAxis("R_Trigger");
         inputAttack = UnityEngine.Input.GetButtonDown("Attack");
-
        
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        //難しい方法はできないからTriggerで判定したい
         if (isJump == true || isFall == true)
         {
             if (collision.gameObject.CompareTag("Ground"))  //着地した時
@@ -171,17 +159,16 @@ public class PlayerController : MonoBehaviour
                 isJump = false;
                 isFall = false;
                 canMove = true;
-                Debug.Log("toLanding" );
             }
         }
 
-        if (_MainGameManager.isInvincible == false)
+        if (ingameManager.isInvincible == false)
         {
             if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("DarumaBall") || collision.gameObject.CompareTag("Ball"))     //無敵時間中はダメージを食らわない
             {
                 canMove = false;
                 KnockBack(collision);
-                _MainGameManager.Miss();
+                ingameManager.Miss();
             }
         }
     }
@@ -225,7 +212,6 @@ public class PlayerController : MonoBehaviour
             time = 0f;
             animator.SetTrigger("toIdle");         
         }
-        //  Debug.Log("time = " + time);
         animator.SetFloat("time", time);
     }
 
@@ -246,16 +232,14 @@ public class PlayerController : MonoBehaviour
             boxCollider.enabled = false;
             onlyFirst = true;
         }
-        // checkHit();
+        
         if (motionTime >= Collider_Start_Time && motionTime < Collider_Stop_Time && boxCollider.enabled == false)  //一定時間経過で判定出現(振り始めの一瞬は当たらない)
         {         
             boxCollider.enabled = true;
-            //Debug.Log("コライダー" + boxCollider.enabled);
         }
         if (motionTime >= Collider_Stop_Time && boxCollider.enabled == true)   //一定時間経過で判定が消える(振り切った最後の方は当たらない)
         {                  
             boxCollider.enabled = false;
-            // Debug.Log("コライダー" + boxCollider.enabled);
         }
         if (motionTime >= Attack_Finish_Time && isAttack == true)
         {
@@ -276,32 +260,6 @@ public class PlayerController : MonoBehaviour
             particles[1].Stop(); //振り終わったら停止                   
         }     
     }
-    //void CamaraReset()    //カメラリセット機能つけたかったが断念
-    //{
-    //    if (L_inputTrigger == 0)
-    //    {
-    //        L_isReset = true;
-    //        return;
-    //    }
-    //    if (L_isReset == false)
-    //     return; 
-
-    //    if (L_inputTrigger > triggerTiming)
-    //    {
-    //        Debug.Log("Reset");
-    //        // Camera.main.transform.position = this.transform.forward;
-    //        _freeLookCamera.ForceCameraPosition(this.transform.forward, defaultCameraRot);
-    //        Camera.main.transform.rotation = defaultCameraRot;
-    //        Camera.main.transform.position = this.transform.forward;             
-    //        _freeLookCamera.m_YAxis.Value = 0.5f;
-    //        _freeLookCamera.m_XAxis.Value = 0;
-
-
-    //        //_camera.transform.position =  this.transform.forward;
-    //        GameManager.instance.PlaySE(cameraResetS);
-    //        L_isReset = false;
-    //    }
-    //} 
 
     void Attack()   //ジャンプ中は攻撃できない
     {
@@ -322,11 +280,6 @@ public class PlayerController : MonoBehaviour
             boxCollider.enabled = true;
             motionTime = 0.0f;
            // particles[1].Stop();    //ハンマーを後ろに構える時間はパーティクル停止
-
-            //Debug.Log("boxCollider.enabled = " + boxCollider.enabled);
-            //   Debug.Log("Rトリガー = " + R_inputTrigger);
-            //攻撃モーションへの遷移
-            //_ResultManager.NormalHit(); //デバッグ用
         }
     }
     void KnockBack(Collision collision)
@@ -356,12 +309,7 @@ public class PlayerController : MonoBehaviour
     {
         if (!canMove) //攻撃中は移動もジャンプもできない->returnじゃなくてその場で固定させたい
             return;
-        //else if (Mathf.Approximately(inputHorizontal, 0.0f) && Mathf.Approximately(inputVertical, 0.0f) && isJump == true)    
-        //{
-        //    //inputHorizontal += 0.1f;  入力は正負の値だからこれだとダメ    beforePosとnowPosを使えばできそう？
-        //    //inputVertical   += 0.1f;
-        //    return;     //ジャンプ中に入力値がほぼゼロならreturnすれば自然な慣性が働きそう -> 若干不自然な動きに。要改善
-        //}
+       
 
         if (isAttack == true)
         {

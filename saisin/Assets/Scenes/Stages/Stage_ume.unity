@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.11348529, g: 0.08064149, b: 0.088061884, a: 1}
+  m_IndirectSpecularColor: {r: 0.11315337, g: 0.080029875, b: 0.08757891, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -825,7 +825,7 @@ MonoBehaviour:
   - 0.25
   - 0.25
   - 0.25
-  _MainGameManager: {fileID: 567377144}
+  ingameManager: {fileID: 567377144}
   life: 3
 --- !u!1 &487496311 stripped
 GameObject:
@@ -5080,11 +5080,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 578910371089844775, guid: 26c940c44de39eb47814d559ca46abd3, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.3981571
+      value: -0.39815706
       objectReference: {fileID: 0}
     - target: {fileID: 578910371089844775, guid: 26c940c44de39eb47814d559ca46abd3, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.026612887
+      value: -0.026612904
       objectReference: {fileID: 0}
     - target: {fileID: 578910371089844775, guid: 26c940c44de39eb47814d559ca46abd3, type: 3}
       propertyPath: m_LocalRotation.y
@@ -6097,6 +6097,10 @@ PrefabInstance:
       value: 16.05
       objectReference: {fileID: 0}
     - target: {fileID: 5984074911240299899, guid: e9ccdad8e17c66b4ab1370d6bcde609a, type: 3}
+      propertyPath: ingameManager
+      value: 
+      objectReference: {fileID: 567377144}
+    - target: {fileID: 5984074911240299899, guid: e9ccdad8e17c66b4ab1370d6bcde609a, type: 3}
       propertyPath: _ResultManager
       value: 
       objectReference: {fileID: 402041234}
@@ -6104,6 +6108,10 @@ PrefabInstance:
       propertyPath: _MainGameManager
       value: 
       objectReference: {fileID: 567377144}
+    - target: {fileID: 5984074911240299899, guid: e9ccdad8e17c66b4ab1370d6bcde609a, type: 3}
+      propertyPath: Collider_Stop_Time
+      value: 0.12
+      objectReference: {fileID: 0}
     - target: {fileID: 5984074911240299899, guid: e9ccdad8e17c66b4ab1370d6bcde609a, type: 3}
       propertyPath: Collider_Start_Time
       value: 0.1

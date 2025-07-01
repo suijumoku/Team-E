@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-public class MainGameManager : MonoBehaviour
+public class IngameManager : MonoBehaviour
 {
     [Header("シーンが読み込まれたら実行する")]
     [SerializeField] bool OnLoadScene;
@@ -25,7 +26,7 @@ public class MainGameManager : MonoBehaviour
     [SerializeField] FadeAndSceneMove _fadeAndSceneMove;
 
     [SerializeField] int missCount = default!;
-    [SerializeField] private BlinkingScript blinkingScript = default!;
+    [FormerlySerializedAs("blinkingScript")] [SerializeField] private BlinkingObject blinkingObject = default!;
     [SerializeField] ResultManager resultManager = default!;
 
     [SerializeField] AudioClip loseS = default!;
@@ -135,7 +136,7 @@ public class MainGameManager : MonoBehaviour
 
     public void InOrder(int i)
     {
-        blinkingScript.StartCoroutine(blinkingScript.DamageIndication(i));
+        blinkingObject.StartCoroutine(blinkingObject.DamageIndication(i));
     }
 
     private IEnumerator Defeat()
@@ -156,8 +157,8 @@ public class MainGameManager : MonoBehaviour
         Debug.Log("勝ち判定");
        
         obj = GameObject.Find("Life");
-        blinkingScript = obj.GetComponent<BlinkingScript>();
-        if (blinkingScript.life == 3)
+        blinkingObject = obj.GetComponent<BlinkingObject>();
+        if (blinkingObject.life == 3)
         {
             resultManager.NoDmgBonus(); //ライフが３残ってたらノーダメボーナス
         }
