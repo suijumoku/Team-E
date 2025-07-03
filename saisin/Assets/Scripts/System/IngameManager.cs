@@ -26,7 +26,7 @@ public class IngameManager : MonoBehaviour
     [SerializeField] FadeAndSceneMove _fadeAndSceneMove;
 
     [SerializeField] int missCount = default!;
-    [FormerlySerializedAs("blinkingScript")] [SerializeField] private BlinkingObject blinkingObject = default!;
+    [SerializeField] private BlinkingObject blinkingObject = default!;
     [SerializeField] ResultManager resultManager = default!;
 
     [SerializeField] AudioClip loseS = default!;
@@ -44,10 +44,8 @@ public class IngameManager : MonoBehaviour
 
     void Start()
     {
-
         if (OnLoadScene)
         {
-            Debug.Log("OnLoadScene");
             onlyF = false;
             isDefeat = false;
             timeArray = new int[3] { 0, 0, 0 };
@@ -56,14 +54,12 @@ public class IngameManager : MonoBehaviour
         }
         loseImage.gameObject.SetActive(false);
         winImage.gameObject.SetActive(false);
-
     }
 
     private void Update()
     {
         if (ResultManager.isClear == true && onlyF == false || UnityEngine.Input.GetKeyDown(KeyCode.K) && onlyF == false)
         {
-            Debug.Log("Clear!");
             ResultManager.isClear = true;  //デバッグ用 
             resultManager.BeatBoss(floarTime);   //本来はボス撃破時の関数だがボス実装断念により、クリアタイムボーナスとして呼ぶ
             StartCoroutine(Clear());
@@ -77,22 +73,14 @@ public class IngameManager : MonoBehaviour
         {
            StartCoroutine(Defeat());
         }
-
-        //if (UnityEngine.Input.GetKeyDown(KeyCode.L)) //Lでリロード
-        //{
-        //    SceneManager.LoadScene("Stage_ume");
-        //}
-
+        
    
         time += Time.deltaTime;
 
         floarTime = Mathf.Floor(time);   //切り捨て
 
-        //Debug.Log("floarTime" + floarTime);
-
         if (floarTime - beforeTime >= 1.0f&&time>0f) //1フレーム前の時間から変化していたら(1秒経過したら)繰り上げ処理
         {
-
             for (int i = 0; i < floarTime - beforeTime; i++)
             {
                 timeArray[0]++;
@@ -112,10 +100,8 @@ public class IngameManager : MonoBehaviour
         for (int i = 0; i < timeImg.Length; i++)
         {
             timeImg[i].sprite = resultManager.Numbers[timeArray[i]];
-
             timeImg[i].enabled = true;
         }
-
 
         if (isDefeat)
         {
@@ -129,8 +115,6 @@ public class IngameManager : MonoBehaviour
         if (currentCount >= missCount) return;
 
         InOrder(currentCount);
-        //GameObject c = other.GetComponent<GameObject>();     
-
         currentCount++;
     }
 
@@ -141,36 +125,36 @@ public class IngameManager : MonoBehaviour
 
     private IEnumerator Defeat()
     {
-       
-        Debug.Log("負け判定");
         endAnim.Play();
         yield return new WaitForSeconds(1f);
+        
         GameManager.instance.PlaySE(loseS);
         endAnim.gameObject.SetActive(false);
         loseImage.gameObject.SetActive(true);       
+        
         yield return new WaitForSeconds(1f);
         _fadeAndSceneMove.FadeStart();
     }
 
     private IEnumerator Clear()
     {
-        Debug.Log("勝ち判定");
-       
         obj = GameObject.Find("Life");
         blinkingObject = obj.GetComponent<BlinkingObject>();
+        
         if (blinkingObject.life == 3)
         {
             resultManager.NoDmgBonus(); //ライフが３残ってたらノーダメボーナス
         }
 
         endAnim.Play();
+        
         yield return new WaitForSeconds(1f);
+        
         GameManager.instance.PlaySE(winS);
         endAnim.gameObject.SetActive(false);
         winImage.gameObject.SetActive(true);
+        
         yield return new WaitForSeconds(1f);
         _fadeAndSceneMove.FadeStart();
-
     }
-
 }

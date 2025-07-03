@@ -7,7 +7,6 @@ using UnityEngine.Experimental.GlobalIllumination;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
 using UnityEngine.Windows;
-//using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class PlayerController : MonoBehaviour
 {
@@ -17,16 +16,13 @@ public class PlayerController : MonoBehaviour
     Animator animator;
     AnimatorStateInfo stateInfo;
 
-    //地面の上なら歩きモーション、違うなら落下モーション              
-
-    private bool isJump = false;           //ジャンプ中かどうか
+    private bool isJump = false;           
     private bool isFall = false;
     public bool isAttack = false;
     public bool isHit = false;
     private bool isDidHit = false;
     private bool canMove = true;
     private bool onlyFirst = false;
-    //private bool isKnockBack = false;
 
     [Header("移動スピード")]
     [SerializeField] private float walkSpeed = 4f;
@@ -72,9 +68,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] AudioClip hitS = default!;
     [Header("被ダメ音")]
     [SerializeField] AudioClip damagedS = default!;
-    // [SerializeField]  AudioClip cameraResetS = default!;
-
-    [FormerlySerializedAs("_MainGameManager")] [SerializeField] IngameManager ingameManager;
+    [SerializeField] IngameManager ingameManager;
 
     [SerializeField] ResultManager _ResultManager; //デバッグ用
 
@@ -85,10 +79,10 @@ public class PlayerController : MonoBehaviour
     bool inputAttack;
     bool R_isReset;
     
-    float targetRotation;   //回転に使う
+    float targetRotation;       //回転に使う
     float yVelocity = 0.0f;
-    float motionTime = 0.0f;     // 攻撃モーションが始まってからの経過時間を格納->animationの遷移でできそう 
-    float time = 0f;                //Runningモーションに使う
+    float motionTime = 0.0f;    // 攻撃モーションが始まってからの経過時間を格納->animationの遷移でできそう 
+    float time = 0f;            //Runningモーションに使う
 
     void Start()
     {
@@ -105,6 +99,7 @@ public class PlayerController : MonoBehaviour
         Input();
         Jump();
         Attack();
+
         transitionAnim();
         ParticleManage();
         if (isAttack)
@@ -177,7 +172,6 @@ public class PlayerController : MonoBehaviour
     {
         if (isHit == true && isDidHit==false)      //ヒット時のエフェクト再生
         {
-            //particles[0].Play();
             hitParticlePlayer.Play();
             isDidHit = true;
         }
@@ -185,15 +179,6 @@ public class PlayerController : MonoBehaviour
         {
             isDidHit=false;
         }
-        //if (stateInfo.IsName("Attacking") && particles[1].isPlaying == true)
-        //{
-        //    particles[1].Stop();    //ハンマーを後ろに構える時間はパーティクル停止
-        //}
-        //if (stateInfo.IsName("Running") || stateInfo.IsName("Idle"))
-        //{
-        //    if (particles[1].isPlaying == true)
-        //        particles[1].Stop();
-        //}
     }
     void transitionAnim()
     {
@@ -220,11 +205,11 @@ public class PlayerController : MonoBehaviour
         //攻撃モーション中ハンマーの当たり判定が存在する時間の管理
 
         motionTime += Time.deltaTime * Attack_Motion_Speed;
-        Attack_Colider_Manage();
-        Attack_Particle_Manage();
+        AttackColliderManage();
+        AttackParticleManage();
     }
 
-    void Attack_Colider_Manage()
+    void AttackColliderManage()
     {
         if (isHit && onlyFirst == false)
         {
@@ -249,7 +234,7 @@ public class PlayerController : MonoBehaviour
             motionTime = 0.0f;         
         }
     }
-    void Attack_Particle_Manage()       //ハンマーの当たり判定が存在する時間とパーティクルが存在する時間は分ける
+    void AttackParticleManage()       //ハンマーの当たり判定が存在する時間とパーティクルが存在する時間は分ける
     {           
         if (motionTime >= Particle_Start_Time && motionTime < Particle_Stop_Time && particles[1].isStopped == true)  //一定時間経過でパーティクル出現
         {
@@ -274,29 +259,25 @@ public class PlayerController : MonoBehaviour
         if (R_inputTrigger > triggerTiming || inputAttack)  //AボタンかRTで攻撃
         {
             animator.Play("Attacking", 0, 0.0f);
-            GameManager.instance.PlaySE(attack_true_S);         //仮 当たったかどうかで音変えると思われる
+            GameManager.instance.PlaySE(attack_true_S);        
             isAttack = true;
             R_isReset = false;
             boxCollider.enabled = true;
             motionTime = 0.0f;
-           // particles[1].Stop();    //ハンマーを後ろに構える時間はパーティクル停止
         }
     }
     void KnockBack(Collision collision)
     {
         GameManager.instance.PlaySE(damagedS);
         isJump = true;
-        Debug.Log("isKnockBack");
         Vector3 direction = collision.gameObject.transform.forward;
 
         m_Rigidbody.AddForce(-direction * knockBackP, ForceMode.Impulse);      
         m_Rigidbody.AddForce(transform.up * knockBackUpP, ForceMode.Impulse);   //若干上方向にも飛ばす
-
     }
 
     public void fall()  //落下判定エリアで使う
     {
-
         GameManager.instance.PlaySE(fallS);
         isFall = true;
         canMove = false;
@@ -309,7 +290,6 @@ public class PlayerController : MonoBehaviour
     {
         if (!canMove) //攻撃中は移動もジャンプもできない->returnじゃなくてその場で固定させたい
             return;
-       
 
         if (isAttack == true)
         {
@@ -344,9 +324,10 @@ public class PlayerController : MonoBehaviour
         {
             //SmoothDampAngleで滑らかな回転をするためには引数（moveForwardとvelocityだけ）をVector3からfloatに変換しなければいけない
 
-            targetRotation = Mathf.Atan2(moveForward.x, moveForward.z) * Mathf.Rad2Deg;     //Atan2, ベクトルを角度(ラジアン)に変換する Rad2Deg(radian to degrees?)ラジアンから度に変換する
+            //Atan2, ベクトルを角度(ラジアン)に変換する Rad2Deg(radian to degrees)ラジアンから度に変換する
+            targetRotation = Mathf.Atan2(moveForward.x, moveForward.z) * Mathf.Rad2Deg;
 
-            //SmoothDampAngle(現在の値, 目的の値, ref 現在の速度, 遷移時間, 最高速度); 現在の速度はnullで良いっぽい？
+            //SmoothDampAngle(現在の値, 目的の値, ref 現在の速度, 遷移時間, 最高速度); 
             float rotation = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetRotation, ref yVelocity, smoothTime);
             transform.rotation = Quaternion.Euler(0.0f, rotation, 0.0f);
         }
@@ -372,8 +353,6 @@ public class PlayerController : MonoBehaviour
             GameManager.instance.PlaySE(jumpS);
             m_Rigidbody.AddForce(transform.up * jumpPower, ForceMode.Impulse);
             isJump = true;
-            //Debug.Log("isjump = " + isJump);         
-
          
             //ジャンプモーション→落下モーションに遷移
         }

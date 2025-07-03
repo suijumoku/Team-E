@@ -66,13 +66,11 @@ public class BlinkingObject : MonoBehaviour
         lifeImage[i].sprite = falselife;
 
         //プレイヤーのマテリアルを通常に。ハートのより点滅の回数が増えてしまう
-       // yield return new WaitForSeconds(0.1f);
         player.gameObject.GetComponent<Renderer>().material = trueMaterial;
         life--;
         if (life <= 0)
         {
             ingameManager.isDefeat = true;
-            Debug.Log("isDefeat = " + ingameManager.isDefeat);
         }
         ingameManager.isInvincible = false;
         yield return null;

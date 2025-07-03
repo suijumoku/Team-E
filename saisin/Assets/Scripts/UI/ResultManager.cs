@@ -29,16 +29,13 @@ public class ResultManager : MonoBehaviour
     [SerializeField] ScoreUI _ScoreUI;
     [SerializeField] FadeAndSceneMove _FadeAndSceneMove;
 
-    //[Header("有効になったら実行する")]
-    //[SerializeField] bool OnEneble;
     [Header("シーンが読み込まれたら実行する")]
     [SerializeField] bool OnLoadScene;
     AudioClip resultS = default!; 
 
-    [SerializeField] int hit = 1, doubleHit = 2, /*beatBoss = 4,*/ noDamage = 20, Bonus_Standard_Time = 60, timeBonus = 5, tourou = 10;
+    [SerializeField] int hit = 1, doubleHit = 2, noDamage = 20, Bonus_Standard_Time = 60, timeBonus = 5, tourou = 10;
     [SerializeField] float duration = 0.5f;
-
-    //const int score = 0, boss = 1, kid = 2;
+    
     const int tensPlace = 0, onePlace = 1, maxScore = 99;
     [SerializeField] int clearValue = 5;  //灯篭五個破壊でクリア
 
@@ -50,14 +47,12 @@ public class ResultManager : MonoBehaviour
 
     private bool clearState = false;
     private bool noDmgState = false;
+    
+    //staticのobjectに名前を入れることでResultSceneに名前を引き継いで再挑戦ができるように
     public static string SceneName;
     [SerializeField]
     private int indicateScore = 0;
     private int indicateDaruma = 0;
-   // private int indicateTourou = 0; //コルーチンの最後に初期化すると最速でボタン押してシーン移動した時にバグるので別の変数に移す
-    
-
-  //  [SerializeField] int num = default!; //デバッグ用
 
 
     void Awake()
@@ -68,17 +63,12 @@ public class ResultManager : MonoBehaviour
         if (OnLoadScene)
         {
             indicateScore = 0;
-            Debug.Log("OnLoadScene");
             Time.timeScale = 1;
-            StartCoroutine(ResultCorutine());
+            StartCoroutine(ResultCoroutine());
         }
         SceneName = InputSceneName;
     }
-
-    void Start()
-    {
-//staticのobjectに名前を入れることでResultSceneに名前を引き継いで再挑戦ができるように
-    }
+    
 
     public void NormalHit()
     {
@@ -96,20 +86,17 @@ public class ResultManager : MonoBehaviour
     }
     public void BeatDaruma()
     {
-        beatDarumaValue++;      
-        
-     　// _ScoreUI.ScoreUpdate();
+        beatDarumaValue++;
     }
     public void BeatBoss(float time)
     {
         //ボス倒すと加点
-        //calcScore += beatBoss;
         if (time <= Bonus_Standard_Time)    //ボスを倒した時点でクリアタイム(出現してから倒すまで？)が60秒下回っていたらボーナス点
         {
             calcScore += timeBonus;
         }
 
-        for (int i = 0; i < time; i++)  //これtimeがfloatだとうまく動かないかも -> 繰り上げられちゃう、要改善
+        for (int i = 0; i < time; i++)      //これtimeがfloatだとうまく動かないかも -> 繰り上げられちゃう、要改善
         {
             Boss_Time_Array[0]++;
             if (Boss_Time_Array[0] >= 10)
@@ -118,17 +105,15 @@ public class ResultManager : MonoBehaviour
                 Boss_Time_Array[0] = 0;
             }
         }
-         //_ScoreUI.ScoreUpdate();
     }
 
-    public void NoDmgBonus() //多分PlayerControllerで呼ぶ->MainGameManager
+    public void NoDmgBonus()
     {        
         calcScore += noDamage;
         isNoDmg = true;
-        Debug.Log("isNoDmg1 = " + isNoDmg);
     }
 
-    public void breakTourou()
+    public void BreakTourou()
     {
         //灯篭破壊で加点
         calcScore += tourou;
@@ -138,7 +123,7 @@ public class ResultManager : MonoBehaviour
             isClear = true;
         }
         else
-        _ScoreUI.ScoreUpdate();
+           _ScoreUI.ScoreUpdate();
     }
 
     public void Assign(bool isResult)
@@ -164,16 +149,8 @@ public class ResultManager : MonoBehaviour
         scoreImg[tensPlace].sprite = Numbers[scoreArray[1]];
         scoreImg[onePlace].sprite = Numbers[scoreArray[0]];
 
-        //Debug.Log("scoreArray[0] = " + scoreArray[0]);
-        //Debug.Log("scoreArray[1] = " + scoreArray[1]);
-        //Debug.Log("Numbers[scoreArray[1]] = " + Numbers[scoreArray[1]]);
-        //Debug.Log(" scoreImg[tensPlace].sprite = " + scoreImg[tensPlace].sprite);
-        //Debug.Log(" scoreImg[onePlace].sprite = " + scoreImg[onePlace].sprite);
-
         if (isResult == true)   //リザルト画面ならボスの秒数と子だるまの数も入れる
         {
-            //bossScoreImg[tensPlace].sprite = Numbers[Boss_Time_Array[1]]; //Numbers[i] i:他スクリプトから取得したスコアを十の位と一の位に分割して入れる
-            //bossScoreImg[onePlace].sprite = Numbers[Boss_Time_Array[0]];
             for (int i = 0; i < beatDarumaValue; i++)
             {
                 kidArray[0]++;
@@ -183,29 +160,17 @@ public class ResultManager : MonoBehaviour
                     kidArray[0] = 0;
                 }
             }
-          
 
             kidScoreImg[tensPlace].sprite = Numbers[kidArray[1]];
             kidScoreImg[onePlace].sprite = Numbers[kidArray[0]];
         }
-        Debug.Log("calcScore = " + calcScore);
-
     }
-    private IEnumerator ResultCorutine()
+    private IEnumerator ResultCoroutine()
     {
-       // Debug.Log("SceneName = " + SceneName);
         _FadeAndSceneMove.NextSceneName = SceneName; 　//再挑戦ボタンの移動するシーンの名前を書き換える
 
         if (calcScore >= 100)
             calcScore = 99;
-        //NormalHit();
-        //DoubleHit();
-        //BeatBoss(10.2f);
-       // BeatDaruma();   //1+1+4+20+16, 10秒、01体 良判定
-       // calcScore += noDamage;
-        //calcScore = num;
-        //isNoDmg = true;
-        //デバッグ用↑
 
         Assign(isResult);
 
@@ -216,11 +181,7 @@ public class ResultManager : MonoBehaviour
         IndicateScore(scoreImg, indicateS[0]);
         yield return new WaitForSeconds(duration);
 
-        //IndicateScore(bossScoreImg, indicateS[0]);    //ボススコアの表示
-        //yield return new WaitForSeconds(duration);
-
         IndicateScore(kidScoreImg, indicateS[0]);
-       // Debug.Log("isNoDmg2 = " + isNoDmg);
         if (noDmgState == true)        //ノーダメだったらチェック入れる
         {
             yield return new WaitForSeconds(duration);
@@ -229,9 +190,6 @@ public class ResultManager : MonoBehaviour
         }
         yield return new WaitForSeconds(duration * 1.5f);
         GameManager.instance.PlaySE(indicateS[1]);
-        // result.enabled = true;       
-
-     
 
         if (clearState == false)  //要調整 調整しやすくする方法わからない
         {
@@ -261,15 +219,6 @@ public class ResultManager : MonoBehaviour
 
         yield return new WaitForSeconds(duration);
         GameManager.instance.PlaySE(resultS);
-
-        //Debug.Log("score.enabled0 = " + scoreImg[0].enabled);
-        //Debug.Log("score.enabled1 = " + scoreImg[1].enabled);
-
-        //Debug.Log("bossScore.enabled0 = " + bossScoreImg[0].enabled);
-        //Debug.Log("bossScore.enabled1 = " + bossScoreImg[1].enabled);
-
-        //Debug.Log("kidScore.enabled0 = " + kidScoreImg[0].enabled);
-        //Debug.Log("kidScore.enabled1 = " + kidScoreImg[1].enabled);
       
         yield return null;
     }
@@ -296,7 +245,6 @@ public class ResultManager : MonoBehaviour
         calcScore = 0; beatDarumaValue = 0; breakTourouValue = 0;
     }
     
-
     public int GetResultScore()
     {
         print("score:"+indicateScore);
