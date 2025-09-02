@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-public class BlinkingScript : MonoBehaviour
+public class BlinkingObject : MonoBehaviour
 {
     [SerializeField] GameObject player = default!;
     [Header("表示場所")]
@@ -19,7 +20,7 @@ public class BlinkingScript : MonoBehaviour
     [Header("ダメージ時の表示間隔")]
     [SerializeField] float[] duration = default!;
 
-    [SerializeField] MainGameManager _MainGameManager = default!;
+    [FormerlySerializedAs("_MainGameManager")] [SerializeField] IngameManager ingameManager = default!;
 
     public int life = 3;
   
@@ -51,7 +52,7 @@ public class BlinkingScript : MonoBehaviour
 
     public IEnumerator DamageIndication(int i)
     {
-        _MainGameManager.isInvincible = true;   //点滅中は無敵に
+        ingameManager.isInvincible = true;   //点滅中は無敵に
 
         yield return new WaitForSeconds(0.15f);
         //WaitForSecondsでそれぞれ待機してからLifeChangeを行う
@@ -65,15 +66,13 @@ public class BlinkingScript : MonoBehaviour
         lifeImage[i].sprite = falselife;
 
         //プレイヤーのマテリアルを通常に。ハートのより点滅の回数が増えてしまう
-       // yield return new WaitForSeconds(0.1f);
         player.gameObject.GetComponent<Renderer>().material = trueMaterial;
         life--;
         if (life <= 0)
         {
-            _MainGameManager.isDefeat = true;
-            Debug.Log("isDefeat = " + _MainGameManager.isDefeat);
+            ingameManager.isDefeat = true;
         }
-        _MainGameManager.isInvincible = false;
+        ingameManager.isInvincible = false;
         yield return null;
     }
 

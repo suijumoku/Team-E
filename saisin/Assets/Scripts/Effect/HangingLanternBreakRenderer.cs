@@ -5,17 +5,17 @@ using UnityEngine;
 public class HangingLanternBreakRenderer : MonoBehaviour
 {
     [SerializeField]
-    [Header("I—¹‚Ü‚Å‚Ì‘Ò‚¿ŠÔ")]
+    [Header("ï¿½Iï¿½ï¿½ï¿½Ü‚Å‚Ì‘Ò‚ï¿½ï¿½ï¿½ï¿½ï¿½")]
     private float StayBreakTime = 0;  
     [SerializeField]
-    [Header("I—¹‚ÉƒAƒ^ƒbƒ`‚³‚ê‚½ƒIƒuƒWƒFƒNƒg‚ğÁ‚·‚©‚Ç‚¤‚©")]
+    [Header("ï¿½Iï¿½ï¿½ï¿½ï¿½ï¿½ÉƒAï¿½^ï¿½bï¿½`ï¿½ï¿½ï¿½ê‚½ï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç‚ï¿½ï¿½ï¿½")]
     private bool isDestroy=false;
 
     [SerializeField]
     int breakCount = -1;
     float time = 0;
     [SerializeField]
-    [Header("Ä¶‚·‚éƒp[ƒeƒBƒNƒ‹")]
+    [Header("ï¿½Äï¿½ï¿½ï¿½ï¿½ï¿½pï¿½[ï¿½eï¿½Bï¿½Nï¿½ï¿½")]
     private ParticlePlayer particlePlayer;
 
     [SerializeField] ResultManager resultManager = default!;
@@ -43,7 +43,7 @@ public class HangingLanternBreakRenderer : MonoBehaviour
                 if (isDestroy)
                 {
                     Destroy(gameObject);
-                    resultManager.breakTourou();
+                    resultManager.BreakTourou();
                 }                   
                 else
                     Destroy(this);

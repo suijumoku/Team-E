@@ -22,15 +22,11 @@ public class TourouCount : MonoBehaviour
         resultManager = obj.GetComponent<ResultManager>(); 
     }
 
-    // Update is called once per frame
     void Update()
     {
-     　//もっときれいに書けそう
-
        //breakTourouValueにcontrolValueを加えることで灯篭が壊れるたびに一度だけ条件文が通る
         if (scoreArray[0] > scoreArray[0] - ResultManager.breakTourouValue + controlValue)
         {           
-
             //breakTourouValueは灯篭破壊ごとにカウントが増えていくからそれに伴い値を増やす
             scoreArray[0] -= ResultManager.breakTourouValue - controlValue;
            

@@ -5,8 +5,6 @@ using UnityEngine;
 //MaterialPropetyBlockを使うと同じマテリアルを使用している
 //複数のオブジェクトに対して、それぞれ独自のプロパティ値を設定できる
 
-
-
 public class Semitransparent : MonoBehaviour
 {
     [SerializeField] float alphaValue = 0.5f;
@@ -59,5 +57,4 @@ public class Semitransparent : MonoBehaviour
             meshRenderers[i].SetPropertyBlock(mpb);
         }
     }
-
  }

@@ -7,9 +7,7 @@ using UnityEngine;
 
 public class CameraRaycast : MonoBehaviour
 {
-    [SerializeField] GameObject player;
-    //Animator playerAnimator;
-    //AnimatorStateInfo playerStateInfo;
+    [SerializeField] GameObject player; 
 
     // 前フレームで遮蔽物として扱われていたゲームオブジェクトが格納される
     public GameObject[] prevRaycast;
@@ -18,7 +16,6 @@ public class CameraRaycast : MonoBehaviour
     float maxDistance; //rayを飛ばす最大距離。
     Vector3 _difference;
 
-    // Start is called before the first frame update
     void Start()
     {
         _difference = (player.transform.position - this.transform.position);
@@ -26,22 +23,11 @@ public class CameraRaycast : MonoBehaviour
                                                 //magnitudeは平方根の計算で長差を求める関数
     }
 
-    // Update is called once per frame
     void Update()
     {
-        //playerAnimator = player.GetComponent<Animator>();
-        //playerStateInfo = playerAnimator.GetCurrentAnimatorStateInfo(0);
-        //if (!playerStateInfo.IsName("Jumping")) //ジャンプ中はrayを飛ばさない　根本の解決になってない
-        //{
-        //    Raycast();
-        //}        
         Raycast();
     }
 
-    void FixedUpdate()      //cinemachine cameraのUpdate Methodがfixed updataだからこっちかも
-    {
-        
-    }
     void Raycast()
     {
         //二つのオブジェクト間のベクトルを取得

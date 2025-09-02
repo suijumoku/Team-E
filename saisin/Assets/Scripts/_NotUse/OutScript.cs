@@ -1,28 +1,24 @@
-//ŒÃàV
+ï»¿//ï¿½ï¿½ï¿½V
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 public class OutScript : MonoBehaviour
 {
     [SerializeField] Transform respawnP;
     //[SerializeField] BlinkingScript blinkingScript = default!;
-    [SerializeField] MainGameManager _MainGameManager = default!;
+    [FormerlySerializedAs("_MainGameManager")] [SerializeField] IngameManager ingameManager = default!;
     [SerializeField] Transform player = default!;
     [SerializeField] PlayerController playerController;
     bool isAlive;
 
-    private void Start()
-    {
-    
-    }
-
-    void OnTriggerEnter(Collider other)     //—‰º‚µ‚½‚Ìˆ— ƒGƒŠƒA‚É“ü‚Á‚½‚çƒTƒEƒ“ƒh->o‚½‚ç•œŠˆ
+    void OnTriggerEnter(Collider other)     //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½ ï¿½Gï¿½ï¿½ï¿½Aï¿½É“ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Tï¿½Eï¿½ï¿½ï¿½h->ï¿½oï¿½ï¿½ï¿½ç•œï¿½ï¿½
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            playerController.fall();        //outArea‚ÉGameManager“ü‚ê‚Ä‰¹–Â‚ç‚»‚¤‚Æ‚·‚é‚Æ‚È‚º‚©ƒoƒO‚é‚©‚ç‰“‰ñ‚µ‚ÉÄ¶
+            playerController.fall();        //outAreaï¿½ï¿½GameManagerï¿½ï¿½ï¿½ï¿½Ä‰ï¿½ï¿½Â‚ç‚»ï¿½ï¿½ï¿½Æ‚ï¿½ï¿½ï¿½Æ‚È‚ï¿½ï¿½ï¿½ï¿½oï¿½Oï¿½é‚©ï¿½ç‰“ï¿½ñ‚µ‚ÉÄï¿½
         }
         if (other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("DarumaBall"))
         {
@@ -35,7 +31,7 @@ public class OutScript : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-             _MainGameManager.Miss();  //ƒ‰ƒCƒt0
+             ingameManager.Miss();  //ï¿½ï¿½ï¿½Cï¿½t0
                        
             player.transform.position = respawnP.transform.position;              
             

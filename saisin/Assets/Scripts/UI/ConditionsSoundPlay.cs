@@ -14,14 +14,12 @@ public class ConditionsSoundPlay : MonoBehaviour
     {
         if (OnEneble)
         {
-            Debug.Log("OnEnable, PlaySE");
             GameManager.instance.PlaySE(sound);
         }
     }
 
     public void OnClickPlay()
     {
-        Debug.Log("OnClick, PlaySE");
         GameManager.instance.PlaySE(sound);
     }
 }
